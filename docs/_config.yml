@@ -1,5 +1,6 @@
 title: Repository Showcase
 description: A curated collection of interesting GitHub repositories
+future: true
 baseurl: "/repo_posts"
 url: "https://tom-doerr.github.io"
 remote_theme: pages-themes/minimal@v0.2.0
