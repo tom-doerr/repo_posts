@@ -1,6 +1,25 @@
+---
+layout: default
+title: GitHub Repository Showcase
+---
+
 # GitHub Repository Showcase
 
 A curated collection of interesting GitHub repositories, automatically updated with new discoveries.
+
+## Latest Repositories
+
+{% for post in site.posts %}
+<article class="post">
+  <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+  <p class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</p>
+  {{ post.content }}
+  {% if post.image %}
+  <img src="{{ post.image | relative_url }}" alt="{{ post.title }} screenshot">
+  {% endif %}
+  <hr>
+</article>
+{% endfor %}
 
 ## About
 
@@ -9,14 +28,6 @@ This site showcases interesting GitHub repositories that catch our attention. Ea
 - Brief description
 - Visual preview
 - Direct link to the repository
-
-## Latest Posts
-
-Visit our [homepage](https://tom-doerr.github.io/repo_posts/) to see the latest featured repositories.
-
-## How It Works
-
-This site is automatically updated through a GitHub Action workflow whenever new repositories are added. The content is generated using Jekyll and hosted on GitHub Pages.
 
 ## License
 
