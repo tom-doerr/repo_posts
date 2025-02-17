@@ -11,12 +11,12 @@ A curated collection of interesting GitHub repositories, automatically updated w
 
 {% for post in site.posts %}
 <article class="post">
-  <h2><a href="{{ post.url | relative_url }}"></a></h2>
   <p class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</p>
   {{ post.content }}
   {% if post.image %}
   <img src="{{ post.image | relative_url }}" alt="{{ post.title }} screenshot">
   {% endif %}
+  <h2><a href="{{ post.url | relative_url }}"></a></h2>
   <hr>
 </article>
 {% endfor %}
