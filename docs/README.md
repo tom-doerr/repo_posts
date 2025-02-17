@@ -16,7 +16,7 @@ A curated collection of interesting GitHub repositories, automatically updated w
   {% if post.image %}
   <img src="{{ post.image | relative_url }}" alt="{{ post.title }} screenshot">
   {% endif %}
-  <h2><a href="{{ post.url | relative_url }}"></a></h2>
+  <h4><a href="{{ post.url | relative_url }}"></a></h4>
   <hr>
 </article>
 {% endfor %}
