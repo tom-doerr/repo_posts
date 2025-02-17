@@ -8,7 +8,7 @@ title: Repository Showcase
 
 {% for post in site.posts %}
 <article class="post">
-  <h2><a href="{{ post.url | relative_url }}"></a></h2>
+  <h4><a href="{{ post.url | relative_url }}"></a></h4>
   <p class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</p>
   {{ post.content }}
   {% if post.image %}
