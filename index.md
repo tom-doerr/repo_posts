@@ -9,6 +9,16 @@ visual preview.
 
 ## Latest Posts
 
-{% for post in site.posts %}
-* [{{ post.title }}]({{ post.url | relative_url }}) - {{ post.date | date: "%Y-%m-%d" }}
-{% endfor %}
+<ul class="post-list">
+  {% for post in site.posts %}
+    <li>
+      <h2>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </h2>
+      <span class="post-meta">{{ post.date | date: "%B %-d, %Y" }}</span>
+      {% if post.excerpt %}
+        <p>{{ post.excerpt }}</p>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
