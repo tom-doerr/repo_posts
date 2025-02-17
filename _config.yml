@@ -3,3 +3,7 @@ baseurl: "/repo_posts"
 url: "https://tom-doerr.github.io"
 theme: jekyll-theme-primer
 permalink: /:year/:month/:day/:title/
+markdown: kramdown
+plugins:
+  - jekyll-relative-links
+  - jekyll-github-pages

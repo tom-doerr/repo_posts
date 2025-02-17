@@ -1,6 +1,7 @@
 ---
 layout: default
 title: GitHub Repository Showcase
+permalink: /
 ---
 
 # GitHub Repository Showcase
