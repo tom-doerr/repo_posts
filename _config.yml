@@ -6,4 +6,5 @@ permalink: /:year/:month/:day/:title/
 markdown: kramdown
 plugins:
   - jekyll-relative-links
-  - jekyll-github-pages
+  - github-pages
+remote_theme: pages-themes/primer
