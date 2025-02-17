@@ -4,8 +4,6 @@ title: Repository Showcase
 ---
 
 
-## Latest Posts
-
 {% for post in site.posts %}
 <article class="post">
   <p class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</p>
