@@ -1,10 +1,9 @@
 title: GitHub Repository Showcase
 baseurl: "/repo_posts"
 url: "https://tom-doerr.github.io"
-theme: jekyll-theme-primer
-permalink: /:year/:month/:day/:title/
-markdown: kramdown
-plugins:
-  - jekyll-relative-links
-  - github-pages
 remote_theme: pages-themes/primer
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+plugins:
+  - jekyll-remote-theme
+  - jekyll-relative-links
