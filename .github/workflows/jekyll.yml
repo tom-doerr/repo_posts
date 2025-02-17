@@ -16,5 +16,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v4
       - uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./docs
+          destination: ./_site
       - uses: actions/upload-pages-artifact@v3
       - uses: actions/deploy-pages@v4

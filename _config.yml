@@ -4,6 +4,7 @@ url: "https://tom-doerr.github.io"
 remote_theme: pages-themes/primer
 markdown: kramdown
 permalink: /:year/:month/:day/:title/
+source: docs
 plugins:
   - jekyll-remote-theme
   - jekyll-relative-links
