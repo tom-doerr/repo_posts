@@ -2,26 +2,4 @@ title: GitHub Repository Showcase
 description: A collection of interesting GitHub repositories
 baseurl: "/repo_posts"
 url: "https://tom-doerr.github.io"
-
-# Build settings
-markdown: kramdown
 theme: jekyll-theme-primer
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
-
-# Collections
-collections:
-  posts:
-    output: true
-    permalink: /:year/:month/:day/:title/
-
-# Exclude development files
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
