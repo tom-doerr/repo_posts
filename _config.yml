@@ -1,7 +1,7 @@
 title: GitHub Repository Showcase
 description: A collection of interesting GitHub repositories
-baseurl: ""
-url: ""
+baseurl: "/repo_posts"
+url: "https://tom-doerr.github.io"
 
 # Build settings
 markdown: kramdown
