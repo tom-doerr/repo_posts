@@ -5,7 +5,7 @@ url: "https://tom-doerr.github.io"
 
 # Build settings
 markdown: kramdown
-theme: minima
+theme: jekyll-theme-primer
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
