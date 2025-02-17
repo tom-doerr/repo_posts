@@ -3,9 +3,6 @@ layout: default
 title: Repository Showcase
 ---
 
-# Repository Showcase
-
-Welcome to our curated collection of interesting GitHub repositories.
 
 ## Latest Posts
 
