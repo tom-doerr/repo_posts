@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-17T23:21:15.306570
+date: 2025-02-17T23:22:27.172263
 image: assets/SonyResearch_micro_diffusion_cropped.png
 ---
 
