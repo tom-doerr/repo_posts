@@ -1,5 +1,3 @@
 title: GitHub Repository Showcase
-description: A collection of interesting GitHub repositories
 baseurl: "/repo_posts"
-url: "https://tom-doerr.github.io"
 theme: jekyll-theme-primer
