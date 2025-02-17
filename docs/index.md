@@ -3,7 +3,7 @@ layout: default
 title: Repository Showcase
 ---
 
-
+{% include analytics.html %}
 {% for post in site.posts %}
 <article class="post">
   <p class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</p>
