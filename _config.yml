@@ -10,6 +10,12 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /:year/:month/:day/:title/
+
 # Exclude development files
 exclude:
   - Gemfile

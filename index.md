@@ -5,13 +5,15 @@ title: GitHub Repository Showcase
 
 # Latest GitHub Repositories
 
-{% for post in site.posts %}
+{% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+{% for post in sorted_posts %}
+
 ## [{{ post.title }}]({{ post.url | relative_url }})
 
-{{ post.date | date: "%Y-%m-%d" }}
+Posted on: {{ post.date | date: "%Y-%m-%d" }}
 
 {% if post.image %}
-![Preview]({{ post.image | relative_url }})
+![{{ post.title }}]({{ post.image | relative_url }})
 {% endif %}
 
 {{ post.content }}
