@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-18T03:04:11.246775
+date: 2025-02-18T03:04:13.178775
 image: assets/fabriziosalmi_caddy-waf_cropped.png
 ---
 
