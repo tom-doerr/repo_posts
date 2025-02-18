@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-18T07:37:05.295146
+date: 2025-02-18T07:37:07.299815
 image: assets/viccon_sturdyc_cropped.png
 ---
 
