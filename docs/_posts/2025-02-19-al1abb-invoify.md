@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-19T07:50:12.049301
+date: 2025-02-19T07:50:14.109849
 image: assets/al1abb_invoify_cropped.png
 ---
 
