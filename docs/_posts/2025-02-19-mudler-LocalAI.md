@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-19T03:17:15.106743
+date: 2025-02-19T03:17:17.066695
 image: assets/mudler_LocalAI_cropped.png
 ---
 
