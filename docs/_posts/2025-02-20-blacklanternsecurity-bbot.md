@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-20T00:30:52.915016
+date: 2025-02-20T00:30:56.154588
 image: assets/blacklanternsecurity_bbot_cropped.png
 ---
 
