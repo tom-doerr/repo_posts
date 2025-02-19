@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-19T04:17:55.718199
+date: 2025-02-19T04:17:57.890835
 image: assets/microsoft_TinyTroupe_cropped.png
 ---
 
