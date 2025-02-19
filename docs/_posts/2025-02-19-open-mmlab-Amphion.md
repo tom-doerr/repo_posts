@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-19T14:24:10.451957
+date: 2025-02-19T14:24:14.409159
 image: assets/open-mmlab_Amphion_cropped.png
 ---
 
