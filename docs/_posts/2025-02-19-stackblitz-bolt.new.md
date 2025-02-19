@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-19T09:21:54.592481
+date: 2025-02-19T09:21:56.547193
 image: assets/stackblitz_bolt.new_cropped.png
 ---
 
