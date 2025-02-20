@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-20T15:41:19.600721
+date: 2025-02-20T15:41:21.354665
 image: assets/dvershinin_gixy_cropped.png
 ---
 
