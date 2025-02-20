@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-20T23:16:31.547011
+date: 2025-02-20T23:16:33.354782
 image: assets/meshtastic_firmware_cropped.png
 ---
 
