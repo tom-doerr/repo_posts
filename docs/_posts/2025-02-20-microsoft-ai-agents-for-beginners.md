@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-20T10:37:40.553599
+date: 2025-02-20T10:37:42.466884
 image: assets/microsoft_ai-agents-for-beginners_cropped.png
 ---
 
