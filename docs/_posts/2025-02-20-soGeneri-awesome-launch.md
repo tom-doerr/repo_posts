@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-20T21:45:27.153218
+date: 2025-02-20T21:45:29.109424
 image: assets/soGeneri_awesome-launch_cropped.png
 ---
 
