@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-20T16:41:58.100492
+date: 2025-02-20T16:41:59.928283
 image: assets/Melkeydev_go-blueprint_cropped.png
 ---
 
