@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-20T13:39:47.767566
+date: 2025-02-20T13:39:49.675907
 image: assets/motiondivision_motion_cropped.png
 ---
 
