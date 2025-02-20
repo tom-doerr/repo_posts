@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-20T08:36:22.809118
+date: 2025-02-20T08:36:24.663574
 image: assets/chaitin_SafeLine_cropped.png
 ---
 
