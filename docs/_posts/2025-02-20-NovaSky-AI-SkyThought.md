@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-20T12:39:07.704355
+date: 2025-02-20T12:39:09.433426
 image: assets/NovaSky-AI_SkyThought_cropped.png
 ---
 
