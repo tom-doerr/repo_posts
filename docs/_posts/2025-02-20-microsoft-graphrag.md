@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-20T12:08:47.998282
+date: 2025-02-20T12:08:50.094140
 image: assets/microsoft_graphrag_cropped.png
 ---
 
