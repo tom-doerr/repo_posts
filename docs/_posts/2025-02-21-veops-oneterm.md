@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-21T00:47:30.354702
+date: 2025-02-21T00:47:32.263956
 image: assets/veops_oneterm_cropped.png
 ---
 
