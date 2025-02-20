@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-20T17:42:38.200805
+date: 2025-02-20T17:42:40.013082
 image: assets/teamhanko_hanko_cropped.png
 ---
 
