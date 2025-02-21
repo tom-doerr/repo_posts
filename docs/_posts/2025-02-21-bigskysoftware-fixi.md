@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-21T07:23:15.973823
+date: 2025-02-21T07:23:17.742593
 image: assets/bigskysoftware_fixi_cropped.png
 ---
 
