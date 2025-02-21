@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-21T19:31:29.119559
+date: 2025-02-21T19:31:30.220151
 image: assets/Azure_Azure-Sentinel_cropped.png
 ---
 
