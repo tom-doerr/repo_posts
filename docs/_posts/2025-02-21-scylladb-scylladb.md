@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-21T12:57:00.016677
+date: 2025-02-21T12:57:01.859896
 image: assets/scylladb_scylladb_cropped.png
 ---
 
