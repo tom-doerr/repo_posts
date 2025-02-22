@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-22T18:22:05.165376
+date: 2025-02-22T18:22:07.078663
 image: assets/infiniflow_ragflow_cropped.png
 ---
 
