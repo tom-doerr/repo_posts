@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-22T09:15:38.385083
+date: 2025-02-22T09:15:40.290190
 image: assets/getomni-ai_zerox_cropped.png
 ---
 
