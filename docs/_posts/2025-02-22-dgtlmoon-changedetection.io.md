@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-22T23:26:03.594095
+date: 2025-02-22T23:26:05.553033
 image: assets/dgtlmoon_changedetection.io_cropped.png
 ---
 
