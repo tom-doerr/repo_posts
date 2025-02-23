@@ -1,0 +1,9 @@
+---
+layout: default
+date: 2025-02-23T17:08:35.034793
+image: assets/tonybaloney_vscode-pets_cropped.png
+---
+
+# [tonybaloney/vscode-pets](https://github.com/tonybaloney/vscode-pets)
+
+VS Code extension that adds virtual pets to your editor
