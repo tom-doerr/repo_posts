@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-23T08:01:48.401709
+date: 2025-02-23T08:01:50.530638
 image: assets/Integuru-AI_Integuru_cropped.png
 ---
 
