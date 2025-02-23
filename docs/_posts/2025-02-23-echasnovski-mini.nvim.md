@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-23T13:35:54.244129
+date: 2025-02-23T13:35:56.126962
 image: assets/echasnovski_mini.nvim_cropped.png
 ---
 
