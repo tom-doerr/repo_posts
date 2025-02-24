@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-25T00:24:41.663046
+date: 2025-02-25T00:24:51.740706
 image: assets/THUDM_CogVideo_cropped.png
 ---
 
