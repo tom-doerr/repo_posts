@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-24T17:48:37.573641
+date: 2025-02-24T17:48:39.771168
 image: assets/Kanaries_pygwalker_cropped.png
 ---
 
