@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-24T08:22:58.335312
+date: 2025-02-24T08:23:08.447644
 image: assets/AmruthPillai_Reactive-Resume_cropped.png
 ---
 
