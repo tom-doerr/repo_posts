@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-24T10:56:07.134837
+date: 2025-02-24T10:56:17.215168
 image: assets/basecamp_kamal_cropped.png
 ---
 
