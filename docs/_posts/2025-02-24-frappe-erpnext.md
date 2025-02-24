@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-24T05:19:10.309351
+date: 2025-02-24T05:19:20.403764
 image: assets/frappe_erpnext_cropped.png
 ---
 
