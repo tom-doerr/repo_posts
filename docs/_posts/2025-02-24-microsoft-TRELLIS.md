@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-24T23:23:39.758985
+date: 2025-02-24T23:23:41.950790
 image: assets/microsoft_TRELLIS_cropped.png
 ---
 
