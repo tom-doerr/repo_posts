@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-24T09:54:49.545045
+date: 2025-02-24T09:54:59.657070
 image: assets/afadil_wealthfolio_cropped.png
 ---
 
