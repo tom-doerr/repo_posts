@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-26T00:05:56.143036
+date: 2025-02-26T00:06:01.182424
 image: assets/ArcInstitute_evo2_cropped.png
 ---
 
