@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-25T11:38:41.535616
+date: 2025-02-25T11:38:51.642892
 image: assets/infinition_Bjorn_cropped.png
 ---
 
