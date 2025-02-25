@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-25T05:30:48.840763
+date: 2025-02-25T05:30:58.916837
 image: assets/CapSoftware_Cap_cropped.png
 ---
 
