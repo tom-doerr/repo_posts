@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-25T03:28:16.070099
+date: 2025-02-25T03:28:26.174375
 image: assets/yshavit_mdq_cropped.png
 ---
 
