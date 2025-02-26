@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-26T10:13:01.652553
+date: 2025-02-26T10:13:11.742384
 image: assets/Agenta-AI_agenta_cropped.png
 ---
 
