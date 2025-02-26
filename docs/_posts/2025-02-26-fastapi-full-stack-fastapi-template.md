@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-02-26T07:10:51.943549
+date: 2025-02-26T07:10:53.842102
 image: assets/fastapi_full-stack-fastapi-template_cropped.png
 ---
 
