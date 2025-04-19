@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-19T16:38:20.504812
+date: 2025-04-19T16:38:21.330507
 image: assets/mannaandpoem_OpenManus_cropped.png
 ---
 
