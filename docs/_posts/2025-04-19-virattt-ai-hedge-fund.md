@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-19T02:14:42.050471
+date: 2025-04-19T02:14:42.963132
 image: assets/virattt_ai-hedge-fund_cropped.png
 ---
 
