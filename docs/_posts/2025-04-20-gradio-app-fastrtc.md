@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-20T16:32:11.173140
+date: 2025-04-20T16:32:12.225562
 image: assets/gradio-app_fastrtc_cropped.png
 ---
 
