@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-21T00:07:54.023632
+date: 2025-04-21T00:07:54.930369
 image: assets/fleetdm_fleet_cropped.png
 ---
 
