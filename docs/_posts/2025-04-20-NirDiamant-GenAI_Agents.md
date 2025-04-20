@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-20T16:01:55.937511
+date: 2025-04-20T16:01:56.805243
 image: assets/NirDiamant_GenAI_Agents_cropped.png
 ---
 
