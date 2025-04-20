@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-20T19:05:44.659009
+date: 2025-04-20T19:05:45.713699
 image: assets/yuruotong1_autoMate_cropped.png
 ---
 
