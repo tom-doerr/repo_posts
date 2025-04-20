@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-20T08:57:49.951227
+date: 2025-04-20T08:57:51.467606
 image: assets/mindverse_Second-Me_cropped.png
 ---
 
