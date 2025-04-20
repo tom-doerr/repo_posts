@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-20T18:03:58.359841
+date: 2025-04-20T18:03:59.362631
 image: assets/glanceapp_glance_cropped.png
 ---
 
