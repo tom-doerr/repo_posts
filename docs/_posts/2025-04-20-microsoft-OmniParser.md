@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-20T04:25:25.659419
+date: 2025-04-20T04:25:26.658058
 image: assets/microsoft_OmniParser_cropped.png
 ---
 
