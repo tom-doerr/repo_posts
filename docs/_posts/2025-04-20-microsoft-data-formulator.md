@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-20T03:55:10.376413
+date: 2025-04-20T03:55:11.260517
 image: assets/microsoft_data-formulator_cropped.png
 ---
 
