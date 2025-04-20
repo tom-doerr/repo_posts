@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-20T20:04:14.701491
+date: 2025-04-20T20:04:15.922600
 image: assets/hotheadhacker_awesome-selfhost-docker_cropped.png
 ---
 
