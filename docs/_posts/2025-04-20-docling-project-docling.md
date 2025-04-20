@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-20T21:35:40.671872
+date: 2025-04-20T21:35:41.646674
 image: assets/docling-project_docling_cropped.png
 ---
 
