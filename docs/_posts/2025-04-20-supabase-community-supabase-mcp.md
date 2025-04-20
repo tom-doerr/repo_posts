@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-20T23:07:23.340095
+date: 2025-04-20T23:07:24.554894
 image: assets/supabase-community_supabase-mcp_cropped.png
 ---
 
