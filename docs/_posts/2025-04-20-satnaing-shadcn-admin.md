@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-20T13:00:19.216391
+date: 2025-04-20T13:00:20.233581
 image: assets/satnaing_shadcn-admin_cropped.png
 ---
 
