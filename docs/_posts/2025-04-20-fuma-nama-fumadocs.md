@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-20T15:01:27.761319
+date: 2025-04-20T15:01:28.614174
 image: assets/fuma-nama_fumadocs_cropped.png
 ---
 
