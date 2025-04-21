@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-21T02:09:15.457373
+date: 2025-04-21T02:09:16.303148
 image: assets/lastmile-ai_mcp-agent_cropped.png
 ---
 
