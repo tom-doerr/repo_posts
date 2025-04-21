@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-21T23:21:37.807677
+date: 2025-04-21T23:21:38.800861
 image: assets/menloresearch_jan_cropped.png
 ---
 
