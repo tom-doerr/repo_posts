@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-22T00:22:10.637191
+date: 2025-04-22T00:22:11.723220
 image: assets/chatboxai_chatbox_cropped.png
 ---
 
