@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-22T14:01:01.956806
+date: 2025-04-22T14:01:02.986588
 image: assets/ahujasid_blender-mcp_cropped.png
 ---
 
