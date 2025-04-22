@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-22T08:57:12.491037
+date: 2025-04-22T08:57:13.376912
 image: assets/kurrent-io_KurrentDB_cropped.png
 ---
 
