@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-22T21:36:31.550384
+date: 2025-04-22T21:36:32.573850
 image: assets/VikParuchuri_marker_cropped.png
 ---
 
