@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-22T09:59:22.529553
+date: 2025-04-22T09:59:23.373203
 image: assets/grokability_snipe-it_cropped.png
 ---
 
