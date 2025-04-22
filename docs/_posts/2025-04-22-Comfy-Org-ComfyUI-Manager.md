@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-22T18:45:57.643851
+date: 2025-04-22T18:45:58.600584
 image: assets/Comfy-Org_ComfyUI-Manager_cropped.png
 ---
 
