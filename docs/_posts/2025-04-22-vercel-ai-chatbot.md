@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-22T11:29:26.774902
+date: 2025-04-22T11:29:27.595269
 image: assets/vercel_ai-chatbot_cropped.png
 ---
 
