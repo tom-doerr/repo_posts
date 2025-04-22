@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-22T03:23:42.771957
+date: 2025-04-22T03:23:43.668894
 image: assets/gitui-org_gitui_cropped.png
 ---
 
