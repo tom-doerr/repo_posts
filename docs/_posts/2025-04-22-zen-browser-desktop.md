@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-22T16:02:07.328184
+date: 2025-04-22T16:02:08.176099
 image: assets/zen-browser_desktop_cropped.png
 ---
 
