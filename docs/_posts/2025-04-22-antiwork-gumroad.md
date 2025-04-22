@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-22T10:28:42.169770
+date: 2025-04-22T10:28:42.875153
 image: assets/antiwork_gumroad_cropped.png
 ---
 
