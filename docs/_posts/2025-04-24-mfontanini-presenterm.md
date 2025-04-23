@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-24T01:36:46.446254
+date: 2025-04-24T01:36:47.688025
 image: assets/mfontanini_presenterm_cropped.png
 ---
 
