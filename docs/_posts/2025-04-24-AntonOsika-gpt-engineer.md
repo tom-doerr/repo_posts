@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-24T17:45:04.635024
+date: 2025-04-24T17:45:05.489610
 image: assets/AntonOsika_gpt-engineer_cropped.png
 ---
 
