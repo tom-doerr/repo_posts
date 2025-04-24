@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-24T13:12:41.400844
+date: 2025-04-24T13:12:42.222366
 image: assets/OpenBB-finance_OpenBB_cropped.png
 ---
 
