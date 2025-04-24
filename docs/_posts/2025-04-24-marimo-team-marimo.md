@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-24T17:14:49.254035
+date: 2025-04-24T17:14:50.249554
 image: assets/marimo-team_marimo_cropped.png
 ---
 
