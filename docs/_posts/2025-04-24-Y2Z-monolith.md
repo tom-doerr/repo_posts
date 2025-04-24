@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-24T16:44:30.785108
+date: 2025-04-24T16:44:31.758829
 image: assets/Y2Z_monolith_cropped.png
 ---
 
