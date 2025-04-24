@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-24T20:16:22.268565
+date: 2025-04-24T20:16:23.313882
 image: assets/wilsonfreitas_awesome-quant_cropped.png
 ---
 
