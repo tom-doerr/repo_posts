@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-24T09:10:38.788390
+date: 2025-04-24T09:10:39.688624
 image: assets/wxt-dev_wxt_cropped.png
 ---
 
