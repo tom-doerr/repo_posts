@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-24T14:13:10.518261
+date: 2025-04-24T14:13:11.348322
 image: assets/jesse-ai_jesse_cropped.png
 ---
 
