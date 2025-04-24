@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-24T20:46:37.596878
+date: 2025-04-24T20:46:38.650186
 image: assets/man-group_ArcticDB_cropped.png
 ---
 
