@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-25T03:53:03.784750
+date: 2025-04-25T03:53:04.974642
 image: assets/dabeaz-course_python-mastery_cropped.png
 ---
 
