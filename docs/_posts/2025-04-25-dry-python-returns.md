@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-25T06:54:38.619642
+date: 2025-04-25T06:54:39.660814
 image: assets/dry-python_returns_cropped.png
 ---
 
