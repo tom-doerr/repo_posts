@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-25T05:54:07.173551
+date: 2025-04-25T05:54:08.275043
 image: assets/holman_dotfiles_cropped.png
 ---
 
