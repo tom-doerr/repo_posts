@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-25T15:29:39.928626
+date: 2025-04-25T15:29:41.001628
 image: assets/jesseduffield_lazygit_cropped.png
 ---
 
