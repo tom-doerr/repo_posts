@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-25T16:30:10.304492
+date: 2025-04-25T16:30:11.283930
 image: assets/astral-sh_ruff_cropped.png
 ---
 
