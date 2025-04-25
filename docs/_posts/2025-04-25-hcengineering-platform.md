@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-25T17:00:25.272256
+date: 2025-04-25T17:00:26.333699
 image: assets/hcengineering_platform_cropped.png
 ---
 
