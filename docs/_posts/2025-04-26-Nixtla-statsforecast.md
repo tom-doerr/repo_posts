@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-26T08:06:44.809948
+date: 2025-04-26T08:06:45.653496
 image: assets/Nixtla_statsforecast_cropped.png
 ---
 
