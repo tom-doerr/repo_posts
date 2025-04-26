@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-26T18:12:57.481412
+date: 2025-04-26T18:12:58.702766
 image: assets/pinterest_querybook_cropped.png
 ---
 
