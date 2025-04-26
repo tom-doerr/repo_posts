@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-26T11:08:28.445066
+date: 2025-04-26T11:08:29.212170
 image: assets/TheAlgorithms_Python_cropped.png
 ---
 
