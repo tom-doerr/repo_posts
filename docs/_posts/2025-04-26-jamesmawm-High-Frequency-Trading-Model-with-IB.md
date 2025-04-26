@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-26T04:04:33.449949
+date: 2025-04-26T04:04:34.255903
 image: assets/jamesmawm_High-Frequency-Trading-Model-with-IB_cropped.png
 ---
 
