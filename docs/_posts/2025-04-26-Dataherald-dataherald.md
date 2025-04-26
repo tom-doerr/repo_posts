@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-26T19:13:27.978642
+date: 2025-04-26T19:13:28.840299
 image: assets/Dataherald_dataherald_cropped.png
 ---
 
