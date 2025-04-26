@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-04-26T08:37:00.216287
+date: 2025-04-26T08:37:01.245277
 image: assets/zellij-org_zellij_cropped.png
 ---
 
