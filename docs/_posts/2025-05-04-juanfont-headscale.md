@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-04T23:13:23.232781
+date: 2025-05-04T23:13:24.106190
 image: assets/juanfont_headscale_cropped.png
 ---
 
