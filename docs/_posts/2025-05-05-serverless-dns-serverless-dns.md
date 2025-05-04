@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-05T01:06:33.601552
+date: 2025-05-05T01:06:34.513967
 image: assets/serverless-dns_serverless-dns_cropped.png
 ---
 
