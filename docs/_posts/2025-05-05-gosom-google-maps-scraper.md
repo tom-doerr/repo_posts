@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-05T07:40:08.862134
+date: 2025-05-05T07:40:09.747633
 image: assets/gosom_google-maps-scraper_cropped.png
 ---
 
