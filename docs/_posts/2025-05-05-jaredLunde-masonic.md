@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-05T19:16:46.567259
+date: 2025-05-05T19:16:47.475589
 image: assets/jaredLunde_masonic_cropped.png
 ---
 
