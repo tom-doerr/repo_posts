@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-05T13:13:15.865032
+date: 2025-05-05T13:13:17.108246
 image: assets/day-trading-simulator_javascript-stock-charts_cropped.png
 ---
 
