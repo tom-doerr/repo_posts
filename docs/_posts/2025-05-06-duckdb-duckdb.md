@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-06T00:37:17.999230
+date: 2025-05-06T00:37:18.962126
 image: assets/duckdb_duckdb_cropped.png
 ---
 
