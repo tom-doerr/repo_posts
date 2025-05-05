@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-05T09:11:00.196999
+date: 2025-05-05T09:11:01.150526
 image: assets/trojanpanel_install-script_cropped.png
 ---
 
