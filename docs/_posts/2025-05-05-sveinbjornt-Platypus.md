@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-05T20:17:23.670698
+date: 2025-05-05T20:17:24.705347
 image: assets/sveinbjornt_Platypus_cropped.png
 ---
 
