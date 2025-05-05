@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-05T03:07:39.132304
+date: 2025-05-05T03:07:40.007543
 image: assets/valentinpalkovic_prisma-json-schema-generator_cropped.png
 ---
 
