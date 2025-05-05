@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-05T10:41:50.768223
+date: 2025-05-05T10:41:51.618390
 image: assets/GoogleCloudPlatform_cloud-foundation-toolkit_cropped.png
 ---
 
