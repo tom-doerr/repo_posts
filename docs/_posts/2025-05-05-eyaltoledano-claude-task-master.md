@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-05T02:07:05.624569
+date: 2025-05-05T02:07:06.477554
 image: assets/eyaltoledano_claude-task-master_cropped.png
 ---
 
