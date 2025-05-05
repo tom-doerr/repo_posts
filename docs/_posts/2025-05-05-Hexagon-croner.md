@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-05T18:16:14.197287
+date: 2025-05-05T18:16:15.490952
 image: assets/Hexagon_croner_cropped.png
 ---
 
