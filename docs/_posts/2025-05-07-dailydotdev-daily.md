@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-07T00:50:43.141236
+date: 2025-05-07T00:50:44.450531
 image: assets/dailydotdev_daily_cropped.png
 ---
 
