@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-06T02:08:17.454640
+date: 2025-05-06T02:08:18.274162
 image: assets/m-bain_whisperX_cropped.png
 ---
 
