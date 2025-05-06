@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-06T15:11:37.729160
+date: 2025-05-06T15:11:38.768645
 image: assets/AdguardTeam_AdGuardHome_cropped.png
 ---
 
