@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-06T07:11:19.426707
+date: 2025-05-06T07:11:20.317884
 image: assets/GothenburgBitFactory_taskwarrior_cropped.png
 ---
 
