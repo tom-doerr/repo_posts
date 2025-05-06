@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-06T12:39:29.129228
+date: 2025-05-06T12:39:30.101682
 image: assets/Stirling-Tools_Stirling-PDF_cropped.png
 ---
 
