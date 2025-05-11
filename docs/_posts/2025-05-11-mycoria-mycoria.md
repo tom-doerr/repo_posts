@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-11T22:44:22.364978
+date: 2025-05-11T22:44:23.348010
 image: assets/mycoria_mycoria_cropped.png
 ---
 
