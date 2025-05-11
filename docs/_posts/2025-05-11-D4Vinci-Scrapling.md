@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-11T20:37:59.641561
+date: 2025-05-11T20:38:00.515570
 image: assets/D4Vinci_Scrapling_cropped.png
 ---
 
