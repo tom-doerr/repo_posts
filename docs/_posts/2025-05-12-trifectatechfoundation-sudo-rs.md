@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-12T15:25:04.344070
+date: 2025-05-12T15:25:05.570030
 image: assets/trifectatechfoundation_sudo-rs_cropped.png
 ---
 
