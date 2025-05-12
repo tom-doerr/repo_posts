@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-12T10:51:57.535254
+date: 2025-05-12T10:51:58.554528
 image: assets/prometheus_client_rust_cropped.png
 ---
 
