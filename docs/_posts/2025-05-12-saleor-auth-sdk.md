@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-12T21:08:10.444972
+date: 2025-05-12T21:08:11.201065
 image: assets/saleor_auth-sdk_cropped.png
 ---
 
