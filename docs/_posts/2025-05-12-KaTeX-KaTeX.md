@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-12T17:28:12.838379
+date: 2025-05-12T17:28:13.694401
 image: assets/KaTeX_KaTeX_cropped.png
 ---
 
