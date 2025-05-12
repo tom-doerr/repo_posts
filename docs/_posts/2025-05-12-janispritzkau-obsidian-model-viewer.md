@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-12T12:53:26.687235
+date: 2025-05-12T12:53:27.634899
 image: assets/janispritzkau_obsidian-model-viewer_cropped.png
 ---
 
