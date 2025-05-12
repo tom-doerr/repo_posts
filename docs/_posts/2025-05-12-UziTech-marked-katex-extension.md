@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-12T23:09:21.234028
+date: 2025-05-12T23:09:22.034606
 image: assets/UziTech_marked-katex-extension_cropped.png
 ---
 
