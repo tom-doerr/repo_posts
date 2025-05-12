@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-12T09:51:15.493177
+date: 2025-05-12T09:51:16.495404
 image: assets/evroon_bracket_cropped.png
 ---
 
