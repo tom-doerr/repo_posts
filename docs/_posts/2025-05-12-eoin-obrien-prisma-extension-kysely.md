@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-12T16:56:01.074158
+date: 2025-05-12T16:56:02.015372
 image: assets/eoin-obrien_prisma-extension-kysely_cropped.png
 ---
 
