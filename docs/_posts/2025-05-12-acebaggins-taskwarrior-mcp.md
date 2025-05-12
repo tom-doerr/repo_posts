@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-12T10:21:35.162090
+date: 2025-05-12T10:21:36.002142
 image: assets/acebaggins_taskwarrior-mcp_cropped.png
 ---
 
