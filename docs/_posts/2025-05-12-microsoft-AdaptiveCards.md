@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-05-12T08:50:40.328142
+date: 2025-05-12T08:50:41.192564
 image: assets/microsoft_AdaptiveCards_cropped.png
 ---
 
