@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-17T00:37:57.806307
+date: 2025-06-17T00:37:58.583433
 image: assets/iamgio_quarkdown_cropped.png
 ---
 
