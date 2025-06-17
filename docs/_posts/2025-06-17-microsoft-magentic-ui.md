@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-17T19:12:04.090976
+date: 2025-06-17T19:12:04.804207
 image: assets/microsoft_magentic-ui_cropped.png
 ---
 
