@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-23T20:09:37.900173
+date: 2025-06-23T20:09:38.830765
 image: assets/JefMari_awesome-wysiwyg-editors_cropped.png
 ---
 
