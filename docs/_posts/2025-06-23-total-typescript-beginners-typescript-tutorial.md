@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-23T15:52:54.697918
+date: 2025-06-23T15:52:55.866733
 image: assets/total-typescript_beginners-typescript-tutorial_cropped.png
 ---
 
