@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-23T07:49:20.316415
+date: 2025-06-23T07:49:21.342464
 image: assets/danielgatis_rembg_cropped.png
 ---
 
