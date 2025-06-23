@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-23T20:39:51.787143
+date: 2025-06-23T20:39:52.779052
 image: assets/jdepoix_youtube-transcript-api_cropped.png
 ---
 
