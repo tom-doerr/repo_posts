@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-24T01:12:34.905788
+date: 2025-06-24T01:12:36.285701
 image: assets/poteto_hiring-without-whiteboards_cropped.png
 ---
 
