@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-23T14:22:14.964608
+date: 2025-06-23T14:22:15.842275
 image: assets/lencx_ChatGPT_cropped.png
 ---
 
