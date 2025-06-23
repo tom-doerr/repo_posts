@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-23T13:21:49.195075
+date: 2025-06-23T13:21:50.052069
 image: assets/kellyjonbrazil_jc_cropped.png
 ---
 
