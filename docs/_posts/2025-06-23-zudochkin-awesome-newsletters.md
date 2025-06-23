@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-23T16:53:27.469017
+date: 2025-06-23T16:53:28.617239
 image: assets/zudochkin_awesome-newsletters_cropped.png
 ---
 
