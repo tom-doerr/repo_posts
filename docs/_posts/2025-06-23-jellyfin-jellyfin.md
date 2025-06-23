@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-23T23:11:09.237821
+date: 2025-06-23T23:11:10.282066
 image: assets/jellyfin_jellyfin_cropped.png
 ---
 
