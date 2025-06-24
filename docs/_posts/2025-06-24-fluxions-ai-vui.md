@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-24T20:35:59.096526
+date: 2025-06-24T20:36:00.337913
 image: assets/fluxions-ai_vui_cropped.png
 ---
 
