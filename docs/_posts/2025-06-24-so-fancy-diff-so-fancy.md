@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-24T17:08:47.849204
+date: 2025-06-24T17:08:48.847782
 image: assets/so-fancy_diff-so-fancy_cropped.png
 ---
 
