@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-25T01:08:12.055960
+date: 2025-06-25T01:08:12.921917
 image: assets/sindresorhus_promise-fun_cropped.png
 ---
 
