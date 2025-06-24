@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-24T18:03:29.414090
+date: 2025-06-24T18:03:31.033135
 image: assets/mikeroyal_Self-Hosting-Guide_cropped.png
 ---
 
