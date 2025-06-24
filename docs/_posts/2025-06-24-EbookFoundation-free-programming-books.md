@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-24T16:08:20.163561
+date: 2025-06-24T16:08:21.751656
 image: assets/EbookFoundation_free-programming-books_cropped.png
 ---
 
