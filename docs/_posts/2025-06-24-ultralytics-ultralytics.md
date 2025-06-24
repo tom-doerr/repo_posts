@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-24T23:07:12.499124
+date: 2025-06-24T23:07:13.612160
 image: assets/ultralytics_ultralytics_cropped.png
 ---
 
