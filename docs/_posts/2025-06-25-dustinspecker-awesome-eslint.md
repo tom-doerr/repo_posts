@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-25T00:37:56.019053
+date: 2025-06-25T00:37:56.960743
 image: assets/dustinspecker_awesome-eslint_cropped.png
 ---
 
