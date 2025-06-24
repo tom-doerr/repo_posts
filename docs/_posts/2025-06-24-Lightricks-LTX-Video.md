@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-24T10:05:29.326203
+date: 2025-06-24T10:05:30.241058
 image: assets/Lightricks_LTX-Video_cropped.png
 ---
 
