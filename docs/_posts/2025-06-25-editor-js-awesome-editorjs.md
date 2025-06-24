@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-25T01:38:25.689423
+date: 2025-06-25T01:38:26.505236
 image: assets/editor-js_awesome-editorjs_cropped.png
 ---
 
