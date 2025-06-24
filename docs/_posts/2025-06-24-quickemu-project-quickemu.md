@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-24T22:36:58.307796
+date: 2025-06-24T22:36:59.241468
 image: assets/quickemu-project_quickemu_cropped.png
 ---
 
