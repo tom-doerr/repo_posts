@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-24T23:37:29.090203
+date: 2025-06-24T23:37:30.070707
 image: assets/monicahq_monica_cropped.png
 ---
 
