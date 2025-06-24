@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-24T19:04:28.077760
+date: 2025-06-24T19:04:30.500473
 image: assets/inovector_mixpost_cropped.png
 ---
 
