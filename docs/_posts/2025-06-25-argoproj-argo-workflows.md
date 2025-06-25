@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-25T19:46:42.017220
+date: 2025-06-25T19:46:42.945200
 image: assets/argoproj_argo-workflows_cropped.png
 ---
 
