@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-25T09:11:51.112557
+date: 2025-06-25T09:11:52.011287
 image: assets/logseq_logseq_cropped.png
 ---
 
