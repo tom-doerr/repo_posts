@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-25T03:09:07.968128
+date: 2025-06-25T03:09:08.851571
 image: assets/georgezouq_awesome-ai-in-finance_cropped.png
 ---
 
