@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-25T15:14:32.411368
+date: 2025-06-25T15:14:33.628041
 image: assets/shorepine_tulipcc_cropped.png
 ---
 
