@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-25T23:18:22.571787
+date: 2025-06-25T23:18:23.463942
 image: assets/LearningCircuit_local-deep-research_cropped.png
 ---
 
