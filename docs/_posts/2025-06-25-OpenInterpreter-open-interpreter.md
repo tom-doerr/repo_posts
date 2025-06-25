@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-25T08:41:38.689374
+date: 2025-06-25T08:41:39.764782
 image: assets/OpenInterpreter_open-interpreter_cropped.png
 ---
 
