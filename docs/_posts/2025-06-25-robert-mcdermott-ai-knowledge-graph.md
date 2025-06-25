@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-25T20:47:11.297744
+date: 2025-06-25T20:47:12.314707
 image: assets/robert-mcdermott_ai-knowledge-graph_cropped.png
 ---
 
