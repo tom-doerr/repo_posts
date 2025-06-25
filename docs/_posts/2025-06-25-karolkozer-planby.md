@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-25T17:15:28.933401
+date: 2025-06-25T17:15:29.828933
 image: assets/karolkozer_planby_cropped.png
 ---
 
