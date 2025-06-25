@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-25T14:44:18.021922
+date: 2025-06-25T14:44:19.198621
 image: assets/schej-it_schej.it_cropped.png
 ---
 
