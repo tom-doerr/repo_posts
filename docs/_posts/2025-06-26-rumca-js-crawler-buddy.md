@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-26T11:14:06.977062
+date: 2025-06-26T11:14:07.856778
 image: assets/rumca-js_crawler-buddy_cropped.png
 ---
 
