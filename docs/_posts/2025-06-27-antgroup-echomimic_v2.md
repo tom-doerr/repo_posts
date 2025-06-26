@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-27T00:07:15.798008
+date: 2025-06-27T00:07:17.767841
 image: assets/antgroup_echomimic_v2_cropped.png
 ---
 
