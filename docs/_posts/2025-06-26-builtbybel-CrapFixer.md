@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-26T17:17:17.205913
+date: 2025-06-26T17:17:18.177820
 image: assets/builtbybel_CrapFixer_cropped.png
 ---
 
