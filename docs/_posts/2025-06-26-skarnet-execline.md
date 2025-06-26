@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-26T14:15:35.126078
+date: 2025-06-26T14:15:36.818070
 image: assets/skarnet_execline_cropped.png
 ---
 
