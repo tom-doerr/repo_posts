@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-27T01:07:47.359354
+date: 2025-06-27T01:07:57.420688
 image: assets/nautechsystems_nautilus_trader_cropped.png
 ---
 
