@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-26T23:06:45.017020
+date: 2025-06-26T23:06:47.164367
 image: assets/valeriansaliou_sonic_cropped.png
 ---
 
