@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-26T16:46:59.815832
+date: 2025-06-26T16:47:00.791786
 image: assets/stanford-oval_storm_cropped.png
 ---
 
