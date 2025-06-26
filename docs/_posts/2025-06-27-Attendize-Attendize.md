@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-27T01:38:11.754663
+date: 2025-06-27T01:38:21.827147
 image: assets/Attendize_Attendize_cropped.png
 ---
 
