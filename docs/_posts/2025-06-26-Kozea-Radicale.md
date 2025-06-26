@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-26T10:13:38.487973
+date: 2025-06-26T10:13:39.488995
 image: assets/Kozea_Radicale_cropped.png
 ---
 
