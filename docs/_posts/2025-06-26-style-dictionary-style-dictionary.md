@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-26T12:14:33.211260
+date: 2025-06-26T12:14:34.091441
 image: assets/style-dictionary_style-dictionary_cropped.png
 ---
 
