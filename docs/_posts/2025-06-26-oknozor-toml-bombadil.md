@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-26T15:16:08.311814
+date: 2025-06-26T15:16:09.278210
 image: assets/oknozor_toml-bombadil_cropped.png
 ---
 
