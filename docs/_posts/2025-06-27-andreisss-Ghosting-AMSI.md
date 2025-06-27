@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-27T07:11:48.360991
+date: 2025-06-27T07:11:58.428868
 image: assets/andreisss_Ghosting-AMSI_cropped.png
 ---
 
