@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-27T08:12:54.080204
+date: 2025-06-27T08:12:56.645728
 image: assets/YaLTeR_niri_cropped.png
 ---
 
