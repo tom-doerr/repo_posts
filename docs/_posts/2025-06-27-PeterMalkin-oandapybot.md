@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-27T22:34:33.539942
+date: 2025-06-27T22:34:34.477821
 image: assets/PeterMalkin_oandapybot_cropped.png
 ---
 
