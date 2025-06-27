@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-27T10:44:45.465203
+date: 2025-06-27T10:44:47.626858
 image: assets/abus-aikorea_voice-pro_cropped.png
 ---
 
