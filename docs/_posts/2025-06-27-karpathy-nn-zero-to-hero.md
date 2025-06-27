@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-27T19:02:31.799340
+date: 2025-06-27T19:02:33.542489
 image: assets/karpathy_nn-zero-to-hero_cropped.png
 ---
 
