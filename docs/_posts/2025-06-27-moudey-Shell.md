@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-27T20:33:31.985463
+date: 2025-06-27T20:33:33.615327
 image: assets/moudey_Shell_cropped.png
 ---
 
