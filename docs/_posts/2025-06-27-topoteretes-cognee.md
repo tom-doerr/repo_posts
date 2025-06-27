@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-27T12:15:31.783294
+date: 2025-06-27T12:15:33.728499
 image: assets/topoteretes_cognee_cropped.png
 ---
 
