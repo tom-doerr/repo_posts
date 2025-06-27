@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-27T20:03:16.488951
+date: 2025-06-27T20:03:18.287661
 image: assets/quickwit-oss_quickwit_cropped.png
 ---
 
