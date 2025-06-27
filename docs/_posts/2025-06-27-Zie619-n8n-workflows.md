@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-27T14:46:44.833744
+date: 2025-06-27T14:46:46.662425
 image: assets/Zie619_n8n-workflows_cropped.png
 ---
 
