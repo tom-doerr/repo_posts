@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-27T06:11:02.694347
+date: 2025-06-27T06:11:12.765310
 image: assets/bytedance_LatentSync_cropped.png
 ---
 
