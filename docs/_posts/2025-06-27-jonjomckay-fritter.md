@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-27T13:16:01.018304
+date: 2025-06-27T13:16:02.945787
 image: assets/jonjomckay_fritter_cropped.png
 ---
 
