@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-28T15:43:22.137555
+date: 2025-06-28T15:43:23.848940
 image: assets/Huanshere_VideoLingo_cropped.png
 ---
 
