@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-28T10:40:48.036813
+date: 2025-06-28T10:40:49.766204
 image: assets/Chieko-Seren_ARIES_cropped.png
 ---
 
