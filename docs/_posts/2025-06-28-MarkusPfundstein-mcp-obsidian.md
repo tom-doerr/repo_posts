@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-28T03:06:50.462459
+date: 2025-06-28T03:06:51.424436
 image: assets/MarkusPfundstein_mcp-obsidian_cropped.png
 ---
 
