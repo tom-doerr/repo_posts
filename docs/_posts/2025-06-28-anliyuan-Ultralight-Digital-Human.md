@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-28T08:09:28.909948
+date: 2025-06-28T08:09:30.723874
 image: assets/anliyuan_Ultralight-Digital-Human_cropped.png
 ---
 
