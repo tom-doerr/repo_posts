@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-28T08:39:45.097722
+date: 2025-06-28T08:39:47.094351
 image: assets/Beingpax_VoiceInk_cropped.png
 ---
 
