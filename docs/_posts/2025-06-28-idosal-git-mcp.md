@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-28T04:37:38.482193
+date: 2025-06-28T04:37:40.258878
 image: assets/idosal_git-mcp_cropped.png
 ---
 
