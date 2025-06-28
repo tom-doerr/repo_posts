@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-28T16:13:36.595224
+date: 2025-06-28T16:13:38.519372
 image: assets/liriliri_eruda_cropped.png
 ---
 
