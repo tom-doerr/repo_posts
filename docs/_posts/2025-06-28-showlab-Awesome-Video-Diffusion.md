@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-28T13:12:06.219959
+date: 2025-06-28T13:12:08.287451
 image: assets/showlab_Awesome-Video-Diffusion_cropped.png
 ---
 
