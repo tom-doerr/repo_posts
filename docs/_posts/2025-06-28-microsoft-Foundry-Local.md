@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-28T11:41:21.614438
+date: 2025-06-28T11:41:23.415215
 image: assets/microsoft_Foundry-Local_cropped.png
 ---
 
