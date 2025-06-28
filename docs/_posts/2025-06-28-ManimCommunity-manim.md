@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-28T13:42:21.131412
+date: 2025-06-28T13:42:22.932080
 image: assets/ManimCommunity_manim_cropped.png
 ---
 
