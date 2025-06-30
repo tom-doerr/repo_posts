@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-06-30T22:02:37.958979
+date: 2025-06-30T22:02:40.087475
 image: assets/psviderski_uncloud_cropped.png
 ---
 
