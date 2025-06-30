@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-01T01:34:26.172818
+date: 2025-07-01T01:34:27.939882
 image: assets/adityachandelgit_BookLore_cropped.png
 ---
 
