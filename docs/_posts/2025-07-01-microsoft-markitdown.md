@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-01T06:36:59.234192
+date: 2025-07-01T06:37:00.004542
 image: assets/microsoft_markitdown_cropped.png
 ---
 
