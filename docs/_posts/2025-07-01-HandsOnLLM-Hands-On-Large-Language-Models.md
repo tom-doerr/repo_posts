@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-01T20:45:36.860685
+date: 2025-07-01T20:45:38.829297
 image: assets/HandsOnLLM_Hands-On-Large-Language-Models_cropped.png
 ---
 
