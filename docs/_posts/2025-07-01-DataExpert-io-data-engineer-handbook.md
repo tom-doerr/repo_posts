@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-01T14:41:06.545014
+date: 2025-07-01T14:41:08.424307
 image: assets/DataExpert-io_data-engineer-handbook_cropped.png
 ---
 
