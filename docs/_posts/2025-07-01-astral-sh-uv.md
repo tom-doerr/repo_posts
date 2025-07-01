@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-01T12:09:50.908032
+date: 2025-07-01T12:09:52.780980
 image: assets/astral-sh_uv_cropped.png
 ---
 
