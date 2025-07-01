@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-01T05:06:12.318083
+date: 2025-07-01T05:06:14.209735
 image: assets/haydenbleasel_ultracite_cropped.png
 ---
 
