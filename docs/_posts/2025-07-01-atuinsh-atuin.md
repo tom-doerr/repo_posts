@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-01T12:40:05.943417
+date: 2025-07-01T12:40:07.056981
 image: assets/atuinsh_atuin_cropped.png
 ---
 
