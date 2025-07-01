@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-01T16:42:10.368281
+date: 2025-07-01T16:42:12.090104
 image: assets/Effect-TS_effect_cropped.png
 ---
 
