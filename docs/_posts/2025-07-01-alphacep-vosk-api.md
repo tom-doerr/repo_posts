@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-01T09:38:37.953912
+date: 2025-07-01T09:38:39.002491
 image: assets/alphacep_vosk-api_cropped.png
 ---
 
