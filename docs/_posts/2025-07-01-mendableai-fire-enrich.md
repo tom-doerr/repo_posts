@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-01T11:09:21.379370
+date: 2025-07-01T11:09:23.192014
 image: assets/mendableai_fire-enrich_cropped.png
 ---
 
