@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-01T10:08:52.531291
+date: 2025-07-01T10:08:54.428388
 image: assets/andreruffert_syntax-highlight-element_cropped.png
 ---
 
