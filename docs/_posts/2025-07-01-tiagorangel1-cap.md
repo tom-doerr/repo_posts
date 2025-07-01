@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-01T17:42:54.407737
+date: 2025-07-01T17:42:56.295632
 image: assets/tiagorangel1_cap_cropped.png
 ---
 
