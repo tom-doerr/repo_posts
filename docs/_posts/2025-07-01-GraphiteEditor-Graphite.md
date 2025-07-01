@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-01T02:04:41.905199
+date: 2025-07-01T02:04:42.750225
 image: assets/GraphiteEditor_Graphite_cropped.png
 ---
 
