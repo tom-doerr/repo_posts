@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-01T04:35:56.710090
+date: 2025-07-01T04:35:58.539792
 image: assets/cyclotruc_gitingest_cropped.png
 ---
 
