@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-02T17:26:18.936623
+date: 2025-07-02T17:26:20.746190
 image: assets/getAsterisk_claudia_cropped.png
 ---
 
