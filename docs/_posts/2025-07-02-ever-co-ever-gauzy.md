@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-02T02:18:29.607985
+date: 2025-07-02T02:18:31.902851
 image: assets/ever-co_ever-gauzy_cropped.png
 ---
 
