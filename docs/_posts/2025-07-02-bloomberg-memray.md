@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-02T11:53:18.652368
+date: 2025-07-02T11:53:20.485185
 image: assets/bloomberg_memray_cropped.png
 ---
 
