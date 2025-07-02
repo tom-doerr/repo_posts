@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-02T10:52:47.569114
+date: 2025-07-02T10:52:49.515920
 image: assets/browsh-org_browsh_cropped.png
 ---
 
