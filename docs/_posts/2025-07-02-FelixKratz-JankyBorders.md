@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-02T09:21:59.460680
+date: 2025-07-02T09:22:01.396065
 image: assets/FelixKratz_JankyBorders_cropped.png
 ---
 
