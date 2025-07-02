@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-02T13:24:10.807931
+date: 2025-07-02T13:24:12.742479
 image: assets/heroui-inc_heroui_cropped.png
 ---
 
