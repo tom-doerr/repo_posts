@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-02T18:26:51.307830
+date: 2025-07-02T18:26:53.179080
 image: assets/freeCodeCamp_devdocs_cropped.png
 ---
 
