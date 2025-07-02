@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-02T09:52:16.863199
+date: 2025-07-02T09:52:18.669689
 image: assets/Foundry376_Mailspring_cropped.png
 ---
 
