@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-02T15:55:32.010642
+date: 2025-07-02T15:55:33.987542
 image: assets/theopfr_somo_cropped.png
 ---
 
