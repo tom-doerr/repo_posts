@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-03T12:35:58.006356
+date: 2025-07-03T12:35:58.911748
 image: assets/hrkfdn_ncspot_cropped.png
 ---
 
