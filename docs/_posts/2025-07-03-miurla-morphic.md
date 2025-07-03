@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-03T19:39:44.194668
+date: 2025-07-03T19:39:46.240220
 image: assets/miurla_morphic_cropped.png
 ---
 
