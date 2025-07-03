@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-03T20:40:15.061503
+date: 2025-07-03T20:40:16.777203
 image: assets/TauricResearch_TradingAgents_cropped.png
 ---
 
