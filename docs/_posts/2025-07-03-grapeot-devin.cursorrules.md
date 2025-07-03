@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-03T22:11:00.121134
+date: 2025-07-03T22:11:02.060257
 image: assets/grapeot_devin.cursorrules_cropped.png
 ---
 
