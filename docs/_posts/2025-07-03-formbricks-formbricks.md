@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-03T10:34:55.198136
+date: 2025-07-03T10:34:57.003812
 image: assets/formbricks_formbricks_cropped.png
 ---
 
