@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-03T15:37:32.269936
+date: 2025-07-03T15:37:34.089075
 image: assets/good-lly_s3mini_cropped.png
 ---
 
