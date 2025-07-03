@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-03T04:32:05.296994
+date: 2025-07-03T04:32:07.034418
 image: assets/alexpasmantier_television_cropped.png
 ---
 
