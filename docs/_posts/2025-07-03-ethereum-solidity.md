@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-03T18:08:56.566938
+date: 2025-07-03T18:08:58.745666
 image: assets/ethereum_solidity_cropped.png
 ---
 
