@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-04T15:50:12.478891
+date: 2025-07-04T15:50:14.276884
 image: assets/stephenberry_glaze_cropped.png
 ---
 
