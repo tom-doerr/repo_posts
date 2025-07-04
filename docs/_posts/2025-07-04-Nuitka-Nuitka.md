@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-04T06:14:58.504461
+date: 2025-07-04T06:15:00.171959
 image: assets/Nuitka_Nuitka_cropped.png
 ---
 
