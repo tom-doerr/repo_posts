@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-04T03:13:34.131837
+date: 2025-07-04T03:13:35.989867
 image: assets/blakeblackshear_frigate_cropped.png
 ---
 
