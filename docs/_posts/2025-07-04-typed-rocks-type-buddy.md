@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-04T12:48:43.213807
+date: 2025-07-04T12:48:44.939978
 image: assets/typed-rocks_type-buddy_cropped.png
 ---
 
