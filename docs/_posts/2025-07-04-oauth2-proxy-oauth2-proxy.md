@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-04T07:15:30.115022
+date: 2025-07-04T07:15:31.939182
 image: assets/oauth2-proxy_oauth2-proxy_cropped.png
 ---
 
