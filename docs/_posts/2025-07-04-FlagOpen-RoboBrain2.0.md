@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-04T20:22:33.955239
+date: 2025-07-04T20:22:35.852822
 image: assets/FlagOpen_RoboBrain2.0_cropped.png
 ---
 
