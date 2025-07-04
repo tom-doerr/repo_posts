@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-04T14:19:27.059292
+date: 2025-07-04T14:19:28.754039
 image: assets/shinshin86_oh-my-logo_cropped.png
 ---
 
