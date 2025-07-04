@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-04T19:22:02.946991
+date: 2025-07-04T19:22:04.854474
 image: assets/mihaip_infinite-mac_cropped.png
 ---
 
