@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-04T13:49:12.437336
+date: 2025-07-04T13:49:14.150278
 image: assets/karanpratapsingh_system-design_cropped.png
 ---
 
