@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-04T05:44:44.325055
+date: 2025-07-04T05:44:45.155228
 image: assets/Wan-Video_Wan2.1_cropped.png
 ---
 
