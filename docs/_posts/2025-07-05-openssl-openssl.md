@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-05T15:02:23.426574
+date: 2025-07-05T15:02:25.209809
 image: assets/openssl_openssl_cropped.png
 ---
 
