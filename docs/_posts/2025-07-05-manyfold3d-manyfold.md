@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-05T13:01:22.190986
+date: 2025-07-05T13:01:23.995283
 image: assets/manyfold3d_manyfold_cropped.png
 ---
 
