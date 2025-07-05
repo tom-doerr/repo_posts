@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-05T23:36:51.442289
+date: 2025-07-05T23:36:53.250692
 image: assets/jaywcjlove_awesome-mac_cropped.png
 ---
 
