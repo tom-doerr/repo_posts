@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-05T12:00:52.236500
+date: 2025-07-05T12:00:54.089793
 image: assets/The-Cool-Coders_Project-Ideas-And-Resources_cropped.png
 ---
 
