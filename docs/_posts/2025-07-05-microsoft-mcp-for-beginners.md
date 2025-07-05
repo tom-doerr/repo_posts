@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-05T18:04:03.339331
+date: 2025-07-05T18:04:05.719452
 image: assets/microsoft_mcp-for-beginners_cropped.png
 ---
 
