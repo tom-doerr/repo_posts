@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-05T02:56:02.436968
+date: 2025-07-05T02:56:04.497447
 image: assets/sylphxltd_pdf-reader-mcp_cropped.png
 ---
 
