@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-05T22:36:21.217385
+date: 2025-07-05T22:36:23.070582
 image: assets/ublue-os_bazzite_cropped.png
 ---
 
