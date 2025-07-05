@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-06T00:07:18.089269
+date: 2025-07-06T00:07:19.887155
 image: assets/kepano_defuddle_cropped.png
 ---
 
