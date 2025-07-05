@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-05T23:06:36.277116
+date: 2025-07-05T23:06:38.133598
 image: assets/manaskamal_XenevaOS_cropped.png
 ---
 
