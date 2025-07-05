@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-05T13:31:37.639927
+date: 2025-07-05T13:31:39.360212
 image: assets/swagger-api_swagger-ui_cropped.png
 ---
 
