@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-05T16:33:13.354597
+date: 2025-07-05T16:33:15.296367
 image: assets/ashishpatel26_500-AI-Machine-learning-Deep-learning-Computer-vision-NLP-Projects-with-code_cropped.png
 ---
 
