@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-06T19:47:32.415651
+date: 2025-07-06T19:47:34.228978
 image: assets/terrastruct_d2_cropped.png
 ---
 
