@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-06T11:43:21.948637
+date: 2025-07-06T11:43:23.824149
 image: assets/crimera_piko_cropped.png
 ---
 
