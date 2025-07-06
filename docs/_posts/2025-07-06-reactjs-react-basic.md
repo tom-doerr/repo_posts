@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-06T18:16:43.850300
+date: 2025-07-06T18:16:46.041499
 image: assets/reactjs_react-basic_cropped.png
 ---
 
