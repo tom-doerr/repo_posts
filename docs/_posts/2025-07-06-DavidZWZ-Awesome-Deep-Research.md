@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-06T16:15:38.556772
+date: 2025-07-06T16:15:40.412502
 image: assets/DavidZWZ_Awesome-Deep-Research_cropped.png
 ---
 
