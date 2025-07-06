@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-06T17:16:12.626167
+date: 2025-07-06T17:16:14.752723
 image: assets/carbon-language_carbon-lang_cropped.png
 ---
 
