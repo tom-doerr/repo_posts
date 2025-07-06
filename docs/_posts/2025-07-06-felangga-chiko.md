@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-06T14:14:36.747043
+date: 2025-07-06T14:14:38.510183
 image: assets/felangga_chiko_cropped.png
 ---
 
