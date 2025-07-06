@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-06T03:39:08.571601
+date: 2025-07-06T03:39:10.389812
 image: assets/guidance-ai_guidance_cropped.png
 ---
 
