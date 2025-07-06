@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-07T00:50:12.047463
+date: 2025-07-07T00:50:13.877947
 image: assets/szabodanika_microbin_cropped.png
 ---
 
