@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-07T18:30:05.591389
+date: 2025-07-07T18:30:07.495786
 image: assets/jaye773_youtube-summarizer_cropped.png
 ---
 
