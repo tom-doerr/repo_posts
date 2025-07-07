@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-07T15:28:31.567331
+date: 2025-07-07T15:28:33.772434
 image: assets/mnfst_manifest_cropped.png
 ---
 
