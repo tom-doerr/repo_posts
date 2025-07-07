@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-08T00:03:06.965975
+date: 2025-07-08T00:03:09.274352
 image: assets/keycloak_keycloak_cropped.png
 ---
 
