@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-07T05:52:45.605908
+date: 2025-07-07T05:52:47.419033
 image: assets/sympy_sympy_cropped.png
 ---
 
