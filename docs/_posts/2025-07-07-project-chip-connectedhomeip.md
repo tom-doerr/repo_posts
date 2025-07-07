@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-07T14:58:15.480024
+date: 2025-07-07T14:58:17.860419
 image: assets/project-chip_connectedhomeip_cropped.png
 ---
 
