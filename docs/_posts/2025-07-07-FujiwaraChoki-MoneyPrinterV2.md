@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-07T19:00:22.848876
+date: 2025-07-07T19:00:24.606247
 image: assets/FujiwaraChoki_MoneyPrinterV2_cropped.png
 ---
 
