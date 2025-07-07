@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-07T16:59:17.844605
+date: 2025-07-07T16:59:19.828427
 image: assets/DataTalksClub_mlops-zoomcamp_cropped.png
 ---
 
