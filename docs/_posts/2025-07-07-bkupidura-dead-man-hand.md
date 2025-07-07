@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-07T04:21:56.263441
+date: 2025-07-07T04:21:58.363788
 image: assets/bkupidura_dead-man-hand_cropped.png
 ---
 
