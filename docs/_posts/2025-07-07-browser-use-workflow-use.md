@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-07T04:52:15.755293
+date: 2025-07-07T04:52:17.393835
 image: assets/browser-use_workflow-use_cropped.png
 ---
 
