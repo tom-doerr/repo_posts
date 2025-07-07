@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-07T12:57:10.529046
+date: 2025-07-07T12:57:12.288189
 image: assets/standardnotes_app_cropped.png
 ---
 
