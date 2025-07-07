@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-07T13:57:45.614884
+date: 2025-07-07T13:57:47.447970
 image: assets/veracrypt_VeraCrypt_cropped.png
 ---
 
