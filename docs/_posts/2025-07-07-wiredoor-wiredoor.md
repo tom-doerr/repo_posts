@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-07T23:02:35.266243
+date: 2025-07-07T23:02:36.294673
 image: assets/wiredoor_wiredoor_cropped.png
 ---
 
