@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-07T02:20:56.031616
+date: 2025-07-07T02:20:57.811675
 image: assets/Vexa-ai_vexa_cropped.png
 ---
 
