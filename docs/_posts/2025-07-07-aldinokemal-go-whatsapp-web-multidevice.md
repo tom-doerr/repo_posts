@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-07T20:31:12.099497
+date: 2025-07-07T20:31:14.166546
 image: assets/aldinokemal_go-whatsapp-web-multidevice_cropped.png
 ---
 
