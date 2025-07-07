@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-07T11:26:19.430092
+date: 2025-07-07T11:26:21.448761
 image: assets/cunarist_rinf_cropped.png
 ---
 
