@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-07T12:26:53.201887
+date: 2025-07-07T12:26:55.280158
 image: assets/microsoft_Mastering-GitHub-Copilot-for-Paired-Programming_cropped.png
 ---
 
