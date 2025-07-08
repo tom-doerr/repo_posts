@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-08T15:16:03.580190
+date: 2025-07-08T15:16:05.377413
 image: assets/ikatson_rqbit_cropped.png
 ---
 
