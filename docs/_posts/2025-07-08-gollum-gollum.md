@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-08T22:50:00.086623
+date: 2025-07-08T22:50:01.937973
 image: assets/gollum_gollum_cropped.png
 ---
 
