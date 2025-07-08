@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-08T14:45:44.118551
+date: 2025-07-08T14:45:47.484862
 image: assets/secondpathstudio_privatescribe_cropped.png
 ---
 
