@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-09T00:20:58.617536
+date: 2025-07-09T00:21:00.511790
 image: assets/hhftechnology_middleware-manager_cropped.png
 ---
 
