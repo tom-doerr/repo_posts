@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-08T18:47:56.535128
+date: 2025-07-08T18:47:58.615255
 image: assets/medialab_xan_cropped.png
 ---
 
