@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-08T05:10:46.364790
+date: 2025-07-08T05:10:48.412975
 image: assets/danielmiessler_Fabric_cropped.png
 ---
 
