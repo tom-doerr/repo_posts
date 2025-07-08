@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-08T05:41:04.543389
+date: 2025-07-08T05:41:06.521840
 image: assets/HiDream-ai_HiDream-I1_cropped.png
 ---
 
