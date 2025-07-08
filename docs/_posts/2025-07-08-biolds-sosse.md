@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-08T19:48:28.435673
+date: 2025-07-08T19:48:30.467529
 image: assets/biolds_sosse_cropped.png
 ---
 
