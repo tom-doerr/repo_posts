@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-08T09:12:57.279272
+date: 2025-07-08T09:12:59.002016
 image: assets/t3dotgg_stripe-recommendations_cropped.png
 ---
 
