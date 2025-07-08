@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-08T23:20:20.892413
+date: 2025-07-08T23:20:22.796573
 image: assets/technomancy-dev_00_cropped.png
 ---
 
