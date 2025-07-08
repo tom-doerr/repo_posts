@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-08T16:16:35.223894
+date: 2025-07-08T16:16:37.267962
 image: assets/fabriziosalmi_certmate_cropped.png
 ---
 
