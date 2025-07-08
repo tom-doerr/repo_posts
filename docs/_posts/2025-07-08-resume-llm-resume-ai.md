@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-08T11:44:07.406112
+date: 2025-07-08T11:44:09.442844
 image: assets/resume-llm_resume-ai_cropped.png
 ---
 
