@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-09T18:30:16.938618
+date: 2025-07-09T18:30:18.748671
 image: assets/chakra-ui_chakra-ui_cropped.png
 ---
 
