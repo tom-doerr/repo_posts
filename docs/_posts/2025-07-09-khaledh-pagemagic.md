@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-09T19:00:31.333267
+date: 2025-07-09T19:00:33.280302
 image: assets/khaledh_pagemagic_cropped.png
 ---
 
