@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-09T12:27:22.592378
+date: 2025-07-09T12:27:24.430221
 image: assets/coleam00_context-engineering-intro_cropped.png
 ---
 
