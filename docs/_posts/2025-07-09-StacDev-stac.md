@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-09T16:29:28.688861
+date: 2025-07-09T16:29:30.563795
 image: assets/StacDev_stac_cropped.png
 ---
 
