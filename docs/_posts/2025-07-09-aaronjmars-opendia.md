@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-09T07:55:00.960259
+date: 2025-07-09T07:55:02.904115
 image: assets/aaronjmars_opendia_cropped.png
 ---
 
