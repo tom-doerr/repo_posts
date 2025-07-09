@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-09T21:01:40.413179
+date: 2025-07-09T21:01:42.789385
 image: assets/balzack_databag_cropped.png
 ---
 
