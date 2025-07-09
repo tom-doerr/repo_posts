@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-09T20:01:06.517921
+date: 2025-07-09T20:01:08.920125
 image: assets/clemcer_loggifly_cropped.png
 ---
 
