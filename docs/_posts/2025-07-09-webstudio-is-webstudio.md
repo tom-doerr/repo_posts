@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-09T11:57:06.987865
+date: 2025-07-09T11:57:08.918434
 image: assets/webstudio-is_webstudio_cropped.png
 ---
 
