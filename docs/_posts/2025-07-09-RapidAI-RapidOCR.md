@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-09T13:58:12.170398
+date: 2025-07-09T13:58:14.260943
 image: assets/RapidAI_RapidOCR_cropped.png
 ---
 
