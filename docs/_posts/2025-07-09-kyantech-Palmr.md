@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-09T08:25:16.350333
+date: 2025-07-09T08:25:18.167468
 image: assets/kyantech_Palmr_cropped.png
 ---
 
