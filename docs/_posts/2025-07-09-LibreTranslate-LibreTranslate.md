@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-09T23:33:06.648008
+date: 2025-07-09T23:33:08.562644
 image: assets/LibreTranslate_LibreTranslate_cropped.png
 ---
 
