@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-09T22:32:34.957067
+date: 2025-07-09T22:32:36.856479
 image: assets/Keyitdev_sddm-astronaut-theme_cropped.png
 ---
 
