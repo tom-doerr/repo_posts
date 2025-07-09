@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-09T06:54:29.631093
+date: 2025-07-09T06:54:31.507073
 image: assets/vosen_ZLUDA_cropped.png
 ---
 
