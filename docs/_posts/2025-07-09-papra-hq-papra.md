@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-09T19:30:46.360582
+date: 2025-07-09T19:30:47.316929
 image: assets/papra-hq_papra_cropped.png
 ---
 
