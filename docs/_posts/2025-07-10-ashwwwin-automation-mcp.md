@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-10T10:38:45.773224
+date: 2025-07-10T10:38:47.651470
 image: assets/ashwwwin_automation-mcp_cropped.png
 ---
 
