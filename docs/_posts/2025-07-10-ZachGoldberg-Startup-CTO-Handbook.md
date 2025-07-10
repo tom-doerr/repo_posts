@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-10T19:13:13.522861
+date: 2025-07-10T19:13:15.678775
 image: assets/ZachGoldberg_Startup-CTO-Handbook_cropped.png
 ---
 
