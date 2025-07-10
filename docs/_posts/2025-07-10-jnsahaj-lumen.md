@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-10T22:45:12.172102
+date: 2025-07-10T22:45:14.309055
 image: assets/jnsahaj_lumen_cropped.png
 ---
 
