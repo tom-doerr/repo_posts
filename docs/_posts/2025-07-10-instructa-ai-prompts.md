@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-10T09:38:14.228907
+date: 2025-07-10T09:38:16.311188
 image: assets/instructa_ai-prompts_cropped.png
 ---
 
