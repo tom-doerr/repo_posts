@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-10T08:37:42.944565
+date: 2025-07-10T08:37:44.795615
 image: assets/Doubleshotjs_doubleshot_cropped.png
 ---
 
