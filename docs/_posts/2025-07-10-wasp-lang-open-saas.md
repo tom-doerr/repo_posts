@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-10T04:35:43.013903
+date: 2025-07-10T04:35:44.810960
 image: assets/wasp-lang_open-saas_cropped.png
 ---
 
