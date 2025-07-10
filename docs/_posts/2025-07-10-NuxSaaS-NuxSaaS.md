@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-10T07:37:12.700085
+date: 2025-07-10T07:37:14.565574
 image: assets/NuxSaaS_NuxSaaS_cropped.png
 ---
 
