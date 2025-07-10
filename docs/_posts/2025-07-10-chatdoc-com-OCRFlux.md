@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-10T17:42:26.085685
+date: 2025-07-10T17:42:28.046317
 image: assets/chatdoc-com_OCRFlux_cropped.png
 ---
 
