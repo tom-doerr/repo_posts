@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-10T07:06:57.955308
+date: 2025-07-10T07:06:59.972761
 image: assets/dtyq_magic_cropped.png
 ---
 
