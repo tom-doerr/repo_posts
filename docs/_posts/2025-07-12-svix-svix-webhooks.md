@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-12T00:59:04.726293
+date: 2025-07-12T00:59:06.442909
 image: assets/svix_svix-webhooks_cropped.png
 ---
 
