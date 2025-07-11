@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-11T19:56:14.107394
+date: 2025-07-11T19:56:16.191594
 image: assets/Lagrange-Labs_deep-prove_cropped.png
 ---
 
