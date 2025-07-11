@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-11T11:21:53.606149
+date: 2025-07-11T11:21:55.793829
 image: assets/lharries_whatsapp-mcp_cropped.png
 ---
 
