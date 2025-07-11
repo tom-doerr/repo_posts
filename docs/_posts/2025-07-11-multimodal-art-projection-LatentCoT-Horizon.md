@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-11T06:49:26.867651
+date: 2025-07-11T06:49:28.662549
 image: assets/multimodal-art-projection_LatentCoT-Horizon_cropped.png
 ---
 
