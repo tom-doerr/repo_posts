@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-11T02:17:08.320204
+date: 2025-07-11T02:17:10.085004
 image: assets/jellyfin_Swiftfin_cropped.png
 ---
 
