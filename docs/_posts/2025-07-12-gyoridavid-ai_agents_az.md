@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-12T13:05:25.930836
+date: 2025-07-12T13:05:27.842948
 image: assets/gyoridavid_ai_agents_az_cropped.png
 ---
 
