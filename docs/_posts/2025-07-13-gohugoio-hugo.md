@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-13T00:36:07.505692
+date: 2025-07-13T00:36:09.574399
 image: assets/gohugoio_hugo_cropped.png
 ---
 
