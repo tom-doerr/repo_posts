@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-12T11:04:27.404751
+date: 2025-07-12T11:04:29.464316
 image: assets/egoist_tsup_cropped.png
 ---
 
