@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-12T12:35:11.248954
+date: 2025-07-12T12:35:13.250090
 image: assets/vercel_geist-font_cropped.png
 ---
 
