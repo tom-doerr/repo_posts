@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-12T21:04:20.235735
+date: 2025-07-12T21:04:22.426646
 image: assets/baryhuang_mcp-remote-macos-use_cropped.png
 ---
 
