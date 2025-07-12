@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-12T03:30:26.597367
+date: 2025-07-12T03:30:29.618343
 image: assets/n7olkachev_db-ui_cropped.png
 ---
 
