@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-13T20:46:13.520228
+date: 2025-07-13T20:46:15.095249
 image: assets/GlareDB_glaredb_cropped.png
 ---
 
