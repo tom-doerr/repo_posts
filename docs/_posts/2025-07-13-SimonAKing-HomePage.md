@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-13T03:37:36.779006
+date: 2025-07-13T03:37:38.662400
 image: assets/SimonAKing_HomePage_cropped.png
 ---
 
