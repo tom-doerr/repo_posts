@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-13T23:47:44.002924
+date: 2025-07-13T23:47:45.896967
 image: assets/kholia_OSX-KVM_cropped.png
 ---
 
