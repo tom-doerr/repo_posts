@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-13T05:38:37.138705
+date: 2025-07-13T05:38:38.973044
 image: assets/authelia_authelia_cropped.png
 ---
 
