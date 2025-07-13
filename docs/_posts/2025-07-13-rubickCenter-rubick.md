@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-13T04:38:07.493644
+date: 2025-07-13T04:38:09.234247
 image: assets/rubickCenter_rubick_cropped.png
 ---
 
