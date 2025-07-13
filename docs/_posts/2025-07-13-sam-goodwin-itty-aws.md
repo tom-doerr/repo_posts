@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-13T14:13:01.330879
+date: 2025-07-13T14:13:03.169963
 image: assets/sam-goodwin_itty-aws_cropped.png
 ---
 
