@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-13T17:14:32.869697
+date: 2025-07-13T17:14:34.661400
 image: assets/VERT-sh_VERT_cropped.png
 ---
 
