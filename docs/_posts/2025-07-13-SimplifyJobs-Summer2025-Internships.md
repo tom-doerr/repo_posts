@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-13T23:17:27.838142
+date: 2025-07-13T23:17:29.997222
 image: assets/SimplifyJobs_Summer2025-Internships_cropped.png
 ---
 
