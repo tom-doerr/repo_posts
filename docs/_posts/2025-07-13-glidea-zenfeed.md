@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-13T15:13:32.133459
+date: 2025-07-13T15:13:34.041145
 image: assets/glidea_zenfeed_cropped.png
 ---
 
