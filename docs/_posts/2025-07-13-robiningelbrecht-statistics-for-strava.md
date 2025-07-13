@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-13T22:16:57.038308
+date: 2025-07-13T22:16:58.785989
 image: assets/robiningelbrecht_statistics-for-strava_cropped.png
 ---
 
