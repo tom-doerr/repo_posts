@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-13T19:45:44.899849
+date: 2025-07-13T19:45:46.820637
 image: assets/Eugeny_tabby_cropped.png
 ---
 
