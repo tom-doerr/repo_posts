@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-13T08:40:15.619584
+date: 2025-07-13T08:40:17.548224
 image: assets/golf-mcp_golf_cropped.png
 ---
 
