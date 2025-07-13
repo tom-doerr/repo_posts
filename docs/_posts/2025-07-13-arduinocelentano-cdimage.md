@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-13T18:45:16.131898
+date: 2025-07-13T18:45:18.278378
 image: assets/arduinocelentano_cdimage_cropped.png
 ---
 
