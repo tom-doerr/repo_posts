@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-14T13:25:15.183178
+date: 2025-07-14T13:25:17.140312
 image: assets/SimonAKing_Gwitter_cropped.png
 ---
 
