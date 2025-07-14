@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-14T14:25:45.684950
+date: 2025-07-14T14:25:47.830835
 image: assets/gitify-app_gitify_cropped.png
 ---
 
