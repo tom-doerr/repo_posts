@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-14T08:52:55.527216
+date: 2025-07-14T08:52:57.733079
 image: assets/lukevella_rallly_cropped.png
 ---
 
