@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-14T16:57:57.750334
+date: 2025-07-14T16:57:59.674658
 image: assets/frdel_agent-zero_cropped.png
 ---
 
