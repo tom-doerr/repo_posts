@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-14T05:53:22.444501
+date: 2025-07-14T05:53:23.496074
 image: assets/warpdotdev_Warp_cropped.png
 ---
 
