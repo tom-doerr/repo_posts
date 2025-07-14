@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-14T16:27:35.481517
+date: 2025-07-14T16:27:37.483461
 image: assets/NirDiamant_agents-towards-production_cropped.png
 ---
 
