@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-14T22:30:57.989621
+date: 2025-07-14T22:31:00.618144
 image: assets/TEN-framework_ten-framework_cropped.png
 ---
 
