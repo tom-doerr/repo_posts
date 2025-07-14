@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-14T08:22:39.071624
+date: 2025-07-14T08:22:43.452638
 image: assets/tim-smart_effect-mcp_cropped.png
 ---
 
