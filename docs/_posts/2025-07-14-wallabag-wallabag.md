@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-14T11:54:29.013049
+date: 2025-07-14T11:54:31.197323
 image: assets/wallabag_wallabag_cropped.png
 ---
 
