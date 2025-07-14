@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-14T03:19:28.646646
+date: 2025-07-14T03:19:30.689626
 image: assets/microsoft_IoT-For-Beginners_cropped.png
 ---
 
