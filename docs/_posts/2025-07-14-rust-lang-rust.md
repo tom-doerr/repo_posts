@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-14T22:00:43.040916
+date: 2025-07-14T22:00:45.012768
 image: assets/rust-lang_rust_cropped.png
 ---
 
