@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-14T06:21:39.526714
+date: 2025-07-14T06:21:40.643007
 image: assets/BurntSushi_ripgrep_cropped.png
 ---
 
