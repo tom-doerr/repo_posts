@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-14T10:23:42.981218
+date: 2025-07-14T10:23:45.089532
 image: assets/Handit-AI_handit.ai_cropped.png
 ---
 
