@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-14T17:28:14.602758
+date: 2025-07-14T17:28:16.678337
 image: assets/jehna_humanify_cropped.png
 ---
 
