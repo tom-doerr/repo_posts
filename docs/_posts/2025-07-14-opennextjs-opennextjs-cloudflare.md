@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-14T15:57:20.505685
+date: 2025-07-14T15:57:22.562091
 image: assets/opennextjs_opennextjs-cloudflare_cropped.png
 ---
 
