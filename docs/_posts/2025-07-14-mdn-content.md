@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-14T10:53:58.496279
+date: 2025-07-14T10:54:00.672866
 image: assets/mdn_content_cropped.png
 ---
 
