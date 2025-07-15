@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-15T10:08:19.180644
+date: 2025-07-15T10:08:21.277083
 image: assets/ryoppippi_ccusage_cropped.png
 ---
 
