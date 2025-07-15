@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-15T17:43:02.761025
+date: 2025-07-15T17:43:05.075436
 image: assets/ToolJet_ToolJet_cropped.png
 ---
 
