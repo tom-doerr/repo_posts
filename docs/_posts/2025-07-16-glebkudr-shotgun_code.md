@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-16T01:18:02.490833
+date: 2025-07-16T01:18:04.569795
 image: assets/glebkudr_shotgun_code_cropped.png
 ---
 
