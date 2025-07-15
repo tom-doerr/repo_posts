@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-15T11:09:09.875821
+date: 2025-07-15T11:09:12.189404
 image: assets/umami-software_umami_cropped.png
 ---
 
