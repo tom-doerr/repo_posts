@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-15T14:11:14.752232
+date: 2025-07-15T14:11:16.921473
 image: assets/davila7_claude-code-templates_cropped.png
 ---
 
