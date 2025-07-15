@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-15T18:43:40.537932
+date: 2025-07-15T18:43:42.590386
 image: assets/lydiahallie_javascript-questions_cropped.png
 ---
 
