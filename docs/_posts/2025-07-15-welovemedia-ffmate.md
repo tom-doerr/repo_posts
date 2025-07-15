@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-15T23:16:35.898743
+date: 2025-07-15T23:16:38.109537
 image: assets/welovemedia_ffmate_cropped.png
 ---
 
