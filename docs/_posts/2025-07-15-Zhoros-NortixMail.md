@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-15T20:44:47.214185
+date: 2025-07-15T20:44:49.147043
 image: assets/Zhoros_NortixMail_cropped.png
 ---
 
