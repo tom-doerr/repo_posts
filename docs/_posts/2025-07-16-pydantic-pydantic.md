@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-16T05:20:17.746803
+date: 2025-07-16T05:20:19.790252
 image: assets/pydantic_pydantic_cropped.png
 ---
 
