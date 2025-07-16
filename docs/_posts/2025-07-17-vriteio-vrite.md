@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-17T00:01:48.811813
+date: 2025-07-17T00:01:51.064980
 image: assets/vriteio_vrite_cropped.png
 ---
 
