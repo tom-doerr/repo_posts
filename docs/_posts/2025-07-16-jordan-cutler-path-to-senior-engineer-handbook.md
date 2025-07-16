@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-16T23:01:12.294133
+date: 2025-07-16T23:01:14.374864
 image: assets/jordan-cutler_path-to-senior-engineer-handbook_cropped.png
 ---
 
