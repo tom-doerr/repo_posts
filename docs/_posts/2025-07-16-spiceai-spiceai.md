@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-16T08:52:25.712258
+date: 2025-07-16T08:52:28.119712
 image: assets/spiceai_spiceai_cropped.png
 ---
 
