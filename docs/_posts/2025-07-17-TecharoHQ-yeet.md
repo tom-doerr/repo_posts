@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-17T01:32:47.160451
+date: 2025-07-17T01:32:49.283372
 image: assets/TecharoHQ_yeet_cropped.png
 ---
 
