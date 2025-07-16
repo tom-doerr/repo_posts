@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-16T09:22:43.592002
+date: 2025-07-16T09:22:45.742512
 image: assets/sparfenyuk_mcp-proxy_cropped.png
 ---
 
