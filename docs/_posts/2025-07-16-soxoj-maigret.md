@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-16T15:56:33.203370
+date: 2025-07-16T15:56:37.369531
 image: assets/soxoj_maigret_cropped.png
 ---
 
