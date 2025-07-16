@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-16T17:58:07.892965
+date: 2025-07-16T17:58:10.048004
 image: assets/damianricobelli_stepperize_cropped.png
 ---
 
