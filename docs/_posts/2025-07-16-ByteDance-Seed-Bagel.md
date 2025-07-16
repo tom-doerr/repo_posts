@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-16T14:55:58.088970
+date: 2025-07-16T14:56:00.541691
 image: assets/ByteDance-Seed_Bagel_cropped.png
 ---
 
