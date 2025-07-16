@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-16T22:00:34.244288
+date: 2025-07-16T22:00:36.438287
 image: assets/heyman_heynote_cropped.png
 ---
 
