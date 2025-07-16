@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-16T07:21:29.240524
+date: 2025-07-16T07:21:31.334538
 image: assets/laraben_laravel-claude-code-setup_cropped.png
 ---
 
