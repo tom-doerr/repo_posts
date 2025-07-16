@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-16T07:51:45.700497
+date: 2025-07-16T07:51:47.661563
 image: assets/Shopify_remote-dom_cropped.png
 ---
 
