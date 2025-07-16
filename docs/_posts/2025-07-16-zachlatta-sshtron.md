@@ -1,0 +1,9 @@
+---
+layout: default
+date: 2025-07-16T19:28:59.803924
+image: assets/zachlatta_sshtron_cropped.png
+---
+
+# [zachlatta/sshtron](https://github.com/zachlatta/sshtron)
+
+play Tron in your terminal with friends using SSH
