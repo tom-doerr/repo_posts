@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-17T21:45:19.012259
+date: 2025-07-17T21:45:20.961861
 image: assets/hmpl-language_hmpl_cropped.png
 ---
 
