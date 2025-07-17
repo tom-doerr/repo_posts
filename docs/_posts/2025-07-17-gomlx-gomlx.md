@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-17T09:06:59.476417
+date: 2025-07-17T09:07:01.672068
 image: assets/gomlx_gomlx_cropped.png
 ---
 
