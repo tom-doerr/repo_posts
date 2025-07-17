@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-17T16:11:10.216330
+date: 2025-07-17T16:11:12.320777
 image: assets/AntoineW_AW-2025-Portfolio_cropped.png
 ---
 
