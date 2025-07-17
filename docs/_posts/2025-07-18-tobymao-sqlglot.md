@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-18T00:47:01.810323
+date: 2025-07-18T00:47:03.902706
 image: assets/tobymao_sqlglot_cropped.png
 ---
 
