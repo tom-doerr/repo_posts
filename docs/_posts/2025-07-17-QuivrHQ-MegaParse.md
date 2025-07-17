@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-17T20:14:20.346277
+date: 2025-07-17T20:14:21.879587
 image: assets/QuivrHQ_MegaParse_cropped.png
 ---
 
