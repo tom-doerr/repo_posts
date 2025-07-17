@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-17T11:38:24.129029
+date: 2025-07-17T11:38:26.215714
 image: assets/smallcloudai_refact_cropped.png
 ---
 
