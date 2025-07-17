@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-17T17:11:57.625761
+date: 2025-07-17T17:12:00.420767
 image: assets/open-webui_mcpo_cropped.png
 ---
 
