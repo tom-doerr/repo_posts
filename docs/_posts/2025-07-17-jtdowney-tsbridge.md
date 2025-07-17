@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-17T11:08:08.323448
+date: 2025-07-17T11:08:10.540960
 image: assets/jtdowney_tsbridge_cropped.png
 ---
 
