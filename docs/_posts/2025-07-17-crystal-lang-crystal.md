@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-17T21:14:58.731894
+date: 2025-07-17T21:15:01.186023
 image: assets/crystal-lang_crystal_cropped.png
 ---
 
