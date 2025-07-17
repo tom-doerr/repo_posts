@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-17T13:09:19.584566
+date: 2025-07-17T13:09:21.519831
 image: assets/iannuttall_mcp-boilerplate_cropped.png
 ---
 
