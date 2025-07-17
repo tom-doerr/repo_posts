@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-17T05:04:47.445809
+date: 2025-07-17T05:04:49.622947
 image: assets/RhetTbull_osxphotos_cropped.png
 ---
 
