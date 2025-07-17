@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-17T19:46:00.906355
+date: 2025-07-17T19:46:03.371804
 image: assets/jlevy_og-equity-compensation_cropped.png
 ---
 
