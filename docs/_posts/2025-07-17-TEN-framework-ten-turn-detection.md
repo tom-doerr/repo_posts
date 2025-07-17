@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-17T16:41:31.269317
+date: 2025-07-17T16:41:33.558805
 image: assets/TEN-framework_ten-turn-detection_cropped.png
 ---
 
