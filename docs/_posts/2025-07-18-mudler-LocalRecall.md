@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-18T06:20:10.291166
+date: 2025-07-18T06:20:12.346565
 image: assets/mudler_LocalRecall_cropped.png
 ---
 
