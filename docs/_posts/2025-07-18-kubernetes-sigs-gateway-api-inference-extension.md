@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-18T10:53:05.912538
+date: 2025-07-18T10:53:07.778131
 image: assets/kubernetes-sigs_gateway-api-inference-extension_cropped.png
 ---
 
