@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-18T08:21:49.758986
+date: 2025-07-18T08:21:51.605396
 image: assets/jerryscript-project_jerryscript_cropped.png
 ---
 
