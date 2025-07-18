@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-18T12:54:11.262525
+date: 2025-07-18T12:54:13.185205
 image: assets/AbdullahAbuHassann_GenerativeAICourse_cropped.png
 ---
 
