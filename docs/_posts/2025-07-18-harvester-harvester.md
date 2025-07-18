@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-18T09:22:19.883916
+date: 2025-07-18T09:22:21.794258
 image: assets/harvester_harvester_cropped.png
 ---
 
