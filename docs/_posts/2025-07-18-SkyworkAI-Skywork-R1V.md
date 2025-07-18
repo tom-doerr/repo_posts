@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-18T11:53:35.185654
+date: 2025-07-18T11:53:36.948579
 image: assets/SkyworkAI_Skywork-R1V_cropped.png
 ---
 
