@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-18T02:18:10.130679
+date: 2025-07-18T02:18:12.008262
 image: assets/567-labs_instructor_cropped.png
 ---
 
