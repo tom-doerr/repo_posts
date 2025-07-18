@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-18T13:24:33.682564
+date: 2025-07-18T13:24:35.835378
 image: assets/director-run_director_cropped.png
 ---
 
