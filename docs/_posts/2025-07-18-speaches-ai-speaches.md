@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-18T17:56:50.018346
+date: 2025-07-18T17:56:52.078704
 image: assets/speaches-ai_speaches_cropped.png
 ---
 
