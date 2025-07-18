@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-18T19:27:37.525195
+date: 2025-07-18T19:27:39.670402
 image: assets/ChrisBuilds_terminaltexteffects_cropped.png
 ---
 
