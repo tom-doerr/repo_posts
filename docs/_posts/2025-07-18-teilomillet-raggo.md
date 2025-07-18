@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-18T07:21:21.696797
+date: 2025-07-18T07:21:22.767908
 image: assets/teilomillet_raggo_cropped.png
 ---
 
