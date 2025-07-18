@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-18T17:26:36.432312
+date: 2025-07-18T17:26:38.359254
 image: assets/pola-rs_polars_cropped.png
 ---
 
