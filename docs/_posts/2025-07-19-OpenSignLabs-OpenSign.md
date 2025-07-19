@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-19T16:38:47.815293
+date: 2025-07-19T16:38:50.005571
 image: assets/OpenSignLabs_OpenSign_cropped.png
 ---
 
