@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-20T00:13:03.722017
+date: 2025-07-20T00:13:05.501612
 image: assets/amnezia-vpn_amnezia-client_cropped.png
 ---
 
