@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-19T05:02:20.866732
+date: 2025-07-19T05:02:22.753067
 image: assets/czlonkowski_n8n-mcp_cropped.png
 ---
 
