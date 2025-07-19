@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-19T22:11:58.362797
+date: 2025-07-19T22:12:00.350912
 image: assets/payloadcms_payload_cropped.png
 ---
 
