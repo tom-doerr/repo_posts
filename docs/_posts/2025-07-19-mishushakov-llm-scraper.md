@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-19T11:35:47.631674
+date: 2025-07-19T11:35:50.620416
 image: assets/mishushakov_llm-scraper_cropped.png
 ---
 
