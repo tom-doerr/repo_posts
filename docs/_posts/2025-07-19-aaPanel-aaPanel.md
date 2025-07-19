@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-19T21:11:26.999669
+date: 2025-07-19T21:11:29.084014
 image: assets/aaPanel_aaPanel_cropped.png
 ---
 
