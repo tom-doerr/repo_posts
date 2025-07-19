@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-19T17:09:03.974928
+date: 2025-07-19T17:09:05.906913
 image: assets/FoundationAgents_MetaGPT_cropped.png
 ---
 
