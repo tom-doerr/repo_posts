@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-19T15:07:59.640906
+date: 2025-07-19T15:08:01.675481
 image: assets/Bubka_2FAuth_cropped.png
 ---
 
