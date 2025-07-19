@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-19T12:36:32.564434
+date: 2025-07-19T12:36:34.513468
 image: assets/sampotts_plyr_cropped.png
 ---
 
