@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-19T16:08:32.889346
+date: 2025-07-19T16:08:34.764110
 image: assets/Eigenfocus_eigenfocus_cropped.png
 ---
 
