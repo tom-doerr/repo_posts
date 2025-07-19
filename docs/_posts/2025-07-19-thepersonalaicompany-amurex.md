@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-19T06:02:50.055071
+date: 2025-07-19T06:02:51.913686
 image: assets/thepersonalaicompany_amurex_cropped.png
 ---
 
