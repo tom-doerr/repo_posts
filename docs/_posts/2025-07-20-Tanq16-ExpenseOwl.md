@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-20T00:43:18.882630
+date: 2025-07-20T00:43:20.849705
 image: assets/Tanq16_ExpenseOwl_cropped.png
 ---
 
