@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-19T02:31:15.031695
+date: 2025-07-19T02:31:16.890958
 image: assets/rough-stuff_rough-notation_cropped.png
 ---
 
