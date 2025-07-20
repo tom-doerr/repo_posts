@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-20T10:19:05.097923
+date: 2025-07-20T10:19:07.375981
 image: assets/CatchTheTornado_text-extract-api_cropped.png
 ---
 
