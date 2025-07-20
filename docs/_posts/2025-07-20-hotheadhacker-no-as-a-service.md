@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-20T02:44:28.374541
+date: 2025-07-20T02:44:30.291109
 image: assets/hotheadhacker_no-as-a-service_cropped.png
 ---
 
