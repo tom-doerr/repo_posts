@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-20T16:22:52.608218
+date: 2025-07-20T16:22:57.087094
 image: assets/NeoVertex1_SuperPrompt_cropped.png
 ---
 
