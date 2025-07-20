@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-20T10:49:21.183060
+date: 2025-07-20T10:49:23.071800
 image: assets/bluewave-labs_Checkmate_cropped.png
 ---
 
