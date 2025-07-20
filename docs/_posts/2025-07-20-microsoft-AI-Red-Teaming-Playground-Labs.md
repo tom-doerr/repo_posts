@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-20T07:47:48.303423
+date: 2025-07-20T07:47:50.355280
 image: assets/microsoft_AI-Red-Teaming-Playground-Labs_cropped.png
 ---
 
