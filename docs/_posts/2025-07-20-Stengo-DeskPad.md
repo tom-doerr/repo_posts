@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-20T16:53:16.081679
+date: 2025-07-20T16:53:17.915933
 image: assets/Stengo_DeskPad_cropped.png
 ---
 
