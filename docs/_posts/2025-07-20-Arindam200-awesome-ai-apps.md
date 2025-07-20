@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-20T18:24:10.287571
+date: 2025-07-20T18:24:12.296958
 image: assets/Arindam200_awesome-ai-apps_cropped.png
 ---
 
