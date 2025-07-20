@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-20T03:44:58.992099
+date: 2025-07-20T03:45:01.009803
 image: assets/DigitalPlatDev_FreeDomain_cropped.png
 ---
 
