@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-20T15:22:15.061676
+date: 2025-07-20T15:22:17.059664
 image: assets/ActivityWatch_activitywatch_cropped.png
 ---
 
