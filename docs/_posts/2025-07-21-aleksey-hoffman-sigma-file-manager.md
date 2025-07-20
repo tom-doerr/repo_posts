@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-21T01:58:17.887089
+date: 2025-07-21T01:58:19.969033
 image: assets/aleksey-hoffman_sigma-file-manager_cropped.png
 ---
 
