@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-20T21:56:02.982120
+date: 2025-07-20T21:56:04.870869
 image: assets/latitude-dev_latitude-llm_cropped.png
 ---
 
