@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-20T05:46:42.024360
+date: 2025-07-20T05:46:43.859057
 image: assets/Upsonic_Upsonic_cropped.png
 ---
 
