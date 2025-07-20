@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-20T08:48:16.844177
+date: 2025-07-20T08:48:18.811706
 image: assets/n8n-io_self-hosted-ai-starter-kit_cropped.png
 ---
 
