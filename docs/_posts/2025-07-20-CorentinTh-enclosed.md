@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-20T03:14:44.456663
+date: 2025-07-20T03:14:46.367254
 image: assets/CorentinTh_enclosed_cropped.png
 ---
 
