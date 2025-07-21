@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-21T02:28:33.794411
+date: 2025-07-21T02:28:35.780794
 image: assets/plankanban_planka_cropped.png
 ---
 
