@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-21T07:31:32.114166
+date: 2025-07-21T07:31:34.001350
 image: assets/thedevs-network_kutt_cropped.png
 ---
 
