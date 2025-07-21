@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-21T10:03:00.495481
+date: 2025-07-21T10:03:02.489874
 image: assets/triggerdotdev_trigger.dev_cropped.png
 ---
 
