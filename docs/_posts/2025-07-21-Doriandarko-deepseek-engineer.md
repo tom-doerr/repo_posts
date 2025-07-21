@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-21T18:37:33.771205
+date: 2025-07-21T18:37:35.832718
 image: assets/Doriandarko_deepseek-engineer_cropped.png
 ---
 
