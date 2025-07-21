@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-21T20:08:20.376526
+date: 2025-07-21T20:08:22.386659
 image: assets/ghostfolio_ghostfolio_cropped.png
 ---
 
