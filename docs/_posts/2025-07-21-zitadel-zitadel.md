@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-21T08:01:48.351093
+date: 2025-07-21T08:01:50.545792
 image: assets/zitadel_zitadel_cropped.png
 ---
 
