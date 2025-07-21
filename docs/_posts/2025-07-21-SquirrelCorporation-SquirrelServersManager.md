@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-21T22:09:24.049661
+date: 2025-07-21T22:09:26.173634
 image: assets/SquirrelCorporation_SquirrelServersManager_cropped.png
 ---
 
