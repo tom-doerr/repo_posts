@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-21T21:08:51.646432
+date: 2025-07-21T21:08:53.676168
 image: assets/ajnart_dcm_cropped.png
 ---
 
