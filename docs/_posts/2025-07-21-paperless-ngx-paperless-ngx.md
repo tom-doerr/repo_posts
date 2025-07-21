@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-21T06:00:45.697109
+date: 2025-07-21T06:00:47.571378
 image: assets/paperless-ngx_paperless-ngx_cropped.png
 ---
 
