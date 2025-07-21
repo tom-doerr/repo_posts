@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-21T17:06:42.898376
+date: 2025-07-21T17:06:44.988853
 image: assets/Adaptix-Framework_AdaptixC2_cropped.png
 ---
 
