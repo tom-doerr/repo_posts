@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-21T19:38:04.052329
+date: 2025-07-21T19:38:05.970413
 image: assets/AI4Finance-Foundation_FinGPT_cropped.png
 ---
 
