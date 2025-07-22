@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-22T15:18:44.545836
+date: 2025-07-22T15:18:46.527447
 image: assets/ayoisaiah_f2_cropped.png
 ---
 
