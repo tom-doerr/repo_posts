@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-23T00:23:39.459438
+date: 2025-07-23T00:23:41.673820
 image: assets/GongRzhe_Office-PowerPoint-MCP-Server_cropped.png
 ---
 
