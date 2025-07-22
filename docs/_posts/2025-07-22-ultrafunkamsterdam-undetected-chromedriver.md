@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-22T17:50:04.197647
+date: 2025-07-22T17:50:06.220687
 image: assets/ultrafunkamsterdam_undetected-chromedriver_cropped.png
 ---
 
