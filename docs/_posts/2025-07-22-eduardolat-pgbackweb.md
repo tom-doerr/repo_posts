@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-22T04:12:43.255862
+date: 2025-07-22T04:12:45.147701
 image: assets/eduardolat_pgbackweb_cropped.png
 ---
 
