@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-22T13:17:35.963884
+date: 2025-07-22T13:17:37.993298
 image: assets/kgretzky_evilginx2_cropped.png
 ---
 
