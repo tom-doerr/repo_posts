@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-22T03:12:13.075112
+date: 2025-07-22T03:12:14.911825
 image: assets/murtaza-nasir_speakr_cropped.png
 ---
 
