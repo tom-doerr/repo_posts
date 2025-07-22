@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-22T23:53:24.755227
+date: 2025-07-22T23:53:26.726767
 image: assets/firefly-iii_firefly-iii_cropped.png
 ---
 
