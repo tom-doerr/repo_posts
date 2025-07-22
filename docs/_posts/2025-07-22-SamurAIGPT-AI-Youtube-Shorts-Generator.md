@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-22T13:47:55.002261
+date: 2025-07-22T13:47:57.145802
 image: assets/SamurAIGPT_AI-Youtube-Shorts-Generator_cropped.png
 ---
 
