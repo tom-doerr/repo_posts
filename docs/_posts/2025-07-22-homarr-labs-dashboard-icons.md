@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-22T19:51:10.917873
+date: 2025-07-22T19:51:12.882278
 image: assets/homarr-labs_dashboard-icons_cropped.png
 ---
 
