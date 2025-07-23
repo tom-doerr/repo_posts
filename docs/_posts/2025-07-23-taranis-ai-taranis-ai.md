@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-23T23:36:40.830659
+date: 2025-07-23T23:36:42.865655
 image: assets/taranis-ai_taranis-ai_cropped.png
 ---
 
