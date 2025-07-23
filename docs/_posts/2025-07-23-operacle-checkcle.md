@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-23T09:58:37.818352
+date: 2025-07-23T09:58:40.037461
 image: assets/operacle_checkcle_cropped.png
 ---
 
