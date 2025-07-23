@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-24T01:07:26.209746
+date: 2025-07-24T01:07:28.118405
 image: assets/RVC-Boss_GPT-SoVITS_cropped.png
 ---
 
