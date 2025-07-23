@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-23T10:28:53.404635
+date: 2025-07-23T10:28:55.523561
 image: assets/vinceanalytics_vince_cropped.png
 ---
 
