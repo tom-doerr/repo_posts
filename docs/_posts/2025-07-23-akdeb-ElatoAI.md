@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-23T08:27:47.546989
+date: 2025-07-23T08:27:49.587418
 image: assets/akdeb_ElatoAI_cropped.png
 ---
 
