@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-23T03:55:30.912508
+date: 2025-07-23T03:55:32.887222
 image: assets/frappe_books_cropped.png
 ---
 
