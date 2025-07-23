@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-23T02:54:59.998703
+date: 2025-07-23T02:55:02.196300
 image: assets/lakshaybhushan_vecto3d_cropped.png
 ---
 
