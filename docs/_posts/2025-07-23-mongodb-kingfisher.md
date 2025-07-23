@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-23T14:00:50.430732
+date: 2025-07-23T14:00:52.516745
 image: assets/mongodb_kingfisher_cropped.png
 ---
 
