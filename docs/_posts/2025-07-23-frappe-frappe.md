@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-23T18:03:03.979528
+date: 2025-07-23T18:03:05.930995
 image: assets/frappe_frappe_cropped.png
 ---
 
