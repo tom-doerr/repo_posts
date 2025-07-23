@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-23T08:58:04.059983
+date: 2025-07-23T08:58:06.113770
 image: assets/metabase_metabase_cropped.png
 ---
 
