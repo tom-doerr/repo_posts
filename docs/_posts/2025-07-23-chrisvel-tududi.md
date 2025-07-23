@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-23T07:57:31.943710
+date: 2025-07-23T07:57:34.034257
 image: assets/chrisvel_tududi_cropped.png
 ---
 
