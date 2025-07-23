@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-23T07:27:15.756845
+date: 2025-07-23T07:27:17.707084
 image: assets/githubnext_awesome-continuous-ai_cropped.png
 ---
 
