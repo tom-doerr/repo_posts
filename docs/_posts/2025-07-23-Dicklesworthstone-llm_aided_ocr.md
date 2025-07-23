@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-23T22:36:07.594082
+date: 2025-07-23T22:36:09.959373
 image: assets/Dicklesworthstone_llm_aided_ocr_cropped.png
 ---
 
