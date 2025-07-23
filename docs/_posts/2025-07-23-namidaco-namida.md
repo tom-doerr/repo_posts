@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-23T21:04:58.945366
+date: 2025-07-23T21:05:01.125394
 image: assets/namidaco_namida_cropped.png
 ---
 
