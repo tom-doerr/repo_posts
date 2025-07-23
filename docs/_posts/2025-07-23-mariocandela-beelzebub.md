@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-23T21:35:23.476693
+date: 2025-07-23T21:35:28.325955
 image: assets/mariocandela_beelzebub_cropped.png
 ---
 
