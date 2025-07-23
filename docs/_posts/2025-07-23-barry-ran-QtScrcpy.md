@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-23T06:57:00.337836
+date: 2025-07-23T06:57:02.600101
 image: assets/barry-ran_QtScrcpy_cropped.png
 ---
 
