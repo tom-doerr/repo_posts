@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-23T11:59:44.295903
+date: 2025-07-23T11:59:46.401349
 image: assets/caddymanager_caddymanager_cropped.png
 ---
 
