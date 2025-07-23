@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-23T18:33:20.164092
+date: 2025-07-23T18:33:22.160338
 image: assets/silexlabs_Silex_cropped.png
 ---
 
