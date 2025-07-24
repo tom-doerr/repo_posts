@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-24T06:40:27.253291
+date: 2025-07-24T06:40:29.145030
 image: assets/avelino_awesome-go_cropped.png
 ---
 
