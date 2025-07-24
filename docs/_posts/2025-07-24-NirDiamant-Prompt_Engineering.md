@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-24T21:48:32.486003
+date: 2025-07-24T21:48:34.674863
 image: assets/NirDiamant_Prompt_Engineering_cropped.png
 ---
 
