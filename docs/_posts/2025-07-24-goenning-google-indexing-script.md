@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-24T17:16:00.187968
+date: 2025-07-24T17:16:02.538944
 image: assets/goenning_google-indexing-script_cropped.png
 ---
 
