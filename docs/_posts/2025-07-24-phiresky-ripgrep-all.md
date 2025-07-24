@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-24T14:14:21.135012
+date: 2025-07-24T14:14:23.423437
 image: assets/phiresky_ripgrep-all_cropped.png
 ---
 
