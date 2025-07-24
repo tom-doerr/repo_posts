@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-24T13:44:05.855805
+date: 2025-07-24T13:44:07.997250
 image: assets/Qingyon-AI_Revornix_cropped.png
 ---
 
