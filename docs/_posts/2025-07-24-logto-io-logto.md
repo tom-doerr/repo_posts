@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-24T19:17:05.620842
+date: 2025-07-24T19:17:07.828886
 image: assets/logto-io_logto_cropped.png
 ---
 
