@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-24T09:11:40.696589
+date: 2025-07-24T09:11:42.545632
 image: assets/tillywork_tillywork_cropped.png
 ---
 
