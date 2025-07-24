@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-24T17:46:17.448033
+date: 2025-07-24T17:46:19.429294
 image: assets/shlinkio_shlink_cropped.png
 ---
 
