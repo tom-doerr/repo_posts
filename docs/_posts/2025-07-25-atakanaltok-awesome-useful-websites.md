@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-25T01:50:44.962752
+date: 2025-07-25T01:50:46.889585
 image: assets/atakanaltok_awesome-useful-websites_cropped.png
 ---
 
