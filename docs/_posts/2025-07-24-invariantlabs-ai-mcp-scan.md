@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-24T23:49:40.794984
+date: 2025-07-24T23:49:42.849091
 image: assets/invariantlabs-ai_mcp-scan_cropped.png
 ---
 
