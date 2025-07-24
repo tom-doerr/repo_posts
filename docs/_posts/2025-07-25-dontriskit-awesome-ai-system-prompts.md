@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-25T00:19:56.280307
+date: 2025-07-25T00:19:58.544634
 image: assets/dontriskit_awesome-ai-system-prompts_cropped.png
 ---
 
