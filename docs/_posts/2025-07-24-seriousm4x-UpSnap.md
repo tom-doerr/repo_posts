@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-24T18:46:48.654621
+date: 2025-07-24T18:46:51.048593
 image: assets/seriousm4x_UpSnap_cropped.png
 ---
 
