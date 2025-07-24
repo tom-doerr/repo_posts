@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-24T13:13:49.218367
+date: 2025-07-24T13:13:51.535930
 image: assets/egoist_sitefetch_cropped.png
 ---
 
