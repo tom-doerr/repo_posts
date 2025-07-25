@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-25T13:57:04.857197
+date: 2025-07-25T13:57:06.872483
 image: assets/everywall_ladder_cropped.png
 ---
 
