@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-25T12:26:18.984319
+date: 2025-07-25T12:26:21.090753
 image: assets/querylab_lazywarden_cropped.png
 ---
 
