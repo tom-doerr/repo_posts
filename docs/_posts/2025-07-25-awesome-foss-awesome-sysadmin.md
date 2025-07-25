@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-25T21:00:45.540626
+date: 2025-07-25T21:00:47.628577
 image: assets/awesome-foss_awesome-sysadmin_cropped.png
 ---
 
