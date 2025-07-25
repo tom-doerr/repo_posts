@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-25T07:23:41.555931
+date: 2025-07-25T07:23:43.666124
 image: assets/liriliri_rem_cropped.png
 ---
 
