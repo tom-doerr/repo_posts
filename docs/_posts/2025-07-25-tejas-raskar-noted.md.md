@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-25T19:29:58.066610
+date: 2025-07-25T19:30:00.087374
 image: assets/tejas-raskar_noted.md_cropped.png
 ---
 
