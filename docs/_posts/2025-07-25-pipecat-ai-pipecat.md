@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-25T12:56:33.580462
+date: 2025-07-25T12:56:35.598670
 image: assets/pipecat-ai_pipecat_cropped.png
 ---
 
