@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-26T00:32:40.268416
+date: 2025-07-26T00:32:42.328676
 image: assets/rowyio_buildship_cropped.png
 ---
 
