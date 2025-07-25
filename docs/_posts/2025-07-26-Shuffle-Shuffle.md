@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-26T00:02:24.142606
+date: 2025-07-26T00:02:26.417430
 image: assets/Shuffle_Shuffle_cropped.png
 ---
 
