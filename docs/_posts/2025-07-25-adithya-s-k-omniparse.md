@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-25T03:51:50.734835
+date: 2025-07-25T03:51:52.519860
 image: assets/adithya-s-k_omniparse_cropped.png
 ---
 
