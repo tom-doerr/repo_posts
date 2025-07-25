@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-25T11:56:03.672347
+date: 2025-07-25T11:56:05.682102
 image: assets/denizsafak_abogen_cropped.png
 ---
 
