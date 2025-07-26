@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-26T19:43:04.295678
+date: 2025-07-26T19:43:06.328844
 image: assets/swirlai_swirl-search_cropped.png
 ---
 
