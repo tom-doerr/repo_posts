@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-26T09:07:27.246837
+date: 2025-07-26T09:07:29.059802
 image: assets/opensim-org_opensim-core_cropped.png
 ---
 
