@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-26T07:06:27.967452
+date: 2025-07-26T07:06:29.723860
 image: assets/a-ghorbani_pocketpal-ai_cropped.png
 ---
 
