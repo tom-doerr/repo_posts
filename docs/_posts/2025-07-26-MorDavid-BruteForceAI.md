@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-26T13:09:36.270134
+date: 2025-07-26T13:09:38.078793
 image: assets/MorDavid_BruteForceAI_cropped.png
 ---
 
