@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-26T02:33:41.590651
+date: 2025-07-26T02:33:43.316862
 image: assets/jpillora_chisel_cropped.png
 ---
 
