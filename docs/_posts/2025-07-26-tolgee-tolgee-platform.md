@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-26T11:38:49.801873
+date: 2025-07-26T11:38:51.606629
 image: assets/tolgee_tolgee-platform_cropped.png
 ---
 
