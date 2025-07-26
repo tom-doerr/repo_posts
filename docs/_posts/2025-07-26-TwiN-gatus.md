@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-26T05:35:41.882205
+date: 2025-07-26T05:35:43.620225
 image: assets/TwiN_gatus_cropped.png
 ---
 
