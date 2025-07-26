@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-26T22:44:43.365262
+date: 2025-07-26T22:44:45.354119
 image: assets/jaaronkot_picprose_cropped.png
 ---
 
