@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-26T21:13:50.390819
+date: 2025-07-26T21:13:52.162448
 image: assets/Lucksi_Darkus_cropped.png
 ---
 
