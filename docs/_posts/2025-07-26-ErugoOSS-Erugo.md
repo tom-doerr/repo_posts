@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-26T14:10:07.047822
+date: 2025-07-26T14:10:08.851625
 image: assets/ErugoOSS_Erugo_cropped.png
 ---
 
