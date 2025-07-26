@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-26T16:11:10.958872
+date: 2025-07-26T16:11:12.725857
 image: assets/qifi-dev_qrs_cropped.png
 ---
 
