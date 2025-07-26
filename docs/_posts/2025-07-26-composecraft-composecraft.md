@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-26T04:37:12.664690
+date: 2025-07-26T04:37:14.421131
 image: assets/composecraft_composecraft_cropped.png
 ---
 
