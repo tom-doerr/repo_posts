@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-26T08:37:11.957579
+date: 2025-07-26T08:37:13.811096
 image: assets/joinly-ai_joinly_cropped.png
 ---
 
