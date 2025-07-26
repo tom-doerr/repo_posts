@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-26T18:42:33.244057
+date: 2025-07-26T18:42:35.010204
 image: assets/TarlogicSecurity_BlueSpy_cropped.png
 ---
 
