@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-27T10:20:25.684035
+date: 2025-07-27T10:20:27.450652
 image: assets/miroslavpejic85_mirotalk_cropped.png
 ---
 
