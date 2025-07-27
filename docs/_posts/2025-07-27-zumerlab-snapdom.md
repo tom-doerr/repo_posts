@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-27T09:19:54.430239
+date: 2025-07-27T09:19:56.361572
 image: assets/zumerlab_snapdom_cropped.png
 ---
 
