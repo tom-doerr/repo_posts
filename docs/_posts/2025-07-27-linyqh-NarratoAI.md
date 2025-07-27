@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-27T19:25:25.938108
+date: 2025-07-27T19:25:27.679035
 image: assets/linyqh_NarratoAI_cropped.png
 ---
 
