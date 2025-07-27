@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-27T16:54:03.556928
+date: 2025-07-27T16:54:05.291199
 image: assets/rishikanthc_Scriberr_cropped.png
 ---
 
