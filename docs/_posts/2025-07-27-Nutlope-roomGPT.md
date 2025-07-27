@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-27T20:25:57.386466
+date: 2025-07-27T20:25:59.809607
 image: assets/Nutlope_roomGPT_cropped.png
 ---
 
