@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-27T23:58:06.356810
+date: 2025-07-27T23:58:08.227652
 image: assets/1Remote_1Remote_cropped.png
 ---
 
