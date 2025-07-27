@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-27T21:56:57.737080
+date: 2025-07-27T21:56:59.443062
 image: assets/c0dejump_HExHTTP_cropped.png
 ---
 
