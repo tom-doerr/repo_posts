@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-27T15:53:24.320320
+date: 2025-07-27T15:53:26.605769
 image: assets/anthropics_courses_cropped.png
 ---
 
