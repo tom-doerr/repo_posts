@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-27T11:20:54.861423
+date: 2025-07-27T11:20:56.752515
 image: assets/JhumanJ_OpnForm_cropped.png
 ---
 
