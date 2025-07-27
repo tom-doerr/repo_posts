@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-27T20:56:20.881420
+date: 2025-07-27T20:56:22.769458
 image: assets/sinaptik-ai_pandas-ai_cropped.png
 ---
 
