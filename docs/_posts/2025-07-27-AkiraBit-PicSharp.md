@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-27T14:22:27.034007
+date: 2025-07-27T14:22:28.843606
 image: assets/AkiraBit_PicSharp_cropped.png
 ---
 
