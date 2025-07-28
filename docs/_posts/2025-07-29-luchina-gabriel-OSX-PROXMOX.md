@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-29T00:34:58.402503
+date: 2025-07-29T00:35:00.595448
 image: assets/luchina-gabriel_OSX-PROXMOX_cropped.png
 ---
 
