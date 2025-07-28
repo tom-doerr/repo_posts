@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-28T04:30:26.873505
+date: 2025-07-28T04:30:28.753428
 image: assets/meceware_wapy.dev_cropped.png
 ---
 
