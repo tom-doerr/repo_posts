@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-28T22:03:27.277023
+date: 2025-07-28T22:03:29.677336
 image: assets/beclab_Olares_cropped.png
 ---
 
