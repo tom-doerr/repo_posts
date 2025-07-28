@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-28T05:30:58.677403
+date: 2025-07-28T05:31:00.591835
 image: assets/withneural_neuralagent_cropped.png
 ---
 
