@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-29T11:40:38.271668
+date: 2025-07-29T11:40:40.197963
 image: assets/ryoppippi_sitemcp_cropped.png
 ---
 
