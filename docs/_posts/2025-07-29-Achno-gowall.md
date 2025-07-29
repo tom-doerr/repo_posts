@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-29T19:45:08.592113
+date: 2025-07-29T19:45:11.190303
 image: assets/Achno_gowall_cropped.png
 ---
 
