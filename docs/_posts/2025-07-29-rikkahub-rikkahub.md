@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-29T11:10:20.611220
+date: 2025-07-29T11:10:22.500106
 image: assets/rikkahub_rikkahub_cropped.png
 ---
 
