@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-29T23:47:26.044378
+date: 2025-07-29T23:47:28.120150
 image: assets/Next-Flip_Momentum-Firmware_cropped.png
 ---
 
