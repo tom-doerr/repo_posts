@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-29T22:16:38.542771
+date: 2025-07-29T22:16:40.752502
 image: assets/socfortress_Playbooks_cropped.png
 ---
 
