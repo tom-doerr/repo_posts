@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-29T16:13:07.288479
+date: 2025-07-29T16:13:09.319297
 image: assets/microsoft_generative-ai-for-beginners_cropped.png
 ---
 
