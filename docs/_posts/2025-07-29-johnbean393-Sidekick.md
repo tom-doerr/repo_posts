@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-29T08:39:05.227017
+date: 2025-07-29T08:39:07.459975
 image: assets/johnbean393_Sidekick_cropped.png
 ---
 
