@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-29T15:12:29.716218
+date: 2025-07-29T15:12:32.085489
 image: assets/Lissy93_portainer-templates_cropped.png
 ---
 
