@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-29T10:09:50.435026
+date: 2025-07-29T10:09:52.525150
 image: assets/peterkrueck_Claude-Code-Development-Kit_cropped.png
 ---
 
