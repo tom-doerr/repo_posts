@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-29T08:08:50.340878
+date: 2025-07-29T08:08:52.120299
 image: assets/CursorTouch_Windows-MCP_cropped.png
 ---
 
