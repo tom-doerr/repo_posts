@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-30T21:59:38.428570
+date: 2025-07-30T21:59:40.723962
 image: assets/julien040_anyquery_cropped.png
 ---
 
