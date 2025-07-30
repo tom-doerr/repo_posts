@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-30T02:48:58.995834
+date: 2025-07-30T02:49:01.109954
 image: assets/investbrainapp_investbrain_cropped.png
 ---
 
