@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-30T07:21:20.521969
+date: 2025-07-30T07:21:22.403733
 image: assets/AlexGustafsson_cupdate_cropped.png
 ---
 
