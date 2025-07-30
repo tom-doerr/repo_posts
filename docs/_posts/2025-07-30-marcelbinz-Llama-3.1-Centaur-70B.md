@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-30T20:59:07.273980
+date: 2025-07-30T20:59:09.519557
 image: assets/marcelbinz_Llama-3.1-Centaur-70B_cropped.png
 ---
 
