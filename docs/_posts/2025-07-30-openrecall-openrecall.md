@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-30T04:50:05.327486
+date: 2025-07-30T04:50:07.344720
 image: assets/openrecall_openrecall_cropped.png
 ---
 
