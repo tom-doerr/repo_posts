@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-30T08:52:08.265184
+date: 2025-07-30T08:52:10.190591
 image: assets/hywax_mafl_cropped.png
 ---
 
