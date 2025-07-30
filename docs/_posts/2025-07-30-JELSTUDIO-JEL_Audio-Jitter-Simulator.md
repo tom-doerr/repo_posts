@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-30T15:25:38.640673
+date: 2025-07-30T15:25:40.653074
 image: assets/JELSTUDIO_JEL_Audio-Jitter-Simulator_cropped.png
 ---
 
