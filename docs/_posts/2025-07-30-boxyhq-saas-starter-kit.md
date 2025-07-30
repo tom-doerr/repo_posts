@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-30T15:55:54.482427
+date: 2025-07-30T15:55:57.163638
 image: assets/boxyhq_saas-starter-kit_cropped.png
 ---
 
