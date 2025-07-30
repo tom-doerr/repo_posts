@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-30T16:26:11.405540
+date: 2025-07-30T16:26:13.877942
 image: assets/trycompai_comp_cropped.png
 ---
 
