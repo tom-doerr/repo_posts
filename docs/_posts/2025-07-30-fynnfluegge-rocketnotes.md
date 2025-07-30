@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-30T19:58:14.769233
+date: 2025-07-30T19:58:16.910134
 image: assets/fynnfluegge_rocketnotes_cropped.png
 ---
 
