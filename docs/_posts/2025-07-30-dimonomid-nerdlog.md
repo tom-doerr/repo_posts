@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-30T13:54:50.481203
+date: 2025-07-30T13:54:52.476106
 image: assets/dimonomid_nerdlog_cropped.png
 ---
 
