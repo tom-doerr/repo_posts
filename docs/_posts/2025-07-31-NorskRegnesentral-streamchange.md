@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-31T02:32:09.450286
+date: 2025-07-31T02:32:11.304699
 image: assets/NorskRegnesentral_streamchange_cropped.png
 ---
 
