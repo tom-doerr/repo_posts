@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-31T21:12:00.680888
+date: 2025-07-31T21:12:03.074486
 image: assets/OpenBAS-Platform_openbas_cropped.png
 ---
 
