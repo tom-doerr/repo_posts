@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-31T14:07:57.999115
+date: 2025-07-31T14:07:59.967855
 image: assets/ashishpatel26_500-AI-Agents-Projects_cropped.png
 ---
 
