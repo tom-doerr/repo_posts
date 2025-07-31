@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-31T07:34:40.719998
+date: 2025-07-31T07:34:43.072488
 image: assets/NativeMindBrowser_NativeMindExtension_cropped.png
 ---
 
