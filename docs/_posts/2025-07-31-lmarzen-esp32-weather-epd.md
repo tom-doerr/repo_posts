@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-31T06:34:09.151643
+date: 2025-07-31T06:34:11.064109
 image: assets/lmarzen_esp32-weather-epd_cropped.png
 ---
 
