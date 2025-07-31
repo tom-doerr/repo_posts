@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-01T00:13:35.870556
+date: 2025-08-01T00:13:38.133506
 image: assets/Goldziher_kreuzberg_cropped.png
 ---
 
