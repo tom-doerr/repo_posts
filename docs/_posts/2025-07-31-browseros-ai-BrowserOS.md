@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-31T09:05:20.231819
+date: 2025-07-31T09:05:22.017096
 image: assets/browseros-ai_BrowserOS_cropped.png
 ---
 
