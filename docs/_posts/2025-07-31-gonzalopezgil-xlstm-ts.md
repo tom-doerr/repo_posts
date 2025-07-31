@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-31T13:07:26.759552
+date: 2025-07-31T13:07:28.595698
 image: assets/gonzalopezgil_xlstm-ts_cropped.png
 ---
 
