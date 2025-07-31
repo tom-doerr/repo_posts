@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-31T18:10:18.188789
+date: 2025-07-31T18:10:20.154206
 image: assets/mrmn2_PdfDing_cropped.png
 ---
 
