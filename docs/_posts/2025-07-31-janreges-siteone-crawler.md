@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-07-31T13:37:42.678745
+date: 2025-07-31T13:37:44.938800
 image: assets/janreges_siteone-crawler_cropped.png
 ---
 
