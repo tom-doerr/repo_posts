@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-01T13:20:43.281706
+date: 2025-08-01T13:20:45.236045
 image: assets/gitbutlerapp_gitbutler_cropped.png
 ---
 
