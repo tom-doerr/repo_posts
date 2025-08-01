@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-01T21:55:52.397564
+date: 2025-08-01T21:55:54.349511
 image: assets/Jonghakseo_chrome-extension-boilerplate-react-vite_cropped.png
 ---
 
