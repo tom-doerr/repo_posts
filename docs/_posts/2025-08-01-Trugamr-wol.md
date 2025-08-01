@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-01T11:49:57.302068
+date: 2025-08-01T11:49:59.086914
 image: assets/Trugamr_wol_cropped.png
 ---
 
