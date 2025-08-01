@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-01T23:57:04.412060
+date: 2025-08-01T23:57:06.927157
 image: assets/Bistutu_FluentRead_cropped.png
 ---
 
