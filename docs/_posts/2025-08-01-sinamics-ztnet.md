@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-01T13:50:58.424637
+date: 2025-08-01T13:51:00.271597
 image: assets/sinamics_ztnet_cropped.png
 ---
 
