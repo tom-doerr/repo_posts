@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-01T20:55:17.398635
+date: 2025-08-01T20:55:19.677413
 image: assets/gabrielchasukjin_cloi_cropped.png
 ---
 
