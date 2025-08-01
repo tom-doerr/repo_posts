@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-01T12:20:13.359684
+date: 2025-08-01T12:20:15.351680
 image: assets/simstudioai_sim_cropped.png
 ---
 
