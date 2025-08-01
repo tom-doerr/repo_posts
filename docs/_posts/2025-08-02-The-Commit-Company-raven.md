@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-02T00:57:46.258237
+date: 2025-08-02T00:57:49.853405
 image: assets/The-Commit-Company_raven_cropped.png
 ---
 
