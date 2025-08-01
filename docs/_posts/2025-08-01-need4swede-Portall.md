@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-01T02:14:35.836366
+date: 2025-08-01T02:14:37.998025
 image: assets/need4swede_Portall_cropped.png
 ---
 
