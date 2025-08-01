@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-01T07:17:31.456233
+date: 2025-08-01T07:17:33.388049
 image: assets/eigent-ai_eigent_cropped.png
 ---
 
