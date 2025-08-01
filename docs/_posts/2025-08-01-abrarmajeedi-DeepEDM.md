@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-01T05:16:17.513173
+date: 2025-08-01T05:16:21.366511
 image: assets/abrarmajeedi_DeepEDM_cropped.png
 ---
 
