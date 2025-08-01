@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-02T01:58:17.710075
+date: 2025-08-02T01:58:19.755481
 image: assets/logancyang_obsidian-copilot_cropped.png
 ---
 
