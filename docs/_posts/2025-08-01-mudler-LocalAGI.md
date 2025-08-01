@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-01T09:48:54.877222
+date: 2025-08-01T09:48:57.091385
 image: assets/mudler_LocalAGI_cropped.png
 ---
 
