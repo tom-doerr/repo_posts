@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-01T22:56:33.349073
+date: 2025-08-01T22:56:35.366519
 image: assets/joseluis9595_lovelace-navbar-card_cropped.png
 ---
 
