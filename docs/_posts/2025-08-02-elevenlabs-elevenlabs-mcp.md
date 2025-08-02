@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-02T17:37:05.965332
+date: 2025-08-02T17:37:07.852437
 image: assets/elevenlabs_elevenlabs-mcp_cropped.png
 ---
 
