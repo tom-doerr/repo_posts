@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-02T11:33:35.560875
+date: 2025-08-02T11:33:37.364372
 image: assets/sebastiancarlos_beachpatrol_cropped.png
 ---
 
