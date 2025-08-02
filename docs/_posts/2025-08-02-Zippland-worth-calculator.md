@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-02T13:34:38.984316
+date: 2025-08-02T13:34:40.852558
 image: assets/Zippland_worth-calculator_cropped.png
 ---
 
