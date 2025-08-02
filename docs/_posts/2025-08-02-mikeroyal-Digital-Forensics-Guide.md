@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-02T23:41:45.725631
+date: 2025-08-02T23:41:47.625006
 image: assets/mikeroyal_Digital-Forensics-Guide_cropped.png
 ---
 
