@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-02T14:35:18.965812
+date: 2025-08-02T14:35:21.195359
 image: assets/yamlresume_yamlresume_cropped.png
 ---
 
