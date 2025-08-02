@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-02T10:33:00.244280
+date: 2025-08-02T10:33:02.014278
 image: assets/traccar_traccar_cropped.png
 ---
 
