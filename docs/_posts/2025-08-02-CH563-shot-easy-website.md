@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-02T16:36:31.801457
+date: 2025-08-02T16:36:33.470862
 image: assets/CH563_shot-easy-website_cropped.png
 ---
 
