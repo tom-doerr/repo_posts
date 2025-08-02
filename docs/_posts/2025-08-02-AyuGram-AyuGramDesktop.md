@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-02T12:03:51.111210
+date: 2025-08-02T12:03:53.073803
 image: assets/AyuGram_AyuGramDesktop_cropped.png
 ---
 
