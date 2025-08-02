@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-02T13:04:23.360773
+date: 2025-08-02T13:04:25.675571
 image: assets/exa-labs_company-researcher_cropped.png
 ---
 
