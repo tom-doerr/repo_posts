@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-02T21:40:25.691205
+date: 2025-08-02T21:40:29.115864
 image: assets/ozgrozer_ai-renamer_cropped.png
 ---
 
