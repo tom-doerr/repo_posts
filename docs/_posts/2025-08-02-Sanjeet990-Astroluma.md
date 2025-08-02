@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-02T07:00:46.945413
+date: 2025-08-02T07:00:48.695269
 image: assets/Sanjeet990_Astroluma_cropped.png
 ---
 
