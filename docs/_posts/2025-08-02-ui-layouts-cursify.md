@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-02T03:59:19.991254
+date: 2025-08-02T03:59:20.887177
 image: assets/ui-layouts_cursify_cropped.png
 ---
 
