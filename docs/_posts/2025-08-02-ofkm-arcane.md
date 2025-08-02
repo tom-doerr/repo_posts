@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-02T19:08:03.328242
+date: 2025-08-02T19:08:05.856177
 image: assets/ofkm_arcane_cropped.png
 ---
 
