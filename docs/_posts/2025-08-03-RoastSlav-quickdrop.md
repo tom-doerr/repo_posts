@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-03T12:54:16.662729
+date: 2025-08-03T12:54:17.536610
 image: assets/RoastSlav_quickdrop_cropped.png
 ---
 
