@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-03T16:25:55.610323
+date: 2025-08-03T16:25:56.641501
 image: assets/ranuts_document_cropped.png
 ---
 
