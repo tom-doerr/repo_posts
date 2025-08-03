@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-03T02:13:27.138977
+date: 2025-08-03T02:13:29.013266
 image: assets/openRin_Rin_cropped.png
 ---
 
