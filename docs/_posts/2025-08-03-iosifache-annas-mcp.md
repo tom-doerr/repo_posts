@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-03T07:51:55.969387
+date: 2025-08-03T07:51:56.825891
 image: assets/iosifache_annas-mcp_cropped.png
 ---
 
