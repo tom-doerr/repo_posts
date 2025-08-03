@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-03T13:54:43.845517
+date: 2025-08-03T13:54:44.833286
 image: assets/jarulraj_periodic-table_cropped.png
 ---
 
