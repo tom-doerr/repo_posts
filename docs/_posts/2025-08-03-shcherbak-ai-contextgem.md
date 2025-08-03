@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-03T10:23:06.428119
+date: 2025-08-03T10:23:07.368132
 image: assets/shcherbak-ai_contextgem_cropped.png
 ---
 
