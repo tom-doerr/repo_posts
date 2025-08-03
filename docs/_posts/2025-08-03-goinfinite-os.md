@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-03T15:25:27.133027
+date: 2025-08-03T15:25:28.290399
 image: assets/goinfinite_os_cropped.png
 ---
 
