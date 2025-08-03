@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-04T00:44:47.756064
+date: 2025-08-04T00:44:48.875645
 image: assets/jeanchristophe13v_PageTalk_cropped.png
 ---
 
