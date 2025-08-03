@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-03T03:44:13.993439
+date: 2025-08-03T03:44:15.691915
 image: assets/neiltron_apple-health-mcp_cropped.png
 ---
 
