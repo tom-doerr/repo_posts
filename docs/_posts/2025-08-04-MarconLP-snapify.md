@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-04T09:19:00.740487
+date: 2025-08-04T09:19:01.827383
 image: assets/MarconLP_snapify_cropped.png
 ---
 
