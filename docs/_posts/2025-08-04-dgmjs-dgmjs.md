@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-04T12:50:49.925892
+date: 2025-08-04T12:50:51.008134
 image: assets/dgmjs_dgmjs_cropped.png
 ---
 
