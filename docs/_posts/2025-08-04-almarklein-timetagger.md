@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-04T06:17:27.792072
+date: 2025-08-04T06:17:28.756162
 image: assets/almarklein_timetagger_cropped.png
 ---
 
