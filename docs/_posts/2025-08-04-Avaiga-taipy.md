@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-04T19:54:13.034110
+date: 2025-08-04T19:54:13.982137
 image: assets/Avaiga_taipy_cropped.png
 ---
 
