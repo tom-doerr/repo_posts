@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-04T05:16:55.666073
+date: 2025-08-04T05:16:56.591786
 image: assets/brufdev_many-notes_cropped.png
 ---
 
