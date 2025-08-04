@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-04T07:48:19.126143
+date: 2025-08-04T07:48:20.555359
 image: assets/plausible_analytics_cropped.png
 ---
 
