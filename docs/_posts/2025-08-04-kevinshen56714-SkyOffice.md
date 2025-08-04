@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-04T11:50:18.830413
+date: 2025-08-04T11:50:20.034389
 image: assets/kevinshen56714_SkyOffice_cropped.png
 ---
 
