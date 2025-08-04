@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-04T21:55:12.396080
+date: 2025-08-04T21:55:13.621177
 image: assets/cjpais_Handy_cropped.png
 ---
 
