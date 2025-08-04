@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-04T17:22:54.533995
+date: 2025-08-04T17:23:02.418738
 image: assets/dynobo_normcap_cropped.png
 ---
 
