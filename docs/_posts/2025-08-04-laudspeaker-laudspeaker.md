@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-04T18:53:45.528862
+date: 2025-08-04T18:53:46.622645
 image: assets/laudspeaker_laudspeaker_cropped.png
 ---
 
