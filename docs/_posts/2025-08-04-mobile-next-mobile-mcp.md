@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-04T06:47:42.279660
+date: 2025-08-04T06:47:43.337583
 image: assets/mobile-next_mobile-mcp_cropped.png
 ---
 
