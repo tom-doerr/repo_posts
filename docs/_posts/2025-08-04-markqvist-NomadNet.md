@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-04T21:24:58.147668
+date: 2025-08-04T21:24:59.192891
 image: assets/markqvist_NomadNet_cropped.png
 ---
 
