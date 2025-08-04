@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-04T20:54:44.180772
+date: 2025-08-04T20:54:45.974094
 image: assets/lingodotdev_lingo.dev_cropped.png
 ---
 
