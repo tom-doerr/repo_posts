@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-04T17:53:15.833785
+date: 2025-08-04T17:53:16.899691
 image: assets/JohannesKaufmann_html-to-markdown_cropped.png
 ---
 
