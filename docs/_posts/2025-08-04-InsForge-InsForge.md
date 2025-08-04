@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-04T11:20:05.098767
+date: 2025-08-04T11:20:06.099554
 image: assets/InsForge_InsForge_cropped.png
 ---
 
