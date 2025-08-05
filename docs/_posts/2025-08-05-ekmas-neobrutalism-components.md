@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-05T20:06:47.824430
+date: 2025-08-05T20:06:48.767385
 image: assets/ekmas_neobrutalism-components_cropped.png
 ---
 
