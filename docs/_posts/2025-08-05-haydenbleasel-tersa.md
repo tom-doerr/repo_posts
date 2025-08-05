@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-05T06:29:39.556085
+date: 2025-08-05T06:29:40.593489
 image: assets/haydenbleasel_tersa_cropped.png
 ---
 
