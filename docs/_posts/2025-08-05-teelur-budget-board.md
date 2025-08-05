@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-05T21:37:33.310103
+date: 2025-08-05T21:37:34.360721
 image: assets/teelur_budget-board_cropped.png
 ---
 
