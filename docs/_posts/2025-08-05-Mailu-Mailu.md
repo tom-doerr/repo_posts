@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-05T15:34:30.999424
+date: 2025-08-05T15:34:32.205221
 image: assets/Mailu_Mailu_cropped.png
 ---
 
