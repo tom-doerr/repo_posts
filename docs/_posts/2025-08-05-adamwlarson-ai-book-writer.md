@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-05T14:03:44.615677
+date: 2025-08-05T14:03:46.279441
 image: assets/adamwlarson_ai-book-writer_cropped.png
 ---
 
