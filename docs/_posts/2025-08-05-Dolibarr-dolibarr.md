@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-05T04:28:26.703781
+date: 2025-08-05T04:28:33.745732
 image: assets/Dolibarr_dolibarr_cropped.png
 ---
 
