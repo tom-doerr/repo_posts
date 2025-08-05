@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-05T13:33:30.121636
+date: 2025-08-05T13:33:31.207916
 image: assets/kiliczsh_claude-cmd_cropped.png
 ---
 
