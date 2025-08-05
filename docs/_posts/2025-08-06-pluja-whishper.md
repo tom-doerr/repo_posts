@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-06T01:09:15.818249
+date: 2025-08-06T01:09:16.777367
 image: assets/pluja_whishper_cropped.png
 ---
 
