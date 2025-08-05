@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-05T18:05:46.610321
+date: 2025-08-05T18:05:47.874962
 image: assets/possibilities_claude-code-generic-hooks_cropped.png
 ---
 
