@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-07T01:52:13.264136
+date: 2025-08-07T01:52:14.252820
 image: assets/imanoop7_Ollama-OCR_cropped.png
 ---
 
