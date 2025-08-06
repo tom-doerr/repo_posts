@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-07T00:21:27.430527
+date: 2025-08-07T00:21:28.418048
 image: assets/zslucky_awesome-AI-books_cropped.png
 ---
 
