@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-06T22:50:44.918320
+date: 2025-08-06T22:50:45.907121
 image: assets/rocksdanister_lively_cropped.png
 ---
 
