@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-06T17:17:17.243634
+date: 2025-08-06T17:17:18.470768
 image: assets/MDeLuise_plant-it_cropped.png
 ---
 
