@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-06T13:15:24.306053
+date: 2025-08-06T13:15:25.235278
 image: assets/vkhamesi_ocpdet_cropped.png
 ---
 
