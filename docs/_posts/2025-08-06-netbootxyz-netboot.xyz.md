@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-06T07:11:56.070781
+date: 2025-08-06T07:11:57.643635
 image: assets/netbootxyz_netboot.xyz_cropped.png
 ---
 
