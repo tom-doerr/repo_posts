@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-06T11:44:38.776941
+date: 2025-08-06T11:44:39.975928
 image: assets/tnodir_fort_cropped.png
 ---
 
