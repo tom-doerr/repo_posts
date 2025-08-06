@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-06T15:46:33.536914
+date: 2025-08-06T15:46:34.519960
 image: assets/jpmorganchase_python-training_cropped.png
 ---
 
