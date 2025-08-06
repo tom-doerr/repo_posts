@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-07T01:21:57.859901
+date: 2025-08-07T01:21:58.967956
 image: assets/ispras_dedoc_cropped.png
 ---
 
