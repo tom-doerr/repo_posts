@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-06T20:49:03.827934
+date: 2025-08-06T20:49:04.892904
 image: assets/stretchcloud_deepscrape_cropped.png
 ---
 
