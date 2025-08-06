@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-06T21:49:39.673519
+date: 2025-08-06T21:49:40.794530
 image: assets/julep-ai_julep_cropped.png
 ---
 
