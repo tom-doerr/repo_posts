@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-07T10:26:22.426320
+date: 2025-08-07T10:26:23.591614
 image: assets/bypirob_airo_cropped.png
 ---
 
