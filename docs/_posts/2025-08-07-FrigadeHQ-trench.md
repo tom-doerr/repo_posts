@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-07T19:30:55.801921
+date: 2025-08-07T19:30:56.926119
 image: assets/FrigadeHQ_trench_cropped.png
 ---
 
