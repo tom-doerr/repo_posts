@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-07T11:57:05.532571
+date: 2025-08-07T11:57:06.782790
 image: assets/shshemi_tabiew_cropped.png
 ---
 
