@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-07T14:58:32.636642
+date: 2025-08-07T14:58:34.044468
 image: assets/drmingler_docling-api_cropped.png
 ---
 
