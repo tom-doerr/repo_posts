@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-07T09:56:08.575385
+date: 2025-08-07T09:56:09.795008
 image: assets/divar-ir_ai-doc-gen_cropped.png
 ---
 
