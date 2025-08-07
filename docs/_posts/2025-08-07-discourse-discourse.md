@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-07T03:53:13.122896
+date: 2025-08-07T03:53:14.525361
 image: assets/discourse_discourse_cropped.png
 ---
 
