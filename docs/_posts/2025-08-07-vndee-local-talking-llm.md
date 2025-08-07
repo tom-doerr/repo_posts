@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-07T07:24:59.251344
+date: 2025-08-07T07:25:00.299116
 image: assets/vndee_local-talking-llm_cropped.png
 ---
 
