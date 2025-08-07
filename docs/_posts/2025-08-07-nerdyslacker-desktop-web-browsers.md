@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-07T16:29:15.556856
+date: 2025-08-07T16:29:16.606428
 image: assets/nerdyslacker_desktop-web-browsers_cropped.png
 ---
 
