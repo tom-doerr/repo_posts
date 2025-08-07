@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-07T17:59:59.653522
+date: 2025-08-07T18:00:00.865756
 image: assets/irthomasthomas_llm-consortium_cropped.png
 ---
 
