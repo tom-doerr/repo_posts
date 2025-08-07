@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-07T02:52:41.505707
+date: 2025-08-07T02:52:42.420606
 image: assets/mickasmt_next-saas-stripe-starter_cropped.png
 ---
 
