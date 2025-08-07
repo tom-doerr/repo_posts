@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-07T13:27:48.913887
+date: 2025-08-07T13:27:50.132515
 image: assets/BaldissaraMatheus_Tasks.md_cropped.png
 ---
 
