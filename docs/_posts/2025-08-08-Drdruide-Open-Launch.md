@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-08T17:11:27.441747
+date: 2025-08-08T17:11:28.461001
 image: assets/Drdruide_Open-Launch_cropped.png
 ---
 
