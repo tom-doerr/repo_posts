@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-09T00:45:14.128013
+date: 2025-08-09T00:45:15.278053
 image: assets/learnhouse_learnhouse_cropped.png
 ---
 
