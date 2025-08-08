@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-08T09:37:43.240872
+date: 2025-08-08T09:37:44.253426
 image: assets/sherifabdlnaby_elastdocker_cropped.png
 ---
 
