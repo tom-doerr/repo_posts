@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-08T12:39:07.796464
+date: 2025-08-08T12:39:08.753247
 image: assets/flipt-io_flipt_cropped.png
 ---
 
