@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-08T06:06:05.368517
+date: 2025-08-08T06:06:06.300788
 image: assets/gotify_server_cropped.png
 ---
 
