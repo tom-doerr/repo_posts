@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-08T22:14:00.866874
+date: 2025-08-08T22:14:02.105734
 image: assets/mathesar-foundation_mathesar_cropped.png
 ---
 
