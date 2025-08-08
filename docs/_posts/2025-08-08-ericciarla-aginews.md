@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-08T21:43:45.220412
+date: 2025-08-08T21:43:46.308165
 image: assets/ericciarla_aginews_cropped.png
 ---
 
