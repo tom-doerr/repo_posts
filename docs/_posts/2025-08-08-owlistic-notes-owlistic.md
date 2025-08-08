@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-08T10:07:58.145663
+date: 2025-08-08T10:07:58.989114
 image: assets/owlistic-notes_owlistic_cropped.png
 ---
 
