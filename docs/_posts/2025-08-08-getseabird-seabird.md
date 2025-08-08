@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-08T19:12:28.368155
+date: 2025-08-08T19:12:29.280219
 image: assets/getseabird_seabird_cropped.png
 ---
 
