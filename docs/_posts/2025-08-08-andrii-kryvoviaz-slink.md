@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-08T14:09:48.573914
+date: 2025-08-08T14:09:49.735701
 image: assets/andrii-kryvoviaz_slink_cropped.png
 ---
 
