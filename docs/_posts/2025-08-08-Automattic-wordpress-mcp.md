@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-08T20:12:56.364731
+date: 2025-08-08T20:12:57.443836
 image: assets/Automattic_wordpress-mcp_cropped.png
 ---
 
