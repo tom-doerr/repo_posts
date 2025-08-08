@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-08T22:44:14.778058
+date: 2025-08-08T22:44:16.068666
 image: assets/kitops-ml_kitops_cropped.png
 ---
 
