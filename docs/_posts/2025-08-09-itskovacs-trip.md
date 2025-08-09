@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-09T04:16:54.482541
+date: 2025-08-09T04:16:55.633563
 image: assets/itskovacs_trip_cropped.png
 ---
 
