@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-10T01:57:37.188536
+date: 2025-08-10T01:57:38.073742
 image: assets/cmann50_mcp-chrome-google-search_cropped.png
 ---
 
