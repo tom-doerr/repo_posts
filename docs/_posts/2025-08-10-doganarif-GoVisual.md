@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-10T00:57:11.579228
+date: 2025-08-10T00:57:12.512127
 image: assets/doganarif_GoVisual_cropped.png
 ---
 
