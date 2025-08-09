@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-09T08:18:55.954991
+date: 2025-08-09T08:18:56.845228
 image: assets/dyoshikawa_rulesync_cropped.png
 ---
 
