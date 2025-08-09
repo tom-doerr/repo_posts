@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-09T21:55:50.389600
+date: 2025-08-09T21:55:51.348566
 image: assets/jonathan-politzki_your-memory_cropped.png
 ---
 
