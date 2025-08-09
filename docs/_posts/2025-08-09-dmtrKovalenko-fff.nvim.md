@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-09T10:50:06.440840
+date: 2025-08-09T10:50:07.398496
 image: assets/dmtrKovalenko_fff.nvim_cropped.png
 ---
 
