@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-10T11:31:43.778810
+date: 2025-08-10T11:31:44.713624
 image: assets/majd_ipatool_cropped.png
 ---
 
