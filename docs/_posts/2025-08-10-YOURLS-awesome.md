@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-10T10:31:17.971332
+date: 2025-08-10T10:31:18.888652
 image: assets/YOURLS_awesome_cropped.png
 ---
 
