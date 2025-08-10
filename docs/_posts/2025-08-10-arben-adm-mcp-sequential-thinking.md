@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-10T18:04:41.746961
+date: 2025-08-10T18:04:42.703663
 image: assets/arben-adm_mcp-sequential-thinking_cropped.png
 ---
 
