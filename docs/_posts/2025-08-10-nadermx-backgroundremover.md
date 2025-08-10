@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-10T13:02:25.882493
+date: 2025-08-10T13:02:27.023426
 image: assets/nadermx_backgroundremover_cropped.png
 ---
 
