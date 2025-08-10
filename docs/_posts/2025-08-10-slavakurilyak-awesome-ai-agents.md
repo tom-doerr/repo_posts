@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-10T19:36:03.803483
+date: 2025-08-10T19:36:04.995650
 image: assets/slavakurilyak_awesome-ai-agents_cropped.png
 ---
 
