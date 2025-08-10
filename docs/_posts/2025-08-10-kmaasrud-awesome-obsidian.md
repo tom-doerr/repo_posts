@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-10T09:30:51.289179
+date: 2025-08-10T09:30:52.170207
 image: assets/kmaasrud_awesome-obsidian_cropped.png
 ---
 
