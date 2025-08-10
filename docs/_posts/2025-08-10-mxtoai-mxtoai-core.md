@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-10T14:33:08.462564
+date: 2025-08-10T14:33:09.401246
 image: assets/mxtoai_mxtoai-core_cropped.png
 ---
 
