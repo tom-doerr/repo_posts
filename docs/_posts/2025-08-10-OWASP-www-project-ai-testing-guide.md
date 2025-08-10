@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-10T17:04:15.487020
+date: 2025-08-10T17:04:16.394025
 image: assets/OWASP_www-project-ai-testing-guide_cropped.png
 ---
 
