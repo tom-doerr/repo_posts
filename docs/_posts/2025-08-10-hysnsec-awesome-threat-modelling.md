@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-10T12:32:10.904272
+date: 2025-08-10T12:32:11.799329
 image: assets/hysnsec_awesome-threat-modelling_cropped.png
 ---
 
