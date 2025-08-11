@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-11T12:43:55.469231
+date: 2025-08-11T12:43:56.578038
 image: assets/facefusion_facefusion_cropped.png
 ---
 
