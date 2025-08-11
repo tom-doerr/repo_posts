@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-11T19:47:22.292563
+date: 2025-08-11T19:47:23.362239
 image: assets/20250810T080026--bruin-data--ingestr--20250811T002122--cropped.png
 ---
 
