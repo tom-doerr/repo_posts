@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-11T19:17:08.528895
+date: 2025-08-11T19:17:09.742167
 image: assets/JackJuly_linkook--20250811T001600--cropped.png
 ---
 
