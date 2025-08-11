@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-11T07:11:22.904565
+date: 2025-08-11T07:11:23.919348
 image: assets/TalEliyahu_AI-Security-Newsletter_cropped.png
 ---
 
