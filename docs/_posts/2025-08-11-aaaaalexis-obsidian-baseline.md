@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-11T11:43:29.270903
+date: 2025-08-11T11:43:30.502643
 image: assets/aaaaalexis_obsidian-baseline_cropped.png
 ---
 
