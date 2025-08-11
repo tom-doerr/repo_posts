@@ -1,0 +1,9 @@
+---
+layout: default
+date: 2025-08-11T12:43:55.469231
+image: assets/facefusion_facefusion_cropped.png
+---
+
+# [facefusion/facefusion](https://github.com/facefusion/facefusion)
+
+face swap and face manipulation toolkit
