@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-11T23:19:03.032142
+date: 2025-08-11T23:19:04.216577
 image: assets/20250810T065919--antinomyhq--forge--20250811T004019--cropped.png
 ---
 
