@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-11T06:10:55.454494
+date: 2025-08-11T06:10:56.496688
 image: assets/Richard9394_MingCute_cropped.png
 ---
 
