@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-11T20:47:50.329702
+date: 2025-08-11T20:47:51.332047
 image: assets/bastienwirtz_homer--20250811T002528--cropped.png
 ---
 
