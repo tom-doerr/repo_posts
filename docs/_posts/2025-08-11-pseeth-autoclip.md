@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-11T10:12:48.570395
+date: 2025-08-11T10:12:49.614256
 image: assets/pseeth_autoclip_cropped.png
 ---
 
