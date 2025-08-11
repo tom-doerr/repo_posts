@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-11T09:42:32.944385
+date: 2025-08-11T09:42:34.046489
 image: assets/saminkhan1_realtor-ai_cropped.png
 ---
 
