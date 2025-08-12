@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-12T21:31:08.436726
+date: 2025-08-12T21:31:09.736565
 image: assets/StarFleetCPTN_GoMFT--20250812T005708--cropped.png
 ---
 
