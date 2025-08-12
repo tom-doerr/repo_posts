@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-12T15:27:34.192966
+date: 2025-08-12T15:27:35.641972
 image: assets/RoyalCities_RC-Home-Assistant-Low-VRAM--20250812T002704--cropped.png
 ---
 
