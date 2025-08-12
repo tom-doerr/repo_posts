@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-12T22:31:36.897951
+date: 2025-08-12T22:31:38.058387
 image: assets/Uaghazade1_kanba--20250812T005930--cropped.png
 ---
 
