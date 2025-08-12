@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-12T20:00:23.402284
+date: 2025-08-12T20:00:24.598167
 image: assets/Milkshiift_YouTubeTLDR--20250812T004906--cropped.png
 ---
 
