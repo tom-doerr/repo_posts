@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-12T21:00:53.248014
+date: 2025-08-12T21:00:54.697520
 image: assets/jstrosch_learning-reverse-engineering--20250812T005542--cropped.png
 ---
 
