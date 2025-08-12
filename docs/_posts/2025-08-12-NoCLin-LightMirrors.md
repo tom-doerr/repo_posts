@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-12T22:01:22.810360
+date: 2025-08-12T22:01:24.249498
 image: assets/20250810T053926--NoCLin--LightMirrors--20250812T005810--cropped.png
 ---
 
