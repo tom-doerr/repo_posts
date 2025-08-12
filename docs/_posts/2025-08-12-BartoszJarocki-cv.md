@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-12T11:25:25.282380
+date: 2025-08-12T11:25:26.474184
 image: assets/BartoszJarocki_cv--20250812T001717--cropped.png
 ---
 
