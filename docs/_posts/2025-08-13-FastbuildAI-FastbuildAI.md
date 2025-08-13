@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-13T11:37:59.623951
+date: 2025-08-13T11:38:00.970099
 image: assets/FastbuildAI_FastbuildAI--20250812T232501--cropped.png
 ---
 
