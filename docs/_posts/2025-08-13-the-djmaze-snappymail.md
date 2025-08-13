@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-13T20:42:54.491824
+date: 2025-08-13T20:42:56.550316
 image: assets/the-djmaze_snappymail--20250812T235124--cropped.png
 ---
 
