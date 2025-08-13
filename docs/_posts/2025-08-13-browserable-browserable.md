@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-13T16:40:45.587122
+date: 2025-08-13T16:40:46.944329
 image: assets/browserable_browserable--20250812T233437--cropped.png
 ---
 
