@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-14T00:14:40.869463
+date: 2025-08-14T00:14:42.002232
 image: assets/marktext_marktext--20250813T000504--cropped.png
 ---
 
