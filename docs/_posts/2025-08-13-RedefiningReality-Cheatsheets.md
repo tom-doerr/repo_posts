@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-13T13:38:57.566086
+date: 2025-08-13T13:38:58.707555
 image: assets/RedefiningReality_Cheatsheets--20250812T232929--cropped.png
 ---
 
