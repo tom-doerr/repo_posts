@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-13T13:08:42.979050
+date: 2025-08-13T13:08:44.417305
 image: assets/jbilcke-hf_clapper--20250812T232759--cropped.png
 ---
 
