@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-13T14:39:27.291718
+date: 2025-08-13T14:39:28.785852
 image: assets/is-a-dev_register--20250812T233050--cropped.png
 ---
 
