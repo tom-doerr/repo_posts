@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-13T03:03:52.291191
+date: 2025-08-13T03:03:53.493455
 image: assets/TalEliyahu_awesome-business-of-cybersecurity--20250812T011422--cropped.png
 ---
 
