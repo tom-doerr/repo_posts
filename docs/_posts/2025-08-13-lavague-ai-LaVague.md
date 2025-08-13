@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-13T03:34:06.997702
+date: 2025-08-13T03:34:08.201055
 image: assets/lavague-ai_LaVague--20250812T011724--cropped.png
 ---
 
