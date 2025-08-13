@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-13T23:44:26.325674
+date: 2025-08-13T23:44:27.450927
 image: assets/suyalcinkaya_onur.dev--20250813T000247--cropped.png
 ---
 
