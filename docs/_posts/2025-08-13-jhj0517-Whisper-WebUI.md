@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-13T21:43:23.555311
+date: 2025-08-13T21:43:24.853956
 image: assets/jhj0517_Whisper-WebUI--20250812T235638--cropped.png
 ---
 
