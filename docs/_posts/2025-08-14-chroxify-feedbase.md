@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-14T20:54:38.819243
+date: 2025-08-14T20:54:40.415159
 image: assets/chroxify_feedbase--20250814T045235597--cropped.png
 ---
 
