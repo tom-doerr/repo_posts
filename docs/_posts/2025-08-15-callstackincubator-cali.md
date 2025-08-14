@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-15T01:26:57.274955
+date: 2025-08-15T01:26:59.285604
 image: assets/callstackincubator_cali--20250814T051022410--cropped.png
 ---
 
