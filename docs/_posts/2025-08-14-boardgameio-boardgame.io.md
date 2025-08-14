@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-14T05:17:05.141696
+date: 2025-08-14T05:17:06.386315
 image: assets/boardgameio_boardgame.io--20250814T025614412--cropped.png
 ---
 
