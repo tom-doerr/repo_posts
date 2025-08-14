@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-15T00:26:27.170312
+date: 2025-08-15T00:26:28.285686
 image: assets/KryptXBSA_FormBuilder--20250814T050541282--cropped.png
 ---
 
