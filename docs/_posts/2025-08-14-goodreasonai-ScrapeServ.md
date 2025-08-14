@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-14T20:24:24.748758
+date: 2025-08-14T20:24:26.124775
 image: assets/goodreasonai_ScrapeServ--20250814T045121172--cropped.png
 ---
 
