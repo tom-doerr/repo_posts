@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-14T05:47:18.600737
+date: 2025-08-14T05:47:19.917109
 image: assets/Supernova3339_changerawr--20250814T025835217--cropped.png
 ---
 
