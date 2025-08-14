@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-14T22:25:24.328837
+date: 2025-08-14T22:25:25.620992
 image: assets/Darwin-lfl_langmanus--20250814T045818285--cropped.png
 ---
 
