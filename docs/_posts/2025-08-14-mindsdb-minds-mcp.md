@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-14T14:51:36.924092
+date: 2025-08-14T14:51:38.088866
 image: assets/mindsdb_minds-mcp--20250814T041941782--cropped.png
 ---
 
