@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-15T12:01:59.777555
+date: 2025-08-15T12:02:00.980472
 image: assets/coaidev_coai--20250815T013514011--cropped.png
 ---
 
