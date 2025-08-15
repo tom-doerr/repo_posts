@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-15T06:59:38.722681
+date: 2025-08-15T06:59:39.995226
 image: assets/savbell_whisper-writer--20250815T011952892--cropped.png
 ---
 
