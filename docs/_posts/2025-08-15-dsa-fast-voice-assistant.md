@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-15T18:04:52.765132
+date: 2025-08-15T18:04:53.848818
 image: assets/dsa_fast-voice-assistant--20250815T015840167--cropped.png
 ---
 
