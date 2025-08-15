@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-15T21:06:18.487547
+date: 2025-08-15T21:06:19.684380
 image: assets/plasmicapp_plasmic--20250815T020529804--cropped.png
 ---
 
