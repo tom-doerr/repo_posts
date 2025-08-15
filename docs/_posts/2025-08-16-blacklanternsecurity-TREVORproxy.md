@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-16T01:38:29.310992
+date: 2025-08-16T01:38:30.514287
 image: assets/blacklanternsecurity_TREVORproxy--20250815T021453724--cropped.png
 ---
 
