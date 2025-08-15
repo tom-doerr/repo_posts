@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-15T02:57:44.085251
+date: 2025-08-15T02:57:45.314360
 image: assets/20250815T010219364_cogwheel0_conduit--20250815T010617080--cropped.png
 ---
 
