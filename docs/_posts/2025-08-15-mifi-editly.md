@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-15T22:06:49.603410
+date: 2025-08-15T22:06:50.972368
 image: assets/mifi_editly--20250815T020654456--cropped.png
 ---
 
