@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-15T09:30:50.501376
+date: 2025-08-15T09:30:51.583085
 image: assets/hudikhq_hoodik--20250815T012712418--cropped.png
 ---
 
