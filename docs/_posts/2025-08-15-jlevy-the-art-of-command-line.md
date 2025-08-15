@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-15T15:33:41.921501
+date: 2025-08-15T15:33:43.186132
 image: assets/jlevy_the-art-of-command-line--20250815T015407196--cropped.png
 ---
 
