@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-15T13:32:42.841934
+date: 2025-08-15T13:32:44.002102
 image: assets/PlakarKorp_plakar--20250815T014112144--cropped.png
 ---
 
