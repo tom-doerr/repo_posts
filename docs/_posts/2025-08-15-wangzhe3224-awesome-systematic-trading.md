@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-15T18:35:06.428531
+date: 2025-08-15T18:35:07.500209
 image: assets/wangzhe3224_awesome-systematic-trading--20250815T015910439--cropped.png
 ---
 
