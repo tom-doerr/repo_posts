@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-16T20:47:18.358842
+date: 2025-08-16T20:47:19.538435
 image: assets/kubenav_kubenav--20250816T011911491--cropped.png
 ---
 
