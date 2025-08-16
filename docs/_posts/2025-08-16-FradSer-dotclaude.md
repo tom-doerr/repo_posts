@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-16T09:42:17.804376
+date: 2025-08-16T09:42:18.968151
 image: assets/FradSer_dotclaude--20250815T024201085--cropped.png
 ---
 
