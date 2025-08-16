@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-16T22:18:17.100002
+date: 2025-08-16T22:18:18.055263
 image: assets/joaovitoriasilva_endurain--20250816T012234893--cropped.png
 ---
 
