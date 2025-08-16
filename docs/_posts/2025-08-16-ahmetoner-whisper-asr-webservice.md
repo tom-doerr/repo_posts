@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-16T21:17:32.288763
+date: 2025-08-16T21:17:33.506583
 image: assets/ahmetoner_whisper-asr-webservice--20250816T012138082--cropped.png
 ---
 
