@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-16T15:44:53.722470
+date: 2025-08-16T15:44:54.769200
 image: assets/20250816T004651850_stephenlacy_mathom--20250816T005054910--cropped.png
 ---
 
