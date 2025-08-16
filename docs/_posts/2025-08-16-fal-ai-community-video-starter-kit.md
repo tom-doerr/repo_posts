@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-16T18:16:07.237700
+date: 2025-08-16T18:16:08.567530
 image: assets/fal-ai-community_video-starter-kit--20250816T011108108--cropped.png
 ---
 
