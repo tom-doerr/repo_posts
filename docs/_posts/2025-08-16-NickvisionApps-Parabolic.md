@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-16T10:42:44.902659
+date: 2025-08-16T10:42:46.040105
 image: assets/NickvisionApps_Parabolic--20250815T024636351--cropped.png
 ---
 
