@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-17T04:52:01.020195
+date: 2025-08-17T04:52:02.169903
 image: assets/yoheinakajima_ditto--20250816T044632897--cropped.png
 ---
 
