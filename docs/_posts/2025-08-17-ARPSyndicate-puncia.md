@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-17T02:20:07.028434
+date: 2025-08-17T02:20:08.251117
 image: assets/ARPSyndicate_puncia--20250816T013635061--cropped.png
 ---
 
