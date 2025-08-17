@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-17T14:56:46.397650
+date: 2025-08-17T14:56:47.602332
 image: assets/frlender_Jandas--20250816T053517241--cropped.png
 ---
 
