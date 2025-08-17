@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-17T05:22:15.532848
+date: 2025-08-17T05:22:16.680791
 image: assets/schej-it_timeful.app--20250816T044708178--cropped.png
 ---
 
