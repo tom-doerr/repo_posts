@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-18T09:35:43.095503
+date: 2025-08-18T09:35:44.199824
 image: assets/universal-mcp_universal-mcp--20250817T075126477--cropped.png
 ---
 
