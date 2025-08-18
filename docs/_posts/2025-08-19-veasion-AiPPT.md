@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-19T00:53:34.724008
+date: 2025-08-19T00:53:35.718041
 image: assets/20250818T103053540_veasion_AiPPT--20250818T103601638--cropped.png
 ---
 
