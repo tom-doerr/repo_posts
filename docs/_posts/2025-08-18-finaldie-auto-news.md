@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-18T13:37:42.655444
+date: 2025-08-18T13:37:44.008469
 image: assets/finaldie_auto-news--20250817T080503977--cropped.png
 ---
 
