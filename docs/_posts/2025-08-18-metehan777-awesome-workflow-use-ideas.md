@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-18T12:37:10.053651
+date: 2025-08-18T12:37:11.532816
 image: assets/metehan777_awesome-workflow-use-ideas--20250817T080051114--cropped.png
 ---
 
