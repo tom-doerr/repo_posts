@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-18T06:34:15.258120
+date: 2025-08-18T06:34:16.411109
 image: assets/moeru-ai_airi--20250817T073730469--cropped.png
 ---
 
