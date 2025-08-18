@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-18T03:02:39.976979
+date: 2025-08-18T03:02:41.392566
 image: assets/mrtian2016_hass-panel--20250817T072108282--cropped.png
 ---
 
