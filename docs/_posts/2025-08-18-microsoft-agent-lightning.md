@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-18T20:41:23.689369
+date: 2025-08-18T20:41:25.156616
 image: assets/20250818T091651190_microsoft_agent-lightning--20250818T091831850--cropped.png
 ---
 
