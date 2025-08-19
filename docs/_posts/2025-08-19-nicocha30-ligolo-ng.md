@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-19T22:34:25.191742
+date: 2025-08-19T22:34:26.809611
 image: assets/20250818T115808791_nicocha30_ligolo-ng--20250818T120125179--cropped.png
 ---
 
