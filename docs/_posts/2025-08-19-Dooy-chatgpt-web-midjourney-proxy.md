@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-19T03:24:47.514898
+date: 2025-08-19T03:24:48.857215
 image: assets/Dooy_chatgpt-web-midjourney-proxy--20250818T110545777--cropped.png
 ---
 
