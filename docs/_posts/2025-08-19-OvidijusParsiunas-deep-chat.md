@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-19T05:56:03.325997
+date: 2025-08-19T05:56:04.629473
 image: assets/20250818T111837911_OvidijusParsiunas_deep-chat--20250818T111951189--cropped.png
 ---
 
