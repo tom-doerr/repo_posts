@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-19T17:31:54.199037
+date: 2025-08-19T17:31:55.648808
 image: assets/20250818T114829784_laitco_tailscale-healthcheck--20250818T115352849--cropped.png
 ---
 
