@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-20T00:05:10.015540
+date: 2025-08-20T00:05:11.945348
 image: assets/20250818T120100578_obsei_obsei--20250818T120537137--cropped.png
 ---
 
