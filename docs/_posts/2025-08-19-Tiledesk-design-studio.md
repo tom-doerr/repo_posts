@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-19T12:29:12.661938
+date: 2025-08-19T12:29:14.438645
 image: assets/Tiledesk_design-studio--20250818T113631614--cropped.png
 ---
 
