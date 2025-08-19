@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-19T08:27:14.591371
+date: 2025-08-19T08:27:16.006648
 image: assets/20250818T112121279_jovandeginste_workout-tracker--20250818T112313684--cropped.png
 ---
 
