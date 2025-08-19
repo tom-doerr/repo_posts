@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-19T03:55:02.313717
+date: 2025-08-19T03:55:03.962498
 image: assets/dbish_DispatchMail--20250818T111142580--cropped.png
 ---
 
