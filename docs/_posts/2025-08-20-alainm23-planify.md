@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-20T01:35:52.027511
+date: 2025-08-20T01:35:53.419460
 image: assets/20250818T120232990_alainm23_planify--20250818T120750317--cropped.png
 ---
 
