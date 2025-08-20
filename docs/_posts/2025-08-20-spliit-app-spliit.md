@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-20T22:16:49.186506
+date: 2025-08-20T22:16:50.748959
 image: assets/20250818T101419368_spliit-app_spliit--20250820T125757435--cropped.png
 ---
 
