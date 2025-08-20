@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-20T11:40:53.017683
+date: 2025-08-20T11:40:54.720032
 image: assets/20250818T122422776_datalayer_jupyter-mcp-server--20250818T123134846--cropped.png
 ---
 
