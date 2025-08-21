@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-21T12:23:34.292593
+date: 2025-08-21T12:23:35.730321
 image: assets/20250820T132357904_ChurchApps_FreeShow--20250820T132651912--cropped.png
 ---
 
