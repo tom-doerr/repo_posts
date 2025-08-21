@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-21T18:57:06.811035
+date: 2025-08-21T18:57:08.322673
 image: assets/20250820T133553098_agentheroes_agentheroes--20250820T133836504--cropped.png
 ---
 
