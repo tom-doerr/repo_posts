@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-21T22:59:33.857673
+date: 2025-08-21T22:59:34.990101
 image: assets/20250820T132528555_BlackGlory_copycat--20250820T135422865--cropped.png
 ---
 
