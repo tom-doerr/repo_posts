@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-21T03:19:17.176782
+date: 2025-08-21T03:19:18.451470
 image: assets/20250820T131302195_edoardottt_cariddi--20250820T131511254--cropped.png
 ---
 
