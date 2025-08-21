@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-21T10:52:51.440600
+date: 2025-08-21T10:52:52.679505
 image: assets/20250820T132202757_opencost_opencost--20250820T132436825--cropped.png
 ---
 
