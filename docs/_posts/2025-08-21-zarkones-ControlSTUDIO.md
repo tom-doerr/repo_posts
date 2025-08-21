@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-21T06:20:42.254514
+date: 2025-08-21T06:20:43.330850
 image: assets/20250820T131520422_zarkones_ControlSTUDIO--20250820T131942200--cropped.png
 ---
 
