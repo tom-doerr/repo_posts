@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-21T19:27:22.525580
+date: 2025-08-21T19:27:23.768961
 image: assets/20250820T133629551_jgraph_docker-drawio--20250820T133859696--cropped.png
 ---
 
