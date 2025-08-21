@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-21T08:21:34.935113
+date: 2025-08-21T08:21:36.655370
 image: assets/20250818T110455573_katanemo_archgw--20250820T132157733--cropped.png
 ---
 
