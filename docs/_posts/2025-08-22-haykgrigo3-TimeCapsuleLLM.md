@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-22T08:34:12.126550
+date: 2025-08-22T08:34:13.287554
 image: assets/20250820T141824620_haykgrigo3_TimeCapsuleLLM--20250820T142326587--cropped.png
 ---
 
