@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-22T22:40:54.291480
+date: 2025-08-22T22:40:55.591452
 image: assets/20250822T020921839--NiladriHazra--Open-Fiesta--20250822T021257980--cropped.png
 ---
 
