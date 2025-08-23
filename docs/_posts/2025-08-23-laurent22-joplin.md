@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-23T11:17:31.301199
+date: 2025-08-23T11:17:32.543592
 image: assets/20250822T023346206--laurent22--joplin--20250822T023813163--cropped.png
 ---
 
