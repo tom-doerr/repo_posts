@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-24T00:54:43.177028
+date: 2025-08-24T00:54:44.323971
 image: assets/20250822T025328927--litestar-org--litestar--20250822T025932500--cropped.png
 ---
 
