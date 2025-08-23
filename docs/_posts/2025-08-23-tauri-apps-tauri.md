@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-23T18:51:38.287253
+date: 2025-08-23T18:51:39.531798
 image: assets/20250822T024232442--tauri-apps--tauri--20250822T024824855--cropped.png
 ---
 
