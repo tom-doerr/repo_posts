@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-23T02:43:00.892810
+date: 2025-08-23T02:43:02.972955
 image: assets/20250822T021631500--xinnan-tech--xiaozhi-esp32-server--20250822T022419313--cropped.png
 ---
 
