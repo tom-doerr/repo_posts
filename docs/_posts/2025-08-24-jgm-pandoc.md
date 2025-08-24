@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-24T04:26:33.785823
+date: 2025-08-24T04:26:35.117236
 image: assets/20250822T025629261--jgm--pandoc--20250822T030247729--cropped.png
 ---
 
