@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-24T03:56:12.234130
+date: 2025-08-24T03:56:13.338831
 image: assets/20250822T025600009--nextjs--saas-starter--20250822T030236984--cropped.png
 ---
 
