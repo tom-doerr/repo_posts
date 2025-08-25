@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-25T11:42:23.687463
+date: 2025-08-25T11:42:24.960783
 image: assets/20250825T015322610--hrvach--deskhop--20250825T020206025--cropped.png
 ---
 
