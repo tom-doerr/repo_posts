@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-25T02:38:13.504951
+date: 2025-08-25T02:38:14.740095
 image: assets/20250823T014136777--borglab--gtsam--20250823T014529402--cropped.png
 ---
 
