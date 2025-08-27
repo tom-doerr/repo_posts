@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-27T22:15:49.486805
+date: 2025-08-27T22:15:50.940551
 image: assets/20250826T031531484--jlelong--vscode-latex-basics--20250826T032011543--cropped.png
 ---
 
