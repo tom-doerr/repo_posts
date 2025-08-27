@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-27T14:11:09.597103
+date: 2025-08-27T14:11:10.943958
 image: assets/20250826T030442108--mtdvio--every-programmer-should-know--20250826T030952658--cropped.png
 ---
 
