@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-27T03:34:13.117764
+date: 2025-08-27T03:34:14.972833
 image: assets/20250826T024136903--lapce--lapdev--20250826T024559428--cropped.png
 ---
 
