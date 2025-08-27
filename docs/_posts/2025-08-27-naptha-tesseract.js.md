@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-27T04:34:53.761215
+date: 2025-08-27T04:34:55.271812
 image: assets/20250826T024407707--naptha--tesseract.js--20250826T024723072--cropped.png
 ---
 
