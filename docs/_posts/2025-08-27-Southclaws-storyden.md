@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-27T10:08:38.744775
+date: 2025-08-27T10:08:40.272744
 image: assets/20250826T025927058--Southclaws--storyden--20250826T030242743--cropped.png
 ---
 
