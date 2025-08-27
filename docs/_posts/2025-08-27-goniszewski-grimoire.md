@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-27T03:03:54.217566
+date: 2025-08-27T03:04:00.046412
 image: assets/20250826T024128703--goniszewski--grimoire--20250826T024510773--cropped.png
 ---
 
