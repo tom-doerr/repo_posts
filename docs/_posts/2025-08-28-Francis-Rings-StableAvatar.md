@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-28T09:21:18.093631
+date: 2025-08-28T09:21:19.642516
 image: assets/20250827T100445330--Francis-Rings--StableAvatar--20250827T100809851--cropped.png
 ---
 
