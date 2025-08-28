@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-28T06:19:46.200245
+date: 2025-08-28T06:19:47.294347
 image: assets/20250826T033842485--cursorless-dev--cursorless-talon--20250827T095754518--cropped.png
 ---
 
