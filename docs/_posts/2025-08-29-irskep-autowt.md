@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-29T23:18:32.788268
+date: 2025-08-29T23:18:34.243987
 image: assets/20250829T042841749--irskep--autowt--20250829T043339276--cropped.png
 ---
 
