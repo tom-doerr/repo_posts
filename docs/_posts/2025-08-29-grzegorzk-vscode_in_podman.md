@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-29T21:17:05.878854
+date: 2025-08-29T21:17:07.654418
 image: assets/20250829T042152738--grzegorzk--vscode_in_podman--20250829T042818820--cropped.png
 ---
 
