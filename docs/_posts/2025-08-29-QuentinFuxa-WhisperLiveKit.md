@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-29T17:44:18.856374
+date: 2025-08-29T17:44:25.736383
 image: assets/20250829T041340923--QuentinFuxa--WhisperLiveKit--20250829T041919464--cropped.png
 ---
 
