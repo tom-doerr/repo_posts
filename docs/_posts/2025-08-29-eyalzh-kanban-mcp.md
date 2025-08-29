@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-29T21:47:31.334023
+date: 2025-08-29T21:47:33.288533
 image: assets/20250829T042358598--eyalzh--kanban-mcp--20250829T043056378--cropped.png
 ---
 
