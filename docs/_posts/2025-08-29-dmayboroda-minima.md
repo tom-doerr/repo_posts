@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-29T16:13:03.249119
+date: 2025-08-29T16:13:04.798741
 image: assets/20250829T041340811--dmayboroda--minima--20250829T041455521--cropped.png
 ---
 
