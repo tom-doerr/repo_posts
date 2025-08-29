@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-29T11:09:34.676600
+date: 2025-08-29T11:09:37.076743
 image: assets/20250829T035606146--universal-tool-calling-protocol--utcp-specification--20250829T040328079--cropped.png
 ---
 
