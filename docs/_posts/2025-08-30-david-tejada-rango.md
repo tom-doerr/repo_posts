@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-30T00:19:00.046340
+date: 2025-08-30T00:19:01.381975
 image: assets/20250829T043138422--david-tejada--rango--20250829T043716940--cropped.png
 ---
 
