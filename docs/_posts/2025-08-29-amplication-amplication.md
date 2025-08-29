@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-29T13:11:01.262571
+date: 2025-08-29T13:11:03.414930
 image: assets/20250829T040200702--amplication--amplication--20250829T040821237--cropped.png
 ---
 
