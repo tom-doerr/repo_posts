@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-29T08:37:08.431873
+date: 2025-08-29T08:37:10.160504
 image: assets/20250825T024427279--BrowserBox--BrowserBox--20250829T035310307--cropped.png
 ---
 
