@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-29T18:14:42.260008
+date: 2025-08-29T18:14:43.901245
 image: assets/20250829T041418222--0x3at--synceverything--20250829T042037763--cropped.png
 ---
 
