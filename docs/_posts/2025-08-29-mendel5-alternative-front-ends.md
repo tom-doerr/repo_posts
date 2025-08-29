@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-29T06:35:24.829982
+date: 2025-08-29T06:35:26.807029
 image: assets/20250823T014938033--mendel5--alternative-front-ends--20250829T031100194--cropped.png
 ---
 
