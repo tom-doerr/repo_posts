@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-30T19:31:10.266046
+date: 2025-08-30T19:31:13.054822
 image: assets/20250830T041007150--axiomhq--next-axiom--20250830T041552266--cropped.png
 ---
 
