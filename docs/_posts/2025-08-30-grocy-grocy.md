@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-30T16:29:16.374457
+date: 2025-08-30T16:29:17.815488
 image: assets/20250830T040736711--grocy--grocy--20250830T041211282--cropped.png
 ---
 
