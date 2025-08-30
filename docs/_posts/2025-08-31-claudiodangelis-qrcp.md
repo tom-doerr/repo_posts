@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-31T00:04:43.181409
+date: 2025-08-31T00:04:45.262284
 image: assets/claudiodangelis_qrcp--20250830T043034098--cropped.png
 ---
 
