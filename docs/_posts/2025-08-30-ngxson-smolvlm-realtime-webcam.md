@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-30T12:26:59.368543
+date: 2025-08-30T12:27:01.531601
 image: assets/20250830T040300608--ngxson--smolvlm-realtime-webcam--20250830T040423032--cropped.png
 ---
 
