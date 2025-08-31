@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-31T02:36:36.476156
+date: 2025-08-31T02:36:37.951361
 image: assets/20250830T045340607--Marker-Inc-Korea--AutoRAG--20250830T050734743--cropped.png
 ---
 
