@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-31T14:42:47.207633
+date: 2025-08-31T14:42:48.751961
 image: assets/20250830T153506816--NangoHQ--nango--20250830T173420495--cropped.png
 ---
 
