@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-08-31T08:09:20.906972
+date: 2025-08-31T08:09:22.314969
 image: assets/20250830T092033257--nuta--operating-system-in-1000-lines--20250830T124955959--cropped.png
 ---
 
