@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-01T02:19:29.684441
+date: 2025-09-01T02:19:31.008703
 image: assets/20250830T174533927--aome510--spotify-player--20250830T183619494--cropped.png
 ---
 
