@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-01T07:22:36.747259
+date: 2025-09-01T07:22:38.161270
 image: assets/20250830T175324291--Deci-AI--super-gradients--20250830T184501896--cropped.png
 ---
 
