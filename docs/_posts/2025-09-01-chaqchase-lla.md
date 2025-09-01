@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-01T05:51:38.708781
+date: 2025-09-01T05:51:39.972025
 image: assets/20250830T175030541--chaqchase--lla--20250830T184205109--cropped.png
 ---
 
