@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-01T16:58:53.568650
+date: 2025-09-01T16:58:55.208156
 image: assets/20250831T001321367--Acly--krita-ai-diffusion--20250831T002918600--cropped.png
 ---
 
