@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-02T19:44:07.821333
+date: 2025-09-02T19:44:09.115109
 image: assets/20250901T033249727--motion-canvas--motion-canvas--20250901T033839495--cropped.png
 ---
 
