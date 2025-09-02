@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-02T13:10:35.701627
+date: 2025-09-02T13:10:37.072981
 image: assets/20250831T025147897--dbt-labs--dbt-core--20250831T030234772--cropped.png
 ---
 
