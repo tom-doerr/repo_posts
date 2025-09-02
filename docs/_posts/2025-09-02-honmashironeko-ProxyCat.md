@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-02T05:36:29.881065
+date: 2025-09-02T05:36:31.089819
 image: assets/20250831T020055124--honmashironeko--ProxyCat--20250831T020849610--cropped.png
 ---
 
