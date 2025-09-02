@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-02T19:13:52.560299
+date: 2025-09-02T19:13:53.983935
 image: assets/20250830T035451063--bgreenwell--doxx--20250901T033340180--cropped.png
 ---
 
