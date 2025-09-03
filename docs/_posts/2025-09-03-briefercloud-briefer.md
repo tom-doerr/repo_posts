@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-03T22:50:10.357823
+date: 2025-09-03T22:50:12.021261
 image: assets/20250901T035650573--briefercloud--briefer--20250903T023221508--cropped.png
 ---
 
