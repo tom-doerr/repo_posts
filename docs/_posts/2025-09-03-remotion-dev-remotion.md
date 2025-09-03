@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-03T02:38:56.764783
+date: 2025-09-03T02:38:58.659422
 image: assets/20250903T010617582--remotion-dev--remotion--20250903T011530362--cropped.png
 ---
 
