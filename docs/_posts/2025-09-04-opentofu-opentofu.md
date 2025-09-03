@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-04T01:08:37.730038
+date: 2025-09-04T01:08:39.050475
 image: assets/opentofu_opentofu--20250903T023734777--cropped.png
 ---
 
