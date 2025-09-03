@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-03T10:43:24.616067
+date: 2025-09-03T10:43:26.157740
 image: assets/20250903T013901358--earthly--earthly--20250903T014828788--cropped.png
 ---
 
