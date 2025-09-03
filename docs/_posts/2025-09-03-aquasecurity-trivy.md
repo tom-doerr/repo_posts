@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-03T23:20:27.697185
+date: 2025-09-03T23:20:28.885411
 image: assets/20250901T035402540--aquasecurity--trivy--20250903T023249391--cropped.png
 ---
 
