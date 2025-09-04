@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-04T16:17:49.165644
+date: 2025-09-04T16:17:50.308799
 image: assets/20250903T031738173--koalaman--shellcheck--20250903T035505195--cropped.png
 ---
 
