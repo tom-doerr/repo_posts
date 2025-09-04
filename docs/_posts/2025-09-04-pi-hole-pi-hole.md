@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-04T20:50:43.923914
+date: 2025-09-04T20:50:45.270669
 image: assets/20250903T235109755--pi-hole--pi-hole--20250903T235411799--cropped.png
 ---
 
