@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-05T01:53:40.003490
+date: 2025-09-05T01:53:41.318997
 image: assets/20250904T000026907--alufers--mitmproxy2swagger--20250904T000702105--cropped.png
 ---
 
