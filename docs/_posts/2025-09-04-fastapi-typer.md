@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-04T13:15:40.350714
+date: 2025-09-04T13:15:42.064496
 image: assets/20250903T030727081--fastapi--typer--20250903T031404752--cropped.png
 ---
 
