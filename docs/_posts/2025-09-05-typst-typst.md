@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-05T13:29:22.077965
+date: 2025-09-05T13:29:23.226867
 image: assets/20250905T022603609--typst--typst--20250905T022844559--cropped.png
 ---
 
