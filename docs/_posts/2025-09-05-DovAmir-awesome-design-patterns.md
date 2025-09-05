@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-05T13:59:36.692561
+date: 2025-09-05T13:59:37.772329
 image: assets/20250905T022708732--DovAmir--awesome-design-patterns--20250905T022853401--cropped.png
 ---
 
