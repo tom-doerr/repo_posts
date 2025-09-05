@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-06T01:36:35.495556
+date: 2025-09-06T01:36:37.552583
 image: assets/20250905T030337505--jorgef--engineeringladders--20250905T032447236--cropped.png
 ---
 
