@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-06T20:17:04.613181
+date: 2025-09-06T20:17:06.718482
 image: assets/20250906T024107803--trufflesecurity--trufflehog--20250906T024323186--cropped.png
 ---
 
