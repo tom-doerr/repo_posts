@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-06T22:18:14.634491
+date: 2025-09-06T22:18:17.345968
 image: assets/20250906T025229737--getsops--sops--20250906T025457343--cropped.png
 ---
 
