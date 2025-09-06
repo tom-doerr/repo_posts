@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-06T23:49:09.398048
+date: 2025-09-06T23:49:11.390012
 image: assets/20250906T025457256--karpathy--rendergit--20250906T030026924--cropped.png
 ---
 
