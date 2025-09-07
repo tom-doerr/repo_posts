@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-08T00:32:21.577251
+date: 2025-09-08T00:32:22.722176
 image: assets/JOYCEQL_magic-resume--20250907T193807306--cropped.png
 ---
 
