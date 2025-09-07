@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-07T22:01:00.227304
+date: 2025-09-07T22:01:02.304744
 image: assets/20250906T223826420--Eventual-Inc--Daft--20250906T224009022--cropped.png
 ---
 
