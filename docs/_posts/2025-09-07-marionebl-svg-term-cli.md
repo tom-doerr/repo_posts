@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-07T13:26:20.580366
+date: 2025-09-07T13:26:22.436375
 image: assets/20250906T222509848--marionebl--svg-term-cli--20250906T222615811--cropped.png
 ---
 
