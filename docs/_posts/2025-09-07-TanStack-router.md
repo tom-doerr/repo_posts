@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-07T10:55:02.674232
+date: 2025-09-07T10:55:04.935332
 image: assets/TanStack_router--20250906T221921262--cropped.png
 ---
 
