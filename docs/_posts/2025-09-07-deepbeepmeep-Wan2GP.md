@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-07T10:24:46.947864
+date: 2025-09-07T10:24:48.805145
 image: assets/deepbeepmeep_Wan2GP--20250906T221824330--cropped.png
 ---
 
