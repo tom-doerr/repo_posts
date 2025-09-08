@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-08T16:45:27.985213
+date: 2025-09-08T16:45:30.580334
 image: assets/20250908T064940985--karpathy--llm.c--20250908T093629862--cropped.png
 ---
 
