@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-08T08:06:46.002988
+date: 2025-09-08T08:06:47.285745
 image: assets/20250906T215906163--laramies--theHarvester--20250908T043058506--cropped.png
 ---
 
