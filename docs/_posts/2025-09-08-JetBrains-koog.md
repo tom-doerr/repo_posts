@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-08T07:36:30.840963
+date: 2025-09-08T07:36:32.223764
 image: assets/20250908T014403397--JetBrains--koog--20250908T021255911--cropped.png
 ---
 
