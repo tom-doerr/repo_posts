@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-08T06:35:56.587373
+date: 2025-09-08T06:35:59.076352
 image: assets/20250907T201009634--hexgrad--kokoro--20250907T201219117--cropped.png
 ---
 
