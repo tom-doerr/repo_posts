@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-08T04:04:25.120814
+date: 2025-09-08T04:04:27.650203
 image: assets/20250907T200223967--modelcontextprotocol--inspector--20250907T200405764--cropped.png
 ---
 
