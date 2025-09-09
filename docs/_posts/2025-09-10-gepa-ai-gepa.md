@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-10T00:32:58.434702
+date: 2025-09-10T00:33:00.624215
 image: assets/20250908T195023048--gepa-ai--gepa--20250908T224232905--cropped.png
 ---
 
