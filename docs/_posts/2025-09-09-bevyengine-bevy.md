@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-09T11:55:39.355637
+date: 2025-09-09T11:55:41.968475
 image: assets/20250908T190013154--bevyengine--bevy--20250908T190718651--cropped.png
 ---
 
