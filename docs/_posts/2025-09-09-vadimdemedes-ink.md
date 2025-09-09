@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-09T10:24:54.200342
+date: 2025-09-09T10:24:56.594643
 image: assets/20250908T185912991--vadimdemedes--ink--20250908T190205541--cropped.png
 ---
 
