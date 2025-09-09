@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-09T18:29:22.221513
+date: 2025-09-09T18:29:24.487708
 image: assets/eriklindernoren_ML-From-Scratch--20250908T193704457--cropped.png
 ---
 
