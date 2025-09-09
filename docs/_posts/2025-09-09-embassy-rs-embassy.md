@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-09T20:00:16.838441
+date: 2025-09-09T20:00:19.721924
 image: assets/20250908T190139781--embassy-rs--embassy--20250908T194512435--cropped.png
 ---
 
