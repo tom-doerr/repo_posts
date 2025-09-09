@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-09T23:32:26.632057
+date: 2025-09-09T23:32:29.334149
 image: assets/20250908T223913966--roboflow--rf-detr--20250908T224050387--cropped.png
 ---
 
