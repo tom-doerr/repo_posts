@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-09T02:20:26.962071
+date: 2025-09-09T02:20:29.138010
 image: assets/20250908T095523516--getzola--zola--20250908T095935158--cropped.png
 ---
 
