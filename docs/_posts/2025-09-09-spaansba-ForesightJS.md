@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-09T08:23:51.755399
+date: 2025-09-09T08:23:53.871848
 image: assets/20250908T101203645--spaansba--ForesightJS--20250908T101328000--cropped.png
 ---
 
