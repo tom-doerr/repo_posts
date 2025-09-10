@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-10T11:08:48.007409
+date: 2025-09-10T11:08:50.422515
 image: assets/20250908T233344937--MeiGen-AI--InfiniteTalk--20250908T233943492--cropped.png
 ---
 
