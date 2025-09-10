@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-10T21:14:29.941552
+date: 2025-09-10T21:14:32.426635
 image: assets/20250910T030249139--alexellis--k3sup--20250910T030415906--cropped.png
 ---
 
