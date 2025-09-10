@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-10T10:38:31.894652
+date: 2025-09-10T10:38:34.479268
 image: assets/20250908T233233198--ccfos--nightingale--20250908T233745816--cropped.png
 ---
 
