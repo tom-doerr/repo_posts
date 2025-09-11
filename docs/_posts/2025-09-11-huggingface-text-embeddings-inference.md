@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-11T12:52:57.390329
+date: 2025-09-11T12:52:59.912575
 image: assets/20250911T014841980--huggingface--text-embeddings-inference--20250911T015759317--cropped.png
 ---
 
