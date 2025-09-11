@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-11T16:24:46.174166
+date: 2025-09-11T16:24:56.831835
 image: assets/20250911T015815402--zserge--fenster--20250911T020653574--cropped.png
 ---
 
