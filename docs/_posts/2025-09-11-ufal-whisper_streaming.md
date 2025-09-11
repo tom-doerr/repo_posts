@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-11T20:58:05.722831
+date: 2025-09-11T20:58:09.689053
 image: assets/20250911T020657286--ufal--whisper_streaming--20250911T022237840--cropped.png
 ---
 
