@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-12T01:00:50.676297
+date: 2025-09-12T01:00:53.584327
 image: assets/20250911T023048370--babalae--better-genshin-impact--20250911T023753482--cropped.png
 ---
 
