@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-11T13:23:12.586699
+date: 2025-09-11T13:23:14.607554
 image: assets/20250911T014936444--mixxxdj--mixxx--20250911T015837740--cropped.png
 ---
 
