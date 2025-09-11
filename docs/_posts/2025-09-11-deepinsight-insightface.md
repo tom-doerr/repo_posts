@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-11T13:53:27.075827
+date: 2025-09-11T13:53:29.563593
 image: assets/20250911T015101512--deepinsight--insightface--20250911T015927820--cropped.png
 ---
 
