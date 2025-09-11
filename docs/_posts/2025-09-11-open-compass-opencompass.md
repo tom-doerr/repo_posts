@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-11T22:59:30.330027
+date: 2025-09-11T22:59:33.199636
 image: assets/20250911T022641363--open-compass--opencompass--20250911T023130139--cropped.png
 ---
 
