@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-12T09:05:43.482706
+date: 2025-09-12T09:05:45.868342
 image: assets/20250911T164647308--roryclear--clearcam--20250911T165933171--cropped.png
 ---
 
