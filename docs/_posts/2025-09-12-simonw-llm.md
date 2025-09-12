@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-12T17:40:16.865908
+date: 2025-09-12T17:40:20.058597
 image: assets/simonw_llm--20250911T231657335--cropped.png
 ---
 
