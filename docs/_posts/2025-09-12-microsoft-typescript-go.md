@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-12T18:10:34.167546
+date: 2025-09-12T18:10:35.416552
 image: assets/microsoft_typescript-go--20250911T231912917--cropped.png
 ---
 
