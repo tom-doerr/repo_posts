@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-12T07:34:52.270287
+date: 2025-09-12T07:34:54.995933
 image: assets/20250911T163805569--langgptai--awesome-claude-prompts--20250911T164657923--cropped.png
 ---
 
