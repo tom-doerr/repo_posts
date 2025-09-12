@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-12T21:42:17.415881
+date: 2025-09-12T21:42:19.725793
 image: assets/20250911T212516488--ashishps1--awesome-system-design-resources--20250911T233547654--cropped.png
 ---
 
