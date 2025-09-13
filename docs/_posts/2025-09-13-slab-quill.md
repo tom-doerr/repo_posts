@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-13T20:55:02.143585
+date: 2025-09-13T20:55:04.814828
 image: assets/20250912T003946477--slab--quill--20250912T004205619--cropped.png
 ---
 
