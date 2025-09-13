@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-13T18:53:58.714663
+date: 2025-09-13T18:54:01.057920
 image: assets/20250912T003339828--encoredev--encore--20250912T003856621--cropped.png
 ---
 
