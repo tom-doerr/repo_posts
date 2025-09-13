@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-13T10:19:05.614933
+date: 2025-09-13T10:19:07.905329
 image: assets/20250912T001059710--guoyww--AnimateDiff--20250912T001611497--cropped.png
 ---
 
