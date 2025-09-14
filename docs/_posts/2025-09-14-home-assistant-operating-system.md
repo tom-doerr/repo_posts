@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-14T10:33:06.220221
+date: 2025-09-14T10:33:08.198580
 image: assets/20250912T194351622--home-assistant--operating-system--20250912T195508475--cropped.png
 ---
 
