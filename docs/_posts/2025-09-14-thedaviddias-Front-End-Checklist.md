@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-14T08:32:04.180428
+date: 2025-09-14T08:32:06.187821
 image: assets/20250912T172415654--thedaviddias--Front-End-Checklist--20250912T173223298--cropped.png
 ---
 
