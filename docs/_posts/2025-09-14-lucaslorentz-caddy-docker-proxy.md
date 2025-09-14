@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-14T07:01:10.284582
+date: 2025-09-14T07:01:13.171588
 image: assets/20250912T171927750--lucaslorentz--caddy-docker-proxy--20250912T172953999--cropped.png
 ---
 
