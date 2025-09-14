@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-14T20:25:10.440581
+date: 2025-09-14T20:25:12.643994
 image: assets/20250914T182510523--thewh1teagle--vibe--20250914T190751953--cropped.png
 ---
 
