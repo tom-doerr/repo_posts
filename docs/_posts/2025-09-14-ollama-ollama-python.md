@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-14T20:55:27.339893
+date: 2025-09-14T20:55:29.491802
 image: assets/20250914T182610498--ollama--ollama-python--20250914T190955663--cropped.png
 ---
 
