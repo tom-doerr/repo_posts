@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-15T01:28:05.258826
+date: 2025-09-15T01:28:06.697405
 image: assets/20250914T191335630--zyddnys--manga-image-translator--20250914T191646705--cropped.png
 ---
 
