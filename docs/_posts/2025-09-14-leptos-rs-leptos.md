@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-14T22:26:17.953589
+date: 2025-09-14T22:26:20.436224
 image: assets/20250914T190650419--leptos-rs--leptos--20250914T191137751--cropped.png
 ---
 
