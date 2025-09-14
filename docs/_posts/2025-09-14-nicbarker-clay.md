@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-14T13:04:26.930210
+date: 2025-09-14T13:04:29.000473
 image: assets/20250912T195814817--nicbarker--clay--20250912T200009091--cropped.png
 ---
 
