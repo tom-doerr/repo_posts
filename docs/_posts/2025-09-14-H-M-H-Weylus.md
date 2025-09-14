@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-14T12:03:53.841089
+date: 2025-09-14T12:03:56.593316
 image: assets/20250912T194917936--H-M-H--Weylus--20250912T195716994--cropped.png
 ---
 
