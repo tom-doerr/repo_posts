@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-15T14:05:55.336398
+date: 2025-09-15T14:05:57.748948
 image: assets/20250915T043708140--federico-busato--Modern-CPP-Programming--20250915T043907549--cropped.png
 ---
 
