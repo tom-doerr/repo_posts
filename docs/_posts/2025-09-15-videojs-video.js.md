@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-15T13:35:38.463408
+date: 2025-09-15T13:35:40.710718
 image: assets/20250915T043644472--videojs--video.js--20250915T043855992--cropped.png
 ---
 
