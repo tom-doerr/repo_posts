@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-15T18:38:26.297593
+date: 2025-09-15T18:38:36.541891
 image: assets/20250915T044731265--gauge-sh--tach--20250915T045015173--cropped.png
 ---
 
