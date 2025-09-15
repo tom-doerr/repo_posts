@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-16T01:42:48.010290
+date: 2025-09-16T01:42:49.311132
 image: assets/20250915T223221274--squidfunk--mkdocs-material--20250915T225203330--cropped.png
 ---
 
