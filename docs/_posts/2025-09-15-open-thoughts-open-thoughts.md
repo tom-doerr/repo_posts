@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-15T17:07:27.606969
+date: 2025-09-15T17:07:29.939579
 image: assets/20250912T195449152--open-thoughts--open-thoughts--20250915T044536113--cropped.png
 ---
 
