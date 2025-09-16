@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-16T14:49:30.110833
+date: 2025-09-16T14:49:32.224629
 image: assets/20250915T230900943--microsoft--vcpkg--20250915T231905853--cropped.png
 ---
 
