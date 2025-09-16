@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-16T08:16:14.396279
+date: 2025-09-16T08:16:16.686147
 image: assets/20250915T225515698--Physical-Intelligence--openpi--20250915T230557295--cropped.png
 ---
 
