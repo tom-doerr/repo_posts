@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-16T17:51:09.086254
+date: 2025-09-16T17:51:11.161698
 image: assets/20250915T232308659--gfx-rs--wgpu--20250915T232626505--cropped.png
 ---
 
