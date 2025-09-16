@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-16T11:47:57.932034
+date: 2025-09-16T11:48:00.114474
 image: assets/20250915T230440589--gridstack--gridstack.js--20250915T230951009--cropped.png
 ---
 
