@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-16T13:18:43.569145
+date: 2025-09-16T13:18:45.718060
 image: assets/20250915T230646110--marcboeker--gmail-to-sqlite--20250915T231224687--cropped.png
 ---
 
