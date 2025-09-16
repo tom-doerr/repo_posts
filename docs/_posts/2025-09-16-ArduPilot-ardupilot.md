@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-16T07:45:59.647896
+date: 2025-09-16T07:46:01.982511
 image: assets/20250915T225429627--ArduPilot--ardupilot--20250915T230526209--cropped.png
 ---
 
