@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-16T02:43:21.979175
+date: 2025-09-16T02:43:24.214074
 image: assets/20250915T223238189--gleam-lang--gleam--20250915T225331478--cropped.png
 ---
 
