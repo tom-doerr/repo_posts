@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-16T15:19:50.836903
+date: 2025-09-16T15:19:52.970899
 image: assets/20250915T230951282--rust-embedded--awesome-embedded-rust--20250915T231935488--cropped.png
 ---
 
