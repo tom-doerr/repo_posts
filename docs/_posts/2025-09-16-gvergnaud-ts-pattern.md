@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-16T16:50:38.209548
+date: 2025-09-16T16:50:40.633659
 image: assets/20250915T232308599--gvergnaud--ts-pattern--20250915T232531020--cropped.png
 ---
 
