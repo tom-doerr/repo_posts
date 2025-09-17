@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-17T21:36:24.480194
+date: 2025-09-17T21:36:27.094774
 image: assets/20250917T011343646--posit-dev--great-tables--20250917T011932220--cropped.png
 ---
 
