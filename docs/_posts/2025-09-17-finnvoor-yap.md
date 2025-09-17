@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-17T18:34:41.507010
+date: 2025-09-17T18:34:43.865865
 image: assets/20250917T010832325--finnvoor--yap--20250917T011630402--cropped.png
 ---
 
