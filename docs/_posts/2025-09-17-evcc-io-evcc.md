@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-17T17:03:44.096802
+date: 2025-09-17T17:03:46.729414
 image: assets/20250917T010832323--evcc-io--evcc--20250917T011104638--cropped.png
 ---
 
