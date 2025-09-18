@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-18T12:08:55.723875
+date: 2025-09-18T12:08:57.659385
 image: assets/20250915T225133776--pydantic--logfire--20250918T050530325--cropped.png
 ---
 
