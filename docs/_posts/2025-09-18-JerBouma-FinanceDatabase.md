@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-18T16:41:15.270818
+date: 2025-09-18T16:41:16.988097
 image: assets/20250915T231100808--JerBouma--FinanceDatabase--20250918T051612501--cropped.png
 ---
 
