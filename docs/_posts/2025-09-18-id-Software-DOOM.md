@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-18T11:08:25.829363
+date: 2025-09-18T11:08:28.462395
 image: assets/20250915T225755758--id-Software--DOOM--20250918T045841584--cropped.png
 ---
 
