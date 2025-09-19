@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-19T17:25:21.470935
+date: 2025-09-19T17:25:23.164809
 image: assets/20250919T022013569--ginuerzh--gost--20250919T022743123--cropped.png
 ---
 
