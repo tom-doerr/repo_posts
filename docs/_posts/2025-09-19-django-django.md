@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-19T12:22:40.381329
+date: 2025-09-19T12:22:42.888735
 image: assets/20250919T020425898--django--django--20250919T021524083--cropped.png
 ---
 
