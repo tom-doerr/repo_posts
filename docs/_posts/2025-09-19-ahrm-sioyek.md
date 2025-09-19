@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-19T09:51:21.761946
+date: 2025-09-19T09:51:23.789900
 image: assets/20250917T003148419--ahrm--sioyek--20250919T020546022--cropped.png
 ---
 
