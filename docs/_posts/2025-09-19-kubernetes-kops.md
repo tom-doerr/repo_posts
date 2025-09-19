@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-19T22:58:40.062442
+date: 2025-09-19T22:58:42.781080
 image: assets/20250919T023534743--kubernetes--kops--20250919T024805108--cropped.png
 ---
 
