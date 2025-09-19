@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-19T20:57:29.518599
+date: 2025-09-19T20:57:32.292586
 image: assets/20250919T023115228--carbon-app--carbon--20250919T023735090--cropped.png
 ---
 
