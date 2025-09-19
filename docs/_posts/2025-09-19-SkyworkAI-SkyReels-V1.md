@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-19T13:53:28.152139
+date: 2025-09-19T13:53:30.136760
 image: assets/20250915T232308505--SkyworkAI--SkyReels-V1--20250919T022011916--cropped.png
 ---
 
