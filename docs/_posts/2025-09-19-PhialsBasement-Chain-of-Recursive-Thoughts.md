@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-19T02:17:10.477722
+date: 2025-09-19T02:17:12.178675
 image: assets/20250911T220403366--PhialsBasement--Chain-of-Recursive-Thoughts--20250919T013205475--cropped.png
 ---
 
