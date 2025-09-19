@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-19T13:23:11.245810
+date: 2025-09-19T13:23:13.514119
 image: assets/20250919T020611196--mistralai--cookbook--20250919T021958965--cropped.png
 ---
 
