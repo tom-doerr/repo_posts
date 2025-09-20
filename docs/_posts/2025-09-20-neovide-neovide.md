@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-20T15:03:25.645433
+date: 2025-09-20T15:03:28.220122
 image: assets/20250920T042327569--neovide--neovide--20250920T043511247--cropped.png
 ---
 
