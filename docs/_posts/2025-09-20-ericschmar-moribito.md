@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-20T19:05:53.586727
+date: 2025-09-20T19:05:56.842747
 image: assets/20250920T055937651--ericschmar--moribito--20250920T060749519--cropped.png
 ---
 
