@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-20T12:32:00.236854
+date: 2025-09-20T12:32:02.596184
 image: assets/20250918T004734177--muesli--duf--20250920T042524143--cropped.png
 ---
 
