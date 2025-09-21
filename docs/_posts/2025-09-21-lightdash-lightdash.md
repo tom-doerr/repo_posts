@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-21T02:15:22.881616
+date: 2025-09-21T02:15:25.380923
 image: assets/20250921T021208745--lightdash--lightdash--20250921T021454676--cropped.png
 ---
 
