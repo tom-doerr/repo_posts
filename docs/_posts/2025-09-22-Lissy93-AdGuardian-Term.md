@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-22T18:42:07.018076
+date: 2025-09-22T18:42:09.888648
 image: assets/20250922T032331132--Lissy93--AdGuardian-Term--20250922T033050845--cropped.png
 ---
 
