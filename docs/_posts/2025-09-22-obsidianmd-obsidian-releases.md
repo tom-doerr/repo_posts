@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-22T17:11:09.772310
+date: 2025-09-22T17:11:12.675419
 image: assets/20250922T031947997--obsidianmd--obsidian-releases--20250922T032603278--cropped.png
 ---
 
