@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-22T15:40:53.502540
+date: 2025-09-22T15:40:56.495545
 image: assets/20250922T031948095--lucasdillmann--nginx-ignition--20250922T032328992--cropped.png
 ---
 
