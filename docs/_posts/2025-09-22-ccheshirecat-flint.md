@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-22T05:03:10.700243
+date: 2025-09-22T05:03:22.418170
 image: assets/20250922T020104295--ccheshirecat--flint--20250922T023612367--cropped.png
 ---
 
