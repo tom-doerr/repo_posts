@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-22T08:05:24.026110
+date: 2025-09-22T08:05:29.061376
 image: assets/20250922T023615928--hahwul--dalfox--20250922T024235575--cropped.png
 ---
 
