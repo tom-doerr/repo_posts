@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-22T16:10:18.559231
+date: 2025-09-22T16:10:31.292260
 image: assets/20250922T031948075--anse-app--anse--20250922T032404162--cropped.png
 ---
 
