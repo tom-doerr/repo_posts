@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-23T03:27:16.990966
+date: 2025-09-23T03:27:20.249240
 image: assets/20250923T015949652--vicinaehq--vicinae--20250923T020446796--cropped.png
 ---
 
