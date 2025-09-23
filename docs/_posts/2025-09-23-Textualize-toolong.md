@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-23T03:57:34.327466
+date: 2025-09-23T03:57:36.478633
 image: assets/20250923T020117234--Textualize--toolong--20250923T020647521--cropped.png
 ---
 
