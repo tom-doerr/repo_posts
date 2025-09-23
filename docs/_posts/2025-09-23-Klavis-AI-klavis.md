@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-23T17:09:25.260247
+date: 2025-09-23T17:09:27.911205
 image: assets/20250923T024848538--Klavis-AI--klavis--20250923T032337414--cropped.png
 ---
 
