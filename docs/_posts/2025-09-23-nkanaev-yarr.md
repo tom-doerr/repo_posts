@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-23T16:39:02.126727
+date: 2025-09-23T16:39:04.803551
 image: assets/20250923T024736030--nkanaev--yarr--20250923T032223594--cropped.png
 ---
 
