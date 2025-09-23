@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-23T04:58:25.526874
+date: 2025-09-23T04:58:28.650117
 image: assets/20250923T020216724--toolleeo--awesome-cli-apps-in-a-csv--20250923T020827923--cropped.png
 ---
 
