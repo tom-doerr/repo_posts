@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-23T10:33:46.436211
+date: 2025-09-23T10:33:49.084692
 image: assets/20250923T022854662--KlausSchaefers--quant-ux--20250923T023521420--cropped.png
 ---
 
