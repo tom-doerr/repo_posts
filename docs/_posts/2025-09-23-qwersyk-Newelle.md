@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-23T02:56:56.311359
+date: 2025-09-23T02:56:58.287821
 image: assets/20250923T015021896--qwersyk--Newelle--20250923T020156951--cropped.png
 ---
 
