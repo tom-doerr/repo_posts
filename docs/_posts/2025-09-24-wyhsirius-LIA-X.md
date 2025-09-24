@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-24T22:25:03.462766
+date: 2025-09-24T22:25:05.908634
 image: assets/20250924T062025029--wyhsirius--LIA-X--20250924T062517447--cropped.png
 ---
 
