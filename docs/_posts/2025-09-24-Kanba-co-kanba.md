@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-24T15:31:37.286695
+date: 2025-09-24T15:31:47.684310
 image: assets/20250924T060637265--Kanba-co--kanba--20250924T061139943--cropped.png
 ---
 
