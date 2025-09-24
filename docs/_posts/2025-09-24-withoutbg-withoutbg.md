@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-24T14:29:31.255859
+date: 2025-09-24T14:29:34.113824
 image: assets/20250924T060434381--withoutbg--withoutbg--20250924T060907787--cropped.png
 ---
 
