@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-24T13:59:16.600060
+date: 2025-09-24T13:59:19.019758
 image: assets/20250924T060420614--miso-belica--sumy--20250924T060850912--cropped.png
 ---
 
