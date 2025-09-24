@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-24T18:22:36.639681
+date: 2025-09-24T18:22:39.319718
 image: assets/20250924T061046988--lowdefy--lowdefy--20250924T061729357--cropped.png
 ---
 
