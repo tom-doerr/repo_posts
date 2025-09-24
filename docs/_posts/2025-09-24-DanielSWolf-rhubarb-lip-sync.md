@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-24T16:01:02.648999
+date: 2025-09-24T16:01:13.038479
 image: assets/20250924T060721138--DanielSWolf--rhubarb-lip-sync--20250924T061235073--cropped.png
 ---
 
