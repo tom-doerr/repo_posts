@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-24T20:54:08.562780
+date: 2025-09-24T20:54:11.464769
 image: assets/20250924T061423943--visioncortex--vtracer--20250924T062233836--cropped.png
 ---
 
