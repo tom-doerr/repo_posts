@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-25T13:26:11.439439
+date: 2025-09-25T13:26:14.196949
 image: assets/20250925T043514876--MeiGen-AI--MultiTalk--20250925T044847476--cropped.png
 ---
 
