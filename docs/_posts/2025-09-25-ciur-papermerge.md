@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-25T19:29:49.803421
+date: 2025-09-25T19:29:52.412213
 image: assets/20250925T045331025--ciur--papermerge--20250925T045849802--cropped.png
 ---
 
