@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-25T02:11:23.838775
+date: 2025-09-25T02:11:26.133877
 image: assets/20250925T011102600--Cloudable-dev--netgoat--20250925T011329249--cropped.png
 ---
 
