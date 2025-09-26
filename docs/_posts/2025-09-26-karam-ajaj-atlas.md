@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-26T11:39:09.395553
+date: 2025-09-26T11:39:12.240852
 image: assets/20250926T004755770--karam-ajaj--atlas--20250926T005508520--cropped.png
 ---
 
