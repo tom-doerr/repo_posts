@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-26T03:04:26.605797
+date: 2025-09-26T03:04:28.809368
 image: assets/20250926T001724646--jitsucom--jitsu--20250926T004154835--cropped.png
 ---
 
