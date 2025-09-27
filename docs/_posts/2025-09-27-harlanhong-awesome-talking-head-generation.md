@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-27T07:41:01.597762
+date: 2025-09-27T07:41:03.997001
 image: assets/20250927T040110175--harlanhong--awesome-talking-head-generation--20250927T041131165--cropped.png
 ---
 
