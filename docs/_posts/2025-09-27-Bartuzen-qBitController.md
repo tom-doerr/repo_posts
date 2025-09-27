@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-27T13:14:15.897240
+date: 2025-09-27T13:14:18.274195
 image: assets/20250927T041133123--Bartuzen--qBitController--20250927T041926587--cropped.png
 ---
 
