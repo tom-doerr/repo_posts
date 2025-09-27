@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-27T23:50:34.135814
+date: 2025-09-27T23:50:36.685122
 image: assets/20250927T043537612--alpha-liu-01--SpeedyNote--20250927T044857751--cropped.png
 ---
 
