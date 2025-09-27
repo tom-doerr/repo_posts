@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-27T21:49:21.672927
+date: 2025-09-27T21:49:24.020184
 image: assets/20250927T043017401--BeryJu--gravity--20250927T044612330--cropped.png
 ---
 
