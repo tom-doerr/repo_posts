@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-27T19:48:17.357865
+date: 2025-09-27T19:48:19.845273
 image: assets/20250927T042140902--schibsted--WAAS--20250927T043534931--cropped.png
 ---
 
