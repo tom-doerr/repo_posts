@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-27T06:40:27.970608
+date: 2025-09-27T06:40:30.887252
 image: assets/20250927T040109174--Goldziher--html-to-markdown--20250927T041031116--cropped.png
 ---
 
