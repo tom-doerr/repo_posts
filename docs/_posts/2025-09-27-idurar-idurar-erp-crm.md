@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-27T15:15:28.051766
+date: 2025-09-27T15:15:30.265714
 image: assets/20250927T041609821--idurar--idurar-erp-crm--20250927T042619263--cropped.png
 ---
 
