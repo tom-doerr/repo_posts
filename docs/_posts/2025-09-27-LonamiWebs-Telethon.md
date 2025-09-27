@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-27T07:10:44.157545
+date: 2025-09-27T07:10:46.588289
 image: assets/20250927T040109734--LonamiWebs--Telethon--20250927T041101019--cropped.png
 ---
 
