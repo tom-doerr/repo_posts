@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-27T05:09:34.019886
+date: 2025-09-27T05:09:36.513038
 image: assets/20250926T222833741--emilianavt--OpenSeeFace--20250926T222929158--cropped.png
 ---
 
