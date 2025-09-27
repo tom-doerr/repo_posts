@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-27T20:48:49.014135
+date: 2025-09-27T20:48:51.412999
 image: assets/20250927T042811249--mfat--sshpilot--20250927T044435731--cropped.png
 ---
 
