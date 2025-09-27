@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-27T11:43:24.885883
+date: 2025-09-27T11:43:27.305861
 image: assets/20250927T040631756--Goodnight77--Just-RAG--20250927T041712524--cropped.png
 ---
 
