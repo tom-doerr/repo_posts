@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-28T06:46:14.830523
+date: 2025-09-28T06:46:20.090228
 image: assets/20250928T051711990--leonardomso--33-js-concepts--20250928T052237346--cropped.png
 ---
 
