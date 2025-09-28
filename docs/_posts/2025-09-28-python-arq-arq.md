@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-28T22:26:19.440097
+date: 2025-09-28T22:26:21.706662
 image: assets/20250928T061058650--python-arq--arq--20250928T064551298--cropped.png
 ---
 
