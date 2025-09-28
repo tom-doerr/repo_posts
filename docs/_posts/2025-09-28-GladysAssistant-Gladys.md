@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-28T16:52:59.135338
+date: 2025-09-28T16:53:01.447609
 image: assets/20250928T055241921--GladysAssistant--Gladys--20250928T060149180--cropped.png
 ---
 
