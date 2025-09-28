@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-28T21:25:38.951465
+date: 2025-09-28T21:25:41.693548
 image: assets/20250928T060642058--bruin-data--bruin--20250928T064425024--cropped.png
 ---
 
