@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-28T07:46:49.494560
+date: 2025-09-28T07:46:51.074439
 image: assets/20250928T051712035--Vencord--Vesktop--20250928T052454016--cropped.png
 ---
 
