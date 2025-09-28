@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-28T14:51:46.399988
+date: 2025-09-28T14:51:48.992387
 image: assets/20250928T054101324--LLaVA-VL--LLaVA-NeXT--20250928T055333707--cropped.png
 ---
 
