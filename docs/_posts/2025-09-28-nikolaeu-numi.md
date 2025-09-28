@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-28T11:18:31.340688
+date: 2025-09-28T11:18:33.065098
 image: assets/20250928T053637828--nikolaeu--numi--20250928T054812935--cropped.png
 ---
 
