@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-29T22:49:34.470151
+date: 2025-09-29T22:49:37.460078
 image: assets/20250929T215417369--AcademySoftwareFoundation--OpenTimelineIO--20250929T215929965--cropped.png
 ---
 
