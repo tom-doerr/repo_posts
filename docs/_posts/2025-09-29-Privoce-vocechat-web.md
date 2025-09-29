@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-29T08:27:56.282432
+date: 2025-09-29T08:27:58.675144
 image: assets/20250929T013824021--Privoce--vocechat-web--20250929T014646656--cropped.png
 ---
 
