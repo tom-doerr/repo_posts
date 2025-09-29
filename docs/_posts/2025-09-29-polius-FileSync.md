@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-29T20:17:03.246396
+date: 2025-09-29T20:17:05.948501
 image: assets/20250929T015940710--polius--FileSync--20250929T020612840--cropped.png
 ---
 
