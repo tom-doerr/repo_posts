@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-29T16:43:10.704897
+date: 2025-09-29T16:43:13.458818
 image: assets/20250929T015106600--natibek--erys--20250929T020100408--cropped.png
 ---
 
