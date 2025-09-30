@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-30T08:28:08.994895
+date: 2025-09-30T08:28:13.313703
 image: assets/20250930T031027871--IntelLabs--fastRAG--20250930T032430820--cropped.png
 ---
 
