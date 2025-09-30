@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-09-30T18:40:46.306960
+date: 2025-09-30T18:40:54.899820
 image: assets/20250930T033432509--kagisearch--kite-public--20250930T034634644--cropped.png
 ---
 
