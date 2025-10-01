@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-01T21:15:53.384662
+date: 2025-10-01T21:15:55.370755
 image: assets/20251001T132306921--Impre-visible--invoicerr--20251001T132728567--cropped.png
 ---
 
