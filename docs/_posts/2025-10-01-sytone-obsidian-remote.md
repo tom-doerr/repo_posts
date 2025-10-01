@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-01T18:12:37.247869
+date: 2025-10-01T18:12:38.733024
 image: assets/20251001T113753655--sytone--obsidian-remote--20251001T122039688--cropped.png
 ---
 
