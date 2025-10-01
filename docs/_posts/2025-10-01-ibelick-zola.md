@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-01T16:41:02.792115
+date: 2025-10-01T16:41:06.416041
 image: assets/20251001T110154325--ibelick--zola--20251001T112344966--cropped.png
 ---
 
