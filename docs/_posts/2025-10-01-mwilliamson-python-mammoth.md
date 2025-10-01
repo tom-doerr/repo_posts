@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-01T13:07:39.802880
+date: 2025-10-01T13:07:41.396891
 image: assets/20251001T104741437--mwilliamson--python-mammoth--20251001T110044780--cropped.png
 ---
 
