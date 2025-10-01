@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-02T00:49:27.232461
+date: 2025-10-02T00:49:30.815914
 image: assets/20251001T133323546--jeremyckahn--chitchatter--20251001T133912386--cropped.png
 ---
 
