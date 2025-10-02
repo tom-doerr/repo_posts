@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-02T19:37:30.303454
+date: 2025-10-02T19:37:34.196936
 image: assets/20251001T204229887--TrySita--AutoDocs--20251001T204920958--cropped.png
 ---
 
