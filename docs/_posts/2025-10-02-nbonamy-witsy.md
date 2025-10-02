@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-02T07:25:18.491492
+date: 2025-10-02T07:25:27.045728
 image: assets/20251001T191658013--nbonamy--witsy--20251001T192548239--cropped.png
 ---
 
