@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-02T13:00:21.540026
+date: 2025-10-02T13:00:24.310831
 image: assets/20251001T203200040--mhss1--MyBrain--20251001T203540284--cropped.png
 ---
 
