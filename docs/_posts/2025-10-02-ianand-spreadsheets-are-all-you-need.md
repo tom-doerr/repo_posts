@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-02T22:41:11.570661
+date: 2025-10-02T22:41:15.725956
 image: assets/20251001T205201066--ianand--spreadsheets-are-all-you-need--20251001T205703831--cropped.png
 ---
 
