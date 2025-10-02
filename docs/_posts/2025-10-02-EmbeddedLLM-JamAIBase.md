@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-02T10:27:56.291181
+date: 2025-10-02T10:27:59.659788
 image: assets/20251001T194904379--EmbeddedLLM--JamAIBase--20251001T195615288--cropped.png
 ---
 
