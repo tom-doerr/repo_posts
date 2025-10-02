@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-02T07:55:46.179530
+date: 2025-10-02T07:55:48.709655
 image: assets/20251001T192603093--johnwarne--upvote-rss--20251001T193242544--cropped.png
 ---
 
