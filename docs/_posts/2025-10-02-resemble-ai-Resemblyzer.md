@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-02T03:21:45.882709
+date: 2025-10-02T03:21:48.772573
 image: assets/20251001T134829469--resemble-ai--Resemblyzer--20251001T135145653--cropped.png
 ---
 
