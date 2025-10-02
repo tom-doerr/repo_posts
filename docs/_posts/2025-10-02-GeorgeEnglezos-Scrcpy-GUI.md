@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-02T11:59:19.339173
+date: 2025-10-02T11:59:26.876393
 image: assets/GeorgeEnglezos_Scrcpy-GUI--20251001T203102913--cropped.png
 ---
 
