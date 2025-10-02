@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-02T18:05:51.267917
+date: 2025-10-02T18:05:57.009912
 image: assets/20251001T203831721--Koenkk--zigbee2mqtt--20251001T204532232--cropped.png
 ---
 
