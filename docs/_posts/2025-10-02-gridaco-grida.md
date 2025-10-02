@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-02T23:10:46.246101
+date: 2025-10-02T23:10:47.981288
 image: assets/20251001T205227657--gridaco--grida--20251001T205732430--cropped.png
 ---
 
