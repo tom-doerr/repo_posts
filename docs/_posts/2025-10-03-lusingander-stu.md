@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-03T20:30:23.654253
+date: 2025-10-03T20:30:26.976360
 image: assets/20251003T161853702--lusingander--stu--20251003T201003889--cropped.png
 ---
 
