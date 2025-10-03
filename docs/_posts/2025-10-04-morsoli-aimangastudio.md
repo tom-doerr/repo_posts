@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-04T01:04:31.730234
+date: 2025-10-04T01:04:35.719713
 image: assets/20251003T230029484--morsoli--aimangastudio--20251003T230521329--cropped.png
 ---
 
