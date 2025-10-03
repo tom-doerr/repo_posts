@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-03T18:28:18.308302
+date: 2025-10-03T18:28:23.147942
 image: assets/20251003T161830451--element-hq--synapse--20251003T162218627--cropped.png
 ---
 
