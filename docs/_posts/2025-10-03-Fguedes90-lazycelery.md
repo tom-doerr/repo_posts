@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-03T14:24:20.832644
+date: 2025-10-03T14:24:24.538125
 image: assets/20251001T232518033--Fguedes90--lazycelery--20251001T233000137--cropped.png
 ---
 
