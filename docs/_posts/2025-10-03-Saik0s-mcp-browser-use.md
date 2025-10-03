@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-03T17:57:50.555927
+date: 2025-10-03T17:57:55.052885
 image: assets/20251003T031736121--Saik0s--mcp-browser-use--20251003T032619936--cropped.png
 ---
 
