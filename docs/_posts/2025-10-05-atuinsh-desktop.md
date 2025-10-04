@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-05T01:26:35.007502
+date: 2025-10-05T01:26:37.726712
 image: assets/20251005T001928001--atuinsh--desktop--20251005T002542541--cropped.png
 ---
 
