@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-04T23:55:13.352978
+date: 2025-10-04T23:55:15.875648
 image: assets/20251003T232456882--antoniomika--sish--20251003T232747479--cropped.png
 ---
 
