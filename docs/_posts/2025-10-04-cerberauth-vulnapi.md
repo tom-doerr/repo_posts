@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-04T11:43:04.447889
+date: 2025-10-04T11:43:08.692973
 image: assets/20251003T231302716--cerberauth--vulnapi--20251003T231626443--cropped.png
 ---
 
