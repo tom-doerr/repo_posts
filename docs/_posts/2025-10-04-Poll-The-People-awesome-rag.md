@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-04T08:10:04.514527
+date: 2025-10-04T08:10:06.819769
 image: assets/20251003T230948525--Poll-The-People--awesome-rag--20251003T231308052--cropped.png
 ---
 
