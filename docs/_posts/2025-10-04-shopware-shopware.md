@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-04T21:52:51.056316
+date: 2025-10-04T21:52:55.985757
 image: assets/20251003T232307537--shopware--shopware--20251003T232538429--cropped.png
 ---
 
