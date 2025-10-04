@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-04T09:10:41.068691
+date: 2025-10-04T09:10:43.659123
 image: assets/20251003T231031965--georgmangold--console--20251003T231345891--cropped.png
 ---
 
