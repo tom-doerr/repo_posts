@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-05T06:31:54.860798
+date: 2025-10-05T06:31:58.550168
 image: assets/20251005T002910695--Afilmory--afilmory--20251005T003431889--cropped.png
 ---
 
