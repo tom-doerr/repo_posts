@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-05T07:02:20.308244
+date: 2025-10-05T07:02:23.004741
 image: assets/20251005T003026582--wppconnect-team--wppconnect--20251005T003502787--cropped.png
 ---
 
