@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-05T02:27:41.229922
+date: 2025-10-05T02:27:44.058468
 image: assets/20251005T001936113--wendy7756--AI-Video-Transcriber--20251005T002647911--cropped.png
 ---
 
