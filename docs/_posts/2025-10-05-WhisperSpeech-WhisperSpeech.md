@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-05T09:04:29.331971
+date: 2025-10-05T09:04:33.157795
 image: assets/20251005T003211752--WhisperSpeech--WhisperSpeech--20251005T003758792--cropped.png
 ---
 
