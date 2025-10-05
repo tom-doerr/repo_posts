@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-05T15:40:42.047580
+date: 2025-10-05T15:40:44.513083
 image: assets/20251005T100626407--eradman--entr--20251005T101501265--cropped.png
 ---
 
