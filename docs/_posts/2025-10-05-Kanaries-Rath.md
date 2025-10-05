@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-05T06:01:25.285275
+date: 2025-10-05T06:01:33.060284
 image: assets/20251005T002717396--Kanaries--Rath--20251005T003240456--cropped.png
 ---
 
