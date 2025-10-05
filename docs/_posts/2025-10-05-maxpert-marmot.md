@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-05T13:08:31.807402
+date: 2025-10-05T13:08:33.161301
 image: assets/20251005T100554051--maxpert--marmot--20251005T101010193--cropped.png
 ---
 
