@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-06T16:34:54.308608
+date: 2025-10-06T16:34:57.880278
 image: assets/20251005T225506386--instantpage--instant.page--20251005T230031610--cropped.png
 ---
 
