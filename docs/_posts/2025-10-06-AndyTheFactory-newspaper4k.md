@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-06T03:52:50.622252
+date: 2025-10-06T03:52:53.211245
 image: assets/20251005T102152760--AndyTheFactory--newspaper4k--20251005T103538975--cropped.png
 ---
 
