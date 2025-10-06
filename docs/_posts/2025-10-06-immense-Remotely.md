@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-06T12:30:41.981728
+date: 2025-10-06T12:30:45.401732
 image: assets/20251005T225427156--immense--Remotely--20251005T225545877--cropped.png
 ---
 
