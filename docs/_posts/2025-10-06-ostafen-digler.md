@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-06T19:38:13.557918
+date: 2025-10-06T19:38:16.340809
 image: assets/20251005T225657913--ostafen--digler--20251005T230337777--cropped.png
 ---
 
