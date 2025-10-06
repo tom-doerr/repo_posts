@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-06T10:59:11.225076
+date: 2025-10-06T10:59:14.406183
 image: assets/20251005T103512591--Taiko2k--Tauon--20251005T104400397--cropped.png
 ---
 
