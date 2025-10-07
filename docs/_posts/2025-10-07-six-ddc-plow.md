@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-07T23:17:22.754966
+date: 2025-10-07T23:17:26.967376
 image: assets/20251007T030805440--six-ddc--plow--20251007T032151912--cropped.png
 ---
 
