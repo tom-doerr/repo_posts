@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-08T01:49:43.945913
+date: 2025-10-08T01:49:46.030340
 image: assets/20251007T031600577--mjhea0--awesome-fastapi--20251007T032928471--cropped.png
 ---
 
