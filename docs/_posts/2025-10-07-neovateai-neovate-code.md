@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-07T07:00:30.657452
+date: 2025-10-07T07:00:32.076346
 image: assets/20251007T021856673--neovateai--neovate-code--20251007T023654989--cropped.png
 ---
 
