@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-07T15:08:19.770727
+date: 2025-10-07T15:08:22.457114
 image: assets/20251007T025643695--George-Seven--Termux-Udocker--20251007T030409708--cropped.png
 ---
 
