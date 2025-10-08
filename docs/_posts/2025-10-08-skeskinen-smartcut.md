@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-08T10:28:03.223199
+date: 2025-10-08T10:28:12.067932
 image: assets/skeskinen_smartcut--20251007T190520465--cropped.png
 ---
 
