@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-08T13:00:43.285145
+date: 2025-10-08T13:00:46.592139
 image: assets/20251007T190544929--cardo-podcast--cardo--20251007T191820643--cropped.png
 ---
 
