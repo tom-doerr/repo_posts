@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-08T22:47:13.592347
+date: 2025-10-08T22:47:16.498175
 image: assets/20251008T181324386--Dictionarry-Hub--profilarr--20251008T182137464--cropped.png
 ---
 
