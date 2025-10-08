@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-08T18:11:57.435914
+date: 2025-10-08T18:12:03.012660
 image: assets/20251003T231959631--raycast--script-commands--20251008T181025880--cropped.png
 ---
 
