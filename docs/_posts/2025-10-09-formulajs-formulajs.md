@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-09T23:23:42.409315
+date: 2025-10-09T23:23:45.741032
 image: assets/20251009T195115734--formulajs--formulajs--20251009T200313142--cropped.png
 ---
 
