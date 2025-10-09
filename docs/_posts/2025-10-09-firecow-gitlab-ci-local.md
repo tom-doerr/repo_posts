@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-09T09:10:27.455931
+date: 2025-10-09T09:10:35.198282
 image: assets/20251009T050518484--firecow--gitlab-ci-local--20251009T051158674--cropped.png
 ---
 
