@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-09T22:53:07.626830
+date: 2025-10-09T22:53:11.587426
 image: assets/20251009T195051262--socioboard--Socioboard-5.0--20251009T200152608--cropped.png
 ---
 
