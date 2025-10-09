@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-09T12:13:11.312384
+date: 2025-10-09T12:13:14.097558
 image: assets/20251009T061356569--grafviktor--goto--20251009T061756186--cropped.png
 ---
 
