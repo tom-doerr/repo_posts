@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-09T06:07:57.016399
+date: 2025-10-09T06:08:00.670082
 image: assets/20251009T050518692--rgwood--systemctl-tui--20251009T050705656--cropped.png
 ---
 
