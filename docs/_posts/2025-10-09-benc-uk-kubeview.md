@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-09T13:14:16.671241
+date: 2025-10-09T13:14:20.652441
 image: assets/20251009T061455162--benc-uk--kubeview--20251009T061910086--cropped.png
 ---
 
