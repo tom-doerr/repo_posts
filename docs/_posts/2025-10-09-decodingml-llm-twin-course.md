@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-09T08:09:38.227608
+date: 2025-10-09T08:09:41.191160
 image: assets/20251009T050517779--decodingml--llm-twin-course--20251009T051045797--cropped.png
 ---
 
