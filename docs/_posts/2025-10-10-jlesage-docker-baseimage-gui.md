@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-10T22:55:58.651126
+date: 2025-10-10T22:56:01.125422
 image: assets/20251010T130055088--jlesage--docker-baseimage-gui--20251010T131805827--cropped.png
 ---
 
