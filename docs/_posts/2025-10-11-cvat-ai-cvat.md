@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-11T00:26:51.407437
+date: 2025-10-11T00:26:53.975615
 image: assets/20251010T130233710--cvat-ai--cvat--20251010T132019254--cropped.png
 ---
 
