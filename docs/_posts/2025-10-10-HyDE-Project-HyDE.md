@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-10T15:21:38.380811
+date: 2025-10-10T15:21:41.629434
 image: assets/20251010T065555043--HyDE-Project--HyDE--20251010T071136932--cropped.png
 ---
 
