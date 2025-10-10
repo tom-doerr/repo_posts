@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-10T03:56:22.276835
+date: 2025-10-10T03:56:26.396864
 image: assets/20251009T195731496--maxim-saplin--CrossPlatformDiskTest--20251009T201215415--cropped.png
 ---
 
