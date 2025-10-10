@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-10T16:52:18.688995
+date: 2025-10-10T16:52:22.653826
 image: assets/20251010T125922641--suitenumerique--meet--20251010T130217243--cropped.png
 ---
 
