@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-10T20:24:27.230877
+date: 2025-10-10T20:24:29.539411
 image: assets/20251010T130009646--JakubMelka--PDF4QT--20251010T131230190--cropped.png
 ---
 
