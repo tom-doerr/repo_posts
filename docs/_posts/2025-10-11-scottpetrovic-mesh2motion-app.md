@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-11T12:34:12.209839
+date: 2025-10-11T12:34:14.654624
 image: assets/20251010T210328544--scottpetrovic--mesh2motion-app--20251010T211712620--cropped.png
 ---
 
