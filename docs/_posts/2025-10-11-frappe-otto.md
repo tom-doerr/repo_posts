@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-11T09:01:57.194671
+date: 2025-10-11T09:01:59.530854
 image: assets/20251010T205616601--frappe--otto--20251010T210917299--cropped.png
 ---
 
