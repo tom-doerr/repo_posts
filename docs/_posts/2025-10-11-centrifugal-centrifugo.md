@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-11T16:06:30.367821
+date: 2025-10-11T16:06:32.689234
 image: assets/20251010T211006055--centrifugal--centrifugo--20251010T212322314--cropped.png
 ---
 
