@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-11T13:04:31.826552
+date: 2025-10-11T13:04:34.162414
 image: assets/20251010T210341392--botingw--rulebook-ai--20251010T211804135--cropped.png
 ---
 
