@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-11T15:05:55.090451
+date: 2025-10-11T15:05:57.163636
 image: assets/20251010T210736805--StefanoFrusone--kafka-zero-to-production--20251010T212146449--cropped.png
 ---
 
