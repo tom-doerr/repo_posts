@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-11T11:03:11.110805
+date: 2025-10-11T11:03:13.978952
 image: assets/20251010T211409720--brunochanrio--DangoPlayer--20251010T211612193--cropped.png
 ---
 
