@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-11T11:33:32.416113
+date: 2025-10-11T11:33:34.867971
 image: assets/20251010T205948887--isolinear-labs--Neosynth--20251010T211629539--cropped.png
 ---
 
