@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-11T23:10:49.872859
+date: 2025-10-11T23:10:53.026758
 image: assets/20251010T212401006--igorescodro--alkaa--20251010T213039282--cropped.png
 ---
 
