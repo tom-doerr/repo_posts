@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-11T08:31:41.911759
+date: 2025-10-11T08:31:44.457991
 image: assets/20251010T205606929--ivnvxd--mcp-server-odoo--20251010T210845439--cropped.png
 ---
 
