@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-11T07:31:08.451641
+date: 2025-10-11T07:31:10.605344
 image: assets/20251010T205457300--NikolaDucak--caps-log--20251010T210451200--cropped.png
 ---
 
