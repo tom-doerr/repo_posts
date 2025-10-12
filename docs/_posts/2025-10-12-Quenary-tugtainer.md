@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-12T12:58:40.235027
+date: 2025-10-12T12:58:42.707455
 image: assets/20251012T023822309--Quenary--tugtainer--20251012T024403854--cropped.png
 ---
 
