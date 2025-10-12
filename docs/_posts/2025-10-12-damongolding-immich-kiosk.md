@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-12T13:28:55.003150
+date: 2025-10-12T13:28:57.381731
 image: assets/20251012T023930466--damongolding--immich-kiosk--20251012T024442747--cropped.png
 ---
 
