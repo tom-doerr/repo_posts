@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-12T18:01:09.882774
+date: 2025-10-12T18:01:12.379472
 image: assets/20251012T024849030--IvanMathy--Boop--20251012T025408310--cropped.png
 ---
 
