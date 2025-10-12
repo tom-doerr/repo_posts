@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-12T04:24:03.187031
+date: 2025-10-12T04:24:05.960744
 image: assets/20251012T015049951--metavoiceio--metavoice-src--20251012T023059041--cropped.png
 ---
 
