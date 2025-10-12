@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-12T05:24:36.792342
+date: 2025-10-12T05:24:39.401487
 image: assets/20251012T022129857--Alpha-VLLM--Lumina-T2X--20251012T023250345--cropped.png
 ---
 
