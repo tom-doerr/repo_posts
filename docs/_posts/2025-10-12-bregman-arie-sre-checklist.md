@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-12T21:32:57.036032
+date: 2025-10-12T21:33:00.030590
 image: assets/20251012T025359097--bregman-arie--sre-checklist--20251012T030114478--cropped.png
 ---
 
