@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-13T20:15:22.321455
+date: 2025-10-13T20:15:25.699716
 image: assets/20251013T001451848--Fajar-RahmadJaya--KeyTik--20251013T002102217--cropped.png
 ---
 
