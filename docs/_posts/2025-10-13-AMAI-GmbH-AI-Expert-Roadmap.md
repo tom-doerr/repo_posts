@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-13T13:41:46.123261
+date: 2025-10-13T13:41:49.576908
 image: assets/20251013T000826890--AMAI-GmbH--AI-Expert-Roadmap--20251013T001532965--cropped.png
 ---
 
