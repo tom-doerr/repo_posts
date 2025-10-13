@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-13T21:15:57.947601
+date: 2025-10-13T21:16:01.474885
 image: assets/20251013T001603928--McCloudS--subgen--20251013T002218533--cropped.png
 ---
 
