@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-13T09:09:22.775023
+date: 2025-10-13T09:09:25.345261
 image: assets/20251013T000159413--wassim249--YT-Navigator--20251013T000951689--cropped.png
 ---
 
