@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-13T03:36:19.089342
+date: 2025-10-13T03:36:21.832071
 image: assets/20251012T030244791--openseadragon--openseadragon--20251012T030830836--cropped.png
 ---
 
