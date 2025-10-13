@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-13T10:40:10.794261
+date: 2025-10-13T10:40:13.098478
 image: assets/20251013T000219007--dbeaver--cloudbeaver--20251013T001206165--cropped.png
 ---
 
