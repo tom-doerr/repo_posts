@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-13T21:46:15.809567
+date: 2025-10-13T21:46:18.926608
 image: assets/20251013T001622943--akaMrNagar--Mindful--20251013T002233681--cropped.png
 ---
 
