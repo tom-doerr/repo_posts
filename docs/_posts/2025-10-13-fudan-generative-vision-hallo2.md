@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-13T04:36:51.749892
+date: 2025-10-13T04:36:55.007197
 image: assets/20251013T000119501--fudan-generative-vision--hallo2--20251013T000315084--cropped.png
 ---
 
