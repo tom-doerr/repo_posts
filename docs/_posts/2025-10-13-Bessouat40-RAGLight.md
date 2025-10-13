@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-13T06:37:56.024573
+date: 2025-10-13T06:37:58.614410
 image: assets/20251013T000119446--Bessouat40--RAGLight--20251013T000610883--cropped.png
 ---
 
