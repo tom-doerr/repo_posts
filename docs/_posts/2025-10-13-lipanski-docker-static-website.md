@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-13T06:07:40.810400
+date: 2025-10-13T06:07:43.022336
 image: assets/20251013T000119466--lipanski--docker-static-website--20251013T000542462--cropped.png
 ---
 
