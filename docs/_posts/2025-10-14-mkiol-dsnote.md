@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-14T20:28:31.835104
+date: 2025-10-14T20:28:34.373635
 image: assets/20251014T014010884--mkiol--dsnote--20251014T014834137--cropped.png
 ---
 
