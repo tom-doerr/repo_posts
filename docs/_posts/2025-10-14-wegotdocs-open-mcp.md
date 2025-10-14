@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-14T17:26:42.019165
+date: 2025-10-14T17:26:44.770785
 image: assets/20251014T013215551--wegotdocs--open-mcp--20251014T014227705--cropped.png
 ---
 
