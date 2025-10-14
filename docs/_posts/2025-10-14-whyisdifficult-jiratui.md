@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-14T23:31:15.558422
+date: 2025-10-14T23:31:18.487023
 image: assets/20251014T014802065--whyisdifficult--jiratui--20251014T015546834--cropped.png
 ---
 
