@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-14T21:59:21.998593
+date: 2025-10-14T21:59:25.979454
 image: assets/20251014T014614696--becarpenter--book6--20251014T015330026--cropped.png
 ---
 
