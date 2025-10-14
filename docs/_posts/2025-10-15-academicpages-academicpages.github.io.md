@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-15T00:30:46.387680
+date: 2025-10-15T00:30:48.925867
 image: assets/20251014T014936856--academicpages--academicpages.github.io--20251014T015755910--cropped.png
 ---
 
