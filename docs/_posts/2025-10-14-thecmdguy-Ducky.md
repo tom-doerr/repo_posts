@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-14T06:51:05.983559
+date: 2025-10-14T06:51:08.249538
 image: assets/20251014T005744884--thecmdguy--Ducky--20251014T011721760--cropped.png
 ---
 
