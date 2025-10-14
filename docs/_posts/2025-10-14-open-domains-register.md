@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-14T15:55:55.772861
+date: 2025-10-14T15:55:58.718642
 image: assets/20251014T013044485--open-domains--register--20251014T014050287--cropped.png
 ---
 
