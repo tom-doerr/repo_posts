@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-14T16:26:10.879570
+date: 2025-10-14T16:26:14.499676
 image: assets/20251014T013117068--vxcontrol--pentagi--20251014T014129351--cropped.png
 ---
 
