@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-15T10:05:43.774326
+date: 2025-10-15T10:05:46.625761
 image: assets/20251015T011310990--sigma67--ytmusicapi--20251015T012339428--cropped.png
 ---
 
