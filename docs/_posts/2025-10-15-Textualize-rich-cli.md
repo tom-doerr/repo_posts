@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-15T09:35:28.644952
+date: 2025-10-15T09:35:31.154956
 image: assets/20251015T011257791--Textualize--rich-cli--20251015T012312391--cropped.png
 ---
 
