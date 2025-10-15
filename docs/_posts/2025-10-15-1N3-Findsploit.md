@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-15T21:11:56.488366
+date: 2025-10-15T21:12:01.853985
 image: assets/20251015T032609229--1N3--Findsploit--20251015T033323418--cropped.png
 ---
 
