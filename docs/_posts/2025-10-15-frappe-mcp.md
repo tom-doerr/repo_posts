@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-15T21:42:14.958979
+date: 2025-10-15T21:42:18.417382
 image: assets/20251015T032825877--frappe--mcp--20251015T033437531--cropped.png
 ---
 
