@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-15T09:05:13.577708
+date: 2025-10-15T09:05:15.965607
 image: assets/20251015T011232575--yoav-lavi--melody--20251015T012004155--cropped.png
 ---
 
