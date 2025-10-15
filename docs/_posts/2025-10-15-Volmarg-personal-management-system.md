@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-15T14:38:03.492669
+date: 2025-10-15T14:38:06.756918
 image: assets/20251015T031754748--Volmarg--personal-management-system--20251015T032355551--cropped.png
 ---
 
