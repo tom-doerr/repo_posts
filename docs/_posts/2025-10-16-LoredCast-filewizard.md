@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-16T00:44:01.218954
+date: 2025-10-16T00:44:03.618846
 image: assets/20251015T033232836--LoredCast--filewizard--20251015T034142950--cropped.png
 ---
 
