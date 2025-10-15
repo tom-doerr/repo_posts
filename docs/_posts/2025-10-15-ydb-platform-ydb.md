@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-15T06:03:37.950262
+date: 2025-10-15T06:03:40.155729
 image: assets/20251015T010835294--ydb-platform--ydb--20251015T011435470--cropped.png
 ---
 
