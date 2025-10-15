@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-15T13:37:32.445359
+date: 2025-10-15T13:37:35.114014
 image: assets/20251015T031725091--genai-works-org--genai-agentos--20251015T032237882--cropped.png
 ---
 
