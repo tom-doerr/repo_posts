@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-15T04:02:35.365620
+date: 2025-10-15T04:02:37.905799
 image: assets/20251015T010820031--cooperspencer--gickup--20251015T011158074--cropped.png
 ---
 
