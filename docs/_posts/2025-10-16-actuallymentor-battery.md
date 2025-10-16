@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-16T20:20:02.538987
+date: 2025-10-16T20:20:05.603537
 image: assets/20251016T074652118--actuallymentor--battery--20251016T075359968--cropped.png
 ---
 
