@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-16T10:43:59.510586
+date: 2025-10-16T10:44:02.448504
 image: assets/sponsfreixes_jinja2-fragments--20251016T071115661--cropped.png
 ---
 
