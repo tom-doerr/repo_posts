@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-16T12:45:09.676731
+date: 2025-10-16T12:45:12.320114
 image: assets/telegraf_telegraf--20251016T072819686--cropped.png
 ---
 
