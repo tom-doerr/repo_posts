@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-16T09:13:08.816320
+date: 2025-10-16T09:13:11.401390
 image: assets/20251016T010157119--brunostjohn--perplexideez--20251016T065703167--cropped.png
 ---
 
