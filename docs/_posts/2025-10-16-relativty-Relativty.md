@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-16T05:11:08.099222
+date: 2025-10-16T05:11:10.886286
 image: assets/20251016T020615448--relativty--Relativty--20251016T024252449--cropped.png
 ---
 
