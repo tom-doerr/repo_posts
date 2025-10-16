@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-16T19:19:21.645849
+date: 2025-10-16T19:19:26.534113
 image: assets/20251016T074641898--AIDC-AI--Pixelle-MCP--20251016T075114066--cropped.png
 ---
 
