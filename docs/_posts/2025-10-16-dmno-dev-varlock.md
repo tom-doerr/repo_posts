@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-16T04:40:48.228159
+date: 2025-10-16T04:40:50.845949
 image: assets/20251016T020614133--dmno-dev--varlock--20251016T024206503--cropped.png
 ---
 
