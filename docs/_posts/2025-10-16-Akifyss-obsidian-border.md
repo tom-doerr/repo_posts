@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-16T23:21:59.369222
+date: 2025-10-16T23:22:02.839039
 image: assets/20251016T074722754--Akifyss--obsidian-border--20251016T080228430--cropped.png
 ---
 
