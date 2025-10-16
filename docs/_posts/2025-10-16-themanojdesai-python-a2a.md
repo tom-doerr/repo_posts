@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-16T10:13:43.120709
+date: 2025-10-16T10:13:45.979966
 image: assets/themanojdesai_python-a2a--20251016T071019273--cropped.png
 ---
 
