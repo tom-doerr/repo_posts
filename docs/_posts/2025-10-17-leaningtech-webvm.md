@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-17T09:00:15.997577
+date: 2025-10-17T09:00:18.688821
 image: assets/screenshot_20251017_060611--20251017T080637559--cropped.png
 ---
 
