@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-19T12:54:14.545626
+date: 2025-10-19T12:54:17.450256
 image: assets/azukaar_Cosmos_Server_20251019_001232_330_20251019_003834--20251019T023835367--cropped.png
 ---
 
