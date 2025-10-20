@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-20T08:55:22.616132
+date: 2025-10-20T08:55:25.196146
 image: assets/blinkospace_blinko_20251020_044656_506_20251020_044957--20251020T064959296--cropped.png
 ---
 
