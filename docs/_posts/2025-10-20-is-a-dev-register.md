@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-20T10:25:59.241201
+date: 2025-10-20T10:26:02.000400
 image: assets/is_a_dev_register_20251020_045638_802_20251020_051607--20251020T071607949--cropped.png
 ---
 
