@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-23T07:15:00.239052
+date: 2025-10-23T07:15:03.336708
 image: assets/biolab_orange3_20251023_000519_000_20251023_051412_2e4dba--20251023T071412944--cropped.png
 ---
 
