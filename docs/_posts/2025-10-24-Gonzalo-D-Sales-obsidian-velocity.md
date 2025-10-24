@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-24T06:25:41.931808
+date: 2025-10-24T06:25:52.275569
 image: assets/Gonzalo_D_Sales_obsidian_velocity_20251023_002544_310_20251023_221752_16f27b--20251024T001900008--cropped.png
 ---
 
