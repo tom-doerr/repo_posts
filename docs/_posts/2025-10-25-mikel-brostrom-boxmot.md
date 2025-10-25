@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-25T09:16:20.971163
+date: 2025-10-25T09:16:23.258761
 image: assets/mikel_brostrom_boxmot_20251025_002123_199_20251025_004542_656cd6--20251025T024557029--cropped.png
 ---
 
