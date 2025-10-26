@@ -1,0 +1,35 @@
+name: Bug or Site Improvement
+description: Report a site bug or suggest an improvement (not repo submissions)
+labels: ["triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We don't accept repository suggestions via Issues/PRs. The site is curated automatically. Use this form only for site bugs and improvements.
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      options:
+        - Bug
+        - Site improvement
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Affected URL (if any)
+      placeholder: https://tom-doerr.github.io/repo_posts/...
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+    validations:
+      required: true
+  - type: checkboxes
+    id: policy
+    attributes:
+      label: Policy acknowledgement
+      options:
+        - label: I am not submitting a repository suggestion.
+          required: true
