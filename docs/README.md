@@ -35,7 +35,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contribution Guidelines
 
-When contributing code or updates to this repository, please adhere to the following guidelines:
-- Use code blocks where appropriate, as detailed on [usecodeblocks.com](https://usecodeblocks.com/);
-- Follow best practices and usage documentation on [aider.chat/docs/usage.html](https://aider.chat/docs/usage.html) and review helpful tips at [aider.chat/docs/usage/tips.html](https://aider.chat/docs/usage/tips.html);
-- For terminal-based assistance and further collaboration insights, refer to [aider.chat](https://aider.chat).
+We don’t accept repository recommendations or content additions via pull requests or issues. The site is curated and generated automatically from our pipeline. Please open issues only for site bugs (broken links, rendering problems) or infrastructure problems.
+
+If you want to suggest policy or infrastructure changes, open a focused issue with a clear description.
