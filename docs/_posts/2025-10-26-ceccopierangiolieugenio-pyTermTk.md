@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-26T19:56:33.745189
+date: 2025-10-26T19:56:35.275311
 image: assets/ceccopierangiolieugenio_pyTermTk_20251025_091146_916_20251025_102541_f09da4--20251025T122626344--cropped.png
 ---
 
