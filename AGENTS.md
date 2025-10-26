@@ -12,3 +12,7 @@ Next small items (safe to batch later)
 - Optional: add `/` shortcut to focus the search input.
 - Optional: render result title instead of slug (would require adding `title` to the index).
 
+Added tests — Oct 26, 2025
+- `tests/test_layout_basic.py`: blocks two-column grid; ensures per-post image and index link.
+- `tests/test_layout_more.py`: scroll-margin rule, related block present, home image links to post, key handlers in search JS.
+- `tests/test_search_links_baseurl.py`: search links prefixed with baseurl and Enter uses same.
