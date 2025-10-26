@@ -88,12 +88,13 @@
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
-    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+    <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/fuzzysort.min.js' | relative_url }}"></script>
     <script>
     (function(){
       const input = document.getElementById('site-search');
       if(!input) return;
-      let data=null, timer=null;
+      let data=null, timer=null, active=-1, current=[];
       const panel = document.getElementById('search-results');
       const fetchIdx = async () => {
         if(data) return data;
@@ -101,21 +102,25 @@
         data = await r.json();
         return data;
       };
-      const render = (items) => {
-        if(!items || !items.length){ panel.hidden=true; panel.innerHTML=''; return; }
+      const render = () => {
+        if(!current || !current.length){ panel.hidden=true; panel.innerHTML=''; active=-1; return; }
         panel.hidden=false;
         panel.innerHTML = '<ul>'+items.slice(0,20).map(e=>`<li><a href="${e.u}">${e.u.replace(/\/.+\//,'')}</a><small>${e.d}</small></li>`).join('')+'</ul>';
       };
-      input.addEventListener('input', async (e)=>{
+      input.addEventListener('input', (e)=>{
         clearTimeout(timer);
         const q = e.target.value.trim().toLowerCase();
-        if(!q){ render([]); return; }
-        timer = setTimeout(async ()=>{
-          const idx = await fetchIdx();
-          const res = idx.filter(x=> x.t.includes(q)).slice(0,50);
-          render(res);
-        }, 120);
+        if(!q){ current=[]; render(); return; }
+        timer = setTimeout(()=>{ (async()=>{ const idx=await fetchIdx(); const res = window.fuzzysort ? fuzzysort.go(q, idx, {key:'t', limit:50}) : idx.filter(x=>x.t.includes(q)).map(x=>({obj:x})); current = res.map(r=>r.obj); active = current.length?0:-1; render(); })(); }, 100);
       });
+      input.addEventListener('keydown', (e)=>{
+        if(panel.hidden || !current.length) return;
+        if(e.key==='ArrowDown' || e.key==='j'){ e.preventDefault(); active=Math.min(active+1, current.length-1); render(); }
+        else if(e.key==='ArrowUp' || e.key==='k'){ e.preventDefault(); active=Math.max(active-1, 0); render(); }
+        else if(e.key==='Enter'){ if(active>=0){ window.location = current[active].u; } }
+        else if(e.key==='Escape'){ panel.hidden=true; panel.innerHTML=''; active=-1; }
+      });
+      document.addEventListener('keydown', (e)=>{ if(document.activeElement!==input) return; if(e.key==='j' || e.key==='k' || e.key==='Enter' || e.key==='Escape') input.dispatchEvent(new KeyboardEvent('keydown', e)); });
       document.addEventListener('click', (ev)=>{ if(!panel.contains(ev.target) && ev.target!==input){ panel.hidden=true; }});
     })();
     </script>
