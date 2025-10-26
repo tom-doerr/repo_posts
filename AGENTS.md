@@ -89,3 +89,16 @@ CI trigger scope — Oct 26, 2025
 Layout tweak — Oct 26, 2025
 - Removed the `@owner` chip above post images to avoid implying a Twitter handle.
 - Test `tests/test_remove_owner_chip.py` ensures the chip markup stays removed.
+
+EU‑Compliant Analytics — Oct 26, 2025
+- Options (privacy‑first, cookie‑less):
+  1) Plausible Cloud (EU isolation) with custom‑domain proxy; or self‑host in EU.
+  2) Umami self‑host on an EU VPS; serve script from our subdomain.
+  3) Matomo self‑host (EU) with IP anonymization + cookieless mode.
+  4) Pirsch/Simple Analytics (EU vendors, cookie‑less) — SaaS.
+  5) Cloudflare Web Analytics (cookie‑less, but US vendor) — least strict option.
+- Recommended: Plausible Cloud (EU isolation) via custom‑domain proxy; fallback: Umami self‑host EU.
+- Minimal implementation plan:
+  - Add a `docs/_includes/analytics.html` with the vendor snippet.
+  - Include it only in production builds.
+  - Update privacy note to state no cookies, IP anonymized.
