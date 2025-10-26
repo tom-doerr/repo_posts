@@ -38,3 +38,12 @@ Next Steps — Oct 26, 2025
 Overlap fix — Oct 26, 2025
 - Removed `.wrapper { display:flex; ... }` and related `section/footer` flex rules in `site.css` to restore theme layout and prevent wide-screen overlap with the left header.
 - Tests: `tests/test_layout_no_flex_wrapper.py` ensures we don't reintroduce a flex wrapper; relaxed `test_layout_basic.py` to not require a `section { ... }` rule in custom CSS.
+CI concurrency — Oct 26, 2025
+- Added workflow `concurrency` to Deploy Jekyll site:
+  ```yaml
+  concurrency:
+    group: pages-${{ github.ref }}
+    cancel-in-progress: true
+  ```
+- Effect: ensures only one Pages deploy per branch runs at a time. If you push again while the previous deploy is still in progress, the older run gets auto-cancelled and the latest build deploys. This avoids the “deployment request failed due to in progress deployment” error we saw earlier.
+- Test: `tests/test_ci_concurrency.py` asserts the guard is present.
