@@ -5,6 +5,8 @@ on:
     branches: [ main ]
     paths:
       - 'docs/_posts/**'
+  schedule:
+    - cron: '*/30 * * * *'
   workflow_dispatch:
 
 jobs:
@@ -15,12 +17,19 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: 'pip'
       - name: Install deps
         run: |
           python -m pip install --upgrade pip
+          pip install --index-url https://download.pytorch.org/whl/cpu 'torch==2.5.1'
           pip install 'sentence-transformers==2.7.0'
-      - name: Generate related.json
-        run: python tools/generate_related.py
+      - name: Generate related.json (owner quick on push / embed missing on schedule)
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            RELATED_MODE=emb RELATED_ONLY_MISSING=1 python tools/generate_related.py
+          else
+            RELATED_MODE=owner python tools/generate_related.py
+          fi
       - name: Commit updated related.json
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
