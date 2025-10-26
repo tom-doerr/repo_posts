@@ -2,6 +2,13 @@ name: Deploy Jekyll site
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'docs/**'
+      - '.github/workflows/jekyll.yml'
+      - 'tools/generate_search_index.py'
+      - 'tools/generate_related.py'
+      - 'docs/_data/**'
+  workflow_dispatch:
 concurrency:
   group: pages-${{ github.ref }}
   cancel-in-progress: true
