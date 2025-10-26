@@ -30,8 +30,12 @@ jobs:
           else
             RELATED_MODE=owner python tools/generate_related.py
           fi
-      - name: Commit updated related.json
+      - name: Generate search-index.json
+        run: python tools/generate_search_index.py
+      - name: Commit updated related/search files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: 'ci: update related.json (related repos)'
-          file_pattern: docs/_data/related.json
+          commit_message: 'ci: update related.json + search-index.json'
+          file_pattern: |
+            docs/_data/related.json
+            docs/assets/search-index.json

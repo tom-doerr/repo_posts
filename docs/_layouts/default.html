@@ -33,6 +33,11 @@
 
         <p>{{ site.description | default: site.github.project_tagline }}</p>
 
+        <div class="search">
+          <input id="site-search" type="search" placeholder="Search repos…" autocomplete="off" />
+          <div id="search-results" hidden></div>
+        </div>
+
         {% if site.github.is_project_page %}
         <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>
         {% endif %}
@@ -84,5 +89,35 @@
       </footer>
     </div>
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+    <script>
+    (function(){
+      const input = document.getElementById('site-search');
+      if(!input) return;
+      let data=null, timer=null;
+      const panel = document.getElementById('search-results');
+      const fetchIdx = async () => {
+        if(data) return data;
+        const r = await fetch('{{ "/assets/search-index.json" | relative_url }}', {cache:'no-store'});
+        data = await r.json();
+        return data;
+      };
+      const render = (items) => {
+        if(!items || !items.length){ panel.hidden=true; panel.innerHTML=''; return; }
+        panel.hidden=false;
+        panel.innerHTML = '<ul>'+items.slice(0,20).map(e=>`<li><a href="${e.u}">${e.u.replace(/\/.+\//,'')}</a><small>${e.d}</small></li>`).join('')+'</ul>';
+      };
+      input.addEventListener('input', async (e)=>{
+        clearTimeout(timer);
+        const q = e.target.value.trim().toLowerCase();
+        if(!q){ render([]); return; }
+        timer = setTimeout(async ()=>{
+          const idx = await fetchIdx();
+          const res = idx.filter(x=> x.t.includes(q)).slice(0,50);
+          render(res);
+        }, 120);
+      });
+      document.addEventListener('click', (ev)=>{ if(!panel.contains(ev.target) && ev.target!==input){ panel.hidden=true; }});
+    })();
+    </script>
   </body>
 </html>
