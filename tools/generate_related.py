@@ -54,16 +54,19 @@ def main() -> None:
 
     model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
     embs = model.encode([it["text"] for it in items], convert_to_tensor=True, normalize_embeddings=True)
-    sim = util.cos_sim(embs, embs)
+    hits = util.semantic_search(embs, embs, top_k=6)  # include self as best hit
 
     related: dict[str,list[dict]] = {}
     for i, it in enumerate(items):
-        # top-k excluding self
-        scores = [(j, float(sim[i, j])) for j in range(len(items)) if j != i]
-        scores.sort(key=lambda x: x[1], reverse=True)
         top = []
-        for j, sc in scores[:5]:
-            top.append({"url": items[j]["url"], "title": items[j]["title"], "score": round(sc, 4)})
+        for h in hits[i]:
+            j = h["corpus_id"]
+            if j == i:
+                continue  # skip self
+            score = float(h["score"]) if isinstance(h["score"], (int, float)) else float(h["score"].item())
+            top.append({"url": items[j]["url"], "title": items[j]["title"], "score": round(score, 4)})
+            if len(top) == 5:
+                break
         related[it["slug"]] = top
 
     OUT.write_text(json.dumps(related, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
@@ -71,4 +74,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
