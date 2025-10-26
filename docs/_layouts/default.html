@@ -15,6 +15,13 @@
     {% include head-custom.html %}
   </head>
   <body>
+    <a class="rss-link" href="{{ '/feed.xml' | relative_url }}" aria-label="RSS feed">RSS</a>
+    <style>
+    .rss-link{position:fixed;left:8px;top:8px;font-weight:600;font-size:12px;padding:6px 8px;background:#f5f5f5;border-radius:4px;text-decoration:none;color:#333}
+    .rss-link:hover{opacity:.9}
+    @media (prefers-color-scheme: dark){.rss-link{background:#1a1a1a;color:#8ab4f8}}
+    @media (max-width:740px){.rss-link{left:6px;top:6px;font-size:11px;padding:5px 7px}}
+    </style>
     <div class="wrapper">
       <header>
         <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
