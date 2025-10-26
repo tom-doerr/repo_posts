@@ -43,8 +43,4 @@ ul { padding-left: 18px; }
 .related-list li { display:flex; align-items:center; gap:8px; margin:6px 0; }
 .related-list .dot { width:6px; height:6px; border-radius:50%; background: var(--accent); display:inline-block; }
 
-/* Two-column grid on wide screens (home only) */
-@media (min-width: 1200px){
-  body.home-page section { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }
-  body.home-page .post { margin:0; }
-}
+/* (Removed) Two-column grid on wide screens to avoid overlap with left header */
