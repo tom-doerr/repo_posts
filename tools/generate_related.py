@@ -14,7 +14,7 @@ import json, re, os
 from pathlib import Path
 
 try:
-from sentence_transformers import SentenceTransformer, util
+    from sentence_transformers import SentenceTransformer, util
 except Exception:
     raise SystemExit("Install sentence-transformers to run this tool.")
 
