@@ -6,6 +6,11 @@ body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial
 a { text-decoration: none; border-bottom: 1px solid rgba(0,0,0,0.08); }
 a:hover { border-bottom-color: currentColor; }
 a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.fade-enter {} /* reserved */
+.no-js {} /* reserved */
+.view-transition {} /* reserved */
+.fade-out {} /* reserved */
+.leaving {} /* reserved */
 .wrapper { display:flex; min-height:100vh; flex-direction:column; }
 section { flex:1 0 auto; }
 footer { flex:0 0 auto; min-height:40px; }
@@ -47,3 +52,8 @@ ul { padding-left: 18px; }
 .related-list .dot { width:6px; height:6px; border-radius:50%; background: var(--accent); display:inline-block; }
 
 /* (Removed) Two-column grid on wide screens to avoid overlap with left header */
+
+/* Subtle page fade-in; keeps anchors accurate; respects reduced motion */
+@keyframes fadeIn { from { opacity: .001 } to { opacity: 1 } }
+body { animation: fadeIn .15s ease-out; }
+@media (prefers-reduced-motion: reduce){ body { animation: none; } }
