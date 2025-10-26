@@ -15,7 +15,7 @@
     <![endif]-->
     {% include head-custom.html %}
   </head>
-  <body>
+  <body class="{% if page.collection == 'posts' %}post-page{% else %}home-page{% endif %}">
     <a class="rss-link" href="{{ '/feed.xml' | relative_url }}" aria-label="RSS feed">RSS</a>
     <style>
     .rss-link{position:fixed;left:8px;top:8px;font-weight:600;font-size:12px;padding:6px 8px;background:#f5f5f5;border-radius:4px;text-decoration:none;color:#333}
@@ -54,6 +54,9 @@
       {{ content }}
 
       {% if page.collection == "posts" and page.image %}
+      {% assign slug = page.url | split: '/' | last | split: '.' | first %}
+      {% assign owner = slug | split: '-' | first %}
+      <p class="chips"><span class="chip">@{{ owner }}</span></p>
       <p class="post-image"><img src="{{ page.image | relative_url }}" alt="{{ page.title | default: page.slug }} screenshot" loading="lazy"></p>
       <p class="post-index-link"><a href="{{ '/' | relative_url }}#{{ page.date | date: '%Y-%m-%d' }}-{{ page.slug }}">View on index</a></p>
       {% endif %}
@@ -64,9 +67,9 @@
       {% assign rel = site.data.related[slug] %}
       {% if rel and rel.size > 0 %}
       <h3>Related repos</h3>
-      <ul>
+      <ul class="related-list">
         {% for item in rel limit:5 %}
-          <li><a href="{{ item.url | relative_url }}">{{ item.title | default: item.url }}</a></li>
+          <li><span class="dot" aria-hidden="true"></span><a href="{{ item.url | relative_url }}">{{ item.title | default: item.url }}</a></li>
         {% endfor %}
       </ul>
       {% endif %}
