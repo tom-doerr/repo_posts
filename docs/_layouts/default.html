@@ -55,8 +55,10 @@
 
       {% if page.collection == "posts" and page.image %}
       {% assign slug = page.url | split: '/' | last | split: '.' | first %}
+      {% assign parts = page.url | split: '/' %}
+      {% assign y = parts[1] %}{% assign m = parts[2] %}{% assign d = parts[3] %}
       <p class="post-image"><img src="{{ page.image | relative_url }}" alt="{{ page.title | default: page.slug }} screenshot" loading="lazy"></p>
-      <p class="post-index-link"><a href="{{ '/' | relative_url }}#{{ page.date | date: '%Y-%m-%d' }}-{{ page.slug }}">View on index</a></p>
+      <p class="post-index-link"><a href="{{ '/' | relative_url }}#{{ y }}-{{ m }}-{{ d }}-{{ page.slug }}">View on index</a></p>
       {% endif %}
 
       {% comment %} Related repos (owner/repo heuristic via precomputed data) {% endcomment %}

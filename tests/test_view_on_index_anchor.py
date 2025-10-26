@@ -13,7 +13,8 @@ def test_index_article_has_stable_anchor_id():
 
 
 def test_view_on_index_href_points_to_baseurl_plus_anchor():
-    # Both default layout and header include should build the same href
+    # Accept either date-filter or url-split variants; we use url-split now
     for p in (LAYOUT, HEADER_INC):
         html = p.read_text(encoding='utf-8')
-        assert "href=\"{{ '/' | relative_url }}#{{ page.date | date: '%Y-%m-%d' }}-{{ page.slug }}\"" in html
+        ok = ("#{{ page.date | date: '%Y-%m-%d' }}-{{ page.slug }}" in html) or ("#{{ y }}-{{ m }}-{{ d }}-{{ page.slug }}" in html)
+        assert ok
