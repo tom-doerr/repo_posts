@@ -86,3 +86,6 @@ CI trigger scope — Oct 26, 2025
   - `docs/**`, `docs/_data/**`, workflows file, and the two tools scripts.
   - Added `workflow_dispatch:` for manual deploys.
 - Test: `tests/test_ci_paths_filter.py` asserts paths filter and manual dispatch.
+Layout tweak — Oct 26, 2025
+- Removed the `@owner` chip above post images to avoid implying a Twitter handle.
+- Test `tests/test_remove_owner_chip.py` ensures the chip markup stays removed.
