@@ -62,6 +62,14 @@ Oct 26, 2025 — Content Width Cap
 - Change: added `section { max-width: 900px; }` in `docs/assets/css/site.css` to prevent overly wide content and reduce rare overlap with the left header on very wide viewports.
 - Test: `tests/test_layout_content_width.py` asserts the presence of the cap.
 - Rationale: minimal, no layout restructuring, keeps the theme’s default margins.
+
+Oct 26, 2025 — Search Edge-Case Tests
+- Added `tests/test_search_edge_cases_strings.py` to lock in behaviors:
+  - Empty query clears results and returns early.
+  - Highlight escapes regex characters and uses <mark>.
+  - Multi-token split loop present; tokens length>1 to highlight.
+  - Enter does nothing when no results (guard present).
+- Relaxed an over-strict layout assertion to allow the single absolute-position used by the dropdown.
 Overlap fix — Oct 26, 2025
 - Removed `.wrapper { display:flex; ... }` and related `section/footer` flex rules in `site.css` to restore theme layout and prevent wide-screen overlap with the left header.
 - Tests: `tests/test_layout_no_flex_wrapper.py` ensures we don't reintroduce a flex wrapper; relaxed `test_layout_basic.py` to not require a `section { ... }` rule in custom CSS.

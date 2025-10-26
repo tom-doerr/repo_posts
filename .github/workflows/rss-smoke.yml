@@ -28,6 +28,21 @@ jobs:
           curl -fsS "$BASE/2025/10/26/Tyrrrz-YoutubeExplode.html" | tee post2.html >/dev/null
           grep -q 'Related repos' post2.html
           grep -q '<ul class="related-list">' post2.html
+      - name: Check first related link returns 200
+        run: |
+          BASE=https://tom-doerr.github.io/repo_posts
+          href=$(awk '/<ul class="related-list">/,/<\/ul>/' post2.html | grep -o 'href="[^"]*"' | head -n1 | sed -E 's/href="([^"]*)"/\1/')
+          if [ -z "$href" ]; then echo "No related href found"; exit 1; fi
+          case "$href" in 
+            http*) url="$href";; 
+            /*) url="$BASE$href";; 
+            *) url="$BASE/$href";; 
+          esac
+          curl -fsS "$url" >/dev/null
+      - name: Ensure single analytics script include
+        run: |
+          # Count Simple Analytics script occurrences on the sample post
+          [ "$(grep -o 'scripts.simpleanalyticscdn.com' post2.html | wc -l)" -eq 1 ]
       - name: Check search index and site CSS exist
         run: |
           BASE=https://tom-doerr.github.io/repo_posts
