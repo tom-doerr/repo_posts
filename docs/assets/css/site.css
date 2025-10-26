@@ -55,6 +55,8 @@ ul { padding-left: 18px; }
 .related-list { list-style: none; padding-left: 0; }
 .related-list li { display:flex; align-items:center; gap:8px; margin:6px 0; }
 .related-list .dot { width:6px; height:6px; border-radius:50%; background: var(--accent); display:inline-block; }
+/* Long related titles: collapse with ellipsis */
+.related-list a { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0 }
 
 /* (Removed) Two-column grid on wide screens to avoid overlap with left header */
 
