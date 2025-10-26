@@ -35,6 +35,23 @@ Next Steps — Oct 26, 2025
 3) Add workflow `concurrency` to Deploy to avoid occasional "in progress" Pages conflicts.
 4) Limit homepage to recent N posts and add a simple Archive page to cut initial load (keep all posts online).
 5) Optional: add max content width (e.g., 900px) for readability; add 1 CSS test.
+
+Proposed Continuation — Oct 26, 2025 (later)
+1) Search results show titles
+   - Change: emit `title` in `tools/generate_search_index.py`; render titles in `assets/js/search.js`.
+   - Tests: assert `title` appears and is highlighted.
+2) Max content width for readability
+   - Change: `section{max-width:900px;margin:0 auto}` in `site.css`.
+   - Tests: check rule presence; ensure no grid/fixed introduced.
+3) Homepage limit + Archive page
+   - Change: `index.md` shows last 100; new `archive.md` lists all (same markup); keep all posts online for SEO.
+   - Tests: assert Liquid `limit:` exists; archive includes anchors.
+4) Feed smoke: at least one <entry>
+   - Change: add curl/grep to `rss-smoke.yml`.
+   - Tests: optional unit asserting workflow text contains the grep.
+5) Tiny perceived-speed bump
+   - Change: add `<link rel="prefetch" href="{{ '/assets/search-index.json' | relative_url }}">` on home only.
+   - Tests: assert tag present in layout.
 Overlap fix — Oct 26, 2025
 - Removed `.wrapper { display:flex; ... }` and related `section/footer` flex rules in `site.css` to restore theme layout and prevent wide-screen overlap with the left header.
 - Tests: `tests/test_layout_no_flex_wrapper.py` ensures we don't reintroduce a flex wrapper; relaxed `test_layout_basic.py` to not require a `section { ... }` rule in custom CSS.
@@ -49,3 +66,8 @@ CI concurrency — Oct 26, 2025
 - Test: `tests/test_ci_concurrency.py` asserts the guard is present.
 Search UX — Oct 26, 2025
 - Added "/" shortcut: pressing slash focuses the search input unless typing in an input/textarea or holding Ctrl/Meta/Alt. Test: `tests/test_search_slash_focus.py`.
+
+Search tests — Oct 26, 2025
+- `tests/test_search_ui_present.py`: input, panel, placeholder, and scripts loaded.
+- `tests/test_search_js_behavior_strings.py`: fetch path, fuzzysort usage, 20-result render, highlight usage, BASE concatenation.
+- `tests/test_search_index_file.py`: asserts index file exists and is a JSON array.
