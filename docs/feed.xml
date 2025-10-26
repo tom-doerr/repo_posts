@@ -23,7 +23,12 @@ layout: null
     {% if first_link %}
     <link rel="related" type="text/html" href="{{ first_link | xml_escape }}" />
     {% endif %}
-    <content type="html"><![CDATA[{{ html }}]]></content>
+    <content type="html"><![CDATA[
+      {% if post.image %}
+      <p><img src="{{ post.image | relative_url | absolute_url }}" alt="{{ post.title | default: post.slug | xml_escape }} screenshot"/></p>
+      {% endif %}
+      {{ html }}
+    ]]></content>
   </entry>
   {% endfor %}
 </feed>
