@@ -83,5 +83,16 @@
     <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/fuzzysort.min.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/search.js' | relative_url }}"></script>
+    <script>
+      (function(){
+        if(!location.hash) return;
+        function jump(){
+          var id = location.hash.slice(1);
+          var el = document.getElementById(decodeURIComponent(id));
+          if(el) el.scrollIntoView();
+        }
+        window.addEventListener('load', jump, { once: true });
+      })();
+    </script>
   </body>
 </html>
