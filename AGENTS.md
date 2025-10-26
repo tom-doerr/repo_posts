@@ -28,3 +28,13 @@ UX — Oct 26, 2025
 Maintainability — Oct 26, 2025
 - Extracted inline search script into `docs/assets/js/search.js` (with Liquid front matter) and moved the inline RSS badge styles into `site.css`.
 - Updated tests to read from `search.js` and assert layout references it.
+
+Next Steps — Oct 26, 2025
+1) Add "/" shortcut to focus search input (tiny JS + 1 test). [Recommended]
+2) Render titles in search results (extend `generate_search_index.py` with `title`, adjust `search.js`; add 1–2 tests).
+3) Add workflow `concurrency` to Deploy to avoid occasional "in progress" Pages conflicts.
+4) Limit homepage to recent N posts and add a simple Archive page to cut initial load (keep all posts online).
+5) Optional: add max content width (e.g., 900px) for readability; add 1 CSS test.
+Overlap fix — Oct 26, 2025
+- Removed `.wrapper { display:flex; ... }` and related `section/footer` flex rules in `site.css` to restore theme layout and prevent wide-screen overlap with the left header.
+- Tests: `tests/test_layout_no_flex_wrapper.py` ensures we don't reintroduce a flex wrapper; relaxed `test_layout_basic.py` to not require a `section { ... }` rule in custom CSS.
