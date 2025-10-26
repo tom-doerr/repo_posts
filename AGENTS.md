@@ -24,3 +24,7 @@ UX — Oct 26, 2025
 - Added subtle page fade-in (0.15s) with reduced-motion guard.
 - Homepage title now links to per-post page (`<h2 class="post-title"><a href="{{ post.url | relative_url }}">…</a></h2>`), and we hide the first inner H1 on the homepage only (`.home-page .post h1:first-child { display: none; }`) to avoid duplicate titles.
 - Tests added: `tests/test_page_transition_css.py`, `tests/test_title_link_to_post.py`.
+
+Maintainability — Oct 26, 2025
+- Extracted inline search script into `docs/assets/js/search.js` (with Liquid front matter) and moved the inline RSS badge styles into `site.css`.
+- Updated tests to read from `search.js` and assert layout references it.
