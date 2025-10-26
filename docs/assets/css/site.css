@@ -46,6 +46,9 @@ ul { padding-left: 18px; }
   #search-results ul{ background:#121212; border-color:#2a2a2a; }
   #search-results li.active { background: rgba(138,180,248,0.12); }
 }
+/* Search snippet */
+#search-results .snippet{ color:#555; font-size:12px; line-height:1.4; }
+@media (prefers-color-scheme: dark){ #search-results .snippet{ color:#bbb; } }
 
 /* Chips and related list */
 .chips { margin: 8px 0 6px; }

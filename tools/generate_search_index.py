@@ -23,17 +23,24 @@ def _extract(md: str) -> str:
     m = re.search(r"^#\s+(.+)$", md, re.M)
     return m.group(1).strip() if m else ""
 
+def _desc(md: str) -> str:
+    # First non-heading, non-empty line after the H1
+    m = re.search(r"^#\s+.+$(?:\r?\n)+([^#\n][^\n]+)", md, re.M)
+    return (m.group(1).strip() if m else "")[:160]
+
 def main() -> None:
     rows = []
     for p in sorted(POSTS.glob('*.md')):
         stem = p.stem
         title = _extract(p.read_text(encoding='utf-8', errors='ignore')) or stem
         owner_repo = stem.split('-', 3)[-1]
+        desc = _desc(p.read_text(encoding='utf-8', errors='ignore'))
         rows.append({
-            't': (title + ' ' + owner_repo).lower(),
+            't': (title + ' ' + owner_repo + ' ' + desc).lower(),
             'u': _url(stem),
             'd': '-'.join(stem.split('-', 3)[:3]),
             'title': title,
+            's': desc,
         })
     OUT.write_text(json.dumps(rows, ensure_ascii=False, separators=(',',':')), encoding='utf-8')
     print(f"Wrote {OUT} with {len(rows)} entries")
