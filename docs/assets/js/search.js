@@ -43,5 +43,12 @@
   });
   document.addEventListener('keydown', (e)=>{ if(document.activeElement!==input) return; if(e.key==='j' || e.key==='k' || e.key==='Enter' || e.key==='Escape') input.dispatchEvent(new KeyboardEvent('keydown', e)); });
   document.addEventListener('click', (ev)=>{ if(!panel.contains(ev.target) && ev.target!==input){ panel.hidden=true; }});
+  // "/" focuses the search input when not typing in a field
+  document.addEventListener('keydown', (e)=>{
+    if(e.key!=='/' || e.ctrlKey || e.metaKey || e.altKey) return;
+    const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+    if(tag==='input' || tag==='textarea') return;
+    e.preventDefault();
+    input.focus();
+  });
 })();
-
