@@ -5,13 +5,11 @@ INDEX = ROOT / 'docs' / 'index.md'
 CSS = ROOT / 'docs' / 'assets' / 'css' / 'site.css'
 
 
-def test_home_title_links_to_post_page():
+def test_no_extra_post_title_link_on_homepage():
     idx = INDEX.read_text(encoding='utf-8')
-    assert 'class="post-title"' in idx
-    assert 'href="{{ post.url | relative_url }}"' in idx
+    assert 'class="post-title"' not in idx
 
 
-def test_home_hides_inner_h1_to_avoid_dup():
+def test_homepage_does_not_hide_inner_h1():
     css = CSS.read_text(encoding='utf-8')
-    assert '.home-page .post h1:first-child { display: none; }' in css
-
+    assert '.home-page .post h1:first-child { display: none; }' not in css

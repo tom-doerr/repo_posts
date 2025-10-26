@@ -24,9 +24,6 @@ footer { min-height:40px; }
 .post img[loading="lazy"] { content-visibility:auto; contain-intrinsic-size: 720px 405px; }
 .post .post-meta { font-size: 12px; color: #666; margin-bottom: 8px; }
 .post h1 { font-size: 20px; margin: 6px 0 8px; }
-.post-title { font-size: 20px; margin: 0 0 6px; }
-/* Hide GitHub-linked H1 inside content on homepage to avoid duplicate title */
-.home-page .post h1:first-child { display: none; }
 h3 { margin-top: 20px; }
 ul { padding-left: 18px; }
 
