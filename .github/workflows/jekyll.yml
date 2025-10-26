@@ -2,6 +2,9 @@ name: Deploy Jekyll site
 on:
   push:
     branches: [ main ]
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
   pages: write
