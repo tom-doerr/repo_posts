@@ -50,6 +50,20 @@
       <p class="post-index-link"><a href="{{ '/' | relative_url }}#{{ page.date | date: '%Y-%m-%d' }}-{{ page.slug }}">View on index</a></p>
       {% endif %}
 
+      {% comment %} Related repos (owner/repo heuristic via precomputed data) {% endcomment %}
+      {% if page.collection == "posts" %}
+      {% assign slug = page.url | split: '/' | last | split: '.' | first %}
+      {% assign rel = site.data.related[slug] %}
+      {% if rel and rel.size > 0 %}
+      <h3>Related repos</h3>
+      <ul>
+        {% for item in rel limit:5 %}
+          <li><a href="{{ item.url | relative_url }}">{{ item.title | default: item.url }}</a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endif %}
+
       </section>
       <footer>
         {% if site.github.is_project_page %}
