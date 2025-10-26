@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-26T18:56:17.381732
+date: 2025-10-26T18:56:18.983793
 image: assets/Brandon7CC_mac_monitor_20251025_053841_166_20251025_102410_ef6e53--20251025T122426913--cropped.png
 ---
 
