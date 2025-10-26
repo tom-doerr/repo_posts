@@ -30,21 +30,22 @@ ul { padding-left: 18px; }
 /* (Removed) details link styles */
 
 /* Search UI */
-.search { margin-top: 8px; }
-#site-search { width: 100%; max-width: 420px; padding: 8px 10px; border-radius: 6px; border:1px solid #e0e0e0; }
+.search { position: relative; margin-top: 8px; max-width: 420px; }
+#site-search { width: 100%; padding: 8px 10px; border-radius: 6px; border:1px solid #e0e0e0; }
 #site-search:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
-#search-results { position: relative; max-width: 520px; }
-#search-results ul { list-style: none; padding: 8px; margin: 6px 0 0; border:1px solid #eaeaea; border-radius: 8px; background:#fff; }
-#search-results li { display:flex; justify-content: space-between; gap:8px; padding:4px 2px; font-size: 14px; }
-#search-results li.active { background: rgba(37,99,235,0.08); }
-#search-results a { border-bottom: none; }
+#search-results { position: absolute; top: calc(100% + 6px); left: 0; width: 100%; z-index: 50; }
+#search-results ul { list-style: none; padding: 6px; margin: 0; border:1px solid #eaeaea; border-radius: 8px; background:#fff; box-shadow: 0 8px 18px rgba(0,0,0,.08); }
+#search-results li { display:block; padding:6px 6px; font-size: 14px; }
+#search-results li.active { background: rgba(37,99,235,0.08); border-radius:6px; }
+#search-results a { display:block; font-weight:600; color:inherit; border-bottom: none; margin-bottom:2px; }
+#search-results small { display:block; color:#666; margin-bottom:2px; }
 @media (prefers-color-scheme: dark){
   #site-search{ background:#0f0f0f; color:#e6e6e6; border-color:#2a2a2a; }
-  #search-results ul{ background:#121212; border-color:#2a2a2a; }
+  #search-results ul{ background:#121212; border-color:#2a2a2a; box-shadow: 0 8px 18px rgba(0,0,0,.4); }
   #search-results li.active { background: rgba(138,180,248,0.12); }
 }
 /* Search snippet */
-#search-results .snippet{ color:#555; font-size:12px; line-height:1.4; }
+#search-results .snippet{ color:#555; font-size:12px; line-height:1.4; display:block; margin-top:2px; }
 @media (prefers-color-scheme: dark){ #search-results .snippet{ color:#bbb; } }
 
 /* Chips and related list */
