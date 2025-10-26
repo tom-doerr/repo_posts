@@ -8,6 +8,11 @@ Keep in mind
 - Search JSON (`tools/generate_search_index.py`) keeps `u` as path like `/YYYY/MM/DD/slug.html`; client JS must always prefix `{{ site.baseurl }}`.
 - Contribution policy lives in `README.md` only (not shown on the site header).
 
+Oct 26, 2025 — Autoposter/Git Push
+- Symptom: “new posts not appearing”. Root cause was non–fast‑forward push failures in the local publish step; pushes failed so Pages didn’t deploy.
+- Fix: GitHubPublisher now fetches + pull --rebase and pushes with `--force-with-lease` before publishing.
+- Behavior: autoposter continues even if GitHub push fails; it now logs an error and proceeds.
+
 Next small items (safe to batch later)
 - Optional: add `/` shortcut to focus the search input.
 - Optional: render result title instead of slug (would require adding `title` to the index).
