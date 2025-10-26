@@ -1,5 +1,9 @@
 name: Generate Related Data
 
+concurrency:
+  group: related-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   push:
     branches: [ main ]
@@ -38,3 +42,4 @@ jobs:
           file_pattern: |
             docs/_data/related.json
             docs/assets/search-index.json
+          push_options: '--force-with-lease'
