@@ -18,6 +18,11 @@ footer { flex:0 0 auto; min-height:40px; }
 h3 { margin-top: 20px; }
 ul { padding-left: 18px; }
 
+/* Details link */
+.post-more { margin: 8px 0 0; }
+.details-link { font-weight:600; color: var(--accent); border-bottom: none; }
+.details-link:hover { text-decoration: underline; }
+
 /* Chips and related list */
 .chips { margin: 8px 0 6px; }
 .chip { display:inline-block; font-size: 12px; padding: 2px 8px; border:1px solid #e0e0e0; border-radius: 999px; background:#fafafa; color:#555 }

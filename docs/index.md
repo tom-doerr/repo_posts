@@ -11,6 +11,7 @@ title: Repository Showcase
   {% if post.image %}
   <img src="{{ post.image | relative_url }}" alt="{{ post.title }} screenshot" loading="lazy">
   {% endif %}
+  <p class="post-more"><a class="details-link" href="{{ post.url | relative_url }}">Details</a></p>
   <hr>
 </article>
 {% endfor %}
