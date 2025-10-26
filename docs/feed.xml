@@ -1,0 +1,30 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ site.title | xml_escape }}</title>
+  <link href="{{ site.url | append: site.baseurl }}"/>
+  <updated>{{ site.posts | first | date_to_xmlschema }}</updated>
+  <id>{{ site.url | append: site.baseurl }}/</id>
+  <author>
+    <name>{{ site.github.owner_name | default: site.title }}</name>
+  </author>
+
+  {% for post in site.posts %}
+  {% assign html = post.content | markdownify %}
+  {% assign href_parts = html | split: 'href="' %}
+  {% assign first_link = href_parts[1] | split: '"' | first %}
+  <entry>
+    <title>{{ post.title | default: post.slug | xml_escape }}</title>
+    <link href="{{ post.url | absolute_url }}"/>
+    <id>{{ post.url | absolute_url }}</id>
+    <updated>{{ post.date | date_to_xmlschema }}</updated>
+    {% if first_link %}
+    <link rel="related" type="text/html" href="{{ first_link | xml_escape }}" />
+    {% endif %}
+    <content type="html"><![CDATA[{{ html }}]]></content>
+  </entry>
+  {% endfor %}
+</feed>
+
