@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-26T14:25:03.270244
+date: 2025-10-26T14:25:04.962496
 image: assets/kohii_smoothcsv3_20251025_052637_333_20251025_101757_7afed3--20251025T121836483--cropped.png
 ---
 
