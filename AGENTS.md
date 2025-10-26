@@ -107,6 +107,7 @@ Analytics changes — Oct 26, 2025
 - Switched from index‑only include to layout include so posts are tracked.
 - Added noscript pixel to `_includes/analytics.html`.
 - Tests added: `tests/test_analytics_include.py` ensures layout includes analytics, index does not duplicate it, and noscript pixel exists.
+- Duplication guard: `tests/test_analytics_no_duplicate.py` asserts the layout includes the analytics include exactly once and that the SA script/pixel only appear in the include.
 
 "View on index" position — Oct 26, 2025
 - Issue: anchor jump could land slightly off because homepage images load after the hash navigation, shifting content.
