@@ -11,9 +11,9 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .view-transition {} /* reserved */
 .fade-out {} /* reserved */
 .leaving {} /* reserved */
-.wrapper { display:flex; min-height:100vh; flex-direction:column; }
-section { flex:1 0 auto; }
-footer { flex:0 0 auto; min-height:40px; }
+/* Use theme defaults to avoid overlap with left header */
+.wrapper {}
+footer { min-height:40px; }
 .post { background: #fff; border: 1px solid #eaeaea; border-radius: 8px; padding: 14px 16px; margin: 18px 0; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: transform .15s ease, box-shadow .15s ease; }
 .post { scroll-margin-top: 16px; }
 .post:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.06); }

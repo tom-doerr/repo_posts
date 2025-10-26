@@ -14,7 +14,6 @@ def test_no_two_column_grid_in_custom_css():
 def test_no_fixed_or_absolute_position_on_content_wrappers():
     css = CSS.read_text(encoding='utf-8')
     # The site uses the theme’s normal left header; we avoid fixed/absolute on wrappers
-    assert 'section {' in css  # sanity: we style section minimally
     assert 'position: fixed' not in css
     assert 'position: absolute' not in css
 
@@ -25,4 +24,3 @@ def test_layout_contains_single_section_and_post_image_block():
     # Per-post image + index link are present under the content
     assert 'class="post-image"' in html
     assert 'View on index' in html
-
