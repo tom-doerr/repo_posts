@@ -16,3 +16,14 @@ jobs:
       - name: Check feed
         run: |
           curl -fsS https://tom-doerr.github.io/repo_posts/feed.xml | head -n 5
+      - name: Check a sample post has image and index link
+        run: |
+          BASE=https://tom-doerr.github.io/repo_posts
+          curl -fsS "$BASE/2025/10/21/julien040-anyquery.html" | tee post.html >/dev/null
+          grep -q 'class="post-image"' post.html
+          grep -q 'View on index' post.html
+      - name: Check search index and site CSS exist
+        run: |
+          BASE=https://tom-doerr.github.io/repo_posts
+          curl -fsS "$BASE/assets/search-index.json" | head -c 2 >/dev/null
+          curl -fsS "$BASE/assets/css/site.css" | head -n 1
