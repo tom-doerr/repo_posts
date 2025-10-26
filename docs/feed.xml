@@ -5,7 +5,7 @@ layout: null
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>{{ site.title | xml_escape }}</title>
   <link href="{{ site.url | append: site.baseurl }}"/>
-  <updated>{{ site.posts | first | date_to_xmlschema }}</updated>
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
   <id>{{ site.url | append: site.baseurl }}/</id>
   <author>
     <name>{{ site.github.owner_name | default: site.title }}</name>
@@ -27,4 +27,3 @@ layout: null
   </entry>
   {% endfor %}
 </feed>
-
