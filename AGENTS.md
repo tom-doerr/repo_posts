@@ -47,3 +47,5 @@ CI concurrency — Oct 26, 2025
   ```
 - Effect: ensures only one Pages deploy per branch runs at a time. If you push again while the previous deploy is still in progress, the older run gets auto-cancelled and the latest build deploys. This avoids the “deployment request failed due to in progress deployment” error we saw earlier.
 - Test: `tests/test_ci_concurrency.py` asserts the guard is present.
+Search UX — Oct 26, 2025
+- Added "/" shortcut: pressing slash focuses the search input unless typing in an input/textarea or holding Ctrl/Meta/Alt. Test: `tests/test_search_slash_focus.py`.
