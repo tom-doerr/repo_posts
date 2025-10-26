@@ -100,8 +100,13 @@ EU‑Compliant Analytics — Oct 26, 2025
 - Recommended: Plausible Cloud (EU isolation) via custom‑domain proxy; fallback: Umami self‑host EU.
 - Minimal implementation plan:
   - Add a `docs/_includes/analytics.html` with the vendor snippet.
-  - Include it only in production builds.
+  - Include it site‑wide via `docs/_layouts/default.html` (done Oct 26, 2025).
   - Update privacy note to state no cookies, IP anonymized.
+
+Analytics changes — Oct 26, 2025
+- Switched from index‑only include to layout include so posts are tracked.
+- Added noscript pixel to `_includes/analytics.html`.
+- Tests added: `tests/test_analytics_include.py` ensures layout includes analytics, index does not duplicate it, and noscript pixel exists.
 
 "View on index" position — Oct 26, 2025
 - Issue: anchor jump could land slightly off because homepage images load after the hash navigation, shifting content.
