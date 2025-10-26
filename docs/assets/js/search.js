@@ -34,7 +34,20 @@
     clearTimeout(timer);
     const qRaw = e.target.value; const q = qRaw.trim().toLowerCase(); currentQuery = qRaw;
     if(!q){ current=[]; render(); return; }
-    timer = setTimeout(()=>{ (async()=>{ const idx=await fetchIdx(); const res = window.fuzzysort ? fuzzysort.go(q, idx, {key:'t', limit:50}) : idx.filter(x=>x.t.includes(q)).map(x=>({obj:x})); current = res.map(r=>r.obj); active = current.length?0:-1; render(); })(); }, 100);
+    timer = setTimeout(()=>{ (async()=>{
+      const idx=await fetchIdx();
+      const toks = q.split(/\s+/).filter(t=>t.length>1);
+      const scored = [];
+      for(const obj of idx){
+        const text = obj.t;
+        let miss=false, score=0;
+        for(const t of toks){ const pos = text.indexOf(t); if(pos<0){ miss=true; break; } score += 1000 - pos; }
+        if(!miss) scored.push({obj, score});
+      }
+      scored.sort((a,b)=> b.score - a.score);
+      current = scored.map(r=>r.obj);
+      active = current.length?0:-1; render();
+    })(); }, 100);
   });
   input.addEventListener('keydown', (e)=>{
     if(panel.hidden || !current.length) return;
