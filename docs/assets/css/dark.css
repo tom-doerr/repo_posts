@@ -1,0 +1,15 @@
+/* Minimal auto dark mode: follows OS/browser preference */
+@media (prefers-color-scheme: dark) {
+  :root { color-scheme: dark; }
+  body { background:#0b0b0b; color:#e6e6e6; }
+  .wrapper { background: transparent; }
+  a { color:#8ab4f8; }
+  a:hover { color:#a9c8ff; }
+  header h1 a { color:#e6e6e6; }
+  header p, footer p { color:#bbbbbb; }
+  .post-meta { color:#aaaaaa; }
+  hr { border-color:#333333; }
+  pre, code { background:#111111; color:#e6e6e6; border-color:#333333; }
+  th, td { border-color:#333333; }
+  blockquote { color:#bbbbbb; border-left-color:#333333; }
+}
