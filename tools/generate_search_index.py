@@ -5,6 +5,7 @@ Fields per entry:
   t: title + owner/repo (lowercased, for substring search)
   u: post URL (permalink)
   d: yyyy-mm-dd
+  title: original title (for rendering)
 """
 from __future__ import annotations
 from pathlib import Path
@@ -32,10 +33,10 @@ def main() -> None:
             't': (title + ' ' + owner_repo).lower(),
             'u': _url(stem),
             'd': '-'.join(stem.split('-', 3)[:3]),
+            'title': title,
         })
     OUT.write_text(json.dumps(rows, ensure_ascii=False, separators=(',',':')), encoding='utf-8')
     print(f"Wrote {OUT} with {len(rows)} entries")
 
 if __name__ == '__main__':
     main()
-

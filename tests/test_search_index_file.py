@@ -11,3 +11,7 @@ def test_search_index_exists_and_is_array_like():
         first = f.read(1)
     assert first == b'['
 
+
+def test_search_index_contains_title_field():
+    s = IDX.read_text(encoding='utf-8')
+    assert '"title":' in s

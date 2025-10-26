@@ -26,7 +26,9 @@
   const render = () => {
     if(!current || !current.length){ panel.hidden=true; panel.innerHTML=''; active=-1; return; }
     panel.hidden=false;
-    panel.innerHTML = '<ul>' + current.slice(0,20).map((e,i)=>{ const name=e.u.replace(/\/.+\//,'').replace(/\.html$/,''); return `<li class="${i===active?'active':''}"><a href="${BASE}${e.u}">${highlight(name,currentQuery)}</a><small>${e.d}</small></li>`; }).join('') + '</ul>';
+    panel.innerHTML = '<ul>' + current.slice(0,20).map((e,i)=>{
+      return `<li class="${i===active?'active':''}"><a href="${BASE}${e.u}">${highlight(e.title,currentQuery)}</a><small>${e.d}</small></li>`;
+    }).join('') + '</ul>';
   };
   input.addEventListener('input', (e)=>{
     clearTimeout(timer);
