@@ -5,8 +5,8 @@ title: Repository Showcase
 
 {% include analytics.html %}
 <blockquote>
-  <strong>Contributions:</strong> We don’t accept repository recommendations or content additions via PRs/issues. The site is curated and generated automatically.
-</blockquote>
+  We don't accept repository suggestions via Issues/PRs. The site is curated automatically. Please use issues only for site bugs and improvements.
+  </blockquote>
 {% for post in site.posts %}
 <article class="post" id="{{ post.date | date: '%Y-%m-%d' }}-{{ post.slug }}">
   <p class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</p>

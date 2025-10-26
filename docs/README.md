@@ -35,6 +35,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contribution Guidelines
 
-We don’t accept repository recommendations or content additions via pull requests or issues. The site is curated and generated automatically from our pipeline. Please open issues only for site bugs (broken links, rendering problems) or infrastructure problems.
+We don't accept repository suggestions via Issues/PRs. The site is curated automatically. Please use issues only for site bugs and improvements.
 
-If you want to suggest policy or infrastructure changes, open a focused issue with a clear description.
+If you want to propose a site/infrastructure change, open a focused issue with a clear description.
