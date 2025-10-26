@@ -1,0 +1,18 @@
+name: RSS Smoke Check
+
+on:
+  workflow_run:
+    workflows: ["Deploy Jekyll site"]
+    types: ["completed"]
+
+jobs:
+  verify:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check homepage
+        run: |
+          curl -fsS https://tom-doerr.github.io/repo_posts/
+      - name: Check feed
+        run: |
+          curl -fsS https://tom-doerr.github.io/repo_posts/feed.xml | head -n 5
