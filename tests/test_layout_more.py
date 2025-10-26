@@ -4,6 +4,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CSS = ROOT / 'docs' / 'assets' / 'css' / 'site.css'
 LAYOUT = ROOT / 'docs' / '_layouts' / 'default.html'
 INDEX = ROOT / 'docs' / 'index.md'
+SEARCH_JS = ROOT / 'docs' / 'assets' / 'js' / 'search.js'
 
 
 def test_scroll_margin_top_present():
@@ -24,10 +25,14 @@ def test_home_card_image_links_to_post_page():
 
 
 def test_search_js_keys_and_highlight_logic_present():
-    html = LAYOUT.read_text(encoding='utf-8')
-    # Vim keys + Enter/Escape navigation exists
+    js = SEARCH_JS.read_text(encoding='utf-8')
     for k in ("'j'","'k'","'Enter'","'Escape'"):
-        assert k in html
-    # Highlight function escapes regex characters
-    assert 'replace(/[.*+?^${}()|[' in html or 'replace(/[.*+?^${}()|[\\]\\\\]/g' in html
+        assert k in js
+    assert 'replace(/[.*+?^${}()|[' in js or 'replace(/[.*+?^${}()|[\\]\\\\]/g' in js
 
+
+def test_rss_link_styled_in_css_not_inline():
+    html = LAYOUT.read_text(encoding='utf-8')
+    css = CSS.read_text(encoding='utf-8')
+    assert '.rss-link{' in css
+    assert '.rss-link' not in html or '<style>' not in html

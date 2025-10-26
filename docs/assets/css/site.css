@@ -56,6 +56,12 @@ ul { padding-left: 18px; }
 
 /* (Removed) Two-column grid on wide screens to avoid overlap with left header */
 
+/* RSS badge */
+.rss-link{position:fixed;left:8px;top:8px;font-weight:600;font-size:12px;padding:6px 8px;background:#f5f5f5;border-radius:4px;text-decoration:none;color:#333}
+.rss-link:hover{opacity:.9}
+@media (prefers-color-scheme: dark){.rss-link{background:#1a1a1a;color:#8ab4f8}}
+@media (max-width:740px){.rss-link{left:6px;top:6px;font-size:11px;padding:5px 7px}}
+
 /* Subtle page fade-in; keeps anchors accurate; respects reduced motion */
 @keyframes fadeIn { from { opacity: .001 } to { opacity: 1 } }
 body { animation: fadeIn .15s ease-out; }
