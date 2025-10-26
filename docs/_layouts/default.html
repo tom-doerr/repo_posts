@@ -16,6 +16,7 @@
     {% include head-custom.html %}
   </head>
   <body class="{% if page.collection == 'posts' %}post-page{% else %}home-page{% endif %}">
+    {% include analytics.html %}
     <a class="rss-link" href="{{ '/feed.xml' | relative_url }}" aria-label="RSS feed">RSS</a>
     <div class="wrapper">
       <header>
