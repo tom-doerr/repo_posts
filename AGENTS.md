@@ -77,6 +77,10 @@ Search tests — Oct 26, 2025
 Search titles — Oct 26, 2025
 - `tools/generate_search_index.py` now emits a `title` field; `assets/js/search.js` renders titles and uses the same highlight logic.
 - Tests updated to assert title rendering. Index regenerated and committed.
+
+Search ranking — Oct 26, 2025
+- Replaced char-level fuzzysort call with a minimal token-AND substring scorer for more intuitive matching: split query on whitespace (len>1 tokens), require all tokens to appear in `t`, and rank by earliest positions.
+- Keeps highlight logic; retains 20 results render. Tests updated accordingly.
 CI trigger scope — Oct 26, 2025
 - Limited deploy triggers to site-related paths only to avoid churn on test-only commits:
   - `docs/**`, `docs/_data/**`, workflows file, and the two tools scripts.
