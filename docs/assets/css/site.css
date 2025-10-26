@@ -3,8 +3,12 @@ html { scroll-behavior: smooth; }
 body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; line-height: 1.55; }
 a { text-decoration: none; border-bottom: 1px solid rgba(0,0,0,0.08); }
 a:hover { border-bottom-color: currentColor; }
+.wrapper { display:flex; min-height:100vh; flex-direction:column; }
+section { flex:1 0 auto; }
+footer { flex:0 0 auto; min-height:40px; }
 .post { background: #fff; border: 1px solid #eaeaea; border-radius: 8px; padding: 14px 16px; margin: 18px 0; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
 .post img { display: block; max-width: 100%; height: auto; border-radius: 6px; border: 1px solid #eee; }
+.post img[loading="lazy"] { content-visibility:auto; contain-intrinsic-size: 720px 405px; }
 .post .post-meta { font-size: 12px; color: #666; margin-bottom: 8px; }
 .post h1 { font-size: 20px; margin: 6px 0 8px; }
 h3 { margin-top: 20px; }
