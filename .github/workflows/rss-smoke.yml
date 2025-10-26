@@ -22,6 +22,12 @@ jobs:
           curl -fsS "$BASE/2025/10/21/julien040-anyquery.html" | tee post.html >/dev/null
           grep -q 'class="post-image"' post.html
           grep -q 'View on index' post.html
+      - name: Check a sample post shows Related repos
+        run: |
+          BASE=https://tom-doerr.github.io/repo_posts
+          curl -fsS "$BASE/2025/10/26/Tyrrrz-YoutubeExplode.html" | tee post2.html >/dev/null
+          grep -q 'Related repos' post2.html
+          grep -q '<ul class="related-list">' post2.html
       - name: Check search index and site CSS exist
         run: |
           BASE=https://tom-doerr.github.io/repo_posts
