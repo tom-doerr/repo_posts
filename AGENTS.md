@@ -102,3 +102,10 @@ EU‑Compliant Analytics — Oct 26, 2025
   - Add a `docs/_includes/analytics.html` with the vendor snippet.
   - Include it only in production builds.
   - Update privacy note to state no cookies, IP anonymized.
+
+"View on index" position — Oct 26, 2025
+- Issue: anchor jump could land slightly off because homepage images load after the hash navigation, shifting content.
+- Minimal fix: in `docs/_layouts/default.html` add a tiny script that, on `window.load`, re-applies the hash and calls `scrollIntoView()` for the target id. No smooth scroll, no dependencies.
+- Tests added:
+  - `tests/test_view_on_index_anchor.py` ensures href uses `{{ '/' | relative_url }}#{{ page.date | date: '%Y-%m-%d' }}-{{ page.slug }}` and index ids match `{{ post.date }}-{{ post.slug }}`.
+  - `tests/test_view_on_index_position_js.py` asserts the presence of `location.hash` + `scrollIntoView` code.
