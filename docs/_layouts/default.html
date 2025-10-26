@@ -70,7 +70,7 @@
       <h3>Related repos</h3>
       <ul class="related-list">
         {% for item in rel limit:5 %}
-          <li><span class="dot" aria-hidden="true"></span><a href="{{ item.url | relative_url }}">{{ item.title | default: item.url }}</a></li>
+          <li><span class="dot" aria-hidden="true"></span><a href="{{ item.url | relative_url }}">{{ item.title | markdownify | strip_html | strip | default: item.url }}</a></li>
         {% endfor %}
       </ul>
       {% endif %}
