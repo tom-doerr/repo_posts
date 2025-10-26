@@ -71,3 +71,6 @@ Search tests — Oct 26, 2025
 - `tests/test_search_ui_present.py`: input, panel, placeholder, and scripts loaded.
 - `tests/test_search_js_behavior_strings.py`: fetch path, fuzzysort usage, 20-result render, highlight usage, BASE concatenation.
 - `tests/test_search_index_file.py`: asserts index file exists and is a JSON array.
+Search titles — Oct 26, 2025
+- `tools/generate_search_index.py` now emits a `title` field; `assets/js/search.js` renders titles and uses the same highlight logic.
+- Tests updated to assert title rendering. Index regenerated and committed.
