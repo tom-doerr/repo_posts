@@ -30,10 +30,12 @@ ul { padding-left: 18px; }
 #search-results { position: relative; max-width: 520px; }
 #search-results ul { list-style: none; padding: 8px; margin: 6px 0 0; border:1px solid #eaeaea; border-radius: 8px; background:#fff; }
 #search-results li { display:flex; justify-content: space-between; gap:8px; padding:4px 2px; font-size: 14px; }
+#search-results li.active { background: rgba(37,99,235,0.08); }
 #search-results a { border-bottom: none; }
 @media (prefers-color-scheme: dark){
   #site-search{ background:#0f0f0f; color:#e6e6e6; border-color:#2a2a2a; }
   #search-results ul{ background:#121212; border-color:#2a2a2a; }
+  #search-results li.active { background: rgba(138,180,248,0.12); }
 }
 
 /* Chips and related list */
