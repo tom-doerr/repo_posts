@@ -114,3 +114,8 @@ Analytics changes — Oct 26, 2025
 - Tests added:
   - `tests/test_view_on_index_anchor.py` ensures href uses `{{ '/' | relative_url }}#{{ page.date | date: '%Y-%m-%d' }}-{{ page.slug }}` and index ids match `{{ post.date }}-{{ post.slug }}`.
   - `tests/test_view_on_index_position_js.py` asserts the presence of `location.hash` + `scrollIntoView` code.
+
+RSS repo link — Oct 26, 2025
+- Added a custom `docs/feed.xml` that keeps Atom output but also emits a direct repository link per entry as `<link rel="related" href="…" />`.
+- Implementation: convert `post.content` to HTML via `markdownify`, split on `href="` to grab the first link (the H1 repo link), and include it as the related link.
+- Test: `tests/test_feed_repo_link.py` checks the template contains `rel="related"` and the split logic strings.
