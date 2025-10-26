@@ -74,3 +74,8 @@ Search tests — Oct 26, 2025
 Search titles — Oct 26, 2025
 - `tools/generate_search_index.py` now emits a `title` field; `assets/js/search.js` renders titles and uses the same highlight logic.
 - Tests updated to assert title rendering. Index regenerated and committed.
+CI trigger scope — Oct 26, 2025
+- Limited deploy triggers to site-related paths only to avoid churn on test-only commits:
+  - `docs/**`, `docs/_data/**`, workflows file, and the two tools scripts.
+  - Added `workflow_dispatch:` for manual deploys.
+- Test: `tests/test_ci_paths_filter.py` asserts paths filter and manual dispatch.
