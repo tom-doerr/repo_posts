@@ -96,6 +96,7 @@
       if(!input) return;
       let data=null, timer=null, active=-1, current=[];
       const panel = document.getElementById('search-results');
+      const BASE = '{{ site.baseurl | default: '' }}';
       const fetchIdx = async () => {
         if(data) return data;
         const r = await fetch('{{ "/assets/search-index.json" | relative_url }}', {cache:'no-store'});
@@ -116,7 +117,7 @@
       const render = () => {
         if(!current || !current.length){ panel.hidden=true; panel.innerHTML=''; active=-1; return; }
         panel.hidden=false;
-        panel.innerHTML = '<ul>' + current.slice(0,20).map((e,i)=>{ const name=e.u.replace(/\/.+\//,'').replace(/\.html$/,''); return `<li class="${i===active?'active':''}"><a href="${e.u}">${highlight(name,currentQuery)}</a><small>${e.d}</small></li>`; }).join('') + '</ul>';
+        panel.innerHTML = '<ul>' + current.slice(0,20).map((e,i)=>{ const name=e.u.replace(/\/.+\//,'').replace(/\.html$/,''); return `<li class="${i===active?'active':''}"><a href="${BASE}${e.u}">${highlight(name,currentQuery)}</a><small>${e.d}</small></li>`; }).join('') + '</ul>';
       };
       input.addEventListener('input', (e)=>{
         clearTimeout(timer);
@@ -128,7 +129,7 @@
         if(panel.hidden || !current.length) return;
         if(e.key==='ArrowDown' || e.key==='j'){ e.preventDefault(); active=Math.min(active+1, current.length-1); render(); }
         else if(e.key==='ArrowUp' || e.key==='k'){ e.preventDefault(); active=Math.max(active-1, 0); render(); }
-        else if(e.key==='Enter'){ if(active>=0){ window.location = current[active].u; } }
+        else if(e.key==='Enter'){ if(active>=0){ window.location = BASE + current[active].u; } }
         else if(e.key==='Escape'){ panel.hidden=true; panel.innerHTML=''; active=-1; }
       });
       document.addEventListener('keydown', (e)=>{ if(document.activeElement!==input) return; if(e.key==='j' || e.key==='k' || e.key==='Enter' || e.key==='Escape') input.dispatchEvent(new KeyboardEvent('keydown', e)); });
