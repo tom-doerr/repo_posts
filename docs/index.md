@@ -9,9 +9,10 @@ title: Repository Showcase
   <p class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</p>
   {{ post.content }}
   {% if post.image %}
-  <img src="{{ post.image | relative_url }}" alt="{{ post.title }} screenshot" loading="lazy">
+  <a class="post-image-link" href="{{ post.url | relative_url }}">
+    <img src="{{ post.image | relative_url }}" alt="{{ post.title }} screenshot" loading="lazy">
+  </a>
   {% endif %}
-  <p class="post-more"><a class="details-link" href="{{ post.url | relative_url }}">Details</a></p>
   <hr>
 </article>
 {% endfor %}

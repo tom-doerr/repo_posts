@@ -12,16 +12,16 @@ footer { flex:0 0 auto; min-height:40px; }
 .post { background: #fff; border: 1px solid #eaeaea; border-radius: 8px; padding: 14px 16px; margin: 18px 0; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: transform .15s ease, box-shadow .15s ease; }
 .post:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.06); }
 .post img { display: block; max-width: 100%; height: auto; border-radius: 6px; border: 1px solid #eee; }
+.post-image-link { display:block }
+.post-image-link img { transition: transform .15s ease }
+.post-image-link:hover img { transform: scale(1.01) }
 .post img[loading="lazy"] { content-visibility:auto; contain-intrinsic-size: 720px 405px; }
 .post .post-meta { font-size: 12px; color: #666; margin-bottom: 8px; }
 .post h1 { font-size: 20px; margin: 6px 0 8px; }
 h3 { margin-top: 20px; }
 ul { padding-left: 18px; }
 
-/* Details link */
-.post-more { margin: 8px 0 0; }
-.details-link { font-weight:600; color: var(--accent); border-bottom: none; }
-.details-link:hover { text-decoration: underline; }
+/* (Removed) details link styles */
 
 /* Search UI */
 .search { margin-top: 8px; }
