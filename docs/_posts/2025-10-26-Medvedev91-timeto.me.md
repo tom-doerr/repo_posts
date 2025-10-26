@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-26T08:23:24.738754
+date: 2025-10-26T08:23:26.371556
 image: assets/Medvedev91_timeto_me_20251025_044707_491_20251025_085245_db8322--20251025T105255171--cropped.png
 ---
 
