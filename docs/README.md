@@ -15,6 +15,10 @@ title: GitHub Repository Showcase
 
 A curated collection of interesting GitHub repositories, automatically updated with new discoveries.
 
+## Licensing
+- Code and configuration in this repository are MIT licensed (see [LICENSE](../LICENSE)).
+- Site content (screenshots in `docs/assets/`, third‑party text snippets in `docs/_posts/`) is not covered by MIT and remains the property of the respective owners. See [CONTENT-LICENSE](../CONTENT-LICENSE.md).
+
 ## Latest Repositories
 
 {% for post in site.posts %}

@@ -42,4 +42,6 @@ repo_posts/
 ```
 
 ## License
-MIT — see LICENSE.
+MIT for code/config — see LICENSE.
+
+Content licensing — see CONTENT-LICENSE.md. Screenshots in `docs/assets/` and third‑party text in `docs/_posts/` remain the property of their respective owners; no license is granted for those assets.
