@@ -1,0 +1,30 @@
+name: Image Compression
+
+on:
+  pull_request:
+    paths:
+      - 'docs/assets/**'
+  workflow_dispatch:
+
+jobs:
+  compress:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pngquant oxipng jpegoptim webp
+      - name: Compress PNGs (lossy then lossless)
+        run: |
+          set -e
+          find docs/assets -type f -iname '*.png' -print0 | xargs -0 -n1 -P4 -I{} pngquant --skip-if-larger --strip --quality=65-85 --ext .png --force "{}" || true
+          find docs/assets -type f -iname '*.png' -print0 | xargs -0 -n50 oxipng -o 4 --strip all || true
+      - name: Compress JPEGs
+        run: |
+          set -e
+          find docs/assets -type f \( -iname '*.jpg' -o -iname '*.jpeg' \) -print0 | xargs -0 -n50 jpegoptim --strip-all --max=82 --all-progressive || true
+      - name: Commit optimized images
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "ci: compress images (pngquant/oxipng/jpegoptim)"
