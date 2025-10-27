@@ -40,6 +40,13 @@ jobs:
           # Ensure we ship layout with width/height to avoid CLS
           grep -q '<img[^>]*width="[0-9]\+"' post.html
           grep -q '<img[^>]*height="[0-9]\+"' post.html
+      - name: Check homepage images have width/height
+        run: |
+          BASE=https://tom-doerr.github.io/repo_posts
+          curl -fsS "$BASE/" | tee home.html >/dev/null
+          count=$(grep -o '<img[^>]*>' home.html | head -n 10 | grep -E 'width="[0-9]+"' | grep -E -c 'height="[0-9]+"' || true)
+          echo "Homepage first-10 images with width+height: $count"
+          [ "$count" -ge 5 ] || (echo "Too few homepage images with width+height" && exit 1)
       - name: Check a sample post shows Related repos
         run: |
           BASE=https://tom-doerr.github.io/repo_posts
