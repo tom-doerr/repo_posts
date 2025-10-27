@@ -5,6 +5,7 @@ permalink: /status.html
 ---
 
 <h2>Site Status</h2>
+<!-- trigger rebuild -->
 
 {% assign s = site.data.status %}
 <ul>
