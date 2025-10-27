@@ -41,13 +41,22 @@
     if(!q){ current=[]; render(); return; }
     timer = setTimeout(()=>{ (async()=>{
       const idx=await fetchIdx();
-      let res;
-      if(window.fuzzysort){
-        res = qNoOwner ? fuzzysort.go(qNoOwner, idx, {key:'t', limit:50}) : idx.map(x=>({obj:x}));
+      const sem = document.getElementById('sem-toggle');
+      if(sem && sem.checked && window.__sem){
+        try {
+          const top = await window.__sem.topK(qRaw, 20);
+          const byUrl = new Map(idx.map(x=>[x.u, x]));
+          current = top.map(t=>byUrl.get(t.u)).filter(Boolean);
+        } catch (err) { current = []; }
       } else {
-        res = (qNoOwner ? idx.filter(x=>x.t.includes(qNoOwner)) : idx).map(x=>({obj:x}));
+        let res;
+        if(window.fuzzysort){
+          res = qNoOwner ? fuzzysort.go(qNoOwner, idx, {key:'t', limit:50}) : idx.map(x=>({obj:x}));
+        } else {
+          res = (qNoOwner ? idx.filter(x=>x.t.includes(qNoOwner)) : idx).map(x=>({obj:x}));
+        }
+        current = res.map(r=>r.obj);
       }
-      current = res.map(r=>r.obj);
       if(owner){ current = current.filter(e => (e.t||'').toLowerCase().includes(`[${owner}/`)); }
       active = current.length?0:-1; render();
     })(); }, 100);

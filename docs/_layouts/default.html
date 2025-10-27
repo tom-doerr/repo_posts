@@ -21,6 +21,7 @@
       <a class="micro-title" href="{{ '/' | relative_url }}">{{ site.title | default: site.github.repository_name }}</a>
       <div class="search">
         <input id="site-search" type="search" placeholder="Search repos…" autocomplete="off" />
+        <label class="sem"><input type="checkbox" id="sem-toggle"> Sem</label>
         <div id="search-results" hidden></div>
       </div>
       <nav class="micro-links">
@@ -123,6 +124,41 @@
     <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/fuzzysort.min.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/search.js' | relative_url }}"></script>
+    <script type="module">
+      window.__sem = (function(){
+        let E=null, meta=null, model=null;
+        async function loadEmbeddings(){
+          if(E && meta) return {E, meta};
+          const [buf, m] = await Promise.all([
+            fetch('{{ '/assets/embeddings.f32' | relative_url }}').then(r=>r.arrayBuffer()),
+            fetch('{{ '/assets/embeddings.meta.json' | relative_url }}').then(r=>r.json())
+          ]);
+          E = new Float32Array(buf); meta = m; return {E, meta};
+        }
+        async function loadModel(){
+          if(model) return model;
+          const t = await import('https://cdn.jsdelivr.net/npm/@xenova/transformers@2.14.1');
+          model = await t.pipeline('feature-extraction','Xenova/all-MiniLM-L6-v2');
+          return model;
+        }
+        async function embed(q){
+          const mdl = await loadModel();
+          const out = await mdl(q, { pooling: 'mean', normalize: true });
+          return out.data;
+        }
+        async function topK(q, k=20){
+          const [{E, meta}, v] = await Promise.all([loadEmbeddings(), embed(q)]);
+          const dim = meta.dim, n = meta.count;
+          const scores = new Array(n);
+          for(let i=0, off=0;i<n;i++, off+=dim){
+            let s=0.0; for(let j=0;j<dim;j++){ s += E[off+j]*v[j]; } scores[i]=s;
+          }
+          const idx = Array.from({length:n},(_,i)=>i).sort((a,b)=>scores[b]-scores[a]).slice(0,k);
+          return idx.map(i=>({ u: meta.urls[i], score: scores[i] }));
+        }
+        return { topK };
+      })();
+    </script>
     <script>
       (function(){
         var el = document.getElementById('rss-copy');
