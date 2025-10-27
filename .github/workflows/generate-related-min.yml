@@ -21,14 +21,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install --index-url https://download.pytorch.org/whl/cpu 'torch==2.5.1'
           pip install 'sentence-transformers==2.7.0'
-      - name: Generate related data
+      - name: Generate related data (full on dispatch)
+        if: ${{ github.event_name == 'workflow_dispatch' }}
         run: |
-          if [ "${GITHUB_EVENT_NAME}" = "workflow_dispatch" ]; then
-            unset RELATED_ONLY_MISSING
-          else
-            export RELATED_ONLY_MISSING=1
-          fi
           RELATED_MODE=emb python tools/generate_related.py
+          python tools/generate_search_index.py
+      - name: Generate related data (only missing on push)
+        if: ${{ github.event_name != 'workflow_dispatch' }}
+        run: |
+          RELATED_MODE=emb RELATED_ONLY_MISSING=1 python tools/generate_related.py
           python tools/generate_search_index.py
       - name: Write status.json (counts)
         run: |
