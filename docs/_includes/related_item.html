@@ -1,8 +1,10 @@
 {%- assign item_slug = include.item.url | split: '/' | last | split: '.' | first -%}
 {%- if item_slug != include.cur_slug -%}
   <li>
-    <span class="dot" aria-hidden="true"></span>
-    <a href="{{ include.item.url | relative_url }}">{{ include.item.title | markdownify | strip_html | strip | default: include.item.url }}</a>
+    <div class="related-head">
+      <span class="dot" aria-hidden="true"></span>
+      <a class="related-link" href="{{ include.item.url | relative_url }}">{{ include.item.title | markdownify | strip_html | strip | default: include.item.url }}</a>
+    </div>
     {%- assign rel_post = site.posts | where: "url", include.item.url | first -%}
     {%- if rel_post and rel_post.excerpt -%}
       <small class="related-snippet">{{ rel_post.excerpt | strip_html | strip }}</small>
