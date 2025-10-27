@@ -41,6 +41,12 @@ jobs:
           curl -fsS "$BASE/2025/10/26/Tyrrrz-YoutubeExplode.html" | tee post2.html >/dev/null
           grep -q 'Related repos' post2.html
           grep -q '<ul class="related-list">' post2.html
+      - name: Ensure first related is not self
+        run: |
+          BASE=https://tom-doerr.github.io/repo_posts
+          cur=$(basename "/2025/10/26/Tyrrrz-YoutubeExplode.html" .html)
+          rslug=$(awk '/<ul class="related-list">/,/<\/ul>/' post2.html | sed -n 's#.*href=\"[^\"]*/\([A-Za-z0-9._-]*\)\.html\".*#\1#p' | head -n1)
+          [ -n "$rslug" ] && [ "$rslug" != "$cur" ]
       - name: Check first related link returns 200
         run: |
           BASE=https://tom-doerr.github.io/repo_posts
