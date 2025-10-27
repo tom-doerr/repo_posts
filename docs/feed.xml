@@ -24,7 +24,13 @@ layout: null
     <link rel="related" type="text/html" href="{{ first_link | xml_escape }}" />
     {% endif %}
     {% if post.image %}
-    <media:thumbnail url="{% include img_abs_url.html path=post.image %}" />
+    {% capture absimg %}{% include img_abs_url.html path=post.image %}{% endcapture %}
+    {% assign ext = post.image | split:'.' | last | downcase %}
+    {% assign mime = 'image/*' %}
+    {% if ext == 'png' %}{% assign mime = 'image/png' %}{% elsif ext == 'jpg' or ext == 'jpeg' %}{% assign mime = 'image/jpeg' %}{% elsif ext == 'webp' %}{% assign mime = 'image/webp' %}{% elsif ext == 'gif' %}{% assign mime = 'image/gif' %}{% endif %}
+    <media:thumbnail url="{{ absimg | strip }}" />
+    <media:content url="{{ absimg | strip }}" medium="image" type="{{ mime }}" />
+    <link rel="enclosure" type="{{ mime }}" href="{{ absimg | strip }}" />
     {% endif %}
     <content type="html"><![CDATA[
       {% if post.image %}

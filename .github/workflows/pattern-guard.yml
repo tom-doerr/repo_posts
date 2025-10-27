@@ -1,0 +1,24 @@
+name: Pattern Guard
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'docs/**'
+      - '.github/workflows/pattern-guard.yml'
+  pull_request:
+    paths:
+      - 'docs/**'
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Disallow relative_url | absolute_url chain in docs/
+        run: |
+          ! rg -n "\|\s*relative_url\s*\|\s*absolute_url" docs || (echo "Found disallowed relative_url|absolute_url chain" && exit 1)
+      - name: Disallow double baseurl in paths
+        run: |
+          ! rg -n "/repo_posts/repo_posts/" docs || (echo "Found duplicated baseurl in path" && exit 1)
+

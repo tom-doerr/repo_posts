@@ -4,12 +4,15 @@ ROOT = Path(__file__).resolve().parents[1]
 LAYOUT = ROOT / 'docs' / '_layouts' / 'default.html'
 HEADER_INC = ROOT / 'docs' / '_includes' / 'header.html'
 INDEX = ROOT / 'docs' / 'index.md'
+POST_CARD = ROOT / 'docs' / '_includes' / 'post_card.html'
 
 
 def test_index_article_has_stable_anchor_id():
-    idx = INDEX.read_text(encoding='utf-8')
-    expect = "id=\"{{ post.date | date: '%Y-%m-%d' }}-{{ post.slug }}\""
-    assert expect in idx
+    # Anchor now lives in the include
+    html = POST_CARD.read_text(encoding='utf-8')
+    expect_idx = "id=\"{{ post.date | date: '%Y-%m-%d' }}-{{ post.slug }}\""
+    expect_inc = "id=\"{{ include.post.date | date: '%Y-%m-%d' }}-{{ include.post.slug }}\""
+    assert (expect_idx in html) or (expect_inc in html)
 
 
 def test_view_on_index_href_points_to_baseurl_plus_anchor():

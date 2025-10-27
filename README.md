@@ -13,6 +13,11 @@ Live site: https://tom-doerr.github.io/repo_posts/
 - Feed (Atom): https://tom-doerr.github.io/repo_posts/feed.xml
 - Status: Built via GitHub Pages (workflow in `.github/workflows/Deploy Jekyll site`).
 
+## How things update
+- On push to `main` that changes `docs/_posts/**`: the “Generate Related Data” workflow runs a quick owner-based related pass and rebuilds `docs/assets/search-index.json`.
+- Every 30 minutes (schedule): the same workflow loads/stores embeddings (`docs/_data/embeddings.npz`), computes only missing neighbors, updates `docs/_data/related.json`, and writes `docs/_data/status.json`.
+- After each run: the README coverage line between the markers below is updated, and the live Status page (`/status.html`) shows current counts and sizes.
+
 ## What this repo is
 A Jekyll site stored under `docs/` using the Minimal theme. Posts live in `docs/_posts/` and screenshots in `docs/assets/`.
 
@@ -45,3 +50,26 @@ repo_posts/
 MIT for code/config — see LICENSE.
 
 Content licensing — see CONTENT-LICENSE.md. Screenshots in `docs/assets/` and third‑party text in `docs/_posts/` remain the property of their respective owners; no license is granted for those assets.
+
+<!-- related-coverage:start -->
+Related coverage: pending…
+<!-- related-coverage:end -->
+
+## Liquid numeric gotcha (percentages)
+Liquid math is integer by default. If you compute a percentage like:
+
+```
+{{ s.related_renderable | times: 100 | divided_by: s.posts }}%
+```
+
+it truncates to an integer. To get a decimal percentage, make one operand a float:
+
+```
+{{ s.related_renderable | times: 100.0 | divided_by: s.posts | round: 1 }}%
+```
+
+or:
+
+```
+{{ s.related_renderable | times: 1.0 | divided_by: s.posts | times: 100 | round: 1 }}%
+```

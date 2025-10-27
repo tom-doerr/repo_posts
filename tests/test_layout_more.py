@@ -4,6 +4,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CSS = ROOT / 'docs' / 'assets' / 'css' / 'site.css'
 LAYOUT = ROOT / 'docs' / '_layouts' / 'default.html'
 INDEX = ROOT / 'docs' / 'index.md'
+POST_CARD = ROOT / 'docs' / '_includes' / 'post_card.html'
 SEARCH_JS = ROOT / 'docs' / 'assets' / 'js' / 'search.js'
 
 
@@ -19,9 +20,12 @@ def test_related_block_liquid_present():
 
 
 def test_home_card_image_links_to_post_page():
-    idx = INDEX.read_text(encoding='utf-8')
-    assert 'class="post-image-link"' in idx
-    assert 'href="{{ post.url | relative_url }}"' in idx
+    # After extracting to include, check include content instead
+    html = POST_CARD.read_text(encoding='utf-8')
+    assert 'class="post-image-link"' in html
+    # Accept either post.url or include.post.url depending on location
+    assert ('href="{{ post.url | relative_url }}"' in html) or (
+        'href="{{ include.post.url | relative_url }}"' in html)
 
 
 def test_search_js_keys_and_highlight_logic_present():

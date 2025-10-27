@@ -11,6 +11,7 @@ Usage (local):
 """
 from __future__ import annotations
 import json, re, os
+import numpy as np
 from pathlib import Path
 
 try:
@@ -21,6 +22,11 @@ except Exception:
 ROOT = Path(__file__).resolve().parents[1]
 POSTS = ROOT / "docs" / "_posts"
 OUT = ROOT / "docs" / "_data" / "related.json"
+EMB = ROOT / "docs" / "_data" / "embeddings.npz"
+
+# Embedding model constants (avoid drift)
+EMB_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
+EMB_EXPECTED_DIM = 384
 
 def _slug(p: Path) -> str:
     return p.stem  # e.g., 2025-10-21-owner-repo
@@ -78,7 +84,10 @@ def main() -> None:
             owner = _owner_from_slug(it["slug"])
             peers = [j for j in by_owner.get(owner, []) if j != i]
             top = [{"url": items[j]["url"], "title": items[j]["title"], "score": 1.0} for j in peers[:5]]
-            related[it["slug"]] = top
+            # Only write entries when we actually have peers; empty entries
+            # are treated as missing by the scheduled embedding run.
+            if top:
+                related[it["slug"]] = top
     else:
         # Determine which indices to compute (only missing if requested)
         all_slugs = [it["slug"] for it in items]
@@ -92,8 +101,48 @@ def main() -> None:
         else:
             missing_idx = list(range(len(items)))
 
-        model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
-        corpus_embs = model.encode([it["text"] for it in items], convert_to_tensor=True, normalize_embeddings=True)
+        model = SentenceTransformer(EMB_MODEL_NAME)
+        dim = model.get_sentence_embedding_dimension()
+        assert dim == EMB_EXPECTED_DIM
+
+        # Load persisted embeddings if present
+        stored_slugs: list[str] = []
+        stored_E: np.ndarray | None = None
+        if EMB.exists():
+            try:
+                z = np.load(EMB, allow_pickle=False)
+                stored_slugs = [str(x) for x in z["slugs"]]
+                stored_E = z["E"].astype(np.float32)
+            except Exception:
+                stored_slugs = []
+                stored_E = None
+
+        slug_to_idx = {s: i for i, s in enumerate(stored_slugs)}
+
+        # Compute embeddings only for slugs missing in storage
+        need = [s for s in all_slugs if s not in slug_to_idx]
+        if need:
+            texts = [items[all_slugs.index(s)]["text"] for s in need]
+            new_E = model.encode(texts, convert_to_numpy=True, normalize_embeddings=True).astype(np.float32)
+            if new_E.ndim == 1:
+                new_E = new_E.reshape(1, -1)
+            assert new_E.shape[1] == dim
+            if stored_E is None or not len(stored_slugs):
+                stored_slugs = need.copy()
+                stored_E = new_E
+            else:
+                stored_slugs.extend(need)
+                stored_E = np.vstack([stored_E, new_E])
+
+        # Reorder to current items order and persist compactly (float16)
+        E_ordered = np.zeros((len(all_slugs), dim), dtype=np.float32)
+        st = {s: i for i, s in enumerate(stored_slugs)}
+        for i, s in enumerate(all_slugs):
+            E_ordered[i] = stored_E[st[s]]
+        np.savez_compressed(EMB, slugs=np.array(all_slugs, dtype='U80'), E=E_ordered.astype(np.float16))
+
+        import torch
+        corpus_embs = torch.from_numpy(E_ordered)
         query_embs = corpus_embs[missing_idx]
         hits = util.semantic_search(query_embs, corpus_embs, top_k=6)
         related = existing if only_missing else {}

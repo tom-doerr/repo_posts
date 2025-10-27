@@ -41,5 +41,126 @@ jobs:
           commit_message: 'ci: update related.json + search-index.json'
           file_pattern: |
             docs/_data/related.json
+            docs/_data/embeddings.npz
+            docs/_data/status.json
             docs/assets/search-index.json
           push_options: '--force-with-lease'
+      - name: Compute related coverage metrics
+        run: |
+          python - << 'PY'
+import json, glob, os
+post_paths = glob.glob('docs/_posts/*.md')
+posts = len(post_paths)
+rel = json.loads(open('docs/_data/related.json','r', encoding='utf-8').read()) if os.path.exists('docs/_data/related.json') else {}
+keys = len(rel)
+nonempty = sum(1 for v in rel.values() if v)
+missing = max(posts - keys, 0)
+slugs = [os.path.splitext(os.path.basename(p))[0] for p in post_paths]
+missing_slugs = [s for s in slugs if s not in rel]
+# Renderable related count (after layout filter that removes same repo slug)
+def page_repo_slug_from_key(k: str) -> str:
+    # key format: YYYY-MM-DD-Owner-Repo
+    parts = k.split('-', 3)
+    return parts[3] if len(parts) >= 4 else k
+
+def item_slug_from_url(u: str) -> str:
+    # url format: /YYYY/MM/DD/Owner-Repo.html
+    base = u.rsplit('/', 1)[-1]
+    return base[:-5] if base.endswith('.html') else base
+
+renderable = 0
+for k, lst in rel.items():
+    page_slug = page_repo_slug_from_key(k)
+    if any(item_slug_from_url(it.get('url','')) != page_slug for it in (lst or [])):
+        renderable += 1
+# Embeddings stats
+emb_count = 0
+emb_size = os.path.getsize('docs/_data/embeddings.npz') if os.path.exists('docs/_data/embeddings.npz') else 0
+emb_dim = 0
+emb_model = 'sentence-transformers/all-MiniLM-L6-v2'
+try:
+    import numpy as np
+    if os.path.exists('docs/_data/embeddings.npz'):
+        z = np.load('docs/_data/embeddings.npz', allow_pickle=False)
+        emb_count = int(len(z['slugs']))
+        E = z['E']
+        emb_dim = int(E.shape[1]) if E.ndim == 2 else 0
+except Exception:
+    pass
+with open(os.environ['GITHUB_ENV'], 'a') as f:
+    for k,v in [('POSTS',posts),('RELATED_KEYS',keys),('NONEMPTY',nonempty),('MISSING',missing),('RENDERABLE',renderable)]:
+        f.write(f"{k}={v}\n")
+with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as s:
+    s.write("## Related coverage\n")
+    s.write(f"- Posts: {posts}\n\n")
+    s.write(f"- related.json keys: {keys}\n\n")
+    s.write(f"- non-empty: {nonempty}\n\n")
+    s.write(f"- missing: {missing}\n\n")
+    s.write(f"- pages with renderable related: {renderable}\n\n")
+    s.write(f"- top-missing: {', '.join(missing_slugs[:5])}\n\n")
+# Search index stats
+idx_entries = 0
+idx_size = os.path.getsize('docs/assets/search-index.json') if os.path.exists('docs/assets/search-index.json') else 0
+try:
+    if os.path.exists('docs/assets/search-index.json'):
+        with open('docs/assets/search-index.json','r',encoding='utf-8') as f:
+            idx_entries = len(json.load(f))
+except Exception:
+    pass
+
+# Write status.json
+status = {
+    'posts': posts,
+    'related_keys': keys,
+    'nonempty': nonempty,
+    'missing': missing,
+    'related_renderable': renderable,
+    'embeddings_count': emb_count,
+    'embeddings_size_bytes': emb_size,
+    'embeddings_model': emb_model,
+    'embeddings_dim': emb_dim,
+    'search_index_entries': idx_entries,
+    'search_index_size_bytes': idx_size,
+}
+os.makedirs('docs/_data', exist_ok=True)
+with open('docs/_data/status.json', 'w', encoding='utf-8') as f:
+    json.dump(status, f, ensure_ascii=False, separators=(',', ':'))
+PY
+      - name: Update README related coverage badge
+        run: |
+          python - << 'PY'
+import os, re
+posts = int(os.environ.get('POSTS','0'))
+nonempty = int(os.environ.get('NONEMPTY','0'))
+renderable = int(os.environ.get('RENDERABLE','0'))
+pct = (nonempty/posts*100) if posts else 0.0
+pct_r = (renderable/posts*100) if posts else 0.0
+badge = f"Related coverage: {pct:.1f}% ({nonempty}/{posts}) — Recs shown: {pct_r:.1f}% ({renderable}/{posts})"
+path = 'README.md'
+with open(path, 'r', encoding='utf-8') as f:
+    s = f.read()
+start = '<!-- related-coverage:start -->'
+end = '<!-- related-coverage:end -->'
+block = f"{start}\n{badge}\n{end}"
+if start in s and end in s and s.find(start) < s.find(end):
+    s = re.sub(start + r".*?" + end, block, s, flags=re.S)
+else:
+    s = s.rstrip() + "\n\n" + block + "\n"
+with open(path, 'w', encoding='utf-8') as f:
+    f.write(s)
+print(badge)
+PY
+      - name: Commit README badge
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'ci: update related coverage badge in README'
+          file_pattern: README.md
+          push_options: '--force-with-lease'
+      - name: Fail if missing after schedule
+        if: ${{ github.event_name == 'schedule' }}
+        run: |
+          echo "Missing related entries: ${MISSING} / ${POSTS}"
+          if [ "${MISSING}" -gt 0 ]; then
+            echo "::error::Missing related entries after scheduled embeddings run"
+            exit 1
+          fi

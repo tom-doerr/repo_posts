@@ -16,10 +16,16 @@ jobs:
       - name: Check feed
         run: |
           curl -fsS https://tom-doerr.github.io/repo_posts/feed.xml | head -n 5
+      - name: Check first feed image is reachable
+        run: |
+          FEED=https://tom-doerr.github.io/repo_posts/feed.xml
+          url=$(curl -fsS "$FEED" | awk -F 'src="' '/<img/{print $2; exit}' | cut -d '"' -f1)
+          [ -n "$url" ] || (echo "No <img src> found in feed" && exit 1)
+          curl -fsSI "$url" | head -n 1 | grep -q "200"
       - name: Check a sample post has image and index link
         run: |
           BASE=https://tom-doerr.github.io/repo_posts
-          curl -fsS "$BASE/2025/10/21/julien040-anyquery.html" | tee post.html >/dev/null
+          curl -fsS "$BASE/2025/10/26/Tyrrrz-YoutubeExplode.html" | tee post.html >/dev/null
           grep -q 'class="post-image"' post.html
           grep -q 'View on index' post.html
       - name: Check a sample post shows Related repos
