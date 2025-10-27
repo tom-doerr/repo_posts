@@ -32,5 +32,12 @@ permalink: /status.html
     {% endif %}
     )
   </li>
+  <li>Semantic search:
+    {% if s.sem_assets %}
+      client assets present — embeddings.f32 size {{ s.embeddings_f32_size_bytes | divided_by: 1048576.0 | round: 1 }} MB
+    {% else %}
+      client assets missing
+    {% endif %}
+  </li>
   
 </ul>
