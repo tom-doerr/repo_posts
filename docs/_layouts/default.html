@@ -127,10 +127,17 @@
       (function(){
         var el = document.getElementById('rss-badge');
         if(!el || !navigator.clipboard) return;
+        function toast(msg){
+          var t = document.getElementById('copy-toast');
+          if(!t){ t = document.createElement('div'); t.id = 'copy-toast'; t.setAttribute('role','status'); t.setAttribute('aria-live','polite'); document.body.appendChild(t); }
+          t.textContent = msg; t.classList.add('show');
+          setTimeout(function(){ t.classList.remove('show'); }, 1600);
+        }
         el.addEventListener('click', function(){
           var url = new URL(el.getAttribute('data-rss'), location.origin).href;
           navigator.clipboard.writeText(url).then(function(){
-            var old = el.textContent; el.textContent = 'Copied!';
+            var old = el.textContent; el.textContent = 'RSS URL copied';
+            toast('RSS URL copied to clipboard');
             setTimeout(function(){ el.textContent = old; }, 1500);
           }, function(){
             var old = el.textContent; el.textContent = 'Copy failed';

@@ -105,3 +105,8 @@ input:focus-visible,
 select:focus-visible,
 textarea:focus-visible,
 summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Copy toast for RSS feedback */
+#copy-toast{ position:fixed; left:8px; top:44px; background:#fff; color:#333; border:1px solid #e0e0e0; border-radius:6px; padding:6px 8px; box-shadow:0 6px 18px rgba(0,0,0,.12); opacity:0; transition:opacity .15s ease; pointer-events:none; z-index:60; }
+#copy-toast.show{ opacity:1; }
+@media (prefers-color-scheme: dark){ #copy-toast{ background:#111; color:#e6e6e6; border-color:#2a2a2a; box-shadow:0 8px 18px rgba(0,0,0,.4) } }
