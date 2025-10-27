@@ -8,7 +8,7 @@
     {%- endif -%}
     <div class="related-head">
       <span class="dot" aria-hidden="true"></span>
-      <a class="related-link" href="{{ _url | relative_url }}">{{ rel_post.title | default: _url | markdownify | strip_html | strip }}</a>
+      <a class="related-link" href="{{ _url | relative_url }}">{{ rel_post.excerpt | strip_html | strip }}</a>
     </div>
   </li>
 {%- endif -%}
