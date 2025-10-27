@@ -7,6 +7,14 @@
   const panel = document.getElementById('search-results');
   const semStatus = document.getElementById('sem-status');
   let semSeq = 0;
+  // If WebGPU is unavailable, disable semantic toggle to avoid slow/unsupported paths
+  const semToggle = document.getElementById('sem-toggle');
+  if(semToggle && !('gpu' in navigator)){
+    semToggle.disabled = true;
+    if(semStatus){ semStatus.hidden = false; semStatus.textContent = 'Sem unsupported'; }
+    const label = document.querySelector('label.sem');
+    if(label) label.title = 'Semantic search needs WebGPU on this device';
+  }
   const BASE = '{{ site.baseurl | default: "" }}';
   const fetchIdx = async () => {
     if(data) return data;
