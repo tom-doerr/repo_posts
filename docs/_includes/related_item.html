@@ -1,0 +1,8 @@
+{%- assign item_slug = include.item.url | split: '/' | last | split: '.' | first -%}
+{%- if item_slug != include.cur_slug -%}
+  <li>
+    <span class="dot" aria-hidden="true"></span>
+    <a href="{{ include.item.url | relative_url }}">{{ include.item.title | markdownify | strip_html | strip | default: include.item.url }}</a>
+  </li>
+{%- endif -%}
+

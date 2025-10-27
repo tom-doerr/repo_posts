@@ -70,10 +70,7 @@
       <ul class="related-list">
         {% assign cur_slug = page.url | split: '/' | last | split: '.' | first %}
         {% for item in rel limit:5 %}
-          {% assign item_slug = item.url | split: '/' | last | split: '.' | first %}
-          {% if item_slug != cur_slug %}
-            <li><span class="dot" aria-hidden="true"></span><a href="{{ item.url | relative_url }}">{{ item.title | markdownify | strip_html | strip | default: item.url }}</a></li>
-          {% endif %}
+          {% include related_item.html item=item cur_slug=cur_slug %}
         {% endfor %}
       </ul>
       {% endif %}

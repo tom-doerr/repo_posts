@@ -1,0 +1,8 @@
+{%- assign p = include.path -%}
+{%- if p contains '://' -%}
+{{- p -}}
+{%- else -%}
+{%- if p | slice: 0, 1 != '/' -%}{%- assign p = '/' | append: p -%}{%- endif -%}
+{{- p | absolute_url -}}
+{%- endif -%}
+

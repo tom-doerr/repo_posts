@@ -24,15 +24,11 @@ layout: null
     <link rel="related" type="text/html" href="{{ first_link | xml_escape }}" />
     {% endif %}
     {% if post.image %}
-    {% assign img_path = post.image %}
-    {% if img_path | slice: 0, 1 != '/' %}{% assign img_path = '/' | append: img_path %}{% endif %}
-    <media:thumbnail url="{{ img_path | absolute_url }}" />
+    <media:thumbnail url="{% include img_abs_url.html path=post.image %}" />
     {% endif %}
     <content type="html"><![CDATA[
       {% if post.image %}
-      {% assign img_path = post.image %}
-      {% if img_path | slice: 0, 1 != '/' %}{% assign img_path = '/' | append: img_path %}{% endif %}
-      <p><img src="{{ img_path | absolute_url }}" alt="{{ post.title | default: post.slug | xml_escape }} screenshot"/></p>
+      <p><img src="{% include img_abs_url.html path=post.image %}" alt="{{ post.title | default: post.slug | xml_escape }} screenshot"/></p>
       {% endif %}
       {{ html }}
     ]]></content>
