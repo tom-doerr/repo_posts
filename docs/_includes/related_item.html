@@ -1,13 +1,14 @@
 {%- assign item_slug = include.item.url | split: '/' | last | split: '.' | first -%}
 {%- if item_slug != include.cur_slug -%}
   <li>
-    {%- assign rel_post = site.posts | where: "url", include.item.url | first -%}
+{%- assign _url = include.item_url | default: include.item.url -%}
+{%- assign rel_post = site.posts | where: "url", _url | first -%}
     {%- if rel_post and rel_post.excerpt -%}
       <small class="related-snippet">{{ rel_post.excerpt | strip_html | strip }}</small>
     {%- endif -%}
     <div class="related-head">
       <span class="dot" aria-hidden="true"></span>
-      <a class="related-link" href="{{ include.item.url | relative_url }}">{{ include.item.title | markdownify | strip_html | strip | default: include.item.url }}</a>
+      <a class="related-link" href="{{ _url | relative_url }}">{{ rel_post.title | default: _url | markdownify | strip_html | strip }}</a>
     </div>
   </li>
 {%- endif -%}
