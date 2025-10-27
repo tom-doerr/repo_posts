@@ -19,6 +19,7 @@
     {% include analytics.html %}
     <a class="rss-link" href="{{ '/feed.xml' | relative_url }}" aria-label="RSS feed">RSS</a>
     <a class="archive-link" href="{{ '/archive.html' | relative_url }}">Archive</a>
+    <a class="status-link" href="{{ '/status.html' | relative_url }}">Status</a>
     <div class="wrapper">
       <header>
         <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
@@ -55,23 +56,24 @@
       {{ content }}
 
       {% if page.collection == "posts" and page.image %}
-      {% assign slug = page.url | split: '/' | last | split: '.' | first %}
-      {% assign parts = page.url | split: '/' %}
-      {% assign y = parts[1] %}{% assign m = parts[2] %}{% assign d = parts[3] %}
+      {% assign y = page.date | date: '%Y' %}{% assign m = page.date | date: '%m' %}{% assign d = page.date | date: '%d' %}
       <p class="post-image"><img src="{{ page.image | relative_url }}" alt="{{ page.title | default: page.slug }} screenshot" loading="lazy"></p>
       <p class="post-index-link"><a href="{{ '/' | relative_url }}#{{ y }}-{{ m }}-{{ d }}-{{ page.slug }}">View on index</a></p>
       {% endif %}
 
       {% comment %} Related repos (owner/repo heuristic via precomputed data) {% endcomment %}
       {% if page.collection == "posts" %}
-      {% assign p = page.url | split: '/' %}
-      {% assign dated_slug = p[1] | append: '-' | append: p[2] | append: '-' | append: p[3] | append: '-' | append: page.slug %}
+      {% assign dated_slug = page.date | date: '%Y-%m-%d' | append: '-' | append: page.slug %}
       {% assign rel = site.data.related[dated_slug] %}
       {% if rel and rel.size > 0 %}
       <h3>Related repos</h3>
       <ul class="related-list">
+        {% assign cur_slug = page.url | split: '/' | last | split: '.' | first %}
         {% for item in rel limit:5 %}
-          <li><span class="dot" aria-hidden="true"></span><a href="{{ item.url | relative_url }}">{{ item.title | markdownify | strip_html | strip | default: item.url }}</a></li>
+          {% assign item_slug = item.url | split: '/' | last | split: '.' | first %}
+          {% if item_slug != cur_slug %}
+            <li><span class="dot" aria-hidden="true"></span><a href="{{ item.url | relative_url }}">{{ item.title | markdownify | strip_html | strip | default: item.url }}</a></li>
+          {% endif %}
         {% endfor %}
       </ul>
       {% endif %}

@@ -1,0 +1,13 @@
+{
+  "posts": 0,
+  "related_keys": 0,
+  "nonempty": 0,
+  "missing": 0,
+  "related_renderable": 0,
+  "embeddings_count": 0,
+  "embeddings_size_bytes": 0,
+  "embeddings_model": "unknown",
+  "embeddings_dim": 0
+  , "search_index_entries": 0
+  , "search_index_size_bytes": 0
+}
