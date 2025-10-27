@@ -6,16 +6,5 @@
     <img src="{{ include.post.image | relative_url }}" alt="{{ include.post.title }} screenshot" loading="lazy">
   </a>
   {% endif %}
-  {% comment %} Minimal related preview (inline) on homepage cards {% endcomment %}
-  {% assign dated_slug = include.post.date | date: '%Y-%m-%d' | append: '-' | append: include.post.slug %}
-  {% assign rel = site.data.related[dated_slug] %}
-  {% if rel and rel.size > 0 %}
-  <ul class="related-list related-list--inline">
-    {% assign cur_slug = include.post.slug %}
-    {% for item in rel limit:3 %}
-      {% include related_item.html item=item cur_slug=cur_slug %}
-    {% endfor %}
-  </ul>
-  {% endif %}
   <hr>
 </article>

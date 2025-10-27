@@ -26,13 +26,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install --index-url https://download.pytorch.org/whl/cpu 'torch==2.5.1'
           pip install 'sentence-transformers==2.7.0'
-      - name: Generate related.json (owner quick on push / embed missing on schedule)
+      - name: Generate related.json (embed missing on push/schedule)
         run: |
-          if [ "${{ github.event_name }}" = "schedule" ]; then
-            RELATED_MODE=emb RELATED_ONLY_MISSING=1 python tools/generate_related.py
-          else
-            RELATED_MODE=owner python tools/generate_related.py
-          fi
+          RELATED_MODE=emb RELATED_ONLY_MISSING=1 python tools/generate_related.py
       - name: Generate search-index.json
         run: python tools/generate_search_index.py
       - name: Commit updated related/search files
