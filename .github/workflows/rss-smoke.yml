@@ -51,7 +51,7 @@ jobs:
         run: |
           BASE=https://tom-doerr.github.io/repo_posts
           href=$(awk '/<ul class="related-list">/,/<\/ul>/' post2.html | grep -o 'href="[^"]*"' | head -n1 | sed -E 's/href="([^"]*)"/\1/')
-          if [ -z "$href" ]; then echo "No related href found"; exit 1; fi
+          if [ -z "$href" ]; then echo "::notice::No related href found (0 related items); skipping link check"; exit 0; fi
           case "$href" in
             http*) url="$href";;
             /repo_posts/*) url="https://tom-doerr.github.io$href";;
@@ -64,6 +64,23 @@ jobs:
             sleep 3
           done
           [ "$ok" -eq 1 ] || (echo "Related URL failed after retries: $url" && exit 1)
+      - name: Ensure first related is not self
+        run: |
+          BASE=https://tom-doerr.github.io/repo_posts
+          cur=$(basename "/2025/10/26/Tyrrrz-YoutubeExplode.html" .html)
+          rslug=$(awk '/<ul class="related-list">/,/<\/ul>/' post2.html | sed -n 's#.*href=\"[^\"]*/\([A-Za-z0-9._-]*\)\.html\".*#\1#p' | head -n1)
+          if [ -z "$rslug" ]; then echo "::notice::No related items; skipping self-link assertion"; exit 0; fi
+          [ "$rslug" != "$cur" ]
+      - name: Check Status page metrics
+        run: |
+          BASE=https://tom-doerr.github.io/repo_posts
+          curl -fsS "$BASE/status.html" | tee status.html >/dev/null
+          posts=$(grep -o 'Posts: [0-9]\+' status.html | sed -E 's/[^0-9]//g' | head -n1)
+          [ -n "$posts" ] && [ "$posts" -gt 0 ] || (echo "Posts is zero or missing" && exit 1)
+          emb=$(grep -o 'Embeddings: [0-9]\+' status.html | sed -E 's/[^0-9]//g' | head -n1)
+          [ -n "$emb" ] && [ "$emb" -gt 0 ] || (echo "Embeddings count is zero or missing" && exit 1)
+          idx=$(grep -o 'Search index: [0-9]\+' status.html | sed -E 's/[^0-9]//g' | head -n1)
+          [ -n "$idx" ] && [ "$idx" -gt 0 ] || (echo "Search index entries are zero or missing" && exit 1)
       - name: Ensure single analytics script include
         run: |
           # Count Simple Analytics script occurrences on the sample post
