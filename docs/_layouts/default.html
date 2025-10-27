@@ -81,8 +81,23 @@
       <h3>Related repos</h3>
       <ul class="related-list">
         {% assign cur_slug = page.url | split: '/' | last | split: '.' | first %}
-        {% for item in rel limit:5 %}
+        {% assign _seen = '|' %}
+        {% assign _shown = 0 %}
+        {% for item in rel %}
+          {% assign item_slug = item.url | split: '/' | last | split: '.' | first %}
+          {% assign marker = '|' | append: item_slug | append: '|' %}
+          {% if item_slug == cur_slug %}
+            {% continue %}
+          {% endif %}
+          {% if _seen contains marker %}
+            {% continue %}
+          {% endif %}
           {% include related_item.html item=item cur_slug=cur_slug %}
+          {% assign _seen = _seen | append: item_slug | append: '|' %}
+          {% assign _shown = _shown | plus: 1 %}
+          {% if _shown >= 5 %}
+            {% break %}
+          {% endif %}
         {% endfor %}
       </ul>
       {% endif %}
