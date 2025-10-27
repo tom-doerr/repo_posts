@@ -3,6 +3,9 @@
   <li>
     <span class="dot" aria-hidden="true"></span>
     <a href="{{ include.item.url | relative_url }}">{{ include.item.title | markdownify | strip_html | strip | default: include.item.url }}</a>
+    {%- assign rel_post = site.posts | where: "url", include.item.url | first -%}
+    {%- if rel_post and rel_post.excerpt -%}
+      <small class="related-snippet">{{ rel_post.excerpt | strip_html | strip }}</small>
+    {%- endif -%}
   </li>
 {%- endif -%}
-

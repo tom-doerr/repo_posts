@@ -57,6 +57,8 @@ ul { padding-left: 18px; }
 .related-list .dot { width:6px; height:6px; border-radius:50%; background: var(--accent); display:inline-block; }
 /* Long related titles: collapse with ellipsis */
 .related-list a { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0 }
+.related-snippet{ display:block; color:#666; font-size:12px; margin-left:14px; margin-top:2px; }
+@media (prefers-color-scheme: dark){ .related-snippet{ color:#bbb } }
 
 /* (Removed) Two-column grid on wide screens to avoid overlap with left header */
 
