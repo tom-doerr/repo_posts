@@ -51,3 +51,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 We don't accept repository suggestions via Issues/PRs. The site is curated automatically. Please use issues only for site bugs and improvements.
 
 If you want to propose a site/infrastructure change, open a focused issue with a clear description.
+
+<!-- CI trigger: touch README to run generate-related and smoke tests -->
