@@ -15,13 +15,20 @@ jobs:
           curl -fsS https://tom-doerr.github.io/repo_posts/
       - name: Check feed
         run: |
-          curl -fsS https://tom-doerr.github.io/repo_posts/feed.xml | head -n 5
+          FEED=https://tom-doerr.github.io/repo_posts/feed.xml
+          # HEAD to avoid pipe/write errors
+          curl -fsSI "$FEED" | head -n 1
       - name: Check first feed image is reachable
         run: |
           FEED=https://tom-doerr.github.io/repo_posts/feed.xml
           url=$(curl -fsS "$FEED" | awk -F 'src="' '/<img/{print $2; exit}' | cut -d '"' -f1)
           [ -n "$url" ] || (echo "No <img src> found in feed" && exit 1)
-          curl -fsSI "$url" | head -n 1 | grep -q "200"
+          # Retry a couple of times in case deploy propagation is lagging
+          ok=0; for i in 1 2 3; do
+            if curl -fsSI "$url" | head -n 1 | grep -q "200"; then ok=1; break; fi
+            sleep 3
+          done
+          [ "$ok" -eq 1 ] || (echo "Feed image not reachable" && exit 1)
       - name: Check a sample post has image and index link
         run: |
           BASE=https://tom-doerr.github.io/repo_posts
@@ -44,7 +51,12 @@ jobs:
             /*) url="$BASE$href";; 
             *) url="$BASE/$href";; 
           esac
-          curl -fsS "$url" >/dev/null
+          # Retry to absorb deploy race
+          ok=0; for i in 1 2 3 4 5; do
+            if curl -fsS "$url" >/dev/null; then ok=1; break; fi
+            sleep 3
+          done
+          [ "$ok" -eq 1 ] || (echo "Related URL failed after retries: $url" && exit 1)
       - name: Ensure single analytics script include
         run: |
           # Count Simple Analytics script occurrences on the sample post
