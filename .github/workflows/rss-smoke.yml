@@ -16,8 +16,8 @@ jobs:
       - name: Check feed
         run: |
           FEED=https://tom-doerr.github.io/repo_posts/feed.xml
-          # HEAD to avoid pipe/write errors
-          curl -fsSI "$FEED" | head -n 1
+          # HEAD without piping to avoid broken-pipe exit 23
+          curl -fsSI "$FEED" >/dev/null
       - name: Check first feed image is reachable
         run: |
           FEED=https://tom-doerr.github.io/repo_posts/feed.xml
@@ -25,7 +25,7 @@ jobs:
           [ -n "$url" ] || (echo "No <img src> found in feed" && exit 1)
           # Retry a couple of times in case deploy propagation is lagging
           ok=0; for i in 1 2 3; do
-            if curl -fsSI "$url" | head -n 1 | grep -q "200"; then ok=1; break; fi
+            if curl -fsSI "$url" >/dev/null; then ok=1; break; fi
             sleep 3
           done
           [ "$ok" -eq 1 ] || (echo "Feed image not reachable" && exit 1)
@@ -46,10 +46,11 @@ jobs:
           BASE=https://tom-doerr.github.io/repo_posts
           href=$(awk '/<ul class="related-list">/,/<\/ul>/' post2.html | grep -o 'href="[^"]*"' | head -n1 | sed -E 's/href="([^"]*)"/\1/')
           if [ -z "$href" ]; then echo "No related href found"; exit 1; fi
-          case "$href" in 
-            http*) url="$href";; 
-            /*) url="$BASE$href";; 
-            *) url="$BASE/$href";; 
+          case "$href" in
+            http*) url="$href";;
+            /repo_posts/*) url="https://tom-doerr.github.io$href";;
+            /*) url="$BASE$href";;
+            *) url="$BASE/$href";;
           esac
           # Retry to absorb deploy race
           ok=0; for i in 1 2 3 4 5; do

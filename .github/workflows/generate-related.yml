@@ -1,9 +1,5 @@
 name: Generate Related Data
 
-concurrency:
-  group: related-${{ github.ref }}
-  cancel-in-progress: true
-
 on:
   push:
     branches: [ main ]
@@ -14,10 +10,13 @@ on:
       - 'tools/generate_search_index.py'
   schedule:
     - cron: '*/30 * * * *'
-  workflow_dispatch:
+  workflow_dispatch: {}
 
 jobs:
   build:
+    concurrency:
+      group: related-${{ github.ref }}
+      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
