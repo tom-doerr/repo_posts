@@ -2,7 +2,7 @@
 layout: null
 ---
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
   <title>{{ site.title | xml_escape }}</title>
   <link href="{{ site.url | append: site.baseurl }}"/>
   <updated>{{ site.time | date_to_xmlschema }}</updated>
@@ -22,6 +22,9 @@ layout: null
     <updated>{{ post.date | date_to_xmlschema }}</updated>
     {% if first_link %}
     <link rel="related" type="text/html" href="{{ first_link | xml_escape }}" />
+    {% endif %}
+    {% if post.image %}
+    <media:thumbnail url="{{ post.image | relative_url | absolute_url }}" />
     {% endif %}
     <content type="html"><![CDATA[
       {% if post.image %}
