@@ -5,6 +5,8 @@
   if(!input) return;
   let data=null, timer=null, active=-1, current=[];
   const panel = document.getElementById('search-results');
+  const semStatus = document.getElementById('sem-status');
+  let semSeq = 0;
   const BASE = '{{ site.baseurl | default: "" }}';
   const fetchIdx = async () => {
     if(data) return data;
@@ -44,9 +46,15 @@
       const sem = document.getElementById('sem-toggle');
       if(sem && sem.checked && window.__sem){
         try {
+          const mySeq = ++semSeq; if(semStatus) semStatus.hidden = false;
           const top = await window.__sem.topK(qRaw, 20);
+          if(mySeq !== semSeq) return; // stale query; do not overwrite
           const byUrl = new Map(idx.map(x=>[x.u, x]));
           current = top.map(t=>byUrl.get(t.u)).filter(Boolean);
+          if(owner){ current = current.filter(e => (e.t||'').toLowerCase().includes(`[${owner}/`)); }
+          active = current.length?0:-1; render();
+          if(semStatus) semStatus.hidden = true;
+          return;
         } catch (err) { current = []; }
       } else {
         let res;
