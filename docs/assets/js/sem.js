@@ -19,7 +19,16 @@
     if (model) return model;
     setStatus('Loading model…', true);
     const t = await import('https://cdn.jsdelivr.net/npm/@xenova/transformers@2.14.1');
-    model = await t.pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2');
+    model = await t.pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2', {
+      progress_callback: (p) => {
+        if (!p) return;
+        if (p.status === 'progress' && typeof p.progress === 'number') {
+          setStatus(`Loading model… ${Math.round(p.progress)}%`, true);
+        } else if (p.status === 'ready') {
+          setStatus('Embedding…', true);
+        }
+      }
+    });
     return model;
   }
 
