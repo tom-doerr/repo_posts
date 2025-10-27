@@ -102,3 +102,13 @@ jobs:
           BASE=https://tom-doerr.github.io/repo_posts
           curl -fsS "$BASE/assets/search-index.json" | head -c 2 >/dev/null
           curl -fsS "$BASE/assets/css/site.css" | head -n 1
+      - name: Check semantic search script is deployed
+        run: |
+          BASE=https://tom-doerr.github.io/repo_posts
+          ok=0
+          for i in 1 2 3; do
+            js=$(curl -fsS "$BASE/assets/js/sem.js" || true)
+            if [ -n "$js" ] && echo "$js" | grep -q 'Ranking… 0/' && echo "$js" | grep -q 'onPartial'; then ok=1; break; fi
+            sleep 3
+          done
+          [ "$ok" -eq 1 ] || (echo "sem.js missing or wrong version on live site" && exit 1)
