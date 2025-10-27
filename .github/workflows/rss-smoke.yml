@@ -35,6 +35,11 @@ jobs:
           curl -fsS "$BASE/2025/10/26/Tyrrrz-YoutubeExplode.html" | tee post.html >/dev/null
           grep -q 'class="post-image"' post.html
           grep -q 'View on index' post.html
+      - name: Check sample post image has width/height
+        run: |
+          # Ensure we ship layout with width/height to avoid CLS
+          grep -q '<img[^>]*width="[0-9]\+"' post.html
+          grep -q '<img[^>]*height="[0-9]\+"' post.html
       - name: Check a sample post shows Related repos
         run: |
           BASE=https://tom-doerr.github.io/repo_posts
