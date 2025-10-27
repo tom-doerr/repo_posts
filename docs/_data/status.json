@@ -1,13 +1,1 @@
-{
-  "posts": 0,
-  "related_keys": 0,
-  "nonempty": 0,
-  "missing": 0,
-  "related_renderable": 0,
-  "embeddings_count": 0,
-  "embeddings_size_bytes": 0,
-  "embeddings_model": "unknown",
-  "embeddings_dim": 0
-  , "search_index_entries": 0
-  , "search_index_size_bytes": 0
-}
+{"posts":6447,"related_keys":6447,"nonempty":6447,"missing":0,"related_renderable":6447,"embeddings_count":0,"embeddings_size_bytes":4712787,"embeddings_model":"sentence-transformers/all-MiniLM-L6-v2","embeddings_dim":384,"search_index_entries":6447,"search_index_size_bytes":2322701}
