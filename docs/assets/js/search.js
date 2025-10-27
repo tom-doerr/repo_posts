@@ -15,6 +15,15 @@
     const label = document.querySelector('label.sem');
     if(label) label.title = 'Semantic search needs WebGPU on this device';
   }
+  // If user enables Sem, begin preloading model/index to reduce "Embedding…" wait
+  if(semToggle){
+    semToggle.addEventListener('change', ()=>{
+      if(semToggle.checked && window.__sem && typeof window.__sem.preload === 'function'){
+        if(semStatus){ semStatus.hidden = false; semStatus.textContent = 'Loading model…'; }
+        window.__sem.preload().then(()=>{ if(semStatus) semStatus.hidden = true; }).catch(()=>{});
+      }
+    });
+  }
   const BASE = '{{ site.baseurl | default: "" }}';
   const fetchIdx = async () => {
     if(data) return data;

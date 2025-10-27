@@ -25,9 +25,17 @@
 
   async function embed(q) {
     setStatus('Embedding…', true);
-    const mdl = await loadModel();
-    const out = await mdl(q, { pooling: 'mean', normalize: true });
-    return out.data;
+    // Gentle hints for first-time users: model download can take a while
+    const hintSoon = setTimeout(() => setStatus('Embedding… first run may take ~60s'), 5000);
+    const hintLong = setTimeout(() => setStatus('Embedding… still working — if this never finishes, try a hard reload'), 45000);
+    try {
+      const mdl = await loadModel();
+      const out = await mdl(q, { pooling: 'mean', normalize: true });
+      return out.data;
+    } finally {
+      clearTimeout(hintSoon);
+      clearTimeout(hintLong);
+    }
   }
 
   async function topK(q, k = 20, opt = {}) {
@@ -61,5 +69,8 @@
     return idx.map(i => ({ u: meta.urls[i], score: scores[i] }));
   }
 
-  window.__sem = { topK };
+  // Optional: allow preloading to start model/index fetch when Sem is toggled on
+  async function preload(){ try { await Promise.all([loadEmbeddings(), loadModel()]); } catch(e){} }
+
+  window.__sem = { topK, preload };
 })();
