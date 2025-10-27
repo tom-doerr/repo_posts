@@ -35,7 +35,16 @@
           <div id="search-results" hidden></div>
         </div>
 
-        {% if site.github.is_project_page %}
+        {% if page.collection == 'posts' %}
+        {% assign _html = page.content | markdownify %}
+        {% assign _href_parts = _html | split: 'href="' %}
+        {% assign _first_link = _href_parts[1] | split: '"' | first %}
+        {% if _first_link and _first_link contains 'github.com' %}
+        <p class="view"><a href="{{ _first_link }}">View the Project on GitHub</a></p>
+        {% elsif site.github.is_project_page %}
+        <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>
+        {% endif %}
+        {% elsif site.github.is_project_page %}
         <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>
         {% endif %}
 
