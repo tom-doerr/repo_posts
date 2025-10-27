@@ -12,6 +12,7 @@ on:
       - '.github/workflows/generate-related.yml'
       - 'tools/generate_related.py'
       - 'tools/generate_search_index.py'
+  workflow_dispatch:
   schedule:
     - cron: '*/30 * * * *'
   workflow_dispatch:
