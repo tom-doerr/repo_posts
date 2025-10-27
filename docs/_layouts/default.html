@@ -18,6 +18,18 @@
   <body class="{% if page.collection == 'posts' %}post-page{% else %}home-page{% endif %}">
     {% include analytics.html %}
     <button class="rss-link" id="rss-badge" type="button" data-rss="{{ '/feed.xml' | relative_url }}" aria-label="Copy RSS feed URL">Copy RSS</button>
+    <div class="micro-header">
+      <a class="micro-title" href="{{ '/' | relative_url }}">{{ site.title | default: site.github.repository_name }}</a>
+      <div class="search">
+        <input id="site-search" type="search" placeholder="Search repos…" autocomplete="off" />
+        <div id="search-results" hidden></div>
+      </div>
+      <nav class="micro-links">
+        <a href="{{ '/archive.html' | relative_url }}">Archive</a>
+        <a href="{{ '/status.html' | relative_url }}">Status</a>
+        <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+      </nav>
+    </div>
     <div class="wrapper">
       <header>
         <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
@@ -28,10 +40,7 @@
 
         <p>{{ site.description | default: site.github.project_tagline }}</p>
 
-        <div class="search">
-          <input id="site-search" type="search" placeholder="Search repos…" autocomplete="off" />
-          <div id="search-results" hidden></div>
-        </div>
+        
 
         {% if page.collection == 'posts' %}
         {% assign _html = page.content | markdownify %}
@@ -58,10 +67,7 @@
         </ul>
         {% endif %}
 
-        <p class="mini-links">
-          <a class="archive-link" href="{{ '/archive.html' | relative_url }}">Archive</a>
-          <a class="status-link" href="{{ '/status.html' | relative_url }}">Status</a>
-        </p>
+        
       </header>
       <section>
 
@@ -93,12 +99,12 @@
           {% if _seen contains marker %}
             {% continue %}
           {% endif %}
-          {% assign same = rel | where_exp: 'x', 'x.url contains item_slug' %}
-          {% assign newest = same | sort: 'url' | last %}
-          {% include related_item.html item=newest cur_slug=cur_slug %}
+          {% assign posts_for_repo = site.posts | where_exp: 'p', 'p.url contains item_slug' %}
+          {% assign newest_post = posts_for_repo | sort: 'url' | last %}
+          {% include related_item.html item_url=newest_post.url cur_slug=cur_slug %}
           {% assign _seen = _seen | append: item_slug | append: '|' %}
           {% assign _shown = _shown | plus: 1 %}
-          {% if _shown >= 5 %}
+          {% if _shown >= 10 %}
             {% break %}
           {% endif %}
         {% endfor %}
