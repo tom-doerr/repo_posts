@@ -7,6 +7,8 @@ body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial
 a { text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1.5px; border-bottom: none; }
 a:hover { border-bottom-color: currentColor; }
 a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* Stronger underline on hover for readability */
+a:hover { text-decoration-thickness: 2px; }
 .fade-enter {} /* reserved */
 .no-js {} /* reserved */
 .view-transition {} /* reserved */
@@ -91,3 +93,13 @@ body { animation: fadeIn .15s ease-out; }
 .micro-header .search{ margin-top: 0; flex: 1 1 420px; max-width: 520px; }
 .micro-header .micro-links a{ margin-left: 10px; text-decoration: none; }
 @media (prefers-color-scheme: dark){ .micro-header{ background:#111; border-color:#2a2a2a } }
+
+/* Consistent focus rings for interactive elements */
+button:focus-visible,
+.rss-link:focus-visible,
+.micro-links a:focus-visible,
+.chip:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
