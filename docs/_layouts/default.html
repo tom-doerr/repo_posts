@@ -99,7 +99,7 @@
           {% if _seen contains marker %}
             {% continue %}
           {% endif %}
-          {% assign posts_for_repo = site.posts | where_exp: 'p', "p.url | split: '/' | last | split: '.' | first == item_slug" %}
+          {% assign posts_for_repo = site.posts | where_exp: 'p', 'p.slug == item_slug' %}
           {% assign newest_post = posts_for_repo | sort: 'url' | last %}
           {% include related_item.html item_url=newest_post.url cur_slug=cur_slug %}
           {% assign _seen = _seen | append: item_slug | append: '|' %}
