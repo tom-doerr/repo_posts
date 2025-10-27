@@ -8,13 +8,17 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'docs/_posts/**'
+      - 'docs/**'
+      - '.github/workflows/generate-related.yml'
+      - 'tools/generate_related.py'
+      - 'tools/generate_search_index.py'
   schedule:
     - cron: '*/30 * * * *'
   workflow_dispatch:
 
 jobs:
   build:
+    if: ${{ github.actor != 'github-actions[bot]' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
