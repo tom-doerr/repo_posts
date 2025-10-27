@@ -27,37 +27,7 @@ jobs:
           python tools/generate_search_index.py
       - name: Write status.json (counts)
         run: |
-          python - << 'PY'
-import os, json, glob
-posts = len(glob.glob('docs/_posts/*.md'))
-rel_path = 'docs/_data/related.json'
-rel = json.loads(open(rel_path,'r',encoding='utf-8').read()) if os.path.exists(rel_path) else {}
-nonempty = sum(1 for v in rel.values() if v)
-idx_path = 'docs/assets/search-index.json'
-idx_entries = 0
-try:
-    if os.path.exists(idx_path):
-        idx_entries = len(json.load(open(idx_path,'r',encoding='utf-8')))
-except Exception:
-    pass
-status = {
-  'posts': posts,
-  'related_keys': len(rel),
-  'nonempty': nonempty,
-  'missing': max(posts-len(rel), 0),
-  'related_renderable': nonempty,
-  'embeddings_count': 0,
-  'embeddings_size_bytes': os.path.getsize('docs/_data/embeddings.npz') if os.path.exists('docs/_data/embeddings.npz') else 0,
-  'embeddings_model': 'sentence-transformers/all-MiniLM-L6-v2',
-  'embeddings_dim': 384,
-  'search_index_entries': idx_entries,
-  'search_index_size_bytes': os.path.getsize(idx_path) if os.path.exists(idx_path) else 0,
-}
-os.makedirs('docs/_data', exist_ok=True)
-with open('docs/_data/status.json','w',encoding='utf-8') as f:
-    json.dump(status, f, ensure_ascii=False, separators=(',', ':'))
-print('status:', status)
-PY
+          python -c "import os,json,glob;posts=len(glob.glob('docs/_posts/*.md'));p='docs/_data/related.json';rel=json.loads(open(p,'r',encoding='utf-8').read()) if os.path.exists(p) else {};non=sum(1 for v in rel.values() if v);idx='docs/assets/search-index.json';idxn=0\nif os.path.exists(idx):\n    try: idxn=len(json.load(open(idx,'r',encoding='utf-8')))\n    except Exception: pass\nstatus={'posts':posts,'related_keys':len(rel),'nonempty':non,'missing':max(posts-len(rel),0),'related_renderable':non,'embeddings_count':0,'embeddings_size_bytes':os.path.getsize('docs/_data/embeddings.npz') if os.path.exists('docs/_data/embeddings.npz') else 0,'embeddings_model':'sentence-transformers/all-MiniLM-L6-v2','embeddings_dim':384,'search_index_entries':idxn,'search_index_size_bytes':os.path.getsize(idx) if os.path.exists(idx) else 0};os.makedirs('docs/_data',exist_ok=True);json.dump(status,open('docs/_data/status.json','w',encoding='utf-8'),ensure_ascii=False,separators=(',',':'))"
       - name: Commit artifacts
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
