@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-27T20:02:46.134204
+date: 2025-10-27T20:02:52.115893
 image: assets/gnome_terminator_terminator_20251026_221346_643_20251027_001319_590f73--20251027T011358455--cropped.png
 ---
 
