@@ -23,7 +23,12 @@ jobs:
           pip install 'sentence-transformers==2.7.0'
       - name: Generate related data
         run: |
-          RELATED_MODE=emb RELATED_ONLY_MISSING=1 python tools/generate_related.py
+          if [ "${GITHUB_EVENT_NAME}" = "workflow_dispatch" ]; then
+            unset RELATED_ONLY_MISSING
+          else
+            export RELATED_ONLY_MISSING=1
+          fi
+          RELATED_MODE=emb python tools/generate_related.py
           python tools/generate_search_index.py
       - name: Write status.json (counts)
         run: |
