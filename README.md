@@ -4,6 +4,7 @@
 
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Ftom-doerr.github.io%2Frepo_posts%2F&label=site&style=for-the-badge)](https://tom-doerr.github.io/repo_posts/)
 [![RSS](https://img.shields.io/badge/RSS-feed-orange?logo=rss&style=for-the-badge)](https://tom-doerr.github.io/repo_posts/feed.xml)
+[![Status](https://img.shields.io/badge/Status-page-blue?style=for-the-badge)](https://tom-doerr.github.io/repo_posts/status.html)
 [![License](https://img.shields.io/github/license/tom-doerr/repo_posts?style=for-the-badge)](LICENSE)
 
 </div>
