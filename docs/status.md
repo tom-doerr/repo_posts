@@ -23,5 +23,14 @@ permalink: /status.html
   <li>Embeddings: {{ s.embeddings_count }} vectors, size: {{ s.embeddings_size_bytes | divided_by: 1048576.0 | round: 1 }} MB</li>
   <li>Model: {{ s.embeddings_model }} (dim: {{ s.embeddings_dim }})</li>
   <li>Search index: {{ s.search_index_entries }} entries, size: {{ s.search_index_size_bytes | divided_by: 1048576.0 | round: 1 }} MB</li>
+  <li>Images with dimensions:
+    {{ s.images_with_dims }}/{{ s.images_total }} (
+    {% if s.images_total > 0 %}
+      {{ s.images_with_dims | times: 100 | divided_by: s.images_total }}%
+    {% else %}
+      0%
+    {% endif %}
+    )
+  </li>
   
 </ul>
