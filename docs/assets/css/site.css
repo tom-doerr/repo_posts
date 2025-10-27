@@ -90,11 +90,11 @@ body { animation: fadeIn .15s ease-out; }
 @media (prefers-reduced-motion: reduce){ body { animation: none; } }
 
 /* Micro header */
-.micro-header{ position: sticky; top:0; z-index: 30; display:flex; align-items:center; gap: var(--gap); padding: 6px var(--gap); border-bottom:1px solid #eaeaea; background:#fff; }
+.micro-header{ position: sticky; top:0; z-index: 30; display:flex; align-items:center; gap: var(--gap); padding: 6px var(--gap); border-bottom:1px solid #eaeaea; background: rgba(255,255,255,0.85); backdrop-filter: blur(8px); }
 .micro-header .micro-title{ font-weight:700; color:inherit; text-decoration:none; margin-right:4px; }
 .micro-header .search{ margin-top: 0; flex: 1 1 420px; max-width: 520px; }
 .micro-header .micro-links a{ margin-left: 10px; text-decoration: none; }
-@media (prefers-color-scheme: dark){ .micro-header{ background:#111; border-color:#2a2a2a } }
+@media (prefers-color-scheme: dark){ .micro-header{ background: rgba(17,17,17,0.78); border-color:#2a2a2a } }
 
 /* Consistent focus rings for interactive elements */
 button:focus-visible,
