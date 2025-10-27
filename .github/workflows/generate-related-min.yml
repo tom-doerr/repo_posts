@@ -25,6 +25,39 @@ jobs:
         run: |
           RELATED_MODE=emb RELATED_ONLY_MISSING=1 python tools/generate_related.py
           python tools/generate_search_index.py
+      - name: Write status.json (counts)
+        run: |
+          python - << 'PY'
+import os, json, glob
+posts = len(glob.glob('docs/_posts/*.md'))
+rel_path = 'docs/_data/related.json'
+rel = json.loads(open(rel_path,'r',encoding='utf-8').read()) if os.path.exists(rel_path) else {}
+nonempty = sum(1 for v in rel.values() if v)
+idx_path = 'docs/assets/search-index.json'
+idx_entries = 0
+try:
+    if os.path.exists(idx_path):
+        idx_entries = len(json.load(open(idx_path,'r',encoding='utf-8')))
+except Exception:
+    pass
+status = {
+  'posts': posts,
+  'related_keys': len(rel),
+  'nonempty': nonempty,
+  'missing': max(posts-len(rel), 0),
+  'related_renderable': nonempty,
+  'embeddings_count': 0,
+  'embeddings_size_bytes': os.path.getsize('docs/_data/embeddings.npz') if os.path.exists('docs/_data/embeddings.npz') else 0,
+  'embeddings_model': 'sentence-transformers/all-MiniLM-L6-v2',
+  'embeddings_dim': 384,
+  'search_index_entries': idx_entries,
+  'search_index_size_bytes': os.path.getsize(idx_path) if os.path.exists(idx_path) else 0,
+}
+os.makedirs('docs/_data', exist_ok=True)
+with open('docs/_data/status.json','w',encoding='utf-8') as f:
+    json.dump(status, f, ensure_ascii=False, separators=(',', ':'))
+print('status:', status)
+PY
       - name: Commit artifacts
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
@@ -32,6 +65,6 @@ jobs:
           file_pattern: |
             docs/_data/related.json
             docs/_data/embeddings.npz
+            docs/_data/status.json
             docs/assets/search-index.json
           push_options: '--force-with-lease'
-
