@@ -25,16 +25,19 @@ jobs:
           python -m pip install --upgrade pip
           pip install --index-url https://download.pytorch.org/whl/cpu 'torch==2.5.1'
           pip install 'sentence-transformers==2.7.0'
+          pip install 'pillow==10.4.0'
       - name: Generate related data (full on dispatch)
         if: ${{ github.event_name == 'workflow_dispatch' }}
         run: |
           RELATED_MODE=emb python tools/generate_related.py
           python tools/generate_search_index.py
+          python tools/generate_image_dims.py
       - name: Generate related data (only missing on push)
         if: ${{ github.event_name != 'workflow_dispatch' }}
         run: |
           RELATED_MODE=emb RELATED_ONLY_MISSING=1 python tools/generate_related.py
           python tools/generate_search_index.py
+          python tools/generate_image_dims.py
       - name: Write status.json (counts)
         run: |
           python -c "import os,json,glob,numpy as np;posts=len(glob.glob('docs/_posts/*.md'));p='docs/_data/related.json';rel=json.loads(open(p,'r',encoding='utf-8').read()) if os.path.exists(p) else {};non=sum(1 for v in rel.values() if v);idx='docs/assets/search-index.json';idxn=(len(json.load(open(idx,'r',encoding='utf-8'))) if os.path.exists(idx) else 0);emb_p='docs/_data/embeddings.npz';emb_n=(len(np.load(emb_p)['slugs']) if os.path.exists(emb_p) else 0);status={'posts':posts,'related_keys':len(rel),'nonempty':non,'missing':max(posts-len(rel),0),'related_renderable':non,'embeddings_count':emb_n,'embeddings_size_bytes':(os.path.getsize(emb_p) if os.path.exists(emb_p) else 0),'embeddings_model':'sentence-transformers/all-MiniLM-L6-v2','embeddings_dim':384,'search_index_entries':idxn,'search_index_size_bytes':(os.path.getsize(idx) if os.path.exists(idx) else 0)};os.makedirs('docs/_data',exist_ok=True);json.dump(status,open('docs/_data/status.json','w',encoding='utf-8'),ensure_ascii=False,separators=(',',':'))"

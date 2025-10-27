@@ -3,7 +3,8 @@
   {{ include.post.content }}
   {% if include.post.image %}
   <a class="post-image-link" href="{{ include.post.url | relative_url }}">
-    <img src="{{ include.post.image | relative_url }}" alt="{{ include.post.title }} screenshot" loading="lazy">
+    {% assign dims = site.data.image_dims[include.post.image] %}
+    <img src="{{ include.post.image | relative_url }}" alt="{{ include.post.title }} screenshot" loading="lazy"{% if dims %} width="{{ dims.width }}" height="{{ dims.height }}"{% endif %}>
   </a>
   {% endif %}
   <hr>
