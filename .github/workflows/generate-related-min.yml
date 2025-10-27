@@ -38,9 +38,5 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'ci: update related artifacts'
-          file_pattern: |
-            docs/_data/related.json
-            docs/_data/embeddings.npz
-            docs/_data/status.json
-            docs/assets/search-index.json
+          file_pattern: 'docs/_data/* docs/assets/search-index.json'
           push_options: '--force-with-lease'
