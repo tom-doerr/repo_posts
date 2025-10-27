@@ -66,6 +66,10 @@ ul { padding-left: 18px; }
 @media (prefers-color-scheme: dark){.rss-link{background:#1a1a1a;color:#8ab4f8}}
 @media (max-width:740px){.rss-link{left:6px;top:6px;font-size:11px;padding:5px 7px}}
 
+/* Header links spacing */
+.archive-link{ margin-left: 8px; }
+.status-link{ margin-left: 8px; }
+
 /* Subtle page fade-in; keeps anchors accurate; respects reduced motion */
 @keyframes fadeIn { from { opacity: .001 } to { opacity: 1 } }
 body { animation: fadeIn .15s ease-out; }
