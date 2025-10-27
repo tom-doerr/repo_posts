@@ -1,0 +1,11 @@
+{
+  "name": "repo_posts-e2e",
+  "private": true,
+  "devDependencies": {
+    "@playwright/test": "^1.48.2"
+  },
+  "scripts": {
+    "test-e2e": "playwright test"
+  }
+}
+

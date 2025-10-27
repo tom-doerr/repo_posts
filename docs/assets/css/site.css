@@ -61,7 +61,8 @@ ul { padding-left: 18px; }
 .chips { margin: 8px 0 6px; }
 .chip { display:inline-block; font-size: 12px; padding: 2px 8px; border:1px solid #e0e0e0; border-radius: 999px; background:#fafafa; color:#555 }
 .related-list { list-style: none; padding-left: 0; }
-.related-list li { display:block; margin:8px 0; }
+.related-list li { display:block; margin:8px 0; padding:8px 10px; border:1px solid #eaeaea; border-left:3px solid var(--accent); border-radius:8px; background:#fff; }
+@media (prefers-color-scheme: dark){ .related-list li { background:#111; border-color:#2a2a2a; } }
 .related-head { display:flex; align-items:center; gap:8px; }
 .related-head { margin-top:4px; }
 .related-link { font-weight:600; color:inherit; border-bottom:none; }
@@ -69,7 +70,7 @@ ul { padding-left: 18px; }
 .related-list .dot { width:6px; height:6px; border-radius:50%; background: var(--accent); display:inline-block; }
 /* Long related titles: collapse with ellipsis */
 .related-list a { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0 }
-.related-snippet{ display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; color:#666; font-size:12px; margin-left:14px; margin-top:2px; border-left:2px solid var(--accent); padding-left:8px; }
+.related-snippet{ display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; color:#666; font-size:12px; margin:0 0 4px 0; padding:0; }
 @media (prefers-color-scheme: dark){ .related-snippet{ color:#bbb } }
 
 /* (Removed) Two-column grid on wide screens to avoid overlap with left header */

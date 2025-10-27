@@ -144,20 +144,35 @@ def main() -> None:
         import torch
         corpus_embs = torch.from_numpy(E_ordered)
         query_embs = corpus_embs[missing_idx]
-        hits = util.semantic_search(query_embs, corpus_embs, top_k=6)
+        hits = util.semantic_search(query_embs, corpus_embs, top_k=32)
         related = existing if only_missing else {}
         for qi, i in enumerate(missing_idx):
             it = items[i]
-            top = []
+            # Deduplicate by repo (owner-repo) and prefer the newest dated post per repo.
+            best_by_repo: dict[str, dict] = {}
             for h in hits[qi]:
                 j = h["corpus_id"]
                 if j == i:
                     continue
                 score = float(h["score"]) if isinstance(h["score"], (int, float)) else float(h["score"].item())
-                top.append({"url": items[j]["url"], "title": items[j]["title"], "score": round(score, 4)})
-                if len(top) == 5:
-                    break
-            related[it["slug"]] = top
+                s = items[j]["slug"]  # YYYY-MM-DD-owner-repo
+                date = s.split('-', 3)[:3]  # [YYYY, MM, DD]
+                date_key = "-".join(date)
+                repo_id = s.split('-', 3)[3]  # owner-repo
+                cur = best_by_repo.get(repo_id)
+                candidate = {
+                    "url": items[j]["url"],
+                    "title": items[j]["title"],
+                    "score": round(score, 4),
+                    "_date": date_key,
+                }
+                if cur is None or candidate["_date"] > cur["_date"]:
+                    best_by_repo[repo_id] = candidate
+            # Rank by score desc and cap at 10; drop internal fields
+            out = sorted(best_by_repo.values(), key=lambda x: x["score"], reverse=True)[:10]
+            for x in out:
+                x.pop("_date", None)
+            related[it["slug"]] = out
 
     OUT.write_text(json.dumps(related, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"Wrote {OUT}")

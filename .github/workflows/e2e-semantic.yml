@@ -1,0 +1,32 @@
+name: E2E Semantic Search (stub)
+
+on:
+  workflow_run:
+    workflows: ["Deploy Jekyll site"]
+    types: ["completed"]
+  workflow_dispatch: {}
+
+jobs:
+  e2e:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install deps
+        working-directory: tests-e2e
+        run: |
+          npm ci
+      - name: Install Playwright browsers
+        working-directory: tests-e2e
+        run: |
+          npx playwright install --with-deps
+      - name: Run stubbed semantic e2e
+        env:
+          BASE: https://tom-doerr.github.io/repo_posts
+        working-directory: tests-e2e
+        run: |
+          npx playwright test --reporter=line
+

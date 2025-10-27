@@ -9,7 +9,7 @@ def test_layout_has_rss_copy_button_and_script():
     html = LAYOUT.read_text(encoding='utf-8')
     assert 'id="rss-copy"' in html
     assert 'navigator.clipboard.writeText' in html
-    assert 'Copy RSS' in html
+    assert 'Copy RSS URL' in html
 
 
 def test_no_fixed_rss_badge_css_anymore():
