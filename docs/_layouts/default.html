@@ -17,7 +17,7 @@
   </head>
   <body class="{% if page.collection == 'posts' %}post-page{% else %}home-page{% endif %}">
     {% include analytics.html %}
-    <a class="rss-link" href="{{ '/feed.xml' | relative_url }}" aria-label="RSS feed">RSS</a>
+    <button class="rss-link" id="rss-badge" type="button" data-rss="{{ '/feed.xml' | relative_url }}" aria-label="Copy RSS feed URL">Copy RSS</button>
     <div class="wrapper">
       <header>
         <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
@@ -99,6 +99,22 @@
     <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/fuzzysort.min.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/search.js' | relative_url }}"></script>
+    <script>
+      (function(){
+        var el = document.getElementById('rss-badge');
+        if(!el || !navigator.clipboard) return;
+        el.addEventListener('click', function(){
+          var url = new URL(el.getAttribute('data-rss'), location.origin).href;
+          navigator.clipboard.writeText(url).then(function(){
+            var old = el.textContent; el.textContent = 'Copied!';
+            setTimeout(function(){ el.textContent = old; }, 1500);
+          }, function(){
+            var old = el.textContent; el.textContent = 'Copy failed';
+            setTimeout(function(){ el.textContent = old; }, 1500);
+          });
+        });
+      })();
+    </script>
     <script>
       (function(){
         if(!location.hash) return;
