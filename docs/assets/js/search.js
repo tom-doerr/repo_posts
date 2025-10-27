@@ -55,11 +55,24 @@
       if(sem && sem.checked && window.__sem){
         try {
           const mySeq = ++semSeq; if(semStatus) semStatus.hidden = false;
-          const top = await window.__sem.topK(qRaw, 20);
-          if(mySeq !== semSeq) return; // stale query; do not overwrite
+          // Incremental results: stream updates as scores are computed
           const byUrl = new Map(idx.map(x=>[x.u, x]));
-          current = top.map(t=>byUrl.get(t.u)).filter(Boolean);
-          if(owner){ current = current.filter(e => (e.t||'').toLowerCase().includes(`[${owner}/`)); }
+          let lastFlush = 0, top = [];
+          const stream = await window.__sem.topK(qRaw, 50, {
+            onPartial: (partial)=>{
+              const now = performance.now();
+              if(now - lastFlush < 80) return; // throttle to ~12fps
+              lastFlush = now; top = partial;
+              const arr = top.map(t=>byUrl.get(t.u)).filter(Boolean);
+              let out = owner ? arr.filter(e => (e.t||'').toLowerCase().includes(`[${owner}/`)) : arr;
+              current = out.slice(0,20);
+              active = current.length?0:-1; render();
+            }
+          });
+          // Final results
+          if(mySeq !== semSeq) return; // stale
+          const arr = stream.map(t=>byUrl.get(t.u)).filter(Boolean);
+          current = owner ? arr.filter(e => (e.t||'').toLowerCase().includes(`[${owner}/`)) : arr;
           active = current.length?0:-1; render();
           if(semStatus) semStatus.hidden = true;
           return;

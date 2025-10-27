@@ -3,8 +3,11 @@
   <li>
 {%- assign _url = include.item_url | default: include.item.url -%}
 {%- assign rel_post = site.posts | where: "url", _url | first -%}
-    {%- if rel_post and rel_post.excerpt -%}
-      <small class="related-snippet">{{ rel_post.excerpt | strip_html | strip }}</small>
+    {%- if rel_post -%}
+      {%- capture snippet_txt -%}{% include post_snippet.html post=rel_post %}{%- endcapture -%}
+      {%- if snippet_txt -%}
+      <small class="related-snippet">{{ snippet_txt }}</small>
+      {%- endif -%}
     {%- endif -%}
     <div class="related-head">
       <span class="dot" aria-hidden="true"></span>

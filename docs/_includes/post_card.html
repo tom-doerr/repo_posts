@@ -1,6 +1,7 @@
 <article class="post" id="{{ include.post.date | date: '%Y-%m-%d' }}-{{ include.post.slug }}">
   <p class="post-meta">{{ include.post.date | date: "%Y-%m-%d" }}</p>
-  {{ include.post.content }}
+  {% capture _snippet %}{% include post_snippet.html post=include.post %}{% endcapture %}
+  <p>{{ _snippet }}</p>
   {% if include.post.image %}
   <a class="post-image-link" href="{{ include.post.url | relative_url }}">
     {% assign dims = site.data.image_dims[include.post.image] %}
