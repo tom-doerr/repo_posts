@@ -21,14 +21,15 @@
       <a class="micro-title" href="{{ '/' | relative_url }}">{{ site.title | default: site.github.repository_name }}</a>
       <div class="search">
         <input id="site-search" type="search" placeholder="Search repos…" autocomplete="off" />
-        <label class="sem"><input type="checkbox" id="sem-toggle"> Sem</label>
+        <label class="sem" title="Semantic search runs in-browser and requires WebGPU. First use loads a small model."><input type="checkbox" id="sem-toggle"> Sem</label>
+        <a class="sem-help" href="{{ '/status.html#semantic' | relative_url }}" aria-label="Semantic search help" title="Learn about semantic search">?</a>
         <small id="sem-status" class="sem-status" hidden>Semantic…</small>
         <div id="search-results" hidden></div>
       </div>
       <nav class="micro-links">
         <a href="{{ '/archive.html' | relative_url }}">Archive</a>
         <a href="{{ '/status.html' | relative_url }}">Status</a>
-        <button id="rss-copy" type="button" data-rss="{{ '/feed.xml' | relative_url }}" aria-label="Copy RSS feed URL">Copy RSS</button>
+        <button id="rss-copy" type="button" data-rss="{{ '/feed.xml' | relative_url }}" aria-label="Copy RSS feed URL">Copy RSS URL</button>
       </nav>
     </div>
     <div class="wrapper">
