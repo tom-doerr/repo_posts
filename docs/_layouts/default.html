@@ -18,6 +18,7 @@
   <body class="{% if page.collection == 'posts' %}post-page{% else %}home-page{% endif %}">
     {% include analytics.html %}
     <a class="rss-link" href="{{ '/feed.xml' | relative_url }}" aria-label="RSS feed">RSS</a>
+    <a class="archive-link" href="{{ '/archive.html' | relative_url }}">Archive</a>
     <div class="wrapper">
       <header>
         <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>

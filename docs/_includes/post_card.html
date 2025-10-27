@@ -1,0 +1,11 @@
+<article class="post" id="{{ include.post.date | date: '%Y-%m-%d' }}-{{ include.post.slug }}">
+  <p class="post-meta">{{ include.post.date | date: "%Y-%m-%d" }}</p>
+  {{ include.post.content }}
+  {% if include.post.image %}
+  <a class="post-image-link" href="{{ include.post.url | relative_url }}">
+    <img src="{{ include.post.image | relative_url }}" alt="{{ include.post.title }} screenshot" loading="lazy">
+  </a>
+  {% endif %}
+  <hr>
+</article>
+

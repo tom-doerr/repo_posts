@@ -34,12 +34,21 @@
   input.addEventListener('input', (e)=>{
     clearTimeout(timer);
     const qRaw = e.target.value; const q = qRaw.trim().toLowerCase(); currentQuery = qRaw;
+    // owner:foo filter (case-insensitive). Minimal parsing: first owner:token wins.
+    const m = q.match(/(?:^|\s)owner:([\w-]+)/);
+    const owner = m ? m[1].toLowerCase() : null;
+    const qNoOwner = owner ? q.replace(m[0], '').trim() : q;
     if(!q){ current=[]; render(); return; }
     timer = setTimeout(()=>{ (async()=>{
       const idx=await fetchIdx();
-      const res = window.fuzzysort ? fuzzysort.go(q, idx, {key:'t', limit:50})
-                                   : idx.filter(x=>x.t.includes(q)).map(x=>({obj:x}));
+      let res;
+      if(window.fuzzysort){
+        res = qNoOwner ? fuzzysort.go(qNoOwner, idx, {key:'t', limit:50}) : idx.map(x=>({obj:x}));
+      } else {
+        res = (qNoOwner ? idx.filter(x=>x.t.includes(qNoOwner)) : idx).map(x=>({obj:x}));
+      }
       current = res.map(r=>r.obj);
+      if(owner){ current = current.filter(e => (e.t||'').toLowerCase().includes(`[${owner}/`)); }
       active = current.length?0:-1; render();
     })(); }, 100);
   });
