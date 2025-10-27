@@ -81,9 +81,10 @@
       <h3>Related repos</h3>
       <ul class="related-list">
         {% assign cur_slug = page.url | split: '/' | last | split: '.' | first %}
+        {% assign sorted_rel = rel | sort: 'url' | reverse %}
         {% assign _seen = '|' %}
         {% assign _shown = 0 %}
-        {% for item in rel %}
+        {% for item in sorted_rel %}
           {% assign item_slug = item.url | split: '/' | last | split: '.' | first %}
           {% assign marker = '|' | append: item_slug | append: '|' %}
           {% if item_slug == cur_slug %}
