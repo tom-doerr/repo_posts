@@ -1,6 +1,6 @@
 ---
 layout: default
-date: 2025-10-28T05:06:27.668593
+date: 2025-10-28T05:06:29.988066
 image: assets/basicmachines_co_basic_memory_20251026_233651_098_20251027_002425_c312c9--20251027T012441318--cropped.png
 ---
 
