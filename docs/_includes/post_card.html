@@ -8,5 +8,6 @@
     <img class="loading-blur" src="{{ include.post.image | relative_url }}" alt="{{ include.post.title }} screenshot" loading="lazy" onload="this.classList.remove('loading-blur')"{% if dims %} width="{{ dims.width }}" height="{{ dims.height }}"{% endif %}>
   </a>
   {% endif %}
+  <a class="stretched-link" href="{{ include.post.url | relative_url }}" aria-label="Open post: {{ include.post.title }}"></a>
   <hr>
 </article>

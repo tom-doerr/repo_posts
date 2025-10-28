@@ -18,10 +18,11 @@ a:hover { text-decoration-thickness: 2px; }
 .wrapper {}
 section { max-width: 900px; }
 footer { min-height:40px; }
-.post { background: #fff; border: 1px solid #eaeaea; border-radius: var(--radius); padding: calc(var(--gap) - 2px) var(--gap); margin: calc(var(--gap) + 6px) 0; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: transform .15s ease, box-shadow .15s ease; }
+.post { background: #fff; border: 1px solid #eaeaea; border-radius: var(--radius); padding: calc(var(--gap) - 2px) var(--gap); margin: calc(var(--gap) + 6px) 0; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: transform .15s ease, box-shadow .15s ease; position: relative; }
 .post { scroll-margin-top: 16px; }
 .post:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.06); }
 .post img { display: block; max-width: 100%; height: auto; border-radius: calc(var(--radius) - 2px); border: 1px solid #eee; transition: opacity .2s ease; }
+.stretched-link{ position:absolute; inset:0; z-index:1; text-indent:-9999px; }
 .post-image-link { display:block }
 .post-image-link img { transition: transform .15s ease }
 .post-image-link:hover img { transform: scale(1.01) }
