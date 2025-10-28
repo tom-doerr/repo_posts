@@ -21,12 +21,13 @@ footer { min-height:40px; }
 .post { background: #fff; border: 1px solid #eaeaea; border-radius: var(--radius); padding: calc(var(--gap) - 2px) var(--gap); margin: calc(var(--gap) + 6px) 0; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: transform .15s ease, box-shadow .15s ease; }
 .post { scroll-margin-top: 16px; }
 .post:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.06); }
-.post img { display: block; max-width: 100%; height: auto; border-radius: calc(var(--radius) - 2px); border: 1px solid #eee; }
+.post img { display: block; max-width: 100%; height: auto; border-radius: calc(var(--radius) - 2px); border: 1px solid #eee; transition: opacity .2s ease; }
 .post-image-link { display:block }
 .post-image-link img { transition: transform .15s ease }
 .post-image-link:hover img { transform: scale(1.01) }
 .post img[loading="lazy"] {}
 .post-image img { display:block; max-width:100%; height:auto; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+.post-image img { transition: opacity .2s ease; }
 .post:hover .post-image img { box-shadow: 0 6px 18px rgba(0,0,0,.10); }
 .post .post-meta { font-size: 12px; color: #666; margin-bottom: 8px; }
 .post h1 { font-size: 24px; line-height: 1.3; margin: 10px 0 6px; }
@@ -111,6 +112,8 @@ summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 #copy-toast.show{ opacity:1; }
 @media (prefers-color-scheme: dark){ #copy-toast{ background:#111; color:#e6e6e6; border-color:#2a2a2a; box-shadow:0 8px 18px rgba(0,0,0,.4) } }
 
+/* loading-fade: opacity 0 until onload removes the class */
+.loading-blur{ opacity: 0; }
 /* Semantic search running indicator */
 #sem-status:not([hidden])::before{
   content:""; display:inline-block; width:10px; height:10px; margin-right:6px;

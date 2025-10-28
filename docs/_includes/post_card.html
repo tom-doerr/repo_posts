@@ -5,7 +5,7 @@
   {% if include.post.image %}
   <a class="post-image-link" href="{{ include.post.url | relative_url }}">
     {% assign dims = site.data.image_dims[include.post.image] %}
-    <img src="{{ include.post.image | relative_url }}" alt="{{ include.post.title }} screenshot" loading="lazy"{% if dims %} width="{{ dims.width }}" height="{{ dims.height }}"{% endif %}>
+    <img class="loading-blur" src="{{ include.post.image | relative_url }}" alt="{{ include.post.title }} screenshot" loading="lazy" onload="this.classList.remove('loading-blur')"{% if dims %} width="{{ dims.width }}" height="{{ dims.height }}"{% endif %}>
   </a>
   {% endif %}
   <hr>

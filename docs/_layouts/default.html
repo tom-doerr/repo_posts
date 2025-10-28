@@ -78,7 +78,7 @@
       {% if page.collection == "posts" and page.image %}
       {% assign dims = site.data.image_dims[page.image] %}
       {% assign y = page.date | date: '%Y' %}{% assign m = page.date | date: '%m' %}{% assign d = page.date | date: '%d' %}
-      <p class="post-image"><img src="{{ page.image | relative_url }}" alt="{{ page.title | default: page.slug }} screenshot" loading="lazy"{% if dims %} width="{{ dims.width }}" height="{{ dims.height }}"{% endif %}></p>
+      <p class="post-image"><img class="loading-blur" src="{{ page.image | relative_url }}" alt="{{ page.title | default: page.slug }} screenshot" loading="lazy" onload="this.classList.remove('loading-blur')"{% if dims %} width="{{ dims.width }}" height="{{ dims.height }}"{% endif %}></p>
       <p class="post-index-link"><a href="{{ '/' | relative_url }}#{{ y }}-{{ m }}-{{ d }}-{{ page.slug }}">View on index</a></p>
       {% endif %}
 
