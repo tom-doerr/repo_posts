@@ -9,18 +9,16 @@ test('semantic toggle reranks results (stubbed)', async ({ page, baseURL, reques
   const pick = idx.find(e => typeof e.u === 'string' && e.u.endsWith('.html')) || idx[0];
   expect(pick && pick.u).toBeTruthy();
 
-  await page.goto(BASE + '/');
-  await page.waitForSelector('#site-search');
-
-  // Stub semantic engine to return the picked URL and force semantic mode
+  // Stub semantic engine before navigation so it's available to page scripts
   await page.addInitScript((u) => {
     // @ts-ignore
     window.__sem = { topK: async () => [{ u, score: 0.99 }] };
   }, pick.u);
-  await page.evaluate(() => {
-    const el = document.getElementById('sem-toggle') as HTMLInputElement | null;
-    if (el) (el as any).checked = true;
-  });
+
+  await page.goto(BASE + '/');
+  await page.waitForSelector('#site-search');
+  // Enable semantic mode via the checkbox (dispatches change)
+  await page.check('#sem-toggle', { force: true });
 
   // Type a short query to trigger search; expect our stubbed URL to appear first
   await page.fill('#site-search', 'a');

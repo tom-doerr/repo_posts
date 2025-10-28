@@ -49,6 +49,17 @@ test('embedding UI shows model progress, then embedding, then ranking, and yield
     await route.fulfill({ status: 200, headers: { 'Content-Type': 'application/octet-stream' }, body: Buffer.from(E.buffer) });
   });
 
+  // Provide a minimal search index that matches the URLs above (used for titles/snippets in UI)
+  await page.route('**/assets/search-index.json', async (route) => {
+    const idx = [
+      { u: '/2025/10/26/Tyrrrz-YoutubeExplode.html', t: 'Tyrrrz/YoutubeExplode', d: '2025-10-26', s: 'Powerful YouTube extractor' },
+      { u: '/2025/10/27/pgadmin-org-pgadmin4.html', t: 'pgadmin-org/pgadmin4', d: '2025-10-27', s: 'PostgreSQL administration' },
+      { u: '/2025/10/27/yogeshojha-rengine.html', t: 'yogeshojha/rengine', d: '2025-10-27', s: 'Reconnaissance engine' },
+      { u: '/2025/10/27/jakejarvis-awesome-shodan-queries.html', t: 'jakejarvis/awesome-shodan-queries', d: '2025-10-27', s: 'Shodan query list' },
+    ];
+    await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(idx) });
+  });
+
   await page.goto(BASE + '/');
   await page.waitForSelector('#site-search');
 
