@@ -23,6 +23,8 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Start timer
+        run: echo "START=$EPOCHSECONDS" >> $GITHUB_ENV
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v4
       - name: Build with Jekyll
@@ -37,3 +39,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Job runtime
+        if: always()
+        run: echo "Job runtime: $(( (EPOCHSECONDS-START+59)/60 )) min" >> $GITHUB_STEP_SUMMARY

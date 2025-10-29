@@ -11,6 +11,8 @@ jobs:
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
+      - name: Start timer
+        run: echo "START=$EPOCHSECONDS" >> $GITHUB_ENV
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -29,4 +31,6 @@ jobs:
         working-directory: tests-e2e
         run: |
           npx playwright test --reporter=line
-
+      - name: Job runtime
+        if: always()
+        run: echo "Job runtime: $(( (EPOCHSECONDS-START+59)/60 )) min" >> $GITHUB_STEP_SUMMARY

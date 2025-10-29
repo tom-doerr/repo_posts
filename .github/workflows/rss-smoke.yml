@@ -10,6 +10,8 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
+      - name: Start timer
+        run: echo "START=$EPOCHSECONDS" >> $GITHUB_ENV
       - name: Check homepage
         run: |
           curl -fsS https://tom-doerr.github.io/repo_posts/
@@ -112,3 +114,6 @@ jobs:
             sleep 3
           done
           [ "$ok" -eq 1 ] || (echo "sem.js missing or wrong version on live site" && exit 1)
+      - name: Job runtime
+        if: always()
+        run: echo "Job runtime: $(( (EPOCHSECONDS-START+59)/60 )) min" >> $GITHUB_STEP_SUMMARY
