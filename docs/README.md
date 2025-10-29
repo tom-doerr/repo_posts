@@ -12,7 +12,7 @@ title: GitHub Repository Showcase
 [![Status](https://img.shields.io/badge/Status-page-blue?style=for-the-badge)](https://tom-doerr.github.io/repo_posts/status.html)
 [![RSS Smoke](https://img.shields.io/github/actions/workflow/status/tom-doerr/repo_posts/rss-smoke.yml?branch=main&label=RSS%20smoke&style=for-the-badge)](https://github.com/tom-doerr/repo_posts/actions/workflows/rss-smoke.yml)
 [![Related Data](https://img.shields.io/github/actions/workflow/status/tom-doerr/repo_posts/generate-related-min.yml?branch=main&label=Related%20data&style=for-the-badge)](https://github.com/tom-doerr/repo_posts/actions/workflows/generate-related-min.yml)
-[![Deploy](https://img.shields.io/github/actions/workflow/status/tom-doerr/repo_posts/jekyll.yml?branch=main&label=Deploy&style=for-the-badge)](https://github.com/tom-doerr/repo_posts/actions/workflows/jekyll.yml)
+[![Pages](https://img.shields.io/github/deployments/tom-doerr/repo_posts/github-pages?label=Pages&style=for-the-badge)](https://github.com/tom-doerr/repo_posts/deployments/activity_log?environment=github-pages)
 [![Feed 200](https://img.shields.io/website?url=https%3A%2F%2Ftom-doerr.github.io%2Frepo_posts%2Ffeed.xml&label=feed%20200&style=for-the-badge)](https://tom-doerr.github.io/repo_posts/feed.xml)
 [![License](https://img.shields.io/github/license/tom-doerr/repo_posts?style=for-the-badge)](../LICENSE)
 
