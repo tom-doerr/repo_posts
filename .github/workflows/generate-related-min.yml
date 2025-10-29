@@ -4,8 +4,8 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'docs/**'
-      - 'tools/**'
+      - 'docs/_posts/**'   # run right after new/updated posts land
+      - 'tools/**'         # run when generator scripts change
   workflow_dispatch: {}
 
 concurrency:
@@ -22,12 +22,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: 'tools/requirements-ci.txt'
       - name: Install deps
         run: |
           python -m pip install --upgrade pip
           pip install --index-url https://download.pytorch.org/whl/cpu 'torch==2.5.1'
-          pip install 'sentence-transformers==2.7.0'
-          pip install 'pillow==10.4.0'
+          pip install -r tools/requirements-ci.txt
       - name: Generate related data (full on dispatch)
         if: ${{ github.event_name == 'workflow_dispatch' }}
         run: |

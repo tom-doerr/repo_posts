@@ -1,0 +1,3 @@
+sentence-transformers==2.7.0
+pillow==10.4.0
+# torch pinned in workflow (cpu index): torch==2.5.1
