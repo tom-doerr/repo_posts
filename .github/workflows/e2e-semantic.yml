@@ -1,14 +1,17 @@
 name: E2E Semantic Search (stub)
 
 on:
-  workflow_run:
-    workflows: ["Deploy Jekyll site"]
-    types: ["completed"]
+  push:
+    branches: [ main ]
+    paths:
+      - 'docs/assets/js/sem.js'
+      - 'docs/assets/js/search.js'
+      - 'docs/_layouts/default.html'
+      - 'tests-e2e/**'
   workflow_dispatch: {}
 
 jobs:
   e2e:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Start timer
