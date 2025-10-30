@@ -1,0 +1,65 @@
+name: Related Data (min)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'docs/_posts/**'
+      - 'tools/generate_related.py'
+      - 'tools/generate_search_index.py'
+      - 'tools/generate_image_dims.py'
+      - 'tools/export_embeddings_bin.py'
+      - '.github/workflows/related-min.yml'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - name: Install deps (CPU)
+        run: |
+          python -m pip install --upgrade pip
+          pip install --index-url https://download.pytorch.org/whl/cpu 'torch==2.5.1'
+          pip install 'sentence-transformers>=2.7,<2.9' 'transformers<4.43' pillow
+      - name: Generate related data (only missing)
+        env:
+          TRANSFORMERS_NO_TORCHVISION: '1'
+          RELATED_MODE: emb
+          RELATED_ONLY_MISSING: '1'
+        run: |
+          python tools/generate_related.py
+          python tools/generate_search_index.py || true
+          python tools/generate_image_dims.py || true
+          python tools/export_embeddings_bin.py || true
+      - name: Write status.json
+        run: |
+          python - <<'PY'
+          import os, json
+          s = {
+            'has_related_json': os.path.exists('docs/_data/related.json'),
+            'has_embeddings_npz': os.path.exists('docs/_data/embeddings.npz'),
+            'has_search_index': os.path.exists('docs/assets/search-index.json'),
+          }
+          os.makedirs('docs/_data', exist_ok=True)
+          json.dump(s, open('docs/_data/status_related_job.json','w'), ensure_ascii=False)
+          PY
+      - name: Commit artifacts
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'ci: update related/search/image-dims/embeddings (min)'
+          file_pattern: |
+            docs/_data/related.json
+            docs/_data/embeddings.npz
+            docs/_data/image_dims.json
+            docs/_data/status_related_job.json
+            docs/assets/search-index.json
+            docs/assets/embeddings.*
+          push_options: '--force-with-lease'
