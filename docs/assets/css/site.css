@@ -74,6 +74,8 @@ ul { padding-left: 18px; }
 .related-list a { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0 }
 .related-snippet{ display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; color:#666; font-size:12px; margin:0 0 4px 0; padding:0; }
 @media (prefers-color-scheme: dark){ .related-snippet{ color:#bbb } }
+/* Related thumbnails */
+.related-image-link img{ display:block; max-width:100%; height:auto; border-radius:6px; border:1px solid #eee; }
 
 /* (Removed) Two-column grid on wide screens to avoid overlap with left header */
 
@@ -82,6 +84,7 @@ ul { padding-left: 18px; }
 /* Header links spacing */
 .archive-link{ margin-left: 8px; }
 .status-link{ margin-left: 8px; }
+.rss-link{ margin-left: 10px; text-decoration: none; }
 
 /* Subtle page fade-in; keeps anchors accurate; respects reduced motion */
 @keyframes fadeIn { from { opacity: .001 } to { opacity: 1 } }

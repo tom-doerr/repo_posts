@@ -29,6 +29,7 @@
       <nav class="micro-links">
         <a href="{{ '/archive.html' | relative_url }}">Archive</a>
         <a href="{{ '/status.html' | relative_url }}">Status</a>
+        <a class="rss-link" href="{{ '/feed.xml' | relative_url }}">RSS</a>
         <button id="rss-copy" type="button" data-rss="{{ '/feed.xml' | relative_url }}" aria-label="Copy RSS feed URL">Copy RSS URL</button>
       </nav>
     </div>
@@ -49,7 +50,7 @@
         {% assign _href_parts = _html | split: 'href="' %}
         {% assign _first_link = _href_parts[1] | split: '"' | first %}
         {% if _first_link and _first_link contains 'github.com' %}
-        <p class="view"><a href="{{ _first_link }}" target="_blank" rel="noopener">View the Project on GitHub</a></p>
+        <p class="view"><a href="{{ _first_link }}">View the Project on GitHub</a></p>
         {% elsif site.github.is_project_page %}
         <p class="view"><a href="{{ site.github.repository_url }}" target="_blank" rel="noopener">View the Project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>
         {% endif %}
