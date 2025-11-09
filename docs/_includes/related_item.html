@@ -5,21 +5,17 @@
 {%- assign rel_post = site.posts | where: "url", _url | first -%}
     {%- comment -%} test guard: ensure 'item.url | relative_url' appears in source {%- endcomment -%}
     {%- comment -%} href="{{ include.item.url | relative_url }}" {%- endcomment -%}
+    {%- if rel_post -%}
+      {%- capture snippet_txt -%}{% include post_snippet.html post=rel_post %}{%- endcapture -%}
+      {%- if snippet_txt -%}
+      <a class="related-link" href="{{ _url | relative_url }}"><small class="related-snippet">{{ snippet_txt }}</small></a>
+      {%- endif -%}
+    {%- endif -%}
     {%- if rel_post and rel_post.image -%}
     {%- assign dims = site.data.image_dims[rel_post.image] -%}
     <a class="related-image-link" href="{{ _url | relative_url }}">
       <img class="loading-blur" src="{{ rel_post.image | relative_url }}" alt="{{ rel_post.title | default: item_slug }} screenshot" loading="lazy" onload="this.classList.remove('loading-blur')"{% if dims %} width="{{ dims.width }}" height="{{ dims.height }}"{% endif %}>
     </a>
     {%- endif -%}
-    {%- if rel_post -%}
-      {%- capture snippet_txt -%}{% include post_snippet.html post=rel_post %}{%- endcapture -%}
-      {%- if snippet_txt -%}
-      <small class="related-snippet">{{ snippet_txt }}</small>
-      {%- endif -%}
-    {%- endif -%}
-    <div class="related-head">
-      <span class="dot" aria-hidden="true"></span>
-      <a class="related-link" href="{{ _url | relative_url }}">{{ rel_post.excerpt | strip_html | strip }}</a>
-    </div>
   </li>
 {%- endif -%}
