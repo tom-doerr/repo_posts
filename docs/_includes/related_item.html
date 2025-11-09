@@ -1,6 +1,6 @@
 {%- assign item_slug = include.item.url | split: '/' | last | split: '.' | first -%}
 {%- if item_slug != include.cur_slug -%}
-  <li>
+  <li class="post related-card">
 {%- assign _url = include.item_url | default: include.item.url -%}
 {%- assign rel_post = site.posts | where: "url", _url | first -%}
     {%- comment -%} test guard: ensure 'item.url | relative_url' appears in source {%- endcomment -%}

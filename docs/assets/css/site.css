@@ -67,8 +67,8 @@ ul { padding-left: 18px; }
 @media (prefers-color-scheme: dark){ .related-list li { background:#111; border-color:#2a2a2a; } }
 .related-head { display:flex; align-items:center; gap:8px; }
 .related-head { margin-top:4px; }
-.related-link { font-weight:600; color:inherit; border-bottom:none; }
-.related-head:hover .related-link { text-decoration: underline; }
+.related-link { font-weight:600; color:inherit; border-bottom:none; text-decoration: none; }
+.related-link:hover { text-decoration: none; }
 .related-list .dot { width:6px; height:6px; border-radius:50%; background: var(--accent); display:inline-block; }
 /* Long related titles: collapse with ellipsis */
 .related-list a { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0 }
