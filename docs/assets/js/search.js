@@ -27,7 +27,7 @@
   const BASE = '{{ site.baseurl | default: "" }}';
   const fetchIdx = async () => {
     if(data) return data;
-    const r = await fetch('{{ "/assets/search-index.json" | relative_url }}', {cache:'no-store'});
+    const r = await fetch('{{ "/assets/search-index.json" | relative_url }}');
     data = await r.json();
     return data;
   };
