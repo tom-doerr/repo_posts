@@ -5,7 +5,11 @@
   {% if include.post.image %}
   <a class="post-image-link" href="{{ include.post.url | relative_url }}">
     {% assign dims = site.data.image_dims[include.post.image] %}
+    {% if forloop.first %}
+    <img class="loading-blur" src="{{ include.post.image | relative_url }}" alt="{{ include.post.title }} screenshot" fetchpriority="high" onload="this.classList.remove('loading-blur')"{% if dims %} width="{{ dims.width }}" height="{{ dims.height }}"{% endif %}>
+    {% else %}
     <img class="loading-blur" src="{{ include.post.image | relative_url }}" alt="{{ include.post.title }} screenshot" loading="lazy" onload="this.classList.remove('loading-blur')"{% if dims %} width="{{ dims.width }}" height="{{ dims.height }}"{% endif %}>
+    {% endif %}
   </a>
   {% endif %}
   <a class="stretched-link" href="{{ include.post.url | relative_url }}" aria-label="Open post: {{ include.post.title }}"></a>

@@ -110,7 +110,9 @@
       </footer>
     </div>
     <script src="{{ '/assets/js/scale.fix.js?v=' | append: site.github.build_revision | relative_url }}"></script>
+    {% if page.url == "/" or page.url == "/index.html" %}
     <script src="{{ '/assets/js/fuzzysort.min.js?v=' | append: site.github.build_revision | relative_url }}"></script>
+    {% endif %}
     <script src="{{ '/assets/js/search.js?v=' | append: site.github.build_revision | relative_url }}"></script>
     <script>window.__SEM_ASSETS_BASE = "{{ '/assets/' | relative_url }}";</script>
     <script type="module" src="{{ '/assets/js/sem.js?v=' | append: site.github.build_revision | relative_url }}"></script>
