@@ -57,6 +57,7 @@
     const m = q.match(/(?:^|\s)owner:([\w-]+)/);
     const owner = m ? m[1].toLowerCase() : null;
     const qNoOwner = owner ? q.replace(m[0], '').trim() : q;
+    const toksAnd = qNoOwner.split(/\s+/).filter(t=>t.length>1);
     if(!q){ current=[]; render(); return; }
     timer = setTimeout(()=>{ (async()=>{
       const idx=await fetchIdx();
@@ -93,6 +94,7 @@
         } else {
           res = (qNoOwner ? idx.filter(x=>x.t.includes(qNoOwner)) : idx).map(x=>({obj:x}));
         }
+        if(toksAnd.length){ res = res.filter(r=>toksAnd.every(t=>r.obj.t.includes(t))); }
         current = res.map(r=>r.obj);
       }
       if(owner){ current = current.filter(e => (e.t||'').toLowerCase().includes(`[${owner}/`)); }
