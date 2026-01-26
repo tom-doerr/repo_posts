@@ -109,6 +109,8 @@ body { animation: fadeIn .15s ease-out; }
 .micro-header .search .sem-help:hover{ border-bottom-color: currentColor }
 .micro-header .search .sem-status{ margin-left: 6px; font-size: 12px; color:var(--text-secondary); opacity: 0.8 }
 .micro-header .micro-links a{ margin-left: 10px; text-decoration: none; }
+#rss-copy{ margin-left:8px; padding:4px 10px; font-size:12px; border:1px solid var(--accent); border-radius:999px; background:transparent; color:var(--accent); cursor:pointer; transition:all .2s }
+#rss-copy:hover{ background:var(--accent); color:#fff }
 @media (prefers-color-scheme: dark){ .micro-header{ background: linear-gradient(to bottom, rgba(13,13,13,0.92), rgba(10,10,10,0.88)); border-color:#1f1f1f } }
 
 /* Consistent focus rings for interactive elements */

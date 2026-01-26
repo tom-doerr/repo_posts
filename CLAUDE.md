@@ -60,3 +60,15 @@ Embedding model: `sentence-transformers/all-MiniLM-L6-v2` (384 dims)
 - **Font**: Inter (Google Fonts) for headings, system-ui for body
 - **Colors**: `--accent` (blue), `--accent-2` (purple) for gradients
 - **Cards**: Blue glow hover, "View details →" CTA, staggered fade-in
+
+## Layout Issues (2026-01-26)
+
+Identified via screenshot review:
+
+1. **Wasted sidebar space** - Left sidebar takes ~1/3 screen, only 5 lines
+2. **Duplicate title** - "Repository Showcase" in micro-header AND sidebar h1
+3. **Cards too narrow** - Confined to right column, not using full width
+4. **Unstyled RSS button** - "Copy RSS URL" looks out of place
+5. **Gradient low contrast** - Micro-header gradient barely visible in dark mode
+
+**Fix:** Hide sidebar on homepage, remove duplicate h1, style RSS button
