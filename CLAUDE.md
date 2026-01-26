@@ -37,6 +37,12 @@ Live: https://tom-doerr.github.io/repo_posts/
 - `rss-smoke.yml` - after pages deploy → validate site health
 - `image-compress.yml` - PR to docs/assets → optimize images
 
+## SEO
+
+- `docs/_includes/meta-description.html` - Extracts post description for meta tag
+- `docs/_includes/schema-software.html` - SoftwareSourceCode JSON-LD schema
+- Both included in `docs/_layouts/default.html`
+
 ## Development
 
 Run tests: `python -m pytest tests/ -q`
