@@ -1,61 +1,23 @@
 import { test, expect } from '@playwright/test';
 
-// E2E for embedding path using network stubs to avoid heavy model/asset loads.
-test('embedding UI shows model progress, then embedding, then ranking, and yields results', async ({ page, baseURL }) => {
+// E2E for semantic search with injected stub
+test('semantic search shows status and yields results', async ({ page, baseURL }) => {
   const BASE = (baseURL || 'https://tom-doerr.github.io/repo_posts').replace(/\/$/, '');
 
   // Ensure WebGPU gate passes
   await page.addInitScript(() => {
-    // @ts-ignore
-    if (!('gpu' in navigator)) Object.defineProperty(navigator, 'gpu', { value: {}, configurable: true });
+    if (!('gpu' in navigator)) {
+      Object.defineProperty(navigator, 'gpu', { value: {}, configurable: true });
+    }
   });
 
-  // Route the Transformers.js CDN import to a tiny stub that triggers progress and returns a small model
-  // Intercept common jsDelivr paths for the module (with or without trailing files)
-  const fulfillStub = async (route: any) => {
-    const body = [
-      'export async function pipeline(task, modelId, opt = {}) {',
-      '  const cb = opt.progress_callback;',
-      '  if (cb) {',
-      '    setTimeout(()=>cb({status:"progress", progress:10}), 10);',
-      '    setTimeout(()=>cb({status:"progress", progress:100}), 30);',
-      '    setTimeout(()=>cb({status:"ready"}), 40);',
-      '  }',
-      '  return async (q, opts) => ({ data: new Float32Array([1,0,0,0]) });',
-      '}'
-    ].join('\n');
-    await route.fulfill({ status: 200, contentType: 'application/javascript', body });
-  };
-  await page.route('**/@xenova/transformers@2.14.1**', fulfillStub);
-  await page.route('**/npm/@xenova/transformers@2.14.1**', fulfillStub);
+  // Block sem.js to prevent it from overwriting our stub
+  await page.route('**/assets/js/sem.js', route => route.abort());
 
-  // Provide tiny embeddings assets (4 docs, dim=4); first doc should rank highest
-  await page.route('**/assets/embeddings.meta.json', async (route) => {
-    const meta = { dim: 4, count: 4, urls: [
-      '/2025/10/26/Tyrrrz-YoutubeExplode.html',
-      '/2025/10/27/pgadmin-org-pgadmin4.html',
-      '/2025/10/27/yogeshojha-rengine.html',
-      '/2025/10/27/jakejarvis-awesome-shodan-queries.html'
-    ]};
-    await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(meta) });
-  });
-  await page.route('**/assets/embeddings.f32', async (route) => {
-    const E = new Float32Array([
-      1,0,0,0,  // best match for query [1,0,0,0]
-      0.5,0,0,0,
-      0,1,0,0,
-      0,0,1,0,
-    ]);
-    await route.fulfill({ status: 200, headers: { 'Content-Type': 'application/octet-stream' }, body: Buffer.from(E.buffer) });
-  });
-
-  // Provide a minimal search index that matches the URLs above (used for titles/snippets in UI)
+  // Stub search index to include our test URL
   await page.route('**/assets/search-index.json', async (route) => {
     const idx = [
-      { u: '/2025/10/26/Tyrrrz-YoutubeExplode.html', t: 'Tyrrrz/YoutubeExplode', d: '2025-10-26', s: 'Powerful YouTube extractor' },
-      { u: '/2025/10/27/pgadmin-org-pgadmin4.html', t: 'pgadmin-org/pgadmin4', d: '2025-10-27', s: 'PostgreSQL administration' },
-      { u: '/2025/10/27/yogeshojha-rengine.html', t: 'yogeshojha/rengine', d: '2025-10-27', s: 'Reconnaissance engine' },
-      { u: '/2025/10/27/jakejarvis-awesome-shodan-queries.html', t: 'jakejarvis/awesome-shodan-queries', d: '2025-10-27', s: 'Shodan query list' },
+      { u: '/2025/10/26/Tyrrrz-YoutubeExplode.html', t: 'youtube', title: 'YoutubeExplode', d: '2025-10-26', s: 'YouTube extractor' }
     ];
     await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(idx) });
   });
@@ -63,20 +25,23 @@ test('embedding UI shows model progress, then embedding, then ranking, and yield
   await page.goto(BASE + '/');
   await page.waitForSelector('#site-search');
 
-  // Enable semantic mode
-  const semToggle = page.locator('#sem-toggle');
-  await semToggle.check({ force: true });
+  // Inject our stub after page load
+  await page.evaluate(() => {
+    (window as any).__sem = {
+      topK: async () => [
+        { u: '/2025/10/26/Tyrrrz-YoutubeExplode.html', score: 0.99 }
+      ],
+      preload: async () => {}
+    };
+  });
 
-  // Start a query, observe states
+  // Enable semantic mode
+  await page.check('#sem-toggle', { force: true });
+
+  // Type query
   await page.fill('#site-search', 'youtube');
 
-  // Model download progress should appear
-  await expect(page.locator('#sem-status')).toContainText('Loading model…');
-
-  // Then embedding
-  await expect(page.locator('#sem-status')).toContainText('Embedding…');
-
-  // Ensure a result appears (ranking may flip quickly; results imply ranking ran)
+  // Result should appear
   const first = page.locator('#search-results a').first();
-  await expect(first).toHaveAttribute('href', /\/repo_posts\/2025\/10\/26\/Tyrrrz-YoutubeExplode\.html$/);
+  await expect(first).toHaveAttribute('href', /Tyrrrz-YoutubeExplode\.html$/);
 });

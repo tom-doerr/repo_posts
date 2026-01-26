@@ -56,9 +56,7 @@ MIT for code/config — see LICENSE.
 
 Content licensing — see CONTENT-LICENSE.md. Screenshots in `docs/assets/` and third‑party text in `docs/_posts/` remain the property of their respective owners; no license is granted for those assets.
 
-<!-- related-coverage:start -->
-Related coverage: pending…
-<!-- related-coverage:end -->
+For current coverage stats, see the [Status page](https://tom-doerr.github.io/repo_posts/status.html).
 
 ## Liquid numeric gotcha (percentages)
 Liquid math is integer by default. If you compute a percentage like:

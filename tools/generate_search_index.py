@@ -32,9 +32,10 @@ def main() -> None:
     rows = []
     for p in sorted(POSTS.glob('*.md')):
         stem = p.stem
-        title = _extract(p.read_text(encoding='utf-8', errors='ignore')) or stem
+        md = p.read_text(encoding='utf-8', errors='ignore')
+        title = _extract(md) or stem
         owner_repo = stem.split('-', 3)[-1]
-        desc = _desc(p.read_text(encoding='utf-8', errors='ignore'))
+        desc = _desc(md)
         rows.append({
             't': (title + ' ' + owner_repo + ' ' + desc).lower(),
             'u': _url(stem),

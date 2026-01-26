@@ -1,7 +1,7 @@
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-WF = ROOT / '.github' / 'workflows' / 'generate-related.yml'
+WF = ROOT / '.github' / 'workflows' / 'generate-related-min.yml'
 
 
 def test_generate_related_has_concurrency_and_force_with_lease():

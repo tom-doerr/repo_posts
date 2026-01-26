@@ -12,6 +12,11 @@ def test_layout_has_rss_copy_button_and_script():
     assert 'Copy RSS URL' in html
 
 
-def test_no_fixed_rss_badge_css_anymore():
+def test_rss_link_has_basic_styling():
+    """Verify .rss-link is basic styling (margin), not fixed positioning."""
     css = CSS.read_text(encoding='utf-8')
-    assert '.rss-link' not in css
+    assert '.rss-link' in css
+    # Ensure it's just margin/decoration, not fixed positioning
+    rss_idx = css.find('.rss-link')
+    rss_block = css[rss_idx:css.find('}', rss_idx)]
+    assert 'position' not in rss_block

@@ -60,7 +60,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'ci: update related artifacts'
-          file_pattern: 'docs/_data/* docs/assets/search-index.json'
+          file_pattern: 'docs/_data/* docs/assets/search-index.json docs/assets/embeddings.*'
           push_options: '--force-with-lease'
       - name: Job runtime
         if: always()

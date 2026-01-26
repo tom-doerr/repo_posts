@@ -16,7 +16,7 @@ from pathlib import Path
 
 try:
     from sentence_transformers import SentenceTransformer, util
-except Exception:
+except ImportError:
     raise SystemExit("Install sentence-transformers to run this tool.")
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -71,7 +71,7 @@ def main() -> None:
     if OUT.exists():
         try:
             existing = json.loads(OUT.read_text(encoding="utf-8"))
-        except Exception:
+        except (json.JSONDecodeError, OSError):
             existing = {}
     related: dict[str, list[dict]] = {}
     if mode == "owner":
@@ -113,7 +113,7 @@ def main() -> None:
                 z = np.load(EMB, allow_pickle=False)
                 stored_slugs = [str(x) for x in z["slugs"]]
                 stored_E = z["E"].astype(np.float32)
-            except Exception:
+            except (ValueError, KeyError, OSError):
                 stored_slugs = []
                 stored_E = None
 
