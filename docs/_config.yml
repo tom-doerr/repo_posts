@@ -1,5 +1,6 @@
 title: MAGI//ARCHIVE
 description: Discovered repositories from the open source frontier
+repository: tom-doerr/repo_posts
 future: true
 baseurl: "/repo_posts"
 url: "https://tom-doerr.github.io"
