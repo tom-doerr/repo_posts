@@ -1,7 +1,8 @@
 /* NERV Terminal Interface - Evangelion-inspired design */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Roboto+Mono:wght@300;400;500;700&display=swap');
 :root { scroll-behavior: auto; color-scheme: dark; --eva-purple-deep:#1a0a2e; --eva-purple:#2d1b4e; --eva-purple-light:#3d2b5e; --eva-orange:#ff6611; --eva-orange-glow:rgba(255,102,17,0.4); --eva-green:#00ff41; --eva-red:#ff0040; --eva-text:#e0d4f0; --eva-text-dim:#9080a8; --accent:var(--eva-orange); --accent-2:var(--eva-green); --gap:12px; --radius:0; --text-secondary:var(--eva-text-dim); }
-body { font-family: 'Roboto Mono', monospace; line-height: 1.6; background: var(--eva-purple-deep); color: var(--eva-text); }
+body { font-family: 'Roboto Mono', monospace; line-height: 1.6; background: var(--eva-purple-deep); color: var(--eva-text); position:relative; }
+/* Scan lines overlay */
 body::after { content:""; position:fixed; inset:0; pointer-events:none; z-index:9999; background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.1) 2px,rgba(0,0,0,0.1) 4px); }
 @keyframes flicker { 0%,100%{opacity:1} 93%{opacity:0.9} }
 @media (prefers-reduced-motion:reduce){ body::after{display:none} }
@@ -23,9 +24,9 @@ header h1 a { color:var(--eva-orange); text-decoration:none; }
 header p { color:var(--eva-text-dim); }
 .post { background:linear-gradient(135deg,var(--eva-purple),var(--eva-purple-deep)); border:1px solid var(--eva-orange); border-left:3px solid var(--eva-orange); padding:calc(var(--gap) - 2px) var(--gap); margin:calc(var(--gap) + 6px) 0; position:relative; transition:transform .2s,box-shadow .2s; clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px)); }
 .post { scroll-margin-top: 16px; }
-.post::before { content:"ENTRY"; position:absolute; top:4px; right:16px; font-family:'Orbitron',sans-serif; font-size:9px; letter-spacing:0.15em; color:var(--eva-orange); opacity:0.6; }
+.post::before { display:none; } /* Replaced by .rec-indicator */
 .post:hover { transform:translateY(-3px); box-shadow:0 0 20px var(--eva-orange-glow),0 0 40px rgba(255,102,17,0.2); border-color:var(--eva-green); }
-.post:hover::before { color:var(--eva-green); }
+.post:hover .rec-indicator { color:var(--eva-green); }
 .post img { display:block; max-width:100%; height:auto; border:1px solid var(--eva-purple-light); transition:opacity .2s; }
 .stretched-link{ position:absolute; inset:0; z-index:1; text-indent:-9999px; }
 .post-image-link { display:block }
@@ -162,8 +163,31 @@ summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .post::before{ font-size:8px; right:12px; }
 }
 
-/* Staggered card entrance */
-@keyframes cardIn{ from{ opacity:0; transform:translateY(12px) } to{ opacity:1; transform:translateY(0) } }
+/* Staggered card entrance with rotation */
+@keyframes cardIn{ from{ opacity:0; transform:translateY(12px) rotateX(5deg) } to{ opacity:1; transform:translateY(0) rotateX(0) } }
 .post{ animation: cardIn .3s ease-out backwards; }
 .post:nth-child(1){ animation-delay:.05s } .post:nth-child(2){ animation-delay:.1s } .post:nth-child(3){ animation-delay:.15s }
-@media (prefers-reduced-motion:reduce){ .post{ animation:none } }
+@media (prefers-reduced-motion:reduce){ .post{ animation:none; } body::before{display:none} }
+
+/* Hexagon grid background */
+body::before { content:""; position:fixed; inset:0; pointer-events:none; z-index:-1; opacity:0.03; background-size:28px 49px; }
+
+/* Pulsing status indicator */
+@keyframes pulse { 0%,100%{opacity:1;box-shadow:0 0 4px var(--eva-green)} 50%{opacity:0.5;box-shadow:0 0 8px var(--eva-green)} }
+.status-indicator{ font-family:'Orbitron',sans-serif; font-size:10px; color:var(--eva-green); text-transform:uppercase; letter-spacing:0.1em; }
+.status-dot{ display:inline-block; width:8px; height:8px; background:var(--eva-green); border-radius:50%; margin-right:6px; animation:pulse 2s ease-in-out infinite; }
+@media (prefers-reduced-motion:reduce){ .status-dot{animation:none} }
+
+/* Glitch text effect on header hover */
+@keyframes glitch { 0%,100%{transform:translate(0)} 20%{transform:translate(-2px,2px)} 40%{transform:translate(2px,-2px)} 60%{transform:translate(-1px,-1px)} 80%{transform:translate(1px,1px)} }
+.micro-title:hover{ animation:glitch .3s ease-in-out; }
+@media (prefers-reduced-motion:reduce){ .micro-title:hover{animation:none} }
+
+/* REC indicator on cards */
+.rec-indicator{ position:absolute; top:6px; right:16px; font-family:'Orbitron',sans-serif; font-size:9px; color:var(--eva-red); letter-spacing:0.1em; }
+
+/* NERV footer */
+.nerv-footer{ font-family:'Orbitron',sans-serif; font-size:11px; color:var(--eva-orange); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:8px; }
+
+/* Tagline */
+.tagline{ font-family:'Orbitron',sans-serif; font-size:10px; color:var(--eva-green); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:4px; }

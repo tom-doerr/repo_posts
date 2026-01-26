@@ -1,5 +1,6 @@
 <article class="post" id="{{ include.post.date | date: '%Y-%m-%d' }}-{{ include.post.slug }}">
-  <p class="post-meta">{{ include.post.date | date: "%Y-%m-%d" }}</p>
+  <span class="rec-indicator">REC ●</span>
+  <p class="post-meta">{{ include.post.date | date: "%Y.%m.%d" }}</p>
   {% capture _snippet %}{% include post_snippet.html post=include.post %}{% endcapture %}
   <p>{{ _snippet }}</p>
   {% if include.post.image %}

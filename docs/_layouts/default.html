@@ -24,7 +24,8 @@
     <a class="skip-link" href="#main">Skip to content</a>
     {% include analytics.html %}
     <div class="micro-header">
-      <a class="micro-title" href="{{ '/' | relative_url }}">{{ site.title | default: site.github.repository_name }}</a>
+      <a class="micro-title" href="{{ '/' | relative_url }}">[ {{ site.title | default: site.github.repository_name }} ]</a>
+      <span class="status-indicator"><span class="status-dot"></span>SYSTEM ACTIVE</span>
       <div class="search">
         <input id="site-search" type="search" placeholder="Search repos…" autocomplete="off" aria-label="Search repositories" aria-controls="search-results" />
         <button id="search-clear" type="button" aria-label="Clear search" hidden>&times;</button>
@@ -49,6 +50,7 @@
           <img src="{{site.logo | relative_url}}" alt="Logo" />
         {% endif %}
 
+        <p class="tagline">// SURVEILLANCE FEED</p>
         <p>{{ site.description | default: site.github.project_tagline }}</p>
 
         
@@ -108,6 +110,7 @@
 
       </section>
       <footer>
+        <p class="nerv-footer">NERV // OPEN SOURCE DIVISION</p>
         {% if site.github.is_project_page %}
         <p>This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
         {% endif %}

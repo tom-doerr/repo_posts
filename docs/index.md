@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Repository Showcase
+title: MAGI//ARCHIVE
 ---
 
 {% for post in site.posts limit: 100 %}
