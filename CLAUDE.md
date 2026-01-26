@@ -55,20 +55,10 @@ Run tests: `python -m pytest tests/ -q`
 Generate embeddings locally: `python tools/export_embeddings_bin.py`
 Embedding model: `sentence-transformers/all-MiniLM-L6-v2` (384 dims)
 
-## Design System
+## Design System - NERV Terminal (EVA Theme)
 
-- **Font**: Inter (Google Fonts) for headings, system-ui for body
-- **Colors**: `--accent` (blue), `--accent-2` (purple) for gradients
-- **Cards**: Blue glow hover, "View details →" CTA, staggered fade-in
+**Fonts:** Orbitron (headings), Roboto Mono (body/data)
+**Colors:** `--eva-purple-deep:#1a0a2e`, `--eva-orange:#ff6611`, `--eva-green:#00ff41`, `--eva-red:#ff0040`
+**Effects:** Scan lines, orange glow hover, angular corners (clip-path), CRT flicker
+**Cards:** No border-radius, orange border, purple gradient, "ENTRY" label
 
-## Layout Issues (2026-01-26)
-
-Identified via screenshot review:
-
-1. **Wasted sidebar space** - Left sidebar takes ~1/3 screen, only 5 lines
-2. **Duplicate title** - "Repository Showcase" in micro-header AND sidebar h1
-3. **Cards too narrow** - Confined to right column, not using full width
-4. **Unstyled RSS button** - "Copy RSS URL" looks out of place
-5. **Gradient low contrast** - Micro-header gradient barely visible in dark mode
-
-**Fix:** Hide sidebar on homepage, remove duplicate h1, style RSS button

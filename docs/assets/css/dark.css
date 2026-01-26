@@ -1,17 +1,6 @@
-/* Minimal auto dark mode: follows OS/browser preference */
-@media (prefers-color-scheme: dark) {
-  :root { color-scheme: dark; }
-  body { background:#0b0b0b; color:#e6e6e6; }
-  .wrapper { background: transparent; }
-  a { color:#8ab4f8; }
-  a:hover { color:#a9c8ff; }
-  header h1 a { color:#e6e6e6; }
-  header p, footer p { color:#bbbbbb; }
-  .post-meta { color:#aaaaaa; }
-  hr { border-color:#333333; }
-  pre, code { background:#111111; color:#e6e6e6; border-color:#333333; }
-  th, td { border-color:#333333; }
-  blockquote { color:#bbbbbb; border-left-color:#333333; }
-  .post { background:#121212; border-color:#2a2a2a; box-shadow:none; }
-  .post img { border-color:#222; }
-}
+/* NERV Terminal - Always dark mode */
+:root { color-scheme: dark; }
+pre, code { background:var(--eva-purple-deep); color:var(--eva-green); border:1px solid var(--eva-purple-light); font-family:'Roboto Mono',monospace; }
+hr { border-color:var(--eva-purple-light); }
+th, td { border-color:var(--eva-purple-light); }
+blockquote { color:var(--eva-text-dim); border-left:3px solid var(--eva-orange); padding-left:16px; }
