@@ -43,6 +43,12 @@ Live: https://tom-doerr.github.io/repo_posts/
 - `docs/_includes/schema-software.html` - SoftwareSourceCode JSON-LD schema
 - Both included in `docs/_layouts/default.html`
 
+## UX Features (2026-01-26)
+
+- Search clear button (X), result count, empty state ("No repos found")
+- Skip link for accessibility, mobile responsive at <640px
+- ARIA: `role="listbox"` on results, `role="option"` on items
+
 ## Development
 
 Run tests: `python -m pytest tests/ -q`

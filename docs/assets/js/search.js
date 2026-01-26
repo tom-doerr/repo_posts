@@ -5,6 +5,8 @@
   if(!input) return;
   let data=null, timer=null, active=-1, current=[];
   const panel = document.getElementById('search-results');
+  const clearBtn = document.getElementById('search-clear');
+  const countEl = document.getElementById('search-count');
   const semStatus = document.getElementById('sem-status');
   let semSeq = 0;
   // If WebGPU is unavailable, disable semantic toggle to avoid slow/unsupported paths
@@ -42,12 +44,17 @@
     }
     return out;
   };
-  const render = () => {
-    if(!current || !current.length){ panel.hidden=true; panel.innerHTML=''; active=-1; return; }
+  const render = (showEmpty) => {
+    if(countEl){ countEl.hidden = !current.length && !showEmpty; countEl.textContent = current.length ? `${current.length} result${current.length===1?'':'s'}` : ''; }
+    if(!current.length){
+      if(showEmpty){ panel.hidden=false; panel.innerHTML='<div class="search-empty">No repos found</div>'; }
+      else{ panel.hidden=true; panel.innerHTML=''; }
+      active=-1; return;
+    }
     panel.hidden=false;
     panel.innerHTML = '<ul>' + current.slice(0,20).map((e,i)=>{
       const snip = e.s ? `<div class="snippet">${highlight(e.s,currentQuery)}</div>` : '';
-      return `<li class="${i===active?'active':''}"><a href="${BASE}${e.u}">${highlight(e.title,currentQuery)}</a><small>${e.d}</small>${snip}</li>`;
+      return `<li role="option" ${i===active?'aria-selected="true"':''} class="${i===active?'active':''}"><a href="${BASE}${e.u}">${highlight(e.title,currentQuery)}</a><small>${e.d}</small>${snip}</li>`;
     }).join('') + '</ul>';
   };
   input.addEventListener('input', (e)=>{
@@ -58,6 +65,7 @@
     const owner = m ? m[1].toLowerCase() : null;
     const qNoOwner = owner ? q.replace(m[0], '').trim() : q;
     const toksAnd = qNoOwner.split(/\s+/).filter(t=>t.length>1);
+    if(clearBtn) clearBtn.hidden = !qRaw;
     if(!q){ current=[]; render(); return; }
     timer = setTimeout(()=>{ (async()=>{
       const idx=await fetchIdx();
@@ -83,7 +91,7 @@
           if(mySeq !== semSeq) return; // stale
           const arr = stream.map(t=>byUrl.get(t.u)).filter(Boolean);
           current = owner ? arr.filter(e => (e.t||'').toLowerCase().includes(`[${owner}/`)) : arr;
-          active = current.length?0:-1; render();
+          active = current.length?0:-1; render(true);
           if(semStatus) semStatus.hidden = true;
           return;
         } catch (err) { current = []; }
@@ -98,9 +106,11 @@
         current = res.map(r=>r.obj);
       }
       if(owner){ current = current.filter(e => (e.t||'').toLowerCase().includes(`[${owner}/`)); }
-      active = current.length?0:-1; render();
+      active = current.length?0:-1; render(true);
     })(); }, 100);
   });
+  // Clear button
+  if(clearBtn){ clearBtn.addEventListener('click', ()=>{ input.value=''; clearBtn.hidden=true; current=[]; render(); input.focus(); if(countEl) countEl.hidden=true; }); }
   input.addEventListener('keydown', (e)=>{
     if(panel.hidden || !current.length) return;
     if(e.key==='ArrowDown' || e.key==='j'){ e.preventDefault(); active=Math.min(active+1, current.length-1); render(); }
