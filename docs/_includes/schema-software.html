@@ -1,0 +1,11 @@
+{% if page.collection == 'posts' %}
+{% assign _h = page.content | markdownify %}
+{% assign _repo = _h | split: 'href="' %}
+{% assign _repo = _repo[1] | split: '"' | first %}
+{% if _repo contains 'github.com' %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareSourceCode",
+"name":"{{ page.slug | replace: '-', ' ' }}",
+"codeRepository":"{{ _repo }}","datePublished":"{{ page.date | date_to_xmlschema }}"}
+</script>
+{% endif %}{% endif %}

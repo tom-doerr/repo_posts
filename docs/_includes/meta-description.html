@@ -1,0 +1,10 @@
+{% if page.collection == 'posts' and page.content %}
+{% assign _lines = page.content | newline_to_br | split: '<br />' %}
+{% for _line in _lines %}
+{% assign _t = _line | strip %}
+{% unless _t contains '#' or _t contains '[' or _t == '' %}
+{% assign _desc = _t | strip_html | truncate: 160 %}{% break %}
+{% endunless %}
+{% endfor %}
+{% endif %}
+{% if _desc %}<meta name="description" content="{{ _desc }}">{% endif %}
