@@ -19,17 +19,6 @@ Live: https://tom-doerr.github.io/repo_posts/
 3. `sem.js` loads binary embeddings in browser, uses Xenova/transformers for query embedding
 4. Cosine similarity computed client-side via dot product (pre-normalized vectors)
 
-## Issues Found (2026-01-02)
-
-### Semantic search was broken
-- Root cause: `generate-related-min.yml` ran `export_embeddings_bin.py` but didn't commit output
-- Fix: Added `docs/assets/embeddings.*` to workflow's `file_pattern`
-- Files needed: `embeddings.f32` (~10MB) and `embeddings.meta.json` (~264KB)
-
-### Tests referenced old workflow files
-- Tests pointed to `jekyll.yml`, `generate-related.yml`, `assets-report.yml`
-- Actual files: `pages-min.yml`, `generate-related-min.yml`, `image-compress.yml`
-
 ## Workflows
 
 - `generate-related-min.yml` - push to docs/_posts or tools → embeddings, search index
@@ -43,9 +32,9 @@ Live: https://tom-doerr.github.io/repo_posts/
 - `docs/_includes/schema-software.html` - SoftwareSourceCode JSON-LD schema
 - Both included in `docs/_layouts/default.html`
 
-## UX Features (2026-01-26)
+## UX Features
 
-- Search clear button (X), result count, empty state ("No repos found" with 🔍 icon)
+- Search clear button (X), result count, empty state ("NO DATA" in EVA style)
 - Skip link for accessibility, mobile responsive at <640px
 - ARIA: `role="listbox"` on results, `role="option"` on items
 
