@@ -45,7 +45,7 @@ Live: https://tom-doerr.github.io/repo_posts/
 
 ## UX Features (2026-01-26)
 
-- Search clear button (X), result count, empty state ("No repos found")
+- Search clear button (X), result count, empty state ("No repos found" with 🔍 icon)
 - Skip link for accessibility, mobile responsive at <640px
 - ARIA: `role="listbox"` on results, `role="option"` on items
 
@@ -54,3 +54,9 @@ Live: https://tom-doerr.github.io/repo_posts/
 Run tests: `python -m pytest tests/ -q`
 Generate embeddings locally: `python tools/export_embeddings_bin.py`
 Embedding model: `sentence-transformers/all-MiniLM-L6-v2` (384 dims)
+
+## Design System
+
+- **Font**: Inter (Google Fonts) for headings, system-ui for body
+- **Colors**: `--accent` (blue), `--accent-2` (purple) for gradients
+- **Cards**: Blue glow hover, "View details →" CTA, staggered fade-in
