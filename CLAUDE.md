@@ -44,10 +44,12 @@ Run tests: `python -m pytest tests/ -q`
 Generate embeddings locally: `python tools/export_embeddings_bin.py`
 Embedding model: `sentence-transformers/all-MiniLM-L6-v2` (384 dims)
 
-## Design System - NERV Terminal (EVA Theme)
+## Design System - MAGI//ARCHIVE (EVA Theme)
 
+**Branding:** "MAGI//ARCHIVE" title, "// SURVEILLANCE FEED" tagline, "NERV // OPEN SOURCE DIVISION" footer
 **Fonts:** Orbitron (headings), Roboto Mono (body/data)
 **Colors:** `--eva-purple-deep:#1a0a2e`, `--eva-orange:#ff6611`, `--eva-green:#00ff41`, `--eva-red:#ff0040`
-**Effects:** Scan lines, orange glow hover, angular corners (clip-path), CRT flicker
-**Cards:** No border-radius, orange border, purple gradient, "ENTRY" label
+**Effects:** Scan lines, hexagon grid bg, glitch text on hover, pulsing status dot
+**Cards:** "REC ●" indicator (red), date `YYYY.MM.DD`, entrance animation with rotation
+**Accessibility:** All animations respect `prefers-reduced-motion`
 
