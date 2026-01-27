@@ -10,7 +10,9 @@ Live: https://tom-doerr.github.io/repo_posts/
 - `tools/generate_related.py` - Generates embeddings and related.json
 - `tools/generate_search_index.py` - Builds client-side search index
 - `tools/export_embeddings_bin.py` - Exports embeddings for browser semantic search
+- `tools/export_3d_coords.py` - UMAP reduction to 3D for visualization
 - `docs/assets/js/sem.js` - Browser-based semantic search (WebGPU/ONNX)
+- `docs/assets/js/map3d.js` - Three.js 3D semantic map visualization
 
 ## Semantic Search Architecture
 
@@ -52,4 +54,12 @@ Embedding model: `sentence-transformers/all-MiniLM-L6-v2` (384 dims)
 **Effects:** Scan lines, hexagon grid bg, glitch text on hover, pulsing status dot
 **Cards:** "REC ●" indicator (red), date `YYYY.MM.DD`, entrance animation with rotation
 **Accessibility:** All animations respect `prefers-reduced-motion`
+
+## 3D Semantic Map
+
+Interactive visualization at `/map.html` - posts float in 3D space arranged by semantic similarity.
+- **Generation:** `tools/export_3d_coords.py` uses UMAP to reduce 384D embeddings → 3D
+- **Output:** `docs/assets/embeddings.3d.json` (~855KB, 13K posts)
+- **Rendering:** Three.js with InstancedMesh, OrbitControls
+- **Interaction:** Hover for tooltip (title/date/desc), click to navigate
 

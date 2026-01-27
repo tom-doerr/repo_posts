@@ -4,9 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>3D Map | MAGI//ARCHIVE</title>
-  <style>*{margin:0;padding:0}body{background:#1a0a2e;overflow:hidden}</style>
+  <style>
+*{margin:0;padding:0}body{background:#1a0a2e;overflow:hidden;cursor:crosshair}
+#tooltip{position:fixed;background:#2d1b4e;color:#e0d4f0;border:1px solid #ff6611;padding:8px 12px;font:12px monospace;max-width:300px;pointer-events:none;display:none;z-index:10}
+#tooltip b{color:#ff6611}
+#back{position:fixed;top:12px;left:12px;color:#ff6611;font:bold 14px monospace;text-decoration:none;z-index:10}
+  </style>
 </head>
 <body>
+<a id="back" href="/">← BACK</a>
 <canvas id="c"></canvas>
 <script>window.__SEM_ASSETS_BASE='/assets/';</script>
 <script type="module" src="/assets/js/map3d.js"></script>
