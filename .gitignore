@@ -170,10 +170,3 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 .aider*
-
-# Jekyll local dev
-docs/vendor/
-docs/Gemfile
-docs/Gemfile.lock
-docs/.bundle/
-docs/_site/
