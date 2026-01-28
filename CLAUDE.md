@@ -44,7 +44,10 @@ Live: https://tom-doerr.github.io/repo_posts/
 
 Run tests: `python -m pytest tests/ -q`
 Generate embeddings locally: `python tools/export_embeddings_bin.py`
+Generate 3D coords: `python tools/export_3d_coords.py` (requires umap-learn)
 Embedding model: `sentence-transformers/all-MiniLM-L6-v2` (384 dims)
+Local server: `cd docs && python -m http.server 4000`
+**Gotcha:** Do NOT create `docs/Gemfile` or commit `docs/vendor/` - breaks GitHub Pages
 
 ## Design System - MAGI//ARCHIVE (EVA Theme)
 
