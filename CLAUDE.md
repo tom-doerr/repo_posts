@@ -46,7 +46,12 @@ Run tests: `python -m pytest tests/ -q`
 Generate embeddings locally: `python tools/export_embeddings_bin.py`
 Generate 3D coords: `python tools/export_3d_coords.py` (requires umap-learn)
 Embedding model: `sentence-transformers/all-MiniLM-L6-v2` (384 dims)
-Local server: `cd docs && python -m http.server 4000`
+
+### Local Jekyll Server
+
+Use Jekyll for proper CSS/images: `cd docs && jekyll serve --host 0.0.0.0 --port 4000`
+Access at `http://localhost:4000/repo_posts/` (first build ~17min for 13K posts)
+
 **Gotcha:** Do NOT create `docs/Gemfile` or commit `docs/vendor/` - breaks GitHub Pages
 
 ## Design System - MAGI//ARCHIVE (EVA Theme)
