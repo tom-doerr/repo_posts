@@ -70,5 +70,11 @@ Interactive visualization at `/map.html` - posts float in 3D space arranged by s
 - **Output:** `docs/assets/embeddings.3d.json` (~855KB, 13K posts)
 - **Rendering:** Three.js with InstancedMesh, OrbitControls
 - **Interaction:** Hover for tooltip, click opens info box with "VIEW →" link
+- **Highlight:** `?hl=<url>` param highlights point green and centers camera
 - **URLs:** All tools generate URLs with `/repo_posts/` prefix for GitHub Pages
+
+## Repo Page Features
+
+- **Image lightbox:** Click post image to view fullscreen (above scan lines overlay)
+- **3D Map link:** "View in 3D Map" opens map with that repo highlighted
 
