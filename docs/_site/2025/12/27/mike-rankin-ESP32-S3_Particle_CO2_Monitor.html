@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/mike_rankin_ESP32_S3_Particle_CO2_Monitor_20251225_235402_705_20251225_235423_e05193.png" alt="Mike Rankin Esp32 S3_particle_co2_monitor screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-12-27-mike-rankin-ESP32-S3_Particle_CO2_Monitor">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-12-27-mike-rankin-ESP32-S3_Particle_CO2_Monitor">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/12/27/mike-rankin-ESP32-S3_Particle_CO2_Monitor.html">View in 3D Map</a></p>
       
 
       
@@ -260,6 +261,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

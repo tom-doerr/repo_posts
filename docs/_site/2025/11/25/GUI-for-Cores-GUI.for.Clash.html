@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/GUI_for_Cores_GUI_for_Clash_20251123_180555_960_20251124_095736_b98a20--20251124T105917541--cropped.png" alt="Gui For Cores Gui.for.clash screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-11-25-GUI-for-Cores-GUI.for.Clash">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-11-25-GUI-for-Cores-GUI.for.Clash">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/11/25/GUI-for-Cores-GUI.for.Clash.html">View in 3D Map</a></p>
       
 
       
@@ -252,6 +253,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/ui-layouts_cursify_cropped.png" alt="Ui Layouts Cursify screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')" width="896" height="580"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-08-02-ui-layouts-cursify">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-08-02-ui-layouts-cursify">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/08/02/ui-layouts-cursify.html">View in 3D Map</a></p>
       
 
       
@@ -260,6 +261,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

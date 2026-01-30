@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/sqfmi_Watchy_20251120_065337_555_20251121_055005_52c3b4--20251121T065010422--cropped.png" alt="Sqfmi Watchy screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-11-21-sqfmi-Watchy">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-11-21-sqfmi-Watchy">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/11/21/sqfmi-Watchy.html">View in 3D Map</a></p>
       
 
       
@@ -256,6 +257,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

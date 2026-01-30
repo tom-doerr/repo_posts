@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/laurent22_rsync_time_backup_20251126_114349_321_20251129_022757_21d940--20251129T032811245--cropped.png" alt="Laurent22 Rsync Time Backup screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-11-30-laurent22-rsync-time-backup">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-11-30-laurent22-rsync-time-backup">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/11/30/laurent22-rsync-time-backup.html">View in 3D Map</a></p>
       
 
       
@@ -194,6 +195,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

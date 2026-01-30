@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/AndyMik90_Auto_Claude_20260104_004634_354_20260104_004722_d0e2c0.png" alt="Andymik90 Auto Claude screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2026-01-05-AndyMik90-Auto-Claude">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2026-01-05-AndyMik90-Auto-Claude">View on index</a> · <a href="/repo_posts/map.html?hl=/2026/01/05/AndyMik90-Auto-Claude.html">View in 3D Map</a></p>
       
 
       
@@ -256,6 +257,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

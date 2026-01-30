@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/developersdigest_llm_answer_engine_20251118_042419_586_20251118_045755_f2ebc9--20251118T055801759--cropped.png" alt="Developersdigest Llm Answer Engine screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-11-18-developersdigest-llm-answer-engine">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-11-18-developersdigest-llm-answer-engine">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/11/18/developersdigest-llm-answer-engine.html">View in 3D Map</a></p>
       
 
       
@@ -252,6 +253,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

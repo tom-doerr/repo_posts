@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/20250914T190850111--pulumi--pulumi--20250914T191331629--cropped.png" alt="Pulumi Pulumi screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')" width="761" height="1539"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-09-15-pulumi-pulumi">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-09-15-pulumi-pulumi">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/09/15/pulumi-pulumi.html">View in 3D Map</a></p>
       
 
       
@@ -260,6 +261,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

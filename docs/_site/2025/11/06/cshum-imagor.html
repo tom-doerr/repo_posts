@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/cshum_imagor_20251106_050532_030_20251106_133828_6bb7df--20251106T143845281--cropped.png" alt="Cshum Imagor screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-11-06-cshum-imagor">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-11-06-cshum-imagor">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/11/06/cshum-imagor.html">View in 3D Map</a></p>
       
 
       
@@ -256,6 +257,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

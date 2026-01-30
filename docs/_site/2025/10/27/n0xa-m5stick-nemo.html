@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/n0xa_m5stick_nemo_20251026_221633_049_20251027_001359_be5c8f--20251027T011449407--cropped.png" alt="N0xa M5stick Nemo screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')" width="680" height="630"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-10-27-n0xa-m5stick-nemo">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-10-27-n0xa-m5stick-nemo">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/10/27/n0xa-m5stick-nemo.html">View in 3D Map</a></p>
       
 
       
@@ -260,6 +261,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

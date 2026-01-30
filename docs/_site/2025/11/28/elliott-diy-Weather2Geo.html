@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/elliott_diy_Weather2Geo_20251125_231227_065_20251128_212243_0b9af9--20251128T222327768--cropped.png" alt="Elliott Diy Weather2geo screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-11-28-elliott-diy-Weather2Geo">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-11-28-elliott-diy-Weather2Geo">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/11/28/elliott-diy-Weather2Geo.html">View in 3D Map</a></p>
       
 
       
@@ -260,6 +261,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

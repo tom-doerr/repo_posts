@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/d_k_patel_ai_ffmpeg_cli_20251216_121533_697_20251216_121642_0ed3b3.png" alt="D K Patel Ai Ffmpeg Cli screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-12-17-d-k-patel-ai-ffmpeg-cli">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-12-17-d-k-patel-ai-ffmpeg-cli">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/12/17/d-k-patel-ai-ffmpeg-cli.html">View in 3D Map</a></p>
       
 
       
@@ -256,6 +257,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

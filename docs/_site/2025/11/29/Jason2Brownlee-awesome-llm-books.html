@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/Jason2Brownlee_awesome_llm_books_20251126_103738_783_20251129_022230_d6efbb--20251129T032237599--cropped.png" alt="Jason2brownlee Awesome Llm Books screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-11-29-Jason2Brownlee-awesome-llm-books">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-11-29-Jason2Brownlee-awesome-llm-books">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/11/29/Jason2Brownlee-awesome-llm-books.html">View in 3D Map</a></p>
       
 
       
@@ -260,6 +261,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/DavidoTek_ProtonUp_Qt_20251130_073247_154_20251130_085309_4edf28--20251130T095316196--cropped.png" alt="Davidotek Protonup Qt screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-12-01-DavidoTek-ProtonUp-Qt">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-12-01-DavidoTek-ProtonUp-Qt">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/12/01/DavidoTek-ProtonUp-Qt.html">View in 3D Map</a></p>
       
 
       
@@ -252,6 +253,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

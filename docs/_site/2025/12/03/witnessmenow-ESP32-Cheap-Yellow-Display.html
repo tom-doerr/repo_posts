@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/witnessmenow_ESP32_Cheap_Yellow_Display_20251201_080457_859_20251201_080615_7ff01c.png" alt="Witnessmenow Esp32 Cheap Yellow Display screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-12-03-witnessmenow-ESP32-Cheap-Yellow-Display">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-12-03-witnessmenow-ESP32-Cheap-Yellow-Display">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/12/03/witnessmenow-ESP32-Cheap-Yellow-Display.html">View in 3D Map</a></p>
       
 
       
@@ -256,6 +257,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

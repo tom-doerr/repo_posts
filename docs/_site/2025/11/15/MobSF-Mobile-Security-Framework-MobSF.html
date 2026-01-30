@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/MobSF_Mobile_Security_Framework_MobSF_20251114_200311_310_20251115_035555_34532e--20251115T045607212--cropped.png" alt="Mobsf Mobile Security Framework Mobsf screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-11-15-MobSF-Mobile-Security-Framework-MobSF">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-11-15-MobSF-Mobile-Security-Framework-MobSF">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/11/15/MobSF-Mobile-Security-Framework-MobSF.html">View in 3D Map</a></p>
       
 
       
@@ -260,6 +261,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

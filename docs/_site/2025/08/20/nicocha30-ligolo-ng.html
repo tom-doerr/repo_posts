@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/20250818T115808791_nicocha30_ligolo-ng--20250818T120125179--cropped.png" alt="Nicocha30 Ligolo Ng screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')" width="644" height="768"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-08-20-nicocha30-ligolo-ng">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-08-20-nicocha30-ligolo-ng">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/08/20/nicocha30-ligolo-ng.html">View in 3D Map</a></p>
       
 
       
@@ -194,6 +195,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

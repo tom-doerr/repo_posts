@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/Plachtaa_VALL_E_X_20251023_181556_922_20251025_011417_8f5ff2--20251025T031500357--cropped.png" alt="Plachtaa Vall E X screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')" width="648" height="610"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-10-25-Plachtaa-VALL-E-X">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-10-25-Plachtaa-VALL-E-X">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/10/25/Plachtaa-VALL-E-X.html">View in 3D Map</a></p>
       
 
       
@@ -256,6 +257,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

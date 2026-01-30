@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/Vaibhavs10_mcp_with_openai_gpt_oss_20251122_214122_890_20251123_001636_13475f--20251123T011643833--cropped.png" alt="Vaibhavs10 Mcp With Openai Gpt Oss screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-11-23-Vaibhavs10-mcp-with-openai-gpt-oss">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-11-23-Vaibhavs10-mcp-with-openai-gpt-oss">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/11/23/Vaibhavs10-mcp-with-openai-gpt-oss.html">View in 3D Map</a></p>
       
 
       
@@ -260,6 +261,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

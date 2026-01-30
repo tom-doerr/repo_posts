@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/kevint_cerebras_cerebras_code_mcp_20251204_230554_247_20251204_230627_90803b.png" alt="Kevint Cerebras Cerebras Code Mcp screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-12-07-kevint-cerebras-cerebras-code-mcp">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-12-07-kevint-cerebras-cerebras-code-mcp">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/12/07/kevint-cerebras-cerebras-code-mcp.html">View in 3D Map</a></p>
       
 
       
@@ -194,6 +195,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

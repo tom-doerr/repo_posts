@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/crawlab_team_artipub_20251025_033418_974_20251025_040558_25a703--20251025T060619037--cropped.png" alt="Crawlab Team Artipub screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')" width="650" height="650"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-10-25-crawlab-team-artipub">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-10-25-crawlab-team-artipub">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/10/25/crawlab-team-artipub.html">View in 3D Map</a></p>
       
 
       
@@ -260,6 +261,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

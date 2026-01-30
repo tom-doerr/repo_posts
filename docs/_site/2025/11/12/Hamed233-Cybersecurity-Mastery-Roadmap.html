@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/Hamed233_Cybersecurity_Mastery_Roadmap_20251111_034240_065_20251111_145657_8c28c0--20251111T155715297--cropped.png" alt="Hamed233 Cybersecurity Mastery Roadmap screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-11-12-Hamed233-Cybersecurity-Mastery-Roadmap">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-11-12-Hamed233-Cybersecurity-Mastery-Roadmap">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/11/12/Hamed233-Cybersecurity-Mastery-Roadmap.html">View in 3D Map</a></p>
       
 
       
@@ -194,6 +195,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

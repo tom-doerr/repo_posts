@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/20250822T023430993--TryGhost--Ghost--20250822T023957156--cropped.png" alt="Tryghost Ghost screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')" width="702" height="768"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-08-23-TryGhost-Ghost">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-08-23-TryGhost-Ghost">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/08/23/TryGhost-Ghost.html">View in 3D Map</a></p>
       
 
       
@@ -256,6 +257,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

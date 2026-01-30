@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/dataplane_app_dataplane_20251029_200030_637_20251029_212740_56d32a--20251029T222824220--cropped.png" alt="Dataplane App Dataplane screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-10-30-dataplane-app-dataplane">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-10-30-dataplane-app-dataplane">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/10/30/dataplane-app-dataplane.html">View in 3D Map</a></p>
       
 
       
@@ -194,6 +195,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

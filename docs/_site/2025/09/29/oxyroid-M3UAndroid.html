@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/20250928T061837918--oxyroid--M3UAndroid--20250928T064745684--cropped.png" alt="Oxyroid M3uandroid screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')" width="617" height="834"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-09-29-oxyroid-M3UAndroid">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-09-29-oxyroid-M3UAndroid">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/09/29/oxyroid-M3UAndroid.html">View in 3D Map</a></p>
       
 
       
@@ -194,6 +195,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

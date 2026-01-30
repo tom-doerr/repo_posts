@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/formulahendry_mcp_server_spec_driven_development_20251113_232438_999_20251114_015636_f09829--20251114T025937285--cropped.png" alt="Formulahendry Mcp Server Spec Driven Development screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-11-14-formulahendry-mcp-server-spec-driven-development">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-11-14-formulahendry-mcp-server-spec-driven-development">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/11/14/formulahendry-mcp-server-spec-driven-development.html">View in 3D Map</a></p>
       
 
       
@@ -256,6 +257,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

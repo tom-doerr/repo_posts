@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/meshtastic_network_management_client_20251025_050906_725_20251025_101417_40d8cd--20251025T121439709--cropped.png" alt="Meshtastic Network Management Client screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')" width="650" height="645"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-10-26-meshtastic-network-management-client">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-10-26-meshtastic-network-management-client">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/10/26/meshtastic-network-management-client.html">View in 3D Map</a></p>
       
 
       
@@ -260,6 +261,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

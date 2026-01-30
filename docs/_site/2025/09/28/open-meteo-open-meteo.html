@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/20250927T044450994--open-meteo--open-meteo--20250927T045305152--cropped.png" alt="Open Meteo Open Meteo screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')" width="865" height="1909"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-09-28-open-meteo-open-meteo">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-09-28-open-meteo-open-meteo">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/09/28/open-meteo-open-meteo.html">View in 3D Map</a></p>
       
 
       
@@ -260,6 +261,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

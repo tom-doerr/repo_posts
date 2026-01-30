@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/trimstray_the_practical_linux_hardening_guide_20251115_052712_284_20251116_221421_65c84c--20251116T231651626--cropped.png" alt="Trimstray The Practical Linux Hardening Guide screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-11-17-trimstray-the-practical-linux-hardening-guide">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-11-17-trimstray-the-practical-linux-hardening-guide">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/11/17/trimstray-the-practical-linux-hardening-guide.html">View in 3D Map</a></p>
       
 
       
@@ -260,6 +261,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>

@@ -131,7 +131,8 @@
       
       
       <p class="post-image"><img class="loading-blur" src="/repo_posts/assets/smallstep_certificates_20251025_005200_884_20251025_005236_97bc34--20251025T025409347--cropped.png" alt="Smallstep Certificates screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')" width="700" height="690"></p>
-      <p class="post-index-link"><a href="/repo_posts/#2025-10-25-smallstep-certificates">View on index</a></p>
+      <div id="lightbox"><img alt=""></div>
+      <p class="post-index-link"><a href="/repo_posts/#2025-10-25-smallstep-certificates">View on index</a> · <a href="/repo_posts/map.html?hl=/2025/10/25/smallstep-certificates.html">View in 3D Map</a></p>
       
 
       
@@ -260,6 +261,10 @@
         }
         window.addEventListener('load', jump, { once: true });
       })();
+    </script>
+    <script>
+      (function(){var b=document.getElementById('lightbox');if(!b)return;var i=document.querySelector('.post-image img');if(!i)return;
+        i.onclick=function(){b.querySelector('img').src=i.src;b.classList.add('open')};b.onclick=function(){b.classList.remove('open')};})();
     </script>
   </body>
 </html>
