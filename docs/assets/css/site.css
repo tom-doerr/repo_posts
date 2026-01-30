@@ -191,3 +191,9 @@ body::before { content:""; position:fixed; inset:0; pointer-events:none; z-index
 
 /* Tagline */
 .tagline{ font-family:'Orbitron',sans-serif; font-size:10px; color:var(--eva-green); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:4px; }
+
+/* Image lightbox */
+.post-image img{ cursor:zoom-in }
+#lightbox{ display:none; position:fixed; inset:0; z-index:10000; background:rgba(0,0,0,0.95); justify-content:center; align-items:center; cursor:zoom-out }
+#lightbox.open{ display:flex }
+#lightbox img{ max-width:95vw; max-height:95vh; object-fit:contain }

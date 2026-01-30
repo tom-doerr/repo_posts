@@ -3,7 +3,7 @@ import { OrbitControls } from 'https://esm.sh/three@0.160.0/examples/jsm/control
 
 const BASE = window.__SEM_ASSETS_BASE || '/repo_posts/assets/';
 let scene, camera, renderer, controls, points, data, searchIdx, urlToMeta = {};
-let raycaster, mouse, tooltip, infobox, hovered = -1, selected = -1;
+let raycaster, mouse, tooltip, infobox, hovered = -1, selected = -1, highlighted = -1;
 
 async function init() {
   const [d3, idx] = await Promise.all([
@@ -31,12 +31,23 @@ function setupScene() {
 
 function createPoints() {
   const geo = new THREE.BufferGeometry();
-  const pos = new Float32Array(data.coords.length * 3);
-  data.coords.forEach((c, i) => { pos[i*3]=c[0]; pos[i*3+1]=c[1]; pos[i*3+2]=c[2]; });
+  const n = data.coords.length, pos = new Float32Array(n * 3), col = new Float32Array(n * 3);
+  data.coords.forEach((c, i) => { pos[i*3]=c[0]; pos[i*3+1]=c[1]; pos[i*3+2]=c[2]; col[i*3]=1; col[i*3+1]=0.4; col[i*3+2]=0.07; });
   geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-  const mat = new THREE.PointsMaterial({color: 0xff6611, size: 0.02, sizeAttenuation: true});
+  geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+  const mat = new THREE.PointsMaterial({size: 0.02, sizeAttenuation: true, vertexColors: true});
   points = new THREE.Points(geo, mat);
   scene.add(points);
+  checkHighlight();
+}
+
+function checkHighlight() {
+  const u = new URLSearchParams(location.search).get('hl'); if (!u) return;
+  const i = data.urls.indexOf(u); if (i < 0) return;
+  highlighted = i; const c = points.geometry.attributes.color.array;
+  c[i*3]=0; c[i*3+1]=1; c[i*3+2]=0.25;
+  points.geometry.attributes.color.needsUpdate = true;
+  const p = data.coords[i]; camera.position.set(p[0],p[1],p[2]+0.5); controls.target.set(p[0],p[1],p[2]);
 }
 
 function setupInteraction() {
