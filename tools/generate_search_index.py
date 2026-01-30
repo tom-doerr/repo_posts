@@ -17,7 +17,7 @@ OUT = ROOT / "docs" / "assets" / "search-index.json"
 
 def _url(stem: str) -> str:
     y,m,d,rest = stem.split('-', 3)
-    return f"/{y}/{m}/{d}/{rest}.html"
+    return f"/repo_posts/{y}/{m}/{d}/{rest}.html"
 
 def _extract(md: str) -> str:
     m = re.search(r"^#\s+(.+)$", md, re.M)

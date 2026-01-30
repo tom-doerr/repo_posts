@@ -9,7 +9,7 @@ NPZ = ROOT / 'docs' / '_data' / 'embeddings.npz'
 OUT = ROOT / 'docs' / 'assets' / 'embeddings.3d.json'
 
 def slug_to_url(s):
-    return f"/{s[:4]}/{s[5:7]}/{s[8:10]}/{s[11:]}.html"
+    return f"/repo_posts/{s[:4]}/{s[5:7]}/{s[8:10]}/{s[11:]}.html"
 
 def main():
     import umap

@@ -64,5 +64,6 @@ Interactive visualization at `/map.html` - posts float in 3D space arranged by s
 - **Generation:** `tools/export_3d_coords.py` uses UMAP to reduce 384D embeddings → 3D
 - **Output:** `docs/assets/embeddings.3d.json` (~855KB, 13K posts)
 - **Rendering:** Three.js with InstancedMesh, OrbitControls
-- **Interaction:** Hover for tooltip (title/date/desc), click to navigate
+- **Interaction:** Hover for tooltip, click opens info box with "VIEW →" link
+- **URLs:** All tools generate URLs with `/repo_posts/` prefix for GitHub Pages
 

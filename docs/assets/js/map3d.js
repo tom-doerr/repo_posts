@@ -3,7 +3,7 @@ import { OrbitControls } from 'https://esm.sh/three@0.160.0/examples/jsm/control
 
 const BASE = window.__SEM_ASSETS_BASE || '/repo_posts/assets/';
 let scene, camera, renderer, controls, points, data, searchIdx, urlToMeta = {};
-let raycaster, mouse, tooltip, hovered = -1;
+let raycaster, mouse, tooltip, infobox, hovered = -1, selected = -1;
 
 async function init() {
   const [d3, idx] = await Promise.all([
@@ -46,6 +46,9 @@ function setupInteraction() {
   tooltip = document.createElement('div');
   tooltip.id = 'tooltip';
   document.body.appendChild(tooltip);
+  infobox = document.createElement('div');
+  infobox.id = 'infobox';
+  document.body.appendChild(infobox);
   renderer.domElement.addEventListener('mousemove', onMouseMove);
   renderer.domElement.addEventListener('click', onClick);
 }
@@ -60,11 +63,14 @@ function onMouseMove(e) {
   document.body.style.cursor = hovered >= 0 ? 'pointer' : 'crosshair';
 }
 
-function onClick() {
+function onClick(e) {
+  if (e.target.closest('#infobox')) return;
   if (hovered >= 0) {
-    const url = data.urls[hovered];
-    const meta = urlToMeta[url];
-    if (meta) window.location.href = url;
+    selected = hovered;
+    showInfobox(selected);
+  } else {
+    selected = -1;
+    infobox.style.display = 'none';
   }
 }
 
@@ -74,6 +80,15 @@ function showTooltip(i, e) {
   const title = meta.title.replace(/\[([^\]]+)\].*/,'$1');
   tooltip.innerHTML = `<b>${title}</b><br><small>${meta.d}</small><br>${meta.s||''}`;
   tooltip.style.cssText = `display:block;left:${e.clientX+10}px;top:${e.clientY+10}px`;
+}
+
+function showInfobox(i) {
+  const url = data.urls[i], meta = urlToMeta[url];
+  if (!meta) return;
+  const title = meta.title.replace(/\[([^\]]+)\].*/,'$1');
+  infobox.innerHTML = `<b>${title}</b><br><small>${meta.d}</small>
+<p>${meta.s||''}</p><a href="${url}" class="btn">VIEW →</a>`;
+  infobox.style.display = 'block';
 }
 
 function animate() {
