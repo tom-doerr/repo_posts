@@ -1,0 +1,6 @@
+/* NERV Terminal - Always dark mode */
+:root { color-scheme: dark; }
+pre, code { background:var(--eva-purple-deep); color:var(--eva-green); border:1px solid var(--eva-purple-light); font-family:'Roboto Mono',monospace; }
+hr { border-color:var(--eva-purple-light); }
+th, td { border-color:var(--eva-purple-light); }
+blockquote { color:var(--eva-text-dim); border-left:3px solid var(--eva-orange); padding-left:16px; }
