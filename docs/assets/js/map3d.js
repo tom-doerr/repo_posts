@@ -93,8 +93,8 @@ function setupLabelsUI() {
     </div>
     <div class="row">
       <span>Nearest</span>
-      <input id="label-nearest" type="range" min="0" max="200" value="30" />
-      <output id="label-nearest-out">30</output>
+      <input id="label-nearest" type="range" min="0" max="50" value="12" />
+      <output id="label-nearest-out">12</output>
     </div>
     <div class="row" id="label-zoom-row">
       <span>Zoom</span>
@@ -135,9 +135,7 @@ function titleForIndex(i) {
   const url = data.urls[i];
   const meta = urlToMeta[url];
   if (!meta) return null;
-  const t = String(meta.title || '');
-  const m = t.match(/\[([^\]]+)\]/);
-  return (m && m[1]) ? m[1] : (t || null);
+  return meta.s || null;
 }
 
 function nearestPointIndices(k, exclude) {
