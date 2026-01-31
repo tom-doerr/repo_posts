@@ -247,6 +247,26 @@ function normalizePath(u) {
   return s;
 }
 
+function slugFromPath(p) {
+  const s = normalizePath(p);
+  if (!s) return null;
+  const parts = s.split('/');
+  const last = parts[parts.length - 1] || '';
+  const m = last.match(/^(.+)\.html$/i);
+  return m ? m[1] : null;
+}
+
+function findBySlug(slug) {
+  if (!slug || !data || !data.urls) return -1;
+  const want = '/' + String(slug).toLowerCase() + '.html';
+  for (let i = 0; i < data.urls.length; i++) {
+    const u = data.urls[i];
+    if (!u) continue;
+    if (String(u).toLowerCase().endsWith(want)) return i;
+  }
+  return -1;
+}
+
 function withSiteBase(path) {
   const p = normalizePath(path);
   if (!p) return p;
@@ -265,6 +285,12 @@ function findUrlIndex(u) {
   }
   for (const c of cands) {
     const i = data.urls.indexOf(c);
+    if (i >= 0) return i;
+  }
+  // Fallback: map keeps only the latest post per repo (deduped); allow deep-links from older dates.
+  const slug = slugFromPath(p);
+  if (slug) {
+    const i = findBySlug(slug);
     if (i >= 0) return i;
   }
   return -1;
@@ -384,7 +410,7 @@ function applyColors() {
   // Search matches (cyan)
   for (let k = 0; k < matchIndices.length; k++) {
     const i = matchIndices[k];
-    c[i*3] = 0.2; c[i*3 + 1] = 0.9; c[i*3 + 2] = 1.0;
+    c[i*3] = 0.0; c[i*3 + 1] = 1.0; c[i*3 + 2] = 0.25;
   }
 
   // Selected (pinned) (warm white)
@@ -538,6 +564,8 @@ function setupLabelsUI() {
   tasteResetBtn = hud.querySelector('#taste-reset');
   tasteStatusEl = hud.querySelector('#taste-status');
 
+  applyQueryParamsToUI();
+
   const sync = () => {
     if (labelNearestOut) labelNearestOut.textContent = String(labelNearest.value);
     if (labelZoomOut) labelZoomOut.textContent = String(labelZoom.value);
@@ -548,13 +576,14 @@ function setupLabelsUI() {
   labelNearest.addEventListener('input', sync);
   labelZoom.addEventListener('input', sync);
   if (thumbsToggle) thumbsToggle.addEventListener('change', () => { labelDirty = true; });
-  const searchSync = () => scheduleSearchUpdate();
+  const searchSync = () => { scheduleSearchUpdate(); updateUrlFromSearchUI(); };
   if (searchInput) {
     searchInput.addEventListener('input', searchSync);
     searchInput.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         searchInput.value = '';
         scheduleSearchUpdate(true);
+        updateUrlFromSearchUI();
         searchInput.blur();
       }
     });
@@ -564,12 +593,14 @@ function setupLabelsUI() {
   if (searchClearBtn) searchClearBtn.addEventListener('click', () => {
     if (searchInput) searchInput.value = '';
     scheduleSearchUpdate(true);
+    updateUrlFromSearchUI();
     searchInput && searchInput.focus();
   });
   sync();
   scheduleSearchUpdate(true);
   wireSemanticLocate();
   wireTasteUI();
+  maybeAutoSemanticLocate();
 }
 
 function scheduleSearchUpdate(immediate = false) {
@@ -679,6 +710,65 @@ async function ensureSemModule() {
   if (!window.__sem || typeof window.__sem.topK !== 'function') {
     throw new Error('Semantic module did not initialize');
   }
+}
+
+function updateUrlParams(mut) {
+  try {
+    const url = new URL(location.href);
+    mut(url.searchParams);
+    const qs = url.searchParams.toString();
+    const next = url.pathname + (qs ? `?${qs}` : '') + url.hash;
+    history.replaceState(null, '', next);
+  } catch (e) {}
+}
+
+function updateUrlFromSearchUI() {
+  const q = (searchInput ? searchInput.value : '').trim();
+  const mode = searchModeSel ? searchModeSel.value : 'keyword';
+  const cs = !!(searchCaseCb && searchCaseCb.checked);
+  updateUrlParams((sp) => {
+    if (!q) {
+      sp.delete('q'); sp.delete('qm'); sp.delete('qc');
+      return;
+    }
+    sp.set('q', q);
+    sp.set('qm', (mode === 'regex') ? 'regex' : 'keyword');
+    if (cs) sp.set('qc', '1'); else sp.delete('qc');
+  });
+}
+
+function updateUrlFromSemanticUI(go = false) {
+  const q = (semLocateInput ? semLocateInput.value : '').trim();
+  updateUrlParams((sp) => {
+    if (!q) {
+      sp.delete('sem'); sp.delete('sem_go');
+      return;
+    }
+    sp.set('sem', q);
+    if (go) sp.set('sem_go', '1'); else sp.delete('sem_go');
+  });
+}
+
+function applyQueryParamsToUI() {
+  const sp = new URLSearchParams(location.search);
+  const q = sp.get('q') || '';
+  if (searchInput && q) searchInput.value = q;
+  const qm = sp.get('qm');
+  if (searchModeSel && (qm === 'regex' || qm === 'keyword')) searchModeSel.value = qm;
+  const qc = sp.get('qc');
+  if (searchCaseCb) searchCaseCb.checked = (qc === '1');
+
+  const sem = sp.get('sem') || '';
+  if (semLocateInput && sem) semLocateInput.value = sem;
+}
+
+function maybeAutoSemanticLocate() {
+  const sp = new URLSearchParams(location.search);
+  const sem = (sp.get('sem') || '').trim();
+  const go = sp.get('sem_go') === '1';
+  if (!sem || !go) return;
+  if (semLocateInput && !semLocateInput.value) semLocateInput.value = sem;
+  semanticLocate(sem);
 }
 
 function semanticPointFromResults(results, want = 24) {
@@ -827,7 +917,9 @@ function titleForIndex(i) {
   const url = data.urls[i];
   const meta = metaForUrl(url);
   if (!meta) return null;
-  return displayTitle(meta) || (meta.s || null);
+  const s = (meta.s || '').trim();
+  if (s) return (s.length > 84) ? (s.slice(0, 81) + '…') : s;
+  return displayTitle(meta) || (String(meta.title || '').trim() || null);
 }
 
 function nearestPointIndices(k, exclude) {
