@@ -32,6 +32,13 @@
         <label class="sem" title="Semantic search runs in-browser and requires WebGPU. First use loads a small model."><input type="checkbox" id="sem-toggle"> Sem</label>
         <a class="sem-help" href="{{ '/status.html#semantic' | relative_url }}" aria-label="Semantic search help" title="Learn about semantic search">?</a>
         <small id="sem-status" class="sem-status" hidden>Semantic…</small>
+        <details id="sem-details" class="sem-details" hidden>
+          <summary>Sem details</summary>
+          <pre id="sem-details-pre" class="sem-details-pre"></pre>
+          <div class="sem-details-actions">
+            <button id="sem-details-copy" type="button" aria-label="Copy semantic diagnostics">Copy</button>
+          </div>
+        </details>
         <div id="search-count" class="search-count" hidden aria-live="polite"></div>
         <div id="search-results" role="listbox" aria-label="Search results" hidden></div>
       </div>
@@ -124,6 +131,7 @@
     <script src="{{ '/assets/js/fuzzysort.min.js?v=' | append: site.github.build_revision | relative_url }}"></script>
     {% endif %}
     <script src="{{ '/assets/js/search.js?v=' | append: site.github.build_revision | relative_url }}"></script>
+    <script src="{{ '/assets/js/fx.js?v=' | append: site.github.build_revision | relative_url }}"></script>
     <script>window.__SEM_ASSETS_BASE = "{{ '/assets/' | relative_url }}";</script>
     <script type="module" src="{{ '/assets/js/sem.js?v=' | append: site.github.build_revision | relative_url }}"></script>
     <script>
