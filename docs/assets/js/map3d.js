@@ -236,15 +236,11 @@ function startFlyTo(i, dist = 0.6) {
   fly = { t0: performance.now(), dur: 650, fromPos, fromTgt, toPos, toTgt };
 }
 
-function startFlyToPoint(toTgt, dur = 720) {
+function startFlyToPoint(toTgt, dur = 720, dist = 0.6) {
   if (!toTgt || !camera || !controls) return;
   const fromPos = camera.position.clone();
   const fromTgt = controls.target.clone();
-  const offset = fromPos.clone().sub(fromTgt);
-  // Clamp distance so you don't end up absurdly zoomed out (or inside the cloud).
-  const len = Math.max(0.45, Math.min(1.6, offset.length() || 0.62));
-  offset.setLength(len);
-  const toPos = toTgt.clone().add(offset);
+  const toPos = new THREE.Vector3(toTgt.x, toTgt.y, toTgt.z + dist);
   fly = { t0: performance.now(), dur, fromPos, fromTgt, toPos, toTgt };
 }
 
