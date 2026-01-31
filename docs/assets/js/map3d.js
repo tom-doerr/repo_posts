@@ -113,8 +113,8 @@ async function init() {
 
 function setupScene() {
   scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x1a0a2e);
-  scene.fog = new THREE.FogExp2(0x1a0a2e, 0.8);
+  scene.background = new THREE.Color(0x000000);
+  scene.fog = new THREE.FogExp2(0x000000, 0.8);
   camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, 0.1, 100);
   camera.position.set(0, 0, 1.5);
   renderer = new THREE.WebGLRenderer({canvas: document.getElementById('c'), antialias: true});
