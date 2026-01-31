@@ -550,10 +550,6 @@ async function semanticLocate(qRaw) {
     clearQueryTarget();
     return;
   }
-  if (!('gpu' in navigator)) {
-    setSemStatus('Sem unsupported (no WebGPU)', 'err');
-    return;
-  }
   const my = ++semFlySeq;
   setSemStatus('Semantic: starting…', 'warn');
   try {
