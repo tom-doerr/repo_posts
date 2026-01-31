@@ -4,23 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>3D Map | MAGI//ARCHIVE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
   <style>
-*{margin:0;padding:0}body{background:#1a0a2e;overflow:hidden;cursor:crosshair}
-#tooltip{position:fixed;background:#2d1b4e;color:#e0d4f0;border:1px solid #ff6611;padding:8px 12px;font:12px monospace;max-width:300px;pointer-events:none;display:none;z-index:10}
-#tooltip b{color:#ff6611}
-#back{position:fixed;top:12px;left:12px;color:#ff6611;font:bold 14px monospace;text-decoration:none;z-index:10}
-#infobox{position:fixed;bottom:20px;right:20px;background:#2d1b4e;color:#e0d4f0;border:1px solid #ff6611;padding:16px;font:13px monospace;max-width:320px;display:none;z-index:10}
-#infobox b{color:#ff6611;font-size:15px}#infobox p{margin:8px 0}
-#infobox .btn{display:inline-block;margin-top:8px;padding:6px 12px;background:#ff6611;color:#1a0a2e;text-decoration:none;font-weight:bold}
-#hud{position:fixed;top:12px;right:12px;background:#2d1b4e;color:#e0d4f0;border:1px solid #ff6611;padding:10px 12px;font:12px monospace;z-index:10;max-width:300px}
-#hud b{color:#ff6611}
-#hud .row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:6px}
-#hud select,#hud input[type="range"]{width:160px}
-#hud output{color:#ff6611;min-width:3ch;text-align:right}
-#hud small{display:block;margin-top:8px;color:#9080a8;line-height:1.2}
+*{margin:0;padding:0;box-sizing:border-box}body{background:#1a0a2e;overflow:hidden;cursor:crosshair;font-family:'Roboto Mono',monospace}
+#tooltip{position:fixed;background:#2d1b4e;color:#e0d4f0;border:1px solid #ff6611;padding:8px 12px;font:12px 'Roboto Mono',monospace;max-width:300px;pointer-events:none;display:none;z-index:10}
+#tooltip b{color:#ff6611;font-family:'Orbitron',sans-serif}
+#back{position:fixed;top:12px;left:12px;color:#ff6611;font:700 12px 'Orbitron',sans-serif;text-decoration:none;z-index:10;letter-spacing:.1em;text-transform:uppercase}
+#back:hover{color:#00ff41;text-shadow:0 0 10px #00ff41}
+#infobox{position:fixed;bottom:20px;right:20px;background:linear-gradient(135deg,#2d1b4e,#1a0a2e);color:#e0d4f0;border:1px solid #ff6611;border-left:3px solid #ff6611;padding:16px;font:13px 'Roboto Mono',monospace;max-width:320px;display:none;z-index:10}
+#infobox b{color:#ff6611;font:700 14px 'Orbitron',sans-serif;letter-spacing:.05em}#infobox p{margin:8px 0}
+#infobox .btn{display:inline-block;margin-top:8px;padding:6px 12px;background:#ff6611;color:#1a0a2e;text-decoration:none;font:700 11px 'Orbitron',sans-serif;letter-spacing:.1em}
+#infobox .btn:hover{background:#00ff41}
+#hud{position:fixed;top:12px;right:12px;background:linear-gradient(135deg,#2d1b4e,#1a0a2e);color:#e0d4f0;border:1px solid #ff6611;border-left:3px solid #ff6611;padding:12px 14px;font:12px 'Roboto Mono',monospace;z-index:10;max-width:280px}
+#hud b{color:#ff6611;font:700 11px 'Orbitron',sans-serif;letter-spacing:.15em;text-transform:uppercase}
+#hud .row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px}
+#hud .row span{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:#9080a8}
+#hud select{background:#1a0a2e;color:#e0d4f0;border:1px solid #ff6611;padding:4px;font:11px 'Roboto Mono',monospace}
+#hud input[type="range"]{width:100px;accent-color:#ff6611}
+#hud output{color:#00ff41;min-width:3ch;text-align:right;font-family:'Orbitron',sans-serif}
+#hud small{display:block;margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,102,17,.3);color:#9080a8;font-size:10px;line-height:1.4}
 #labels{position:fixed;inset:0;pointer-events:none;z-index:9}
-.point-label{position:absolute;background:rgba(45,27,78,0.85);color:#e0d4f0;border:1px solid rgba(255,102,17,0.85);padding:2px 6px;font:11px monospace;white-space:nowrap;transform:translate(-50%,-100%);user-select:none}
-.point-label.highlight{border-color:#00ff41;color:#00ff41}
+.point-label{position:absolute;background:rgba(26,10,46,.9);color:#e0d4f0;border:1px solid rgba(255,102,17,.7);padding:3px 8px;font:10px 'Roboto Mono',monospace;white-space:nowrap;transform:translate(-50%,-100%);user-select:none}
+.point-label.highlight{border-color:#00ff41;color:#00ff41;background:rgba(0,255,65,.1)}
   </style>
 </head>
 <body>

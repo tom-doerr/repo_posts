@@ -52,6 +52,10 @@ function setupScene() {
   renderer.setSize(innerWidth, innerHeight);
   controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
+  controls.dampingFactor = 0.08;
+  controls.rotateSpeed = 0.4;
+  controls.zoomSpeed = 0.5;
+  controls.panSpeed = 0.4;
   controls.addEventListener('change', () => { labelDirty = true; });
   createPoints();
 }
