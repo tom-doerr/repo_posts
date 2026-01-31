@@ -10,10 +10,25 @@ let highlightPulse = null;
 let pendingOpenIndex = -1;
 let labelsWrap, hud, labelModeSel, labelNearest, labelNearestOut, labelZoom, labelZoomOut, labelZoomRow;
 let searchInput, searchModeSel, searchCaseCb, searchCountOut, searchErrorEl, searchClearBtn;
+let thumbsToggle = null;
 let labelIndices = [], labelDirty = true, lastLabelCompute = 0;
 const labelPool = [];
+const thumbPool = [];
 const v3 = new THREE.Vector3();
 let fly = null;
+let baseColors = null;
+let matchIndices = [];
+let searchText = null;
+let searchTextLc = null;
+let searchDebounce = 0;
+let lastZoomAssistCompute = 0;
+let zoomAssistDist = null;
+const ZOOM_SPEED_BASE = 0.8;
+const ZOOM_SPEED_MIN = 0.18;
+const ZOOM_ASSIST_NEAR = 0.14;
+const ZOOM_ASSIST_FAR = 0.9;
+const ZOOM_ASSIST_K = 3;
+const ZOOM_ASSIST_SMOOTH = 0.25;
 
 function makePointSprite() {
   const size = 64;
@@ -49,6 +64,7 @@ async function init() {
       else if (p.u.startsWith('/')) urlToMeta[SITE_BASE + p.u] = p;
     }
   });
+  buildSearchText();
   setupScene();
   setupInteraction();
   setupLabelsUI();
@@ -68,6 +84,11 @@ function setupScene() {
   controls.dampingFactor = 0.08;
   controls.zoomSpeed = 0.8;
   controls.panSpeed = 0.5;
+  controls.autoRotate = true;
+  controls.autoRotateSpeed = 0.5;
+  const stopRotate = () => { controls.autoRotate = false; };
+  renderer.domElement.addEventListener('pointerdown', stopRotate, { once: true });
+  renderer.domElement.addEventListener('wheel', stopRotate, { once: true });
   controls.addEventListener('change', () => { labelDirty = true; });
   createPoints();
 }
@@ -78,6 +99,7 @@ function createPoints() {
   data.coords.forEach((c, i) => { pos[i*3]=c[0]; pos[i*3+1]=c[1]; pos[i*3+2]=c[2]; col[i*3]=1; col[i*3+1]=0.4; col[i*3+2]=0.07; });
   geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
   geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+  baseColors = col.slice();
   const sprite = makePointSprite();
   // "Shadow"/outline layer behind points to make individual nodes easier to distinguish.
   const mat = new THREE.PointsMaterial({
@@ -112,6 +134,23 @@ function createPoints() {
   highlightPulse.visible = false;
   scene.add(highlightPulse);
   checkHighlight();
+}
+
+function buildSearchText() {
+  if (!data || !data.urls) return;
+  const n = data.urls.length;
+  searchText = new Array(n);
+  searchTextLc = new Array(n);
+  for (let i = 0; i < n; i++) {
+    const url = data.urls[i];
+    const meta = metaForUrl(url);
+    const title = displayTitle(meta) || '';
+    const summary = (meta && meta.s) ? String(meta.s) : '';
+    const raw = (meta && meta.t) ? String(meta.t) : '';
+    const combined = `${title} ${summary} ${url || ''} ${raw}`.trim();
+    searchText[i] = combined;
+    searchTextLc[i] = combined.toLowerCase();
+  }
 }
 
 function normalizePath(u) {
@@ -174,9 +213,7 @@ function startFlyTo(i, dist = 0.6) {
 function checkHighlight() {
   const u = new URLSearchParams(location.search).get('hl'); if (!u) return;
   const i = findUrlIndex(u); if (i < 0) return;
-  highlighted = i; const c = points.geometry.attributes.color.array;
-  c[i*3]=0; c[i*3+1]=1; c[i*3+2]=0.25;
-  points.geometry.attributes.color.needsUpdate = true;
+  highlighted = i;
   if (highlightPulse && data && data.coords && data.coords[i]) {
     const p = data.coords[i];
     const a = highlightPulse.geometry.attributes.position.array;
@@ -194,7 +231,35 @@ function checkHighlight() {
     if (infobox) showInfobox(i);
     else pendingOpenIndex = i;
   }
+  applyColors();
   labelDirty = true;
+}
+
+function applyColors() {
+  if (!points || !points.geometry || !points.geometry.attributes || !points.geometry.attributes.color) return;
+  const c = points.geometry.attributes.color.array;
+  if (baseColors && baseColors.length === c.length) c.set(baseColors);
+  else {
+    for (let i = 0; i < c.length; i += 3) { c[i] = 1; c[i + 1] = 0.4; c[i + 2] = 0.07; }
+  }
+
+  // Search matches (cyan)
+  for (let k = 0; k < matchIndices.length; k++) {
+    const i = matchIndices[k];
+    c[i*3] = 0.2; c[i*3 + 1] = 0.9; c[i*3 + 2] = 1.0;
+  }
+
+  // Selected (pinned) (warm white)
+  if (selected >= 0) {
+    c[selected*3] = 1.0; c[selected*3 + 1] = 0.92; c[selected*3 + 2] = 0.35;
+  }
+
+  // Deep-linked highlight (green) overrides everything else.
+  if (highlighted >= 0) {
+    c[highlighted*3] = 0.0; c[highlighted*3 + 1] = 1.0; c[highlighted*3 + 2] = 0.25;
+  }
+
+  points.geometry.attributes.color.needsUpdate = true;
 }
 
 function setupInteraction() {
@@ -233,6 +298,7 @@ function setupLabelsUI() {
         <option value="zoom" selected>Zoom (LOD)</option>
         <option value="nearest">Nearest N</option>
         <option value="highlight">Highlighted only</option>
+        <option value="search">Search matches</option>
       </select>
     </div>
     <div class="row">
@@ -244,6 +310,10 @@ function setupLabelsUI() {
       <span>Zoom</span>
       <input id="label-zoom" type="range" min="0.6" max="6" step="0.1" value="2.2" />
       <output id="label-zoom-out">2.2</output>
+    </div>
+    <div class="row">
+      <span>Shots</span>
+      <label class="chk" title="Show screenshot crops for visible labels"><input id="thumbs-toggle" type="checkbox" />On</label>
     </div>
     <div class="sep"></div>
     <b>SEARCH</b>
@@ -281,6 +351,7 @@ function setupLabelsUI() {
   labelZoomRow = hud.querySelector('#label-zoom-row');
   labelZoom = hud.querySelector('#label-zoom');
   labelZoomOut = hud.querySelector('#label-zoom-out');
+  thumbsToggle = hud.querySelector('#thumbs-toggle');
   searchInput = hud.querySelector('#map-search');
   searchModeSel = hud.querySelector('#search-mode');
   searchCaseCb = hud.querySelector('#search-case');
@@ -297,7 +368,106 @@ function setupLabelsUI() {
   labelModeSel.addEventListener('change', sync);
   labelNearest.addEventListener('input', sync);
   labelZoom.addEventListener('input', sync);
+  if (thumbsToggle) thumbsToggle.addEventListener('change', () => { labelDirty = true; });
+  const searchSync = () => scheduleSearchUpdate();
+  if (searchInput) {
+    searchInput.addEventListener('input', searchSync);
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        searchInput.value = '';
+        scheduleSearchUpdate(true);
+        searchInput.blur();
+      }
+    });
+  }
+  if (searchModeSel) searchModeSel.addEventListener('change', searchSync);
+  if (searchCaseCb) searchCaseCb.addEventListener('change', searchSync);
+  if (searchClearBtn) searchClearBtn.addEventListener('click', () => {
+    if (searchInput) searchInput.value = '';
+    scheduleSearchUpdate(true);
+    searchInput && searchInput.focus();
+  });
   sync();
+  scheduleSearchUpdate(true);
+}
+
+function scheduleSearchUpdate(immediate = false) {
+  if (searchDebounce) clearTimeout(searchDebounce);
+  if (immediate) updateSearchMatches();
+  else searchDebounce = setTimeout(updateSearchMatches, 90);
+}
+
+function setSearchError(msg) {
+  if (searchErrorEl) searchErrorEl.textContent = msg || '';
+  if (searchInput) searchInput.style.borderColor = msg ? '#ff3355' : '';
+}
+
+function updateSearchMatches() {
+  const q = (searchInput ? searchInput.value : '').trim();
+  const mode = searchModeSel ? searchModeSel.value : 'keyword';
+  const caseSensitive = !!(searchCaseCb && searchCaseCb.checked);
+  setSearchError('');
+
+  if (!q) {
+    matchIndices = [];
+    if (searchCountOut) searchCountOut.textContent = '0';
+    applyColors();
+    labelDirty = true;
+    return;
+  }
+
+  const n = data && data.urls ? data.urls.length : 0;
+  const out = [];
+
+  try {
+    if (mode === 'regex') {
+      let re;
+      if (q.startsWith('/') && q.lastIndexOf('/') > 0) {
+        const last = q.lastIndexOf('/');
+        const pat = q.slice(1, last);
+        const flags = q.slice(last + 1).replace(/[gy]/g, '');
+        re = new RegExp(pat, flags);
+      } else {
+        re = new RegExp(q, caseSensitive ? '' : 'i');
+      }
+      for (let i = 0; i < n; i++) {
+        const hay = (searchText && searchText[i]) ? searchText[i] : '';
+        if (re.test(hay)) out.push(i);
+      }
+    } else {
+      const tokensRaw = q.split(/\s+/).filter(Boolean);
+      const tokens = caseSensitive ? tokensRaw : tokensRaw.map(t => t.toLowerCase());
+      if (!tokens.length) {
+        matchIndices = [];
+        if (searchCountOut) searchCountOut.textContent = '0';
+        applyColors();
+        labelDirty = true;
+        return;
+      }
+      for (let i = 0; i < n; i++) {
+        const hay = caseSensitive
+          ? ((searchText && searchText[i]) ? searchText[i] : '')
+          : ((searchTextLc && searchTextLc[i]) ? searchTextLc[i] : '');
+        let ok = true;
+        for (let t = 0; t < tokens.length; t++) {
+          if (!hay.includes(tokens[t])) { ok = false; break; }
+        }
+        if (ok) out.push(i);
+      }
+    }
+  } catch (e) {
+    matchIndices = [];
+    if (searchCountOut) searchCountOut.textContent = '0';
+    setSearchError(`Search error: ${e && e.message ? e.message : String(e)}`);
+    applyColors();
+    labelDirty = true;
+    return;
+  }
+
+  matchIndices = out;
+  if (searchCountOut) searchCountOut.textContent = String(matchIndices.length);
+  applyColors();
+  labelDirty = true;
 }
 
 function getLabelSettings() {
@@ -310,7 +480,8 @@ function getLabelSettings() {
 function titleForIndex(i) {
   const url = data.urls[i];
   const meta = metaForUrl(url);
-  return meta ? (meta.s || null) : null;
+  if (!meta) return null;
+  return displayTitle(meta) || (meta.s || null);
 }
 
 function nearestPointIndices(k, exclude) {
@@ -334,6 +505,55 @@ function nearestPointIndices(k, exclude) {
   return best.map(x => x.idx);
 }
 
+function nearestFromList(list, k, exclude) {
+  if (k <= 0 || !list || !list.length) return [];
+  const cam = camera.position;
+  const best = [];
+  const insert = (idx, dist) => {
+    let pos = best.length;
+    while (pos > 0 && dist < best[pos - 1].dist) pos--;
+    best.splice(pos, 0, { idx, dist });
+    if (best.length > k) best.pop();
+  };
+  for (let n = 0; n < list.length; n++) {
+    const i = list[n];
+    if (exclude.has(i)) continue;
+    const c = data.coords[i];
+    const dx = c[0] - cam.x, dy = c[1] - cam.y, dz = c[2] - cam.z;
+    const dist = dx*dx + dy*dy + dz*dz;
+    if (best.length < k) insert(i, dist);
+    else if (dist < best[best.length - 1].dist) insert(i, dist);
+  }
+  return best.map(x => x.idx);
+}
+
+function nearestKAvgDistance(pos, k) {
+  if (!points || !points.geometry || !points.geometry.attributes || !points.geometry.attributes.position) return null;
+  const a = points.geometry.attributes.position.array;
+  if (!a || a.length < 3) return null;
+  const kk = Math.max(1, Math.min(8, k | 0));
+  const best = new Array(kk).fill(Infinity);
+  for (let i = 0; i < a.length; i += 3) {
+    const dx = a[i] - pos.x, dy = a[i + 1] - pos.y, dz = a[i + 2] - pos.z;
+    const d2 = dx*dx + dy*dy + dz*dz;
+    for (let j = 0; j < kk; j++) {
+      if (d2 < best[j]) {
+        for (let m = kk - 1; m > j; m--) best[m] = best[m - 1];
+        best[j] = d2;
+        break;
+      }
+    }
+  }
+  let sum = 0, count = 0;
+  for (let j = 0; j < kk; j++) {
+    if (!Number.isFinite(best[j])) continue;
+    sum += best[j];
+    count++;
+  }
+  if (!count) return null;
+  return Math.sqrt(sum / count);
+}
+
 function computeLabelIndices() {
   const { mode, nearest, zoom } = getLabelSettings();
   labelIndices = [];
@@ -346,6 +566,11 @@ function computeLabelIndices() {
   add(selected);
 
   if (mode === 'highlight') return;
+
+  if (mode === 'search') {
+    labelIndices.push(...nearestFromList(matchIndices, nearest, exclude));
+    return;
+  }
 
   if (mode === 'zoom') {
     const z = camera.position.distanceTo(controls.target);
@@ -442,10 +667,12 @@ function onClick(e) {
   if (hovered >= 0) {
     selected = hovered;
     showInfobox(selected);
+    applyColors();
     labelDirty = true;
   } else {
     selected = -1;
     infobox.style.display = 'none';
+    applyColors();
     labelDirty = true;
   }
 }
@@ -479,7 +706,22 @@ function animate() {
   }
   const dist = camera.position.distanceTo(controls.target);
   controls.rotateSpeed = Math.min(1, dist * 0.4);
+  // Dynamic zoom sensitivity: slow down near nodes for finer control.
+  const now = performance.now();
+  if (now - lastZoomAssistCompute > 180) {
+    lastZoomAssistCompute = now;
+    zoomAssistDist = nearestKAvgDistance(camera.position, ZOOM_ASSIST_K);
+  }
+  if (zoomAssistDist != null) {
+    const t = Math.max(0, Math.min(1, (zoomAssistDist - ZOOM_ASSIST_NEAR) / (ZOOM_ASSIST_FAR - ZOOM_ASSIST_NEAR)));
+    const desired = ZOOM_SPEED_MIN + (ZOOM_SPEED_BASE - ZOOM_SPEED_MIN) * t;
+    controls.zoomSpeed = controls.zoomSpeed + (desired - controls.zoomSpeed) * ZOOM_ASSIST_SMOOTH;
+  } else {
+    controls.zoomSpeed = ZOOM_SPEED_BASE;
+  }
   controls.update();
+  const breath = performance.now() * 0.0008;
+  points.material.size = 0.020 + 0.004 * Math.sin(breath);
   if (highlightPulse && highlightPulse.visible) {
     const tt = performance.now() * 0.004;
     highlightPulse.material.size = 0.07 + 0.015 * (0.5 + 0.5 * Math.sin(tt));
