@@ -14,18 +14,27 @@ let thumbsToggle = null;
 let semLocateInput = null;
 let semFlyBtn = null;
 let semStatusEl = null;
+let tasteEnableCb = null;
+let tasteStrengthRange = null;
+let tasteStrengthOut = null;
+let tasteVotesOut = null;
+let tasteResetBtn = null;
+let tasteStatusEl = null;
 let labelIndices = [], labelDirty = true, lastLabelCompute = 0;
 const labelPool = [];
 const thumbPool = [];
 const v3 = new THREE.Vector3();
 let fly = null;
 let baseColors = null;
+let basePos = null;
+let posArr = null;
 let matchIndices = [];
 let searchText = null;
 let searchTextLc = null;
 let searchDebounce = 0;
 let queryPulse = null;
 let semFlySeq = 0;
+let tasteSeq = 0;
 let lastZoomAssistCompute = 0;
 let zoomAssistDist = null;
 const ZOOM_SPEED_BASE = 0.8;
@@ -34,6 +43,24 @@ const ZOOM_ASSIST_NEAR = 0.14;
 const ZOOM_ASSIST_FAR = 0.9;
 const ZOOM_ASSIST_K = 3;
 const ZOOM_ASSIST_SMOOTH = 0.25;
+const TASTE_STORE_KEY = 'magi_taste_votes_v1';
+const TASTE_ANCHOR_KEY = 'magi_taste_anchor_v1';
+const TASTE_ENABLE_KEY = 'magi_taste_enabled_v1';
+const TASTE_STRENGTH_KEY = 'magi_taste_strength_v1';
+const TASTE_LAMBDA = 0.35;
+const TASTE_EPOCHS = 18;
+const TASTE_LR = 0.06;
+const TASTE_MAX_SHIFT = 0.22;
+const TASTE_LERP = 0.04;
+let tasteEnabled = true;
+let tasteStrength = 0.16;
+let tasteVotes = new Map(); // url -> +1/-1
+let tasteAnchor = null; // THREE.Vector3
+let tasteDirs = null; // Float32Array (n*3)
+let tasteW = null; // Float32Array (dim)
+let tasteB = 0;
+let tastePred = null; // Float32Array (n)
+let tasteUrlToEmbIdx = null; // Map(url -> emb index)
 
 function makePointSprite() {
   const size = 64;
@@ -73,6 +100,14 @@ async function init() {
   setupScene();
   setupInteraction();
   setupLabelsUI();
+  loadTasteState();
+  refreshTasteUI();
+  if (selected >= 0 && infobox && infobox.style.display === 'block') {
+    showInfobox(selected);
+  }
+  if (tasteVotes.size > 0) {
+    scheduleTasteUpdate('Loaded votes');
+  }
   animate();
 }
 
@@ -105,6 +140,8 @@ function createPoints() {
   geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
   geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
   baseColors = col.slice();
+  basePos = pos.slice();
+  posArr = geo.attributes.position.array;
   const sprite = makePointSprite();
   // "Shadow"/outline layer behind points to make individual nodes easier to distinguish.
   const mat = new THREE.PointsMaterial({
@@ -160,6 +197,25 @@ function createPoints() {
   scene.add(queryPulse);
 
   checkHighlight();
+  checkSemanticQuery();
+}
+
+function checkSemanticQuery() {
+  const q = new URLSearchParams(location.search).get('sem');
+  if (!q) return;
+  setTimeout(() => semanticLocate(q), 100);
+}
+
+function getNodeCount() {
+  return (data && data.urls) ? data.urls.length : 0;
+}
+
+function getNodePos(i, out) {
+  if (!posArr || i < 0) return null;
+  const o = i * 3;
+  const x = posArr[o], y = posArr[o + 1], z = posArr[o + 2];
+  if (out) { out.set(x, y, z); return out; }
+  return { x, y, z };
 }
 
 function buildSearchText() {
@@ -227,12 +283,12 @@ function displayTitle(meta) {
 }
 
 function startFlyTo(i, dist = 0.6) {
-  if (!data || !data.coords || !data.coords[i]) return;
-  const p = data.coords[i];
+  const p = getNodePos(i, v3);
+  if (!p) return;
   const fromPos = camera.position.clone();
   const fromTgt = controls.target.clone();
-  const toTgt = new THREE.Vector3(p[0], p[1], p[2]);
-  const toPos = new THREE.Vector3(p[0], p[1], p[2] + dist);
+  const toTgt = new THREE.Vector3(p.x, p.y, p.z);
+  const toPos = new THREE.Vector3(p.x, p.y, p.z + dist);
   fly = { t0: performance.now(), dur: 650, fromPos, fromTgt, toPos, toTgt };
 }
 
@@ -261,10 +317,11 @@ function checkHighlight() {
   const u = new URLSearchParams(location.search).get('hl'); if (!u) return;
   const i = findUrlIndex(u); if (i < 0) return;
   highlighted = i;
-  if (highlightPulse && data && data.coords && data.coords[i]) {
-    const p = data.coords[i];
+  if (highlightPulse) {
+    const p = getNodePos(i, v3);
+    if (!p) return;
     const a = highlightPulse.geometry.attributes.position.array;
-    a[0] = p[0]; a[1] = p[1]; a[2] = p[2];
+    a[0] = p.x; a[1] = p.y; a[2] = p.z;
     highlightPulse.geometry.attributes.position.needsUpdate = true;
     highlightPulse.visible = true;
     highlightPulse.material.opacity = 0.85;
@@ -280,6 +337,40 @@ function checkHighlight() {
   }
   applyColors();
   labelDirty = true;
+}
+
+function setHighlight(i) {
+  highlighted = i;
+  updateHighlightPulse(i);
+  updateHighlightUrl(i);
+  applyColors();
+  labelDirty = true;
+}
+
+function updateHighlightPulse(i) {
+  if (!highlightPulse) return;
+  if (i < 0) { highlightPulse.visible = false; return; }
+  const p = getNodePos(i, v3); if (!p) return;
+  const a = highlightPulse.geometry.attributes.position.array;
+  a[0] = p.x; a[1] = p.y; a[2] = p.z;
+  highlightPulse.geometry.attributes.position.needsUpdate = true;
+  highlightPulse.visible = true;
+}
+
+function updateHighlightUrl(i) {
+  const url = new URL(location.href);
+  if (i >= 0 && data && data.urls && data.urls[i]) url.searchParams.set('hl', data.urls[i]);
+  else url.searchParams.delete('hl');
+  url.searchParams.delete('sem');
+  history.replaceState(null, '', url.toString());
+}
+
+function updateSemUrl(q) {
+  const url = new URL(location.href);
+  if (q) url.searchParams.set('sem', q);
+  else url.searchParams.delete('sem');
+  url.searchParams.delete('hl');
+  history.replaceState(null, '', url.toString());
 }
 
 function applyColors() {
@@ -319,6 +410,7 @@ function setupInteraction() {
   infobox = document.createElement('div');
   infobox.id = 'infobox';
   document.body.appendChild(infobox);
+  infobox.addEventListener('click', onInfoboxClick);
   if (pendingOpenIndex >= 0) {
     showInfobox(pendingOpenIndex);
     pendingOpenIndex = -1;
@@ -399,7 +491,27 @@ function setupLabelsUI() {
       <button id="sem-fly" type="button" class="btn2">Fly</button>
     </div>
     <div id="sem-status" class="status" role="status" aria-live="polite" hidden></div>
-    <small>Tip: hover for tooltip; click to pin details.<br>Search: keywords or <code>/regex/i</code>. Semantic: fly to a point in space.</small>
+    <div class="sep"></div>
+    <b>TASTE</b>
+    <div class="row">
+      <span>Enable</span>
+      <label class="chk" title="Personalize positions using your votes (saved locally)"><input id="taste-enable" type="checkbox" checked />On</label>
+    </div>
+    <div class="row">
+      <span>Strength</span>
+      <input id="taste-strength" type="range" min="0" max="0.22" step="0.01" value="0.16" />
+      <output id="taste-strength-out">0.16</output>
+    </div>
+    <div class="row">
+      <span>Votes</span>
+      <output id="taste-votes">0</output>
+    </div>
+    <div class="row">
+      <span></span>
+      <button id="taste-reset" type="button" class="btn2">Reset</button>
+    </div>
+    <div id="taste-status" class="status" role="status" aria-live="polite" hidden></div>
+    <small>Tip: hover for tooltip; click to pin details.<br>Search: keywords or <code>/regex/i</code>. Semantic: fly to a point in space. Taste: vote to nudge the map.</small>
   `;
   document.body.appendChild(hud);
 
@@ -419,6 +531,12 @@ function setupLabelsUI() {
   semLocateInput = hud.querySelector('#sem-locate');
   semFlyBtn = hud.querySelector('#sem-fly');
   semStatusEl = hud.querySelector('#sem-status');
+  tasteEnableCb = hud.querySelector('#taste-enable');
+  tasteStrengthRange = hud.querySelector('#taste-strength');
+  tasteStrengthOut = hud.querySelector('#taste-strength-out');
+  tasteVotesOut = hud.querySelector('#taste-votes');
+  tasteResetBtn = hud.querySelector('#taste-reset');
+  tasteStatusEl = hud.querySelector('#taste-status');
 
   const sync = () => {
     if (labelNearestOut) labelNearestOut.textContent = String(labelNearest.value);
@@ -451,6 +569,7 @@ function setupLabelsUI() {
   sync();
   scheduleSearchUpdate(true);
   wireSemanticLocate();
+  wireTasteUI();
 }
 
 function scheduleSearchUpdate(immediate = false) {
@@ -478,6 +597,20 @@ function setSemStatus(msg, kind) {
   semStatusEl.classList.toggle('err', kind === 'err');
 }
 
+function setTasteStatus(msg, kind) {
+  if (!tasteStatusEl) return;
+  if (!msg) {
+    tasteStatusEl.hidden = true;
+    tasteStatusEl.textContent = '';
+    tasteStatusEl.classList.remove('warn', 'err');
+    return;
+  }
+  tasteStatusEl.hidden = false;
+  tasteStatusEl.textContent = msg;
+  tasteStatusEl.classList.toggle('warn', kind === 'warn');
+  tasteStatusEl.classList.toggle('err', kind === 'err');
+}
+
 function wireSemanticLocate() {
   if (!semLocateInput || !semFlyBtn) return;
   const go = () => semanticLocate(semLocateInput.value || '');
@@ -491,6 +624,45 @@ function wireSemanticLocate() {
       semLocateInput.blur();
     }
   });
+}
+
+function wireTasteUI() {
+  if (tasteEnableCb) {
+    tasteEnableCb.addEventListener('change', () => {
+      tasteEnabled = !!tasteEnableCb.checked;
+      try { localStorage.setItem(TASTE_ENABLE_KEY, tasteEnabled ? '1' : '0'); } catch (e) {}
+      if (!tasteEnabled) {
+        resetPositionsToBase();
+        setTasteStatus('Personalization off', 'warn');
+      } else {
+        setTasteStatus('Personalization on', null);
+        if (tasteVotes.size > 0) scheduleTasteUpdate('Enabled');
+      }
+      refreshTasteUI();
+    });
+  }
+  const syncStrength = (persist = false) => {
+    if (!tasteStrengthRange) return;
+    const v = Math.max(0, Math.min(TASTE_MAX_SHIFT, parseFloat(tasteStrengthRange.value || String(tasteStrength))));
+    tasteStrength = v;
+    if (tasteStrengthOut) tasteStrengthOut.textContent = v.toFixed(2);
+    if (persist) {
+      try { localStorage.setItem(TASTE_STRENGTH_KEY, String(v)); } catch (e) {}
+    }
+  };
+  if (tasteStrengthRange) tasteStrengthRange.addEventListener('input', () => syncStrength(true));
+  syncStrength(false);
+  if (tasteResetBtn) {
+    tasteResetBtn.addEventListener('click', () => {
+      tasteVotes = new Map();
+      tasteW = null; tasteB = 0; tastePred = null; tasteDirs = null;
+      tasteAnchor = null;
+      try { localStorage.removeItem(TASTE_STORE_KEY); localStorage.removeItem(TASTE_ANCHOR_KEY); } catch (e) {}
+      resetPositionsToBase();
+      setTasteStatus('Votes cleared', 'warn');
+      refreshTasteUI();
+    });
+  }
 }
 
 async function ensureSemModule() {
@@ -528,13 +700,14 @@ function semanticPointFromResults(results, want = 24) {
     const { i, score } = used[k];
     const w = Math.exp((score - max) * temp);
     if (!Number.isFinite(w) || w <= 0) continue;
-    const c = data.coords[i];
+    const p = getNodePos(i);
+    if (!p) continue;
     sumW += w;
-    sx += w * c[0]; sy += w * c[1]; sz += w * c[2];
+    sx += w * p.x; sy += w * p.y; sz += w * p.z;
   }
   if (!sumW) {
-    const c = data.coords[used[0].i];
-    return { point: new THREE.Vector3(c[0], c[1], c[2]), used: used.length };
+    const p = getNodePos(used[0].i, v3);
+    return p ? { point: p.clone(), used: used.length } : null;
   }
   return { point: new THREE.Vector3(sx / sumW, sy / sumW, sz / sumW), used: used.length };
 }
@@ -560,6 +733,7 @@ async function semanticLocate(qRaw) {
     }
     setQueryTarget(out.point);
     startFlyToPoint(out.point, 760);
+    updateSemUrl(q);
     setSemStatus(`Flying to semantic point (${out.used} matches)`, null);
     labelDirty = true;
   } catch (err) {
@@ -666,10 +840,11 @@ function nearestPointIndices(k, exclude) {
     best.splice(pos, 0, { idx, dist });
     if (best.length > k) best.pop();
   };
-  for (let i = 0; i < data.coords.length; i++) {
+  const n = getNodeCount();
+  for (let i = 0; i < n; i++) {
     if (exclude.has(i)) continue;
-    const c = data.coords[i];
-    const dx = c[0] - cam.x, dy = c[1] - cam.y, dz = c[2] - cam.z;
+    const o = i * 3;
+    const dx = posArr[o] - cam.x, dy = posArr[o + 1] - cam.y, dz = posArr[o + 2] - cam.z;
     const dist = dx*dx + dy*dy + dz*dz;
     if (best.length < k) insert(i, dist);
     else if (dist < best[best.length - 1].dist) insert(i, dist);
@@ -690,8 +865,8 @@ function nearestFromList(list, k, exclude) {
   for (let n = 0; n < list.length; n++) {
     const i = list[n];
     if (exclude.has(i)) continue;
-    const c = data.coords[i];
-    const dx = c[0] - cam.x, dy = c[1] - cam.y, dz = c[2] - cam.z;
+    const o = i * 3;
+    const dx = posArr[o] - cam.x, dy = posArr[o + 1] - cam.y, dz = posArr[o + 2] - cam.z;
     const dist = dx*dx + dy*dy + dz*dz;
     if (best.length < k) insert(i, dist);
     else if (dist < best[best.length - 1].dist) insert(i, dist);
@@ -833,8 +1008,8 @@ function positionLabels() {
   const cam = camera.position;
   const entries = [];
   for (const i of labelIndices) {
-    const c = data.coords[i];
-    const dx = c[0] - cam.x, dy = c[1] - cam.y, dz = c[2] - cam.z;
+    const o = i * 3;
+    const dx = posArr[o] - cam.x, dy = posArr[o + 1] - cam.y, dz = posArr[o + 2] - cam.z;
     const dist = dx*dx + dy*dy + dz*dz;
     const pri = (i === highlighted) ? 0 : ((i === selected) ? 1 : 2);
     entries.push({ i, dist, pri });
@@ -850,8 +1025,8 @@ function positionLabels() {
     const { i, pri } = entries[n];
     const text = titleForIndex(i);
     if (!text) continue;
-    const c = data.coords[i];
-    v3.set(c[0], c[1], c[2]).project(camera);
+    const o = i * 3;
+    v3.set(posArr[o], posArr[o + 1], posArr[o + 2]).project(camera);
     if (v3.z < -1 || v3.z > 1) continue;
     const x = (v3.x * 0.5 + 0.5) * innerWidth;
     const y = (-v3.y * 0.5 + 0.5) * innerHeight;
@@ -899,14 +1074,12 @@ function onClick(e) {
   if (e.target.closest('#infobox')) return;
   if (hovered >= 0) {
     selected = hovered;
+    setHighlight(hovered);
     showInfobox(selected);
-    applyColors();
-    labelDirty = true;
   } else {
     selected = -1;
+    setHighlight(-1);
     infobox.style.display = 'none';
-    applyColors();
-    labelDirty = true;
   }
 }
 
@@ -918,13 +1091,251 @@ function showTooltip(i, e) {
   tooltip.style.cssText = `display:block;left:${e.clientX+10}px;top:${e.clientY+10}px`;
 }
 
+function getVote(url) {
+  const k = normalizePath(url);
+  if (!k) return 0;
+  return tasteVotes.get(k) || 0;
+}
+
 function showInfobox(i) {
   const url = data.urls[i], meta = metaForUrl(url);
   if (!meta) return;
   const title = displayTitle(meta) || '';
+  const v = getVote(url);
+  const upOn = v === 1 ? ' on' : '';
+  const dnOn = v === -1 ? ' on' : '';
+  const clrShow = v ? '' : ' hidden';
   infobox.innerHTML = `<b>${title}</b><br><small>${meta.d}</small>
-<p>${meta.s||''}</p><a href="${withSiteBase(url)}" class="btn">VIEW →</a>`;
+<p>${meta.s||''}</p>
+<div class="votes" aria-label="Vote controls">
+  <button type="button" class="vote up${upOn}" data-vote="up" aria-label="Like">▲ Like</button>
+  <button type="button" class="vote down${dnOn}" data-vote="down" aria-label="Dislike">▼ Dislike</button>
+  <button type="button" class="vote clear${clrShow}" data-vote="clear" aria-label="Clear vote">Clear</button>
+</div>
+<a href="${withSiteBase(url)}" class="btn">VIEW →</a>`;
   infobox.style.display = 'block';
+}
+
+function onInfoboxClick(e) {
+  const btn = e.target.closest('[data-vote]');
+  if (!btn) return;
+  const act = btn.getAttribute('data-vote');
+  if (selected < 0) return;
+  const url = data.urls[selected];
+  if (act === 'up') applyVote(url, 1);
+  else if (act === 'down') applyVote(url, -1);
+  else if (act === 'clear') applyVote(url, 0);
+  showInfobox(selected);
+}
+
+function loadTasteState() {
+  try {
+    const en = localStorage.getItem(TASTE_ENABLE_KEY);
+    if (en === '0') tasteEnabled = false;
+    const st = parseFloat(localStorage.getItem(TASTE_STRENGTH_KEY) || '');
+    if (Number.isFinite(st)) tasteStrength = Math.max(0, Math.min(TASTE_MAX_SHIFT, st));
+    const anchorRaw = localStorage.getItem(TASTE_ANCHOR_KEY);
+    if (anchorRaw) {
+      const a = JSON.parse(anchorRaw);
+      if (a && Number.isFinite(a.x) && Number.isFinite(a.y) && Number.isFinite(a.z)) {
+        tasteAnchor = new THREE.Vector3(a.x, a.y, a.z);
+      }
+    }
+    const raw = localStorage.getItem(TASTE_STORE_KEY);
+    if (!raw) return;
+    const obj = JSON.parse(raw);
+    if (!obj || typeof obj !== 'object') return;
+    tasteVotes = new Map();
+    for (const [k, v] of Object.entries(obj)) {
+      const p = normalizePath(k);
+      if (!p) continue;
+      const y = (v === 1 || v === -1) ? v : 0;
+      if (y) tasteVotes.set(p, y);
+    }
+  } catch (e) {}
+}
+
+function saveTasteVotes() {
+  try {
+    const obj = {};
+    for (const [k, v] of tasteVotes.entries()) obj[k] = v;
+    localStorage.setItem(TASTE_STORE_KEY, JSON.stringify(obj));
+  } catch (e) {}
+}
+
+function saveTasteAnchor() {
+  try {
+    if (!tasteAnchor) return;
+    localStorage.setItem(TASTE_ANCHOR_KEY, JSON.stringify({ x: tasteAnchor.x, y: tasteAnchor.y, z: tasteAnchor.z }));
+  } catch (e) {}
+}
+
+function refreshTasteUI() {
+  if (tasteEnableCb) tasteEnableCb.checked = !!tasteEnabled;
+  if (tasteStrengthRange) tasteStrengthRange.value = String(tasteStrength.toFixed(2));
+  if (tasteStrengthOut) tasteStrengthOut.textContent = tasteStrength.toFixed(2);
+  if (tasteVotesOut) tasteVotesOut.textContent = String(tasteVotes.size);
+}
+
+function applyVote(url, y) {
+  const k = normalizePath(url);
+  if (!k) return;
+  if (y === 0) tasteVotes.delete(k);
+  else tasteVotes.set(k, y);
+  saveTasteVotes();
+
+  // Anchor = user "position" at vote-time.
+  tasteAnchor = camera.position.clone();
+  saveTasteAnchor();
+  tasteDirs = null; // recompute with new anchor
+
+  refreshTasteUI();
+  if (!tasteEnabled) {
+    setTasteStatus('Vote saved (personalization off)', 'warn');
+    return;
+  }
+  scheduleTasteUpdate('Voted');
+}
+
+function scheduleTasteUpdate(reason) {
+  const my = ++tasteSeq;
+  setTasteStatus('Updating taste…', 'warn');
+  setTimeout(() => { if (my === tasteSeq) updateTasteModel(reason); }, 0);
+}
+
+async function updateTasteModel(reason) {
+  if (!tasteEnabled || tasteVotes.size === 0) {
+    tasteW = null; tasteB = 0; tastePred = null; tasteDirs = null;
+    resetPositionsToBase();
+    setTasteStatus(tasteEnabled ? 'No votes yet' : 'Personalization off', 'warn');
+    return;
+  }
+  try {
+    await ensureSemModule();
+    if (!window.__sem || typeof window.__sem.embeddings !== 'function') throw new Error('Embeddings loader missing');
+    setTasteStatus('Loading embeddings…', 'warn');
+    const { E, meta } = await window.__sem.embeddings({ silent: true });
+    if (!E || !meta || !meta.urls || !meta.dim) throw new Error('Embeddings unavailable');
+    if (!tasteUrlToEmbIdx) {
+      tasteUrlToEmbIdx = new Map();
+      for (let i = 0; i < meta.urls.length; i++) tasteUrlToEmbIdx.set(meta.urls[i], i);
+    }
+    const samples = [];
+    for (const [url, y] of tasteVotes.entries()) {
+      const j = tasteUrlToEmbIdx.get(url);
+      if (j == null) continue;
+      samples.push({ j, y });
+    }
+    if (!samples.length) {
+      setTasteStatus('Votes do not match embeddings set', 'err');
+      return;
+    }
+    const { w, b } = trainTasteRidgeSGD(E, meta.dim, samples);
+    tasteW = w; tasteB = b;
+    setTasteStatus('Scoring nodes…', 'warn');
+    await computeTastePredictionsChunked(E, meta.dim);
+    if (tasteAnchor && basePos) tasteDirs = computeTasteDirs(tasteAnchor);
+    setTasteStatus(`Taste updated (${tasteVotes.size} vote${tasteVotes.size === 1 ? '' : 's'})`, null);
+  } catch (err) {
+    setTasteStatus('Taste error: ' + ((err && err.message) ? err.message : String(err)), 'err');
+  }
+}
+
+function trainTasteRidgeSGD(E, dim, samples) {
+  const w = new Float32Array(dim);
+  let b = 0;
+  let lr = TASTE_LR;
+  for (let ep = 0; ep < TASTE_EPOCHS; ep++) {
+    for (let n = 0; n < samples.length; n++) {
+      const j = samples[n].j;
+      const y = samples[n].y;
+      const off = j * dim;
+      let pred = b;
+      for (let k = 0; k < dim; k++) pred += w[k] * E[off + k];
+      const err = pred - y;
+      const l2 = 2 * TASTE_LAMBDA;
+      const step = 2 * lr;
+      for (let k = 0; k < dim; k++) {
+        const wk = w[k];
+        const grad = step * (err * E[off + k]) + (lr * l2) * wk;
+        w[k] = wk - grad;
+      }
+      b -= step * err;
+    }
+    lr *= 0.9;
+  }
+  return { w, b };
+}
+
+async function computeTastePredictionsChunked(E, dim) {
+  const my = tasteSeq;
+  const n = getNodeCount();
+  const pred = new Float32Array(n);
+  const CHUNK = 420;
+  for (let i0 = 0; i0 < n; i0 += CHUNK) {
+    if (my !== tasteSeq) return;
+    const i1 = Math.min(n, i0 + CHUNK);
+    for (let i = i0; i < i1; i++) {
+      const url = data.urls[i];
+      const j = tasteUrlToEmbIdx ? tasteUrlToEmbIdx.get(url) : null;
+      if (j == null || !tasteW) { pred[i] = 0; continue; }
+      const off = j * dim;
+      let s = tasteB;
+      for (let k = 0; k < dim; k++) s += tasteW[k] * E[off + k];
+      pred[i] = Math.tanh(s);
+    }
+    await new Promise(r => setTimeout(r, 0));
+  }
+  tastePred = pred;
+}
+
+function computeTasteDirs(anchor) {
+  if (!anchor || !basePos) return null;
+  const n = getNodeCount();
+  const dirs = new Float32Array(n * 3);
+  for (let i = 0; i < n; i++) {
+    const o = i * 3;
+    const dx = anchor.x - basePos[o];
+    const dy = anchor.y - basePos[o + 1];
+    const dz = anchor.z - basePos[o + 2];
+    const len = Math.sqrt(dx*dx + dy*dy + dz*dz) || 1;
+    dirs[o] = dx / len;
+    dirs[o + 1] = dy / len;
+    dirs[o + 2] = dz / len;
+  }
+  return dirs;
+}
+
+function resetPositionsToBase() {
+  if (!posArr || !basePos) return;
+  posArr.set(basePos);
+  points.geometry.attributes.position.needsUpdate = true;
+  labelDirty = true;
+}
+
+function updateTastePositions() {
+  if (!tasteEnabled || !tastePred || !tasteDirs || !posArr || !basePos) return;
+  const n = getNodeCount();
+  const shift = Math.max(0, Math.min(TASTE_MAX_SHIFT, tasteStrength));
+  if (!shift) return;
+  let moving = false;
+  for (let i = 0; i < n; i++) {
+    const o = i * 3;
+    const s = tastePred[i] || 0;
+    const t = shift * s;
+    const tx = basePos[o] + tasteDirs[o] * t;
+    const ty = basePos[o + 1] + tasteDirs[o + 1] * t;
+    const tz = basePos[o + 2] + tasteDirs[o + 2] * t;
+    const nx = posArr[o] + (tx - posArr[o]) * TASTE_LERP;
+    const ny = posArr[o + 1] + (ty - posArr[o + 1]) * TASTE_LERP;
+    const nz = posArr[o + 2] + (tz - posArr[o + 2]) * TASTE_LERP;
+    moving = moving || (Math.abs(nx - posArr[o]) + Math.abs(ny - posArr[o + 1]) + Math.abs(nz - posArr[o + 2]) > 1e-5);
+    posArr[o] = nx; posArr[o + 1] = ny; posArr[o + 2] = nz;
+  }
+  if (moving) {
+    points.geometry.attributes.position.needsUpdate = true;
+    labelDirty = true;
+  }
 }
 
 function animate() {
@@ -936,6 +1347,10 @@ function animate() {
     controls.target.lerpVectors(fly.fromTgt, fly.toTgt, k);
     if (k >= 1) fly = null;
     labelDirty = true;
+  }
+  if (tasteEnabled && tasteVotes.size > 0) {
+    if (tasteAnchor && !tasteDirs && basePos) tasteDirs = computeTasteDirs(tasteAnchor);
+    updateTastePositions();
   }
   const dist = camera.position.distanceTo(controls.target);
   controls.rotateSpeed = Math.min(1, dist * 0.4);
@@ -958,6 +1373,12 @@ function animate() {
     points.material.size = 0.020 + 0.004 * Math.sin(breath);
   }
   if (highlightPulse && highlightPulse.visible) {
+    if (highlighted >= 0 && posArr) {
+      const o = highlighted * 3;
+      const a = highlightPulse.geometry.attributes.position.array;
+      a[0] = posArr[o]; a[1] = posArr[o + 1]; a[2] = posArr[o + 2];
+      highlightPulse.geometry.attributes.position.needsUpdate = true;
+    }
     const tt = performance.now() * 0.004;
     highlightPulse.material.size = 0.07 + 0.015 * (0.5 + 0.5 * Math.sin(tt));
     highlightPulse.material.opacity = 0.35 + 0.35 * (0.5 + 0.5 * Math.sin(tt + 1.2));

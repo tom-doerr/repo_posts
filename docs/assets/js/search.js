@@ -81,13 +81,6 @@
     semStatus.classList.toggle('sem-warn', kind === 'warn');
     updateSemDetails();
   };
-  // If WebGPU is unavailable, disable semantic toggle to avoid slow/unsupported paths
-  if(semToggle && !('gpu' in navigator)){
-    semToggle.disabled = true;
-    setSemStatus('Sem unsupported (no WebGPU)', 'warn');
-    const label = document.querySelector('label.sem');
-    if(label) label.title = 'Semantic search needs WebGPU on this device';
-  }
   // If user enables Sem, begin preloading model/index to reduce "Embedding…" wait
   if(semToggle){
     semToggle.addEventListener('change', ()=>{

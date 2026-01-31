@@ -15,6 +15,13 @@
 #infobox b{color:#ff6611;font:700 14px 'Orbitron',sans-serif;letter-spacing:.05em}#infobox p{margin:8px 0}
 #infobox .btn{display:inline-block;margin-top:8px;padding:6px 12px;background:#ff6611;color:#1a0a2e;text-decoration:none;font:700 11px 'Orbitron',sans-serif;letter-spacing:.1em}
 #infobox .btn:hover{background:#00ff41}
+#infobox .votes{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+#infobox .vote{padding:6px 10px;border:1px solid rgba(255,102,17,.75);background:transparent;color:#e0d4f0;font:700 10px 'Orbitron',sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+#infobox .vote:hover{border-color:#00ff41;color:#00ff41}
+#infobox .vote.on{background:#00ff41;color:#1a0a2e;border-color:#00ff41}
+#infobox .vote.down.on{background:#ff3355;border-color:#ff3355;color:#1a0a2e}
+#infobox .vote.clear{opacity:.75}
+#infobox .vote.hidden{display:none}
 #hud{position:fixed;top:12px;right:12px;background:linear-gradient(135deg,#2d1b4e,#1a0a2e);color:#e0d4f0;border:1px solid #ff6611;border-left:3px solid #ff6611;padding:12px 14px;font:12px 'Roboto Mono',monospace;z-index:10;max-width:280px}
 #hud b{color:#ff6611;font:700 11px 'Orbitron',sans-serif;letter-spacing:.15em;text-transform:uppercase}
 #hud .row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px}
