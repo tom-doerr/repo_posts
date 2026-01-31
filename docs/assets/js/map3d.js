@@ -1467,7 +1467,7 @@ function animate() {
   controls.update();
   if (points && points.material) {
     const breath = performance.now() * 0.0008;
-    points.material.size = 0.020 + 0.004 * Math.sin(breath);
+    points.material.size = 0.020 + 0.002 * Math.sin(breath);
   }
   if (highlightPulse && highlightPulse.visible) {
     if (highlighted >= 0 && posArr) {
