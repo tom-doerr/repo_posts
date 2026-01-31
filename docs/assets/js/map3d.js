@@ -4,10 +4,31 @@ import { OrbitControls } from 'https://esm.sh/three@0.160.0/examples/jsm/control
 const BASE = window.__SEM_ASSETS_BASE || '/repo_posts/assets/';
 let scene, camera, renderer, controls, points, data, searchIdx, urlToMeta = {};
 let raycaster, mouse, tooltip, infobox, hovered = -1, selected = -1, highlighted = -1;
+let halos = null;
 let labelsWrap, hud, labelModeSel, labelNearest, labelNearestOut, labelZoom, labelZoomOut, labelZoomRow;
 let labelIndices = [], labelDirty = true, lastLabelCompute = 0;
 const labelPool = [];
 const v3 = new THREE.Vector3();
+
+function makePointSprite() {
+  const size = 64;
+  const c = document.createElement('canvas');
+  c.width = c.height = size;
+  const ctx = c.getContext('2d');
+  const g = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+  g.addColorStop(0, 'rgba(255,255,255,1)');
+  g.addColorStop(0.35, 'rgba(255,255,255,1)');
+  g.addColorStop(1, 'rgba(255,255,255,0)');
+  ctx.fillStyle = g;
+  ctx.beginPath();
+  ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+  ctx.fill();
+  const tex = new THREE.CanvasTexture(c);
+  tex.minFilter = THREE.LinearFilter;
+  tex.magFilter = THREE.LinearFilter;
+  tex.generateMipmaps = false;
+  return tex;
+}
 
 async function init() {
   const [d3, idx] = await Promise.all([
@@ -41,8 +62,33 @@ function createPoints() {
   data.coords.forEach((c, i) => { pos[i*3]=c[0]; pos[i*3+1]=c[1]; pos[i*3+2]=c[2]; col[i*3]=1; col[i*3+1]=0.4; col[i*3+2]=0.07; });
   geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
   geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
-  const mat = new THREE.PointsMaterial({size: 0.02, sizeAttenuation: true, vertexColors: true});
+  const sprite = makePointSprite();
+  // "Shadow"/outline layer behind points to make individual nodes easier to distinguish.
+  const haloMat = new THREE.PointsMaterial({
+    size: 0.032,
+    sizeAttenuation: true,
+    map: sprite,
+    transparent: true,
+    opacity: 0.38,
+    color: 0x000000,
+    alphaTest: 0.05,
+    depthWrite: false,
+  });
+  halos = new THREE.Points(geo, haloMat);
+  halos.renderOrder = 0;
+  scene.add(halos);
+
+  const mat = new THREE.PointsMaterial({
+    size: 0.022,
+    sizeAttenuation: true,
+    vertexColors: true,
+    map: sprite,
+    transparent: true,
+    alphaTest: 0.05,
+    depthWrite: false,
+  });
   points = new THREE.Points(geo, mat);
+  points.renderOrder = 1;
   scene.add(points);
   checkHighlight();
 }
