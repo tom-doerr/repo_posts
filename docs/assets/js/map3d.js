@@ -9,6 +9,7 @@ let halos = null;
 let highlightPulse = null;
 let pendingOpenIndex = -1;
 let labelsWrap, hud, labelModeSel, labelNearest, labelNearestOut, labelZoom, labelZoomOut, labelZoomRow;
+let searchInput, searchModeSel, searchCaseCb, searchCountOut, searchErrorEl, searchClearBtn;
 let labelIndices = [], labelDirty = true, lastLabelCompute = 0;
 const labelPool = [];
 const v3 = new THREE.Vector3();
@@ -244,7 +245,33 @@ function setupLabelsUI() {
       <input id="label-zoom" type="range" min="0.6" max="6" step="0.1" value="2.2" />
       <output id="label-zoom-out">2.2</output>
     </div>
-    <small>Tip: hover for tooltip; click to pin details.</small>
+    <div class="sep"></div>
+    <b>SEARCH</b>
+    <div class="row">
+      <span>Query</span>
+      <input id="map-search" type="text" inputmode="search" autocomplete="off" spellcheck="false" placeholder="keyword or /regex/i" />
+    </div>
+    <div class="row">
+      <span>Mode</span>
+      <select id="search-mode" aria-label="Search mode">
+        <option value="keyword" selected>Keyword</option>
+        <option value="regex">Regex</option>
+      </select>
+    </div>
+    <div class="row">
+      <span>Case</span>
+      <label class="chk"><input id="search-case" type="checkbox" />Aa</label>
+    </div>
+    <div class="row">
+      <span>Matches</span>
+      <output id="search-count">0</output>
+    </div>
+    <div class="row">
+      <span></span>
+      <button id="search-clear" type="button" class="btn2">Clear</button>
+    </div>
+    <div id="search-error" class="error" role="status" aria-live="polite"></div>
+    <small>Tip: hover for tooltip; click to pin details.<br>Search: keywords or <code>/regex/i</code>.</small>
   `;
   document.body.appendChild(hud);
 
@@ -254,6 +281,12 @@ function setupLabelsUI() {
   labelZoomRow = hud.querySelector('#label-zoom-row');
   labelZoom = hud.querySelector('#label-zoom');
   labelZoomOut = hud.querySelector('#label-zoom-out');
+  searchInput = hud.querySelector('#map-search');
+  searchModeSel = hud.querySelector('#search-mode');
+  searchCaseCb = hud.querySelector('#search-case');
+  searchCountOut = hud.querySelector('#search-count');
+  searchErrorEl = hud.querySelector('#search-error');
+  searchClearBtn = hud.querySelector('#search-clear');
 
   const sync = () => {
     if (labelNearestOut) labelNearestOut.textContent = String(labelNearest.value);
