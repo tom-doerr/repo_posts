@@ -23,15 +23,31 @@
 #hud input[type="range"]{width:100px;accent-color:#ff6611}
 #hud output{color:#00ff41;min-width:3ch;text-align:right;font-family:'Orbitron',sans-serif}
 #hud small{display:block;margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,102,17,.3);color:#9080a8;font-size:10px;line-height:1.4}
+#hud .sep{margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,102,17,.3)}
+#hud input[type="text"]{width:160px;background:#1a0a2e;color:#e0d4f0;border:1px solid #ff6611;padding:4px;font:11px 'Roboto Mono',monospace}
+#hud input[type="text"]:focus{outline:none;border-color:#00ff41;box-shadow:0 0 0 1px rgba(0,255,65,.35)}
+#hud label.chk{display:flex;align-items:center;gap:6px;justify-content:flex-end;font-size:10px;color:#e0d4f0}
+#hud .btn2{background:#ff6611;color:#1a0a2e;border:0;padding:6px 10px;font:700 10px 'Orbitron',sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+#hud .btn2:hover{background:#00ff41}
+#hud .status{margin-top:6px;color:#00ff41;font-size:10px;line-height:1.3}
+#hud .status.warn{color:#ff6611}
+#hud .status.err{color:#ff3355}
+#hud select:focus{outline:none;border-color:#00ff41;box-shadow:0 0 0 1px rgba(0,255,65,.35)}
+#hud input[type="checkbox"]{accent-color:#ff6611;width:14px;height:14px}
+#hud code{background:#1a0a2e;color:#00ff41;padding:1px 4px;border:1px solid rgba(255,102,17,.4)}
 #labels{position:fixed;inset:0;pointer-events:none;z-index:9}
 .point-label{position:absolute;background:rgba(26,10,46,.9);color:#e0d4f0;border:1px solid rgba(255,102,17,.7);padding:3px 8px;font:10px 'Roboto Mono',monospace;white-space:nowrap;transform:translate(-50%,-100%);user-select:none}
 .point-label.highlight{border-color:#00ff41;color:#00ff41;background:rgba(0,255,65,.1)}
+.point-thumb{position:absolute;width:160px;transform:translate(-50%,-100%) translateY(-26px);padding:4px;background:rgba(26,10,46,.92);border:1px solid rgba(255,102,17,.7);box-shadow:0 10px 26px rgba(0,0,0,.45),0 0 18px rgba(255,102,17,.12);opacity:.95;backdrop-filter:blur(2px)}
+.point-thumb img{display:block;width:100%;height:auto;border:1px solid rgba(61,43,94,.7)}
+.point-thumb.highlight{border-color:#00ff41;box-shadow:0 12px 30px rgba(0,0,0,.5),0 0 22px rgba(0,255,65,.18)}
   </style>
 </head>
 <body>
 <a id="back" href="/repo_posts/">← BACK</a>
 <canvas id="c"></canvas>
 <script>window.__SEM_ASSETS_BASE='/repo_posts/assets/';</script>
+<script src="/repo_posts/assets/js/sem.js"></script>
 <script type="module" src="/repo_posts/assets/js/map3d.js"></script>
 </body>
 </html>

@@ -10,8 +10,13 @@ let highlightPulse = null;
 let pendingOpenIndex = -1;
 let labelsWrap, hud, labelModeSel, labelNearest, labelNearestOut, labelZoom, labelZoomOut, labelZoomRow;
 let searchInput, searchModeSel, searchCaseCb, searchCountOut, searchErrorEl, searchClearBtn;
+let thumbsToggle = null;
+let semLocateInput = null;
+let semFlyBtn = null;
+let semStatusEl = null;
 let labelIndices = [], labelDirty = true, lastLabelCompute = 0;
 const labelPool = [];
+const thumbPool = [];
 const v3 = new THREE.Vector3();
 let fly = null;
 let baseColors = null;
@@ -19,6 +24,8 @@ let matchIndices = [];
 let searchText = null;
 let searchTextLc = null;
 let searchDebounce = 0;
+let queryPulse = null;
+let semFlySeq = 0;
 let lastZoomAssistCompute = 0;
 let zoomAssistDist = null;
 const ZOOM_SPEED_BASE = 0.8;
@@ -131,6 +138,27 @@ function createPoints() {
   highlightPulse.renderOrder = 2;
   highlightPulse.visible = false;
   scene.add(highlightPulse);
+
+  // Pulsing marker for semantic "query point" (not tied to a specific node).
+  const qgeo = new THREE.BufferGeometry();
+  const qpos = new Float32Array(3);
+  qgeo.setAttribute('position', new THREE.BufferAttribute(qpos, 3));
+  const qmat = new THREE.PointsMaterial({
+    size: 0.06,
+    sizeAttenuation: true,
+    map: sprite,
+    transparent: true,
+    opacity: 0.0,
+    color: 0x00eaff,
+    alphaTest: 0.05,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+  });
+  queryPulse = new THREE.Points(qgeo, qmat);
+  queryPulse.renderOrder = 2;
+  queryPulse.visible = false;
+  scene.add(queryPulse);
+
   checkHighlight();
 }
 
@@ -206,6 +234,27 @@ function startFlyTo(i, dist = 0.6) {
   const toTgt = new THREE.Vector3(p[0], p[1], p[2]);
   const toPos = new THREE.Vector3(p[0], p[1], p[2] + dist);
   fly = { t0: performance.now(), dur: 650, fromPos, fromTgt, toPos, toTgt };
+}
+
+function startFlyToPoint(toTgt, dur = 720, dist = 0.6) {
+  if (!toTgt || !camera || !controls) return;
+  const fromPos = camera.position.clone();
+  const fromTgt = controls.target.clone();
+  const toPos = new THREE.Vector3(toTgt.x, toTgt.y, toTgt.z + dist);
+  fly = { t0: performance.now(), dur, fromPos, fromTgt, toPos, toTgt };
+}
+
+function setQueryTarget(toTgt) {
+  if (!queryPulse || !toTgt) return;
+  const a = queryPulse.geometry.attributes.position.array;
+  a[0] = toTgt.x; a[1] = toTgt.y; a[2] = toTgt.z;
+  queryPulse.geometry.attributes.position.needsUpdate = true;
+  queryPulse.visible = true;
+  queryPulse.material.opacity = 0.75;
+}
+
+function clearQueryTarget() {
+  if (queryPulse) queryPulse.visible = false;
 }
 
 function checkHighlight() {
@@ -309,6 +358,10 @@ function setupLabelsUI() {
       <input id="label-zoom" type="range" min="0.6" max="6" step="0.1" value="2.2" />
       <output id="label-zoom-out">2.2</output>
     </div>
+    <div class="row">
+      <span>Shots</span>
+      <label class="chk" title="Show screenshot crops for visible labels"><input id="thumbs-toggle" type="checkbox" />On</label>
+    </div>
     <div class="sep"></div>
     <b>SEARCH</b>
     <div class="row">
@@ -334,8 +387,19 @@ function setupLabelsUI() {
       <span></span>
       <button id="search-clear" type="button" class="btn2">Clear</button>
     </div>
-    <div id="search-error" class="error" role="status" aria-live="polite"></div>
-    <small>Tip: hover for tooltip; click to pin details.<br>Search: keywords or <code>/regex/i</code>.</small>
+    <div id="search-error" class="status err" role="status" aria-live="polite"></div>
+    <div class="sep"></div>
+    <b>SEMANTIC</b>
+    <div class="row">
+      <span>Locate</span>
+      <input id="sem-locate" type="text" inputmode="search" autocomplete="off" spellcheck="false" placeholder="fly to meaning…" />
+    </div>
+    <div class="row">
+      <span></span>
+      <button id="sem-fly" type="button" class="btn2">Fly</button>
+    </div>
+    <div id="sem-status" class="status" role="status" aria-live="polite" hidden></div>
+    <small>Tip: hover for tooltip; click to pin details.<br>Search: keywords or <code>/regex/i</code>. Semantic: fly to a point in space.</small>
   `;
   document.body.appendChild(hud);
 
@@ -345,12 +409,16 @@ function setupLabelsUI() {
   labelZoomRow = hud.querySelector('#label-zoom-row');
   labelZoom = hud.querySelector('#label-zoom');
   labelZoomOut = hud.querySelector('#label-zoom-out');
+  thumbsToggle = hud.querySelector('#thumbs-toggle');
   searchInput = hud.querySelector('#map-search');
   searchModeSel = hud.querySelector('#search-mode');
   searchCaseCb = hud.querySelector('#search-case');
   searchCountOut = hud.querySelector('#search-count');
   searchErrorEl = hud.querySelector('#search-error');
   searchClearBtn = hud.querySelector('#search-clear');
+  semLocateInput = hud.querySelector('#sem-locate');
+  semFlyBtn = hud.querySelector('#sem-fly');
+  semStatusEl = hud.querySelector('#sem-status');
 
   const sync = () => {
     if (labelNearestOut) labelNearestOut.textContent = String(labelNearest.value);
@@ -361,6 +429,7 @@ function setupLabelsUI() {
   labelModeSel.addEventListener('change', sync);
   labelNearest.addEventListener('input', sync);
   labelZoom.addEventListener('input', sync);
+  if (thumbsToggle) thumbsToggle.addEventListener('change', () => { labelDirty = true; });
   const searchSync = () => scheduleSearchUpdate();
   if (searchInput) {
     searchInput.addEventListener('input', searchSync);
@@ -381,6 +450,7 @@ function setupLabelsUI() {
   });
   sync();
   scheduleSearchUpdate(true);
+  wireSemanticLocate();
 }
 
 function scheduleSearchUpdate(immediate = false) {
@@ -392,6 +462,116 @@ function scheduleSearchUpdate(immediate = false) {
 function setSearchError(msg) {
   if (searchErrorEl) searchErrorEl.textContent = msg || '';
   if (searchInput) searchInput.style.borderColor = msg ? '#ff3355' : '';
+}
+
+function setSemStatus(msg, kind) {
+  if (!semStatusEl) return;
+  if (!msg) {
+    semStatusEl.hidden = true;
+    semStatusEl.textContent = '';
+    semStatusEl.classList.remove('warn', 'err');
+    return;
+  }
+  semStatusEl.hidden = false;
+  semStatusEl.textContent = msg;
+  semStatusEl.classList.toggle('warn', kind === 'warn');
+  semStatusEl.classList.toggle('err', kind === 'err');
+}
+
+function wireSemanticLocate() {
+  if (!semLocateInput || !semFlyBtn) return;
+  const go = () => semanticLocate(semLocateInput.value || '');
+  semFlyBtn.addEventListener('click', go);
+  semLocateInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); go(); }
+    if (e.key === 'Escape') {
+      semLocateInput.value = '';
+      setSemStatus('', null);
+      clearQueryTarget();
+      semLocateInput.blur();
+    }
+  });
+}
+
+async function ensureSemModule() {
+  if (window.__sem && typeof window.__sem.topK === 'function') return;
+  const src = BASE + 'js/sem.js';
+  await new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = src;
+    s.async = true;
+    s.onload = () => resolve();
+    s.onerror = () => reject(new Error(`Failed to load ${src}`));
+    document.head.appendChild(s);
+  });
+  if (!window.__sem || typeof window.__sem.topK !== 'function') {
+    throw new Error('Semantic module did not initialize');
+  }
+}
+
+function semanticPointFromResults(results, want = 24) {
+  if (!results || !results.length || !data || !data.coords) return null;
+  const used = [];
+  for (let r = 0; r < results.length && used.length < want; r++) {
+    const u = results[r].u;
+    const i = findUrlIndex(u);
+    if (i < 0) continue;
+    const score = (typeof results[r].score === 'number') ? results[r].score : 0;
+    used.push({ i, score });
+  }
+  if (!used.length) return null;
+  let max = -Infinity;
+  for (let k = 0; k < used.length; k++) max = Math.max(max, used[k].score);
+  const temp = 7.5;
+  let sumW = 0, sx = 0, sy = 0, sz = 0;
+  for (let k = 0; k < used.length; k++) {
+    const { i, score } = used[k];
+    const w = Math.exp((score - max) * temp);
+    if (!Number.isFinite(w) || w <= 0) continue;
+    const c = data.coords[i];
+    sumW += w;
+    sx += w * c[0]; sy += w * c[1]; sz += w * c[2];
+  }
+  if (!sumW) {
+    const c = data.coords[used[0].i];
+    return { point: new THREE.Vector3(c[0], c[1], c[2]), used: used.length };
+  }
+  return { point: new THREE.Vector3(sx / sumW, sy / sumW, sz / sumW), used: used.length };
+}
+
+async function semanticLocate(qRaw) {
+  const q = (qRaw || '').trim();
+  if (!q) {
+    setSemStatus('', null);
+    clearQueryTarget();
+    return;
+  }
+  const my = ++semFlySeq;
+  setSemStatus('Semantic: starting…', 'warn');
+  try {
+    await ensureSemModule();
+    if (my !== semFlySeq) return;
+    const res = await window.__sem.topK(q, 80);
+    if (my !== semFlySeq) return;
+    const out = semanticPointFromResults(res, 28);
+    if (!out) {
+      setSemStatus('No semantic matches found in map', 'err');
+      return;
+    }
+    setQueryTarget(out.point);
+    startFlyToPoint(out.point, 760);
+    setSemStatus(`Flying to semantic point (${out.used} matches)`, null);
+    labelDirty = true;
+  } catch (err) {
+    let msg = (err && err.message) ? err.message : String(err);
+    try {
+      if (window.__sem && typeof window.__sem.getLastError === 'function') {
+        const e = window.__sem.getLastError();
+        if (e && (e.user || e.message)) msg = e.user || e.message || msg;
+      }
+    } catch (e) {}
+    setSemStatus('Sem error: ' + msg, 'err');
+  }
 }
 
 function updateSearchMatches() {
@@ -585,10 +765,68 @@ function hideAllLabels() {
   for (const el of labelPool) el.style.display = 'none';
 }
 
+function ensureThumbPool(n) {
+  while (thumbPool.length < n) {
+    const wrap = document.createElement('div');
+    wrap.className = 'point-thumb';
+    wrap.style.display = 'none';
+    const img = document.createElement('img');
+    img.decoding = 'async';
+    img.loading = 'lazy';
+    wrap.appendChild(img);
+    labelsWrap.appendChild(wrap);
+    thumbPool.push({ wrap, img, src: '' });
+  }
+}
+
+function hideAllThumbs() {
+  for (const t of thumbPool) t.wrap.style.display = 'none';
+}
+
+function imageForIndex(i) {
+  const url = data.urls[i];
+  const meta = metaForUrl(url);
+  if (!meta) return null;
+  const raw = meta.img || meta.image || '';
+  const p = normalizePath(raw);
+  if (!p) return null;
+  return withSiteBase(p);
+}
+
+function positionThumbs(entries) {
+  const showThumbs = !!(thumbsToggle && thumbsToggle.checked);
+  if (!showThumbs || !entries || !entries.length) {
+    hideAllThumbs();
+    return;
+  }
+
+  ensureThumbPool(entries.length);
+
+  let shown = 0;
+  for (let n = 0; n < entries.length; n++) {
+    const { i, x, y } = entries[n];
+    const src = imageForIndex(i);
+    if (!src) continue;
+    const title = titleForIndex(i) || '';
+    const item = thumbPool[shown++];
+    item.wrap.classList.toggle('highlight', i === highlighted);
+    item.wrap.style.left = `${x}px`;
+    item.wrap.style.top = `${y}px`;
+    if (item.src !== src) {
+      item.src = src;
+      item.img.src = src;
+    }
+    item.img.alt = title ? `Screenshot: ${title}` : 'Screenshot';
+    item.wrap.style.display = 'block';
+  }
+  for (let i = shown; i < thumbPool.length; i++) thumbPool[i].wrap.style.display = 'none';
+}
+
 function positionLabels() {
   const { mode } = getLabelSettings();
   if (!labelsWrap || mode === 'off' || !labelIndices.length) {
     hideAllLabels();
+    hideAllThumbs();
     return;
   }
 
@@ -607,6 +845,7 @@ function positionLabels() {
 
   const placed = [];
   let shown = 0;
+  const shownEntries = [];
   for (let n = 0; n < entries.length; n++) {
     const { i, pri } = entries[n];
     const text = titleForIndex(i);
@@ -640,8 +879,10 @@ function positionLabels() {
     el.style.top = `${y}px`;
     el.style.opacity = pri < 2 ? '1' : '0.85';
     el.style.display = 'block';
+    shownEntries.push({ i, x, y, pri });
   }
   for (let i = shown; i < labelPool.length; i++) labelPool[i].style.display = 'none';
+  positionThumbs(shownEntries);
 }
 
 function onMouseMove(e) {
@@ -712,14 +953,20 @@ function animate() {
     controls.zoomSpeed = ZOOM_SPEED_BASE;
   }
   controls.update();
-  const breath = performance.now() * 0.0008;
-  points.material.size = 0.020 + 0.004 * Math.sin(breath);
+  if (points && points.material) {
+    const breath = performance.now() * 0.0008;
+    points.material.size = 0.020 + 0.004 * Math.sin(breath);
+  }
   if (highlightPulse && highlightPulse.visible) {
     const tt = performance.now() * 0.004;
     highlightPulse.material.size = 0.07 + 0.015 * (0.5 + 0.5 * Math.sin(tt));
     highlightPulse.material.opacity = 0.35 + 0.35 * (0.5 + 0.5 * Math.sin(tt + 1.2));
   }
-  const now = performance.now();
+  if (queryPulse && queryPulse.visible) {
+    const tt = performance.now() * 0.004;
+    queryPulse.material.size = 0.06 + 0.018 * (0.5 + 0.5 * Math.sin(tt + 0.6));
+    queryPulse.material.opacity = 0.25 + 0.35 * (0.5 + 0.5 * Math.sin(tt + 1.8));
+  }
   if (labelDirty && now - lastLabelCompute > 120) {
     lastLabelCompute = now;
     labelDirty = false;
