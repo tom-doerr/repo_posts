@@ -644,12 +644,17 @@ function setTasteStatus(msg, kind) {
 
 function wireSemanticLocate() {
   if (!semLocateInput || !semFlyBtn) return;
-  const go = () => semanticLocate(semLocateInput.value || '');
+  const go = () => {
+    updateUrlFromSemanticUI(true);
+    semanticLocate(semLocateInput.value || '');
+  };
   semFlyBtn.addEventListener('click', go);
+  semLocateInput.addEventListener('input', () => updateUrlFromSemanticUI(false));
   semLocateInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') { e.preventDefault(); go(); }
     if (e.key === 'Escape') {
       semLocateInput.value = '';
+      updateUrlFromSemanticUI(false);
       setSemStatus('', null);
       clearQueryTarget();
       semLocateInput.blur();
