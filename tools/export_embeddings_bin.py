@@ -11,7 +11,7 @@ OUT_META = ROOT / 'docs' / 'assets' / 'embeddings.meta.json'
 def dated_slug_to_url(s: str) -> str:
     y, m, d = s[:4], s[5:7], s[8:10]
     slug = s[11:]
-    return f"/repo_posts/{y}/{m}/{d}/{slug}.html"
+    return f"/{y}/{m}/{d}/{slug}.html"
 
 def main():
     z = np.load(str(NPZ))
@@ -29,4 +29,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
