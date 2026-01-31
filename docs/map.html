@@ -12,6 +12,15 @@
 #infobox{position:fixed;bottom:20px;right:20px;background:#2d1b4e;color:#e0d4f0;border:1px solid #ff6611;padding:16px;font:13px monospace;max-width:320px;display:none;z-index:10}
 #infobox b{color:#ff6611;font-size:15px}#infobox p{margin:8px 0}
 #infobox .btn{display:inline-block;margin-top:8px;padding:6px 12px;background:#ff6611;color:#1a0a2e;text-decoration:none;font-weight:bold}
+#hud{position:fixed;top:12px;right:12px;background:#2d1b4e;color:#e0d4f0;border:1px solid #ff6611;padding:10px 12px;font:12px monospace;z-index:10;max-width:300px}
+#hud b{color:#ff6611}
+#hud .row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:6px}
+#hud select,#hud input[type="range"]{width:160px}
+#hud output{color:#ff6611;min-width:3ch;text-align:right}
+#hud small{display:block;margin-top:8px;color:#9080a8;line-height:1.2}
+#labels{position:fixed;inset:0;pointer-events:none;z-index:9}
+.point-label{position:absolute;background:rgba(45,27,78,0.85);color:#e0d4f0;border:1px solid rgba(255,102,17,0.85);padding:2px 6px;font:11px monospace;white-space:nowrap;transform:translate(-50%,-100%);user-select:none}
+.point-label.highlight{border-color:#00ff41;color:#00ff41}
   </style>
 </head>
 <body>

@@ -131,6 +131,10 @@ summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   border:2px solid var(--eva-green); border-top-color:transparent; border-radius:50%;
   animation: semspin .8s linear infinite; vertical-align:-2px;
 }
+#sem-status.sem-error{ color: var(--eva-red); }
+#sem-status.sem-warn{ color: var(--eva-orange); }
+#sem-status.sem-error::before,
+#sem-status.sem-warn::before{ display:none; }
 @keyframes semspin{ to{ transform:rotate(360deg) } }
 .sem-running #sem-toggle{ pointer-events:none; opacity:.6 }
 

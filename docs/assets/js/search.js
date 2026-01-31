@@ -9,21 +9,47 @@
   const countEl = document.getElementById('search-count');
   const semStatus = document.getElementById('sem-status');
   let semSeq = 0;
+  const setSemStatus = (msg, kind) => {
+    if(!semStatus) return;
+    if(!msg){
+      semStatus.hidden = true;
+      semStatus.textContent = '';
+      semStatus.classList.remove('sem-error', 'sem-warn');
+      return;
+    }
+    semStatus.hidden = false;
+    semStatus.textContent = msg;
+    semStatus.classList.toggle('sem-error', kind === 'error');
+    semStatus.classList.toggle('sem-warn', kind === 'warn');
+  };
   // If WebGPU is unavailable, disable semantic toggle to avoid slow/unsupported paths
   const semToggle = document.getElementById('sem-toggle');
   if(semToggle && !('gpu' in navigator)){
     semToggle.disabled = true;
-    if(semStatus){ semStatus.hidden = false; semStatus.textContent = 'Sem unsupported'; }
+    setSemStatus('Sem unsupported (no WebGPU)', 'warn');
     const label = document.querySelector('label.sem');
     if(label) label.title = 'Semantic search needs WebGPU on this device';
   }
   // If user enables Sem, begin preloading model/index to reduce "Embedding…" wait
   if(semToggle){
     semToggle.addEventListener('change', ()=>{
-      if(semToggle.checked && window.__sem && typeof window.__sem.preload === 'function'){
-        if(semStatus){ semStatus.hidden = false; semStatus.textContent = 'Loading model…'; }
-        window.__sem.preload().then(()=>{ if(semStatus) semStatus.hidden = true; }).catch(()=>{});
+      if(!semToggle.checked){
+        // Clear any sticky semantic error when switching off
+        if(semStatus && semStatus.classList.contains('sem-error')) setSemStatus('', null);
+        return;
       }
+      // Sem is enabled, but module didn't load (common with adblock or missing asset).
+      if(!window.__sem || typeof window.__sem.preload !== 'function'){
+        setSemStatus('Sem failed to load (blocked or missing). Using keyword search.', 'error');
+        return;
+      }
+      setSemStatus('Loading model…', null);
+      window.__sem.preload().then(()=>{
+        if(semStatus && !semStatus.classList.contains('sem-error')) semStatus.hidden = true;
+      }).catch((err)=>{
+        const msg = (err && err.message) ? err.message : String(err);
+        setSemStatus('Sem preload error: ' + msg, 'error');
+      });
     });
   }
   const BASE = '{{ site.baseurl | default: "" }}';
@@ -70,9 +96,15 @@
     timer = setTimeout(()=>{ (async()=>{
       const idx=await fetchIdx();
       const sem = document.getElementById('sem-toggle');
-      if(sem && sem.checked && window.__sem){
+      const semWanted = sem && sem.checked;
+      const semAvailable = semWanted && window.__sem && typeof window.__sem.topK === 'function';
+      if(semWanted && !semAvailable){
+        setSemStatus('Sem is on but unavailable (blocked or missing). Using keyword search.', 'error');
+      }
+      if(semAvailable){
         try {
-          const mySeq = ++semSeq; if(semStatus) semStatus.hidden = false;
+          const mySeq = ++semSeq;
+          if(semStatus){ semStatus.classList.remove('sem-error','sem-warn'); semStatus.hidden = false; }
           // Incremental results: stream updates as scores are computed
           const byUrl = new Map(idx.map(x=>[x.u, x]));
           let lastFlush = 0, top = [];
@@ -92,19 +124,28 @@
           const arr = stream.map(t=>byUrl.get(t.u)).filter(Boolean);
           current = owner ? arr.filter(e => (e.t||'').toLowerCase().includes(`[${owner}/`)) : arr;
           active = current.length?0:-1; render(true);
-          if(semStatus) semStatus.hidden = true;
+          if(semStatus && !semStatus.classList.contains('sem-error')) semStatus.hidden = true;
           return;
-        } catch (err) { current = []; }
-      } else {
-        let res;
-        if(window.fuzzysort){
-          res = qNoOwner ? fuzzysort.go(qNoOwner, idx, {key:'t', limit:50}) : idx.map(x=>({obj:x}));
-        } else {
-          res = (qNoOwner ? idx.filter(x=>x.t.includes(qNoOwner)) : idx).map(x=>({obj:x}));
+        } catch (err) {
+          // Surface semantic failure, then fall back to keyword search.
+          let msg = (err && err.message) ? err.message : String(err);
+          try {
+            if(window.__sem && typeof window.__sem.getLastError === 'function'){
+              const e = window.__sem.getLastError();
+              if(e && (e.user || e.message)) msg = e.user || e.message || msg;
+            }
+          } catch(e) {}
+          setSemStatus('Sem error: ' + msg, 'error');
         }
-        if(toksAnd.length){ res = res.filter(r=>toksAnd.every(t=>r.obj.t.includes(t))); }
-        current = res.map(r=>r.obj);
       }
+      let res;
+      if(window.fuzzysort){
+        res = qNoOwner ? fuzzysort.go(qNoOwner, idx, {key:'t', limit:50}) : idx.map(x=>({obj:x}));
+      } else {
+        res = (qNoOwner ? idx.filter(x=>x.t.includes(qNoOwner)) : idx).map(x=>({obj:x}));
+      }
+      if(toksAnd.length){ res = res.filter(r=>toksAnd.every(t=>r.obj.t.includes(t))); }
+      current = res.map(r=>r.obj);
       if(owner){ current = current.filter(e => (e.t||'').toLowerCase().includes(`[${owner}/`)); }
       active = current.length?0:-1; render(true);
     })(); }, 100);

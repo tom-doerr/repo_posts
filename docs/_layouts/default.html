@@ -92,7 +92,7 @@
       {% assign y = page.date | date: '%Y' %}{% assign m = page.date | date: '%m' %}{% assign d = page.date | date: '%d' %}
       <p class="post-image"><img class="loading-blur" src="{{ page.image | relative_url }}" alt="{{ page.title | default: page.slug }} screenshot" decoding="async" fetchpriority="high" onload="this.classList.remove('loading-blur')"{% if dims %} width="{{ dims.width }}" height="{{ dims.height }}"{% endif %}></p>
       <div id="lightbox"><img alt=""></div>
-      <p class="post-index-link"><a href="{{ '/' | relative_url }}#{{ y }}-{{ m }}-{{ d }}-{{ page.slug }}">View on index</a> · <a href="{{ '/map.html' | relative_url }}?hl={{ page.url }}">View in 3D Map</a></p>
+      <p class="post-index-link"><a href="{{ '/' | relative_url }}#{{ y }}-{{ m }}-{{ d }}-{{ page.slug }}">View on index</a> · <a href="{{ '/map.html' | relative_url }}?hl={{ page.url | relative_url }}">View in 3D Map</a></p>
       {% endif %}
 
       {% comment %} Related repos (owner/repo heuristic via precomputed data) {% endcomment %}
