@@ -93,8 +93,8 @@ function setupLabelsUI() {
     </div>
     <div class="row">
       <span>Nearest</span>
-      <input id="label-nearest" type="range" min="0" max="30" value="12" />
-      <output id="label-nearest-out">12</output>
+      <input id="label-nearest" type="range" min="0" max="200" value="30" />
+      <output id="label-nearest-out">30</output>
     </div>
     <div class="row" id="label-zoom-row">
       <span>Zoom</span>
