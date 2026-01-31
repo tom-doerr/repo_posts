@@ -2,13 +2,17 @@ import * as THREE from 'https://esm.sh/three@0.160.0';
 import { OrbitControls } from 'https://esm.sh/three@0.160.0/examples/jsm/controls/OrbitControls.js';
 
 const BASE = window.__SEM_ASSETS_BASE || '/repo_posts/assets/';
+const SITE_BASE = BASE.replace(/\/assets\/?$/, '');
 let scene, camera, renderer, controls, points, data, searchIdx, urlToMeta = {};
 let raycaster, mouse, tooltip, infobox, hovered = -1, selected = -1, highlighted = -1;
 let halos = null;
+let highlightPulse = null;
+let pendingOpenIndex = -1;
 let labelsWrap, hud, labelModeSel, labelNearest, labelNearestOut, labelZoom, labelZoomOut, labelZoomRow;
 let labelIndices = [], labelDirty = true, lastLabelCompute = 0;
 const labelPool = [];
 const v3 = new THREE.Vector3();
+let fly = null;
 
 function makePointSprite() {
   const size = 64;
@@ -36,7 +40,14 @@ async function init() {
     fetch(BASE + 'search-index.json').then(r => r.json())
   ]);
   data = d3; searchIdx = idx;
-  searchIdx.forEach(p => urlToMeta[p.u] = p);
+  searchIdx.forEach(p => {
+    urlToMeta[p.u] = p;
+    // Keep both baseurl-prefixed and baseurl-stripped keys to make deep links robust.
+    if (SITE_BASE && typeof p.u === 'string') {
+      if (p.u.startsWith(SITE_BASE + '/')) urlToMeta[p.u.slice(SITE_BASE.length)] = p;
+      else if (p.u.startsWith('/')) urlToMeta[SITE_BASE + p.u] = p;
+    }
+  });
   setupScene();
   setupInteraction();
   setupLabelsUI();
@@ -46,16 +57,16 @@ async function init() {
 function setupScene() {
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0x1a0a2e);
+  scene.fog = new THREE.FogExp2(0x1a0a2e, 0.8);
   camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, 0.1, 100);
-  camera.position.set(0, 0, 3);
+  camera.position.set(0, 0, 1.5);
   renderer = new THREE.WebGLRenderer({canvas: document.getElementById('c'), antialias: true});
   renderer.setSize(innerWidth, innerHeight);
   controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
   controls.dampingFactor = 0.08;
-  controls.rotateSpeed = 0.4;
-  controls.zoomSpeed = 0.5;
-  controls.panSpeed = 0.4;
+  controls.zoomSpeed = 0.8;
+  controls.panSpeed = 0.5;
   controls.addEventListener('change', () => { labelDirty = true; });
   createPoints();
 }
@@ -68,42 +79,120 @@ function createPoints() {
   geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
   const sprite = makePointSprite();
   // "Shadow"/outline layer behind points to make individual nodes easier to distinguish.
-  const haloMat = new THREE.PointsMaterial({
-    size: 0.032,
-    sizeAttenuation: true,
-    map: sprite,
-    transparent: true,
-    opacity: 0.38,
-    color: 0x000000,
-    alphaTest: 0.05,
-    depthWrite: false,
-  });
-  halos = new THREE.Points(geo, haloMat);
-  halos.renderOrder = 0;
-  scene.add(halos);
-
   const mat = new THREE.PointsMaterial({
     size: 0.022,
     sizeAttenuation: true,
     vertexColors: true,
     map: sprite,
     transparent: true,
-    alphaTest: 0.05,
-    depthWrite: false,
+    alphaTest: 0.15,
+    depthWrite: true,
   });
   points = new THREE.Points(geo, mat);
-  points.renderOrder = 1;
   scene.add(points);
+
+  // Pulsing marker for deep-linked highlight (keeps the target obvious without clicking).
+  const hgeo = new THREE.BufferGeometry();
+  const hpos = new Float32Array(3);
+  hgeo.setAttribute('position', new THREE.BufferAttribute(hpos, 3));
+  const hmat = new THREE.PointsMaterial({
+    size: 0.07,
+    sizeAttenuation: true,
+    map: sprite,
+    transparent: true,
+    opacity: 0.0,
+    color: 0x00ff41,
+    alphaTest: 0.05,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+  });
+  highlightPulse = new THREE.Points(hgeo, hmat);
+  highlightPulse.renderOrder = 2;
+  highlightPulse.visible = false;
+  scene.add(highlightPulse);
   checkHighlight();
+}
+
+function normalizePath(u) {
+  if (!u) return null;
+  let s = String(u);
+  try {
+    // Accept absolute URLs, too.
+    if (/^https?:\/\//i.test(s)) s = new URL(s).pathname;
+  } catch (e) {}
+  try { s = decodeURIComponent(s); } catch (e) {}
+  if (s && s[0] !== '/') s = '/' + s;
+  return s;
+}
+
+function withSiteBase(path) {
+  const p = normalizePath(path);
+  if (!p) return p;
+  if (!SITE_BASE) return p;
+  if (p.startsWith(SITE_BASE + '/')) return p;
+  return SITE_BASE + p;
+}
+
+function findUrlIndex(u) {
+  const p = normalizePath(u);
+  if (!p || !data || !data.urls) return -1;
+  const cands = [p];
+  if (SITE_BASE) {
+    if (p.startsWith(SITE_BASE + '/')) cands.push(p.slice(SITE_BASE.length));
+    else cands.push(SITE_BASE + p);
+  }
+  for (const c of cands) {
+    const i = data.urls.indexOf(c);
+    if (i >= 0) return i;
+  }
+  return -1;
+}
+
+function metaForUrl(url) {
+  if (!url) return null;
+  return urlToMeta[url] || urlToMeta[withSiteBase(url)] || urlToMeta[normalizePath(url)];
+}
+
+function displayTitle(meta) {
+  if (!meta) return null;
+  const raw = String(meta.title || '');
+  const m = raw.match(/\[([^\]]+)\]/);
+  return (m && m[1]) ? m[1] : (raw || null);
+}
+
+function startFlyTo(i, dist = 0.6) {
+  if (!data || !data.coords || !data.coords[i]) return;
+  const p = data.coords[i];
+  const fromPos = camera.position.clone();
+  const fromTgt = controls.target.clone();
+  const toTgt = new THREE.Vector3(p[0], p[1], p[2]);
+  const toPos = new THREE.Vector3(p[0], p[1], p[2] + dist);
+  fly = { t0: performance.now(), dur: 650, fromPos, fromTgt, toPos, toTgt };
 }
 
 function checkHighlight() {
   const u = new URLSearchParams(location.search).get('hl'); if (!u) return;
-  const i = data.urls.indexOf(u); if (i < 0) return;
+  const i = findUrlIndex(u); if (i < 0) return;
   highlighted = i; const c = points.geometry.attributes.color.array;
   c[i*3]=0; c[i*3+1]=1; c[i*3+2]=0.25;
   points.geometry.attributes.color.needsUpdate = true;
-  const p = data.coords[i]; camera.position.set(p[0],p[1],p[2]+0.5); controls.target.set(p[0],p[1],p[2]);
+  if (highlightPulse && data && data.coords && data.coords[i]) {
+    const p = data.coords[i];
+    const a = highlightPulse.geometry.attributes.position.array;
+    a[0] = p[0]; a[1] = p[1]; a[2] = p[2];
+    highlightPulse.geometry.attributes.position.needsUpdate = true;
+    highlightPulse.visible = true;
+    highlightPulse.material.opacity = 0.85;
+  }
+  startFlyTo(i, 0.62);
+  const open = new URLSearchParams(location.search).get('open');
+  if (open !== '0') {
+    selected = i;
+    // Infobox DOM is created in setupInteraction() which runs after setupScene().
+    // Defer opening until we have the element to avoid breaking the whole page.
+    if (infobox) showInfobox(i);
+    else pendingOpenIndex = i;
+  }
   labelDirty = true;
 }
 
@@ -117,6 +206,10 @@ function setupInteraction() {
   infobox = document.createElement('div');
   infobox.id = 'infobox';
   document.body.appendChild(infobox);
+  if (pendingOpenIndex >= 0) {
+    showInfobox(pendingOpenIndex);
+    pendingOpenIndex = -1;
+  }
   renderer.domElement.addEventListener('mousemove', onMouseMove);
   renderer.domElement.addEventListener('click', onClick);
 }
@@ -183,9 +276,8 @@ function getLabelSettings() {
 
 function titleForIndex(i) {
   const url = data.urls[i];
-  const meta = urlToMeta[url];
-  if (!meta) return null;
-  return meta.s || null;
+  const meta = metaForUrl(url);
+  return meta ? (meta.s || null) : null;
 }
 
 function nearestPointIndices(k, exclude) {
@@ -326,25 +418,40 @@ function onClick(e) {
 }
 
 function showTooltip(i, e) {
-  const url = data.urls[i], meta = urlToMeta[url];
+  const url = data.urls[i], meta = metaForUrl(url);
   if (!meta) return;
-  const title = meta.title.replace(/\[([^\]]+)\].*/,'$1');
+  const title = displayTitle(meta) || '';
   tooltip.innerHTML = `<b>${title}</b><br><small>${meta.d}</small><br>${meta.s||''}`;
   tooltip.style.cssText = `display:block;left:${e.clientX+10}px;top:${e.clientY+10}px`;
 }
 
 function showInfobox(i) {
-  const url = data.urls[i], meta = urlToMeta[url];
+  const url = data.urls[i], meta = metaForUrl(url);
   if (!meta) return;
-  const title = meta.title.replace(/\[([^\]]+)\].*/,'$1');
+  const title = displayTitle(meta) || '';
   infobox.innerHTML = `<b>${title}</b><br><small>${meta.d}</small>
-<p>${meta.s||''}</p><a href="${url}" class="btn">VIEW →</a>`;
+<p>${meta.s||''}</p><a href="${withSiteBase(url)}" class="btn">VIEW →</a>`;
   infobox.style.display = 'block';
 }
 
 function animate() {
   requestAnimationFrame(animate);
+  if (fly) {
+    const t = (performance.now() - fly.t0) / fly.dur;
+    const k = t >= 1 ? 1 : (t <= 0 ? 0 : (t * t * (3 - 2 * t))); // smoothstep
+    camera.position.lerpVectors(fly.fromPos, fly.toPos, k);
+    controls.target.lerpVectors(fly.fromTgt, fly.toTgt, k);
+    if (k >= 1) fly = null;
+    labelDirty = true;
+  }
+  const dist = camera.position.distanceTo(controls.target);
+  controls.rotateSpeed = Math.min(1, dist * 0.4);
   controls.update();
+  if (highlightPulse && highlightPulse.visible) {
+    const tt = performance.now() * 0.004;
+    highlightPulse.material.size = 0.07 + 0.015 * (0.5 + 0.5 * Math.sin(tt));
+    highlightPulse.material.opacity = 0.35 + 0.35 * (0.5 + 0.5 * Math.sin(tt + 1.2));
+  }
   const now = performance.now();
   if (labelDirty && now - lastLabelCompute > 120) {
     lastLabelCompute = now;

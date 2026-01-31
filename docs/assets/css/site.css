@@ -41,9 +41,11 @@ header p { color:var(--eva-text-dim); }
 .post h2 { font-family:'Orbitron',sans-serif; font-size:18px; line-height:1.35; margin:12px 0 6px; font-weight:600; letter-spacing:0.05em; color:var(--eva-text); }
 .post h3 { font-family:'Orbitron',sans-serif; font-size:16px; line-height:1.4; margin:10px 0 6px; font-weight:500; color:var(--eva-text); }
 .post p, .post li { max-width: 72ch; }
-.post-footer{ margin-top:12px; padding-top:10px; border-top:1px solid var(--eva-purple-light); }
+.post-footer{ margin-top:12px; padding-top:10px; border-top:1px solid var(--eva-purple-light); display:flex; align-items:center; justify-content:space-between; gap:10px; position:relative; z-index:2; }
 .post-cta{ font-family:'Orbitron',sans-serif; font-size:11px; font-weight:500; color:var(--eva-orange); text-transform:uppercase; letter-spacing:0.1em; opacity:.7; transition:opacity .2s,color .2s; }
 .post:hover .post-cta{ opacity:1; color:var(--eva-green); }
+.post-map-link{ font-family:'Orbitron',sans-serif; font-size:10px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--eva-text-dim); border-bottom:1px dotted rgba(255,102,17,0.65); }
+.post-map-link:hover{ color:var(--eva-orange); border-bottom-color:var(--eva-orange); }
 h3 { margin-top: 20px; }
 ul { padding-left: 18px; }
 

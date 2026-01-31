@@ -14,5 +14,8 @@
   </a>
   {% endif %}
   <a class="stretched-link" href="{{ include.post.url | relative_url }}" aria-label="Open post: {{ include.post.title }}"></a>
-  <div class="post-footer"><span class="post-cta">View details →</span></div>
+  <div class="post-footer">
+    <span class="post-cta">View details →</span>
+    <a class="post-map-link" href="{{ '/map.html' | relative_url }}?hl={{ include.post.url | relative_url | url_encode }}" aria-label="View this repo in 3D map">3D map ↗</a>
+  </div>
 </article>
