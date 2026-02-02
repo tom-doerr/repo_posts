@@ -74,7 +74,7 @@
       clearError();
       return model;
     } catch (err) {
-      setError('model_load', err, 'Failed to load the semantic model (cdn.jsdelivr.net may be blocked).');
+      setError('model_load', err, 'Failed to load the semantic model (a CDN may be blocked).');
       setStatus('Sem error: failed to load model', true);
       throw err;
     }

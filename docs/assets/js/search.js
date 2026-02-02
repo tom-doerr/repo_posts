@@ -3,7 +3,7 @@
 (function(){
   const input = document.getElementById('site-search');
   if(!input) return;
-  let data=null, timer=null, active=-1, current=[];
+  let data=null, idxPromise=null, timer=null, active=-1, current=[];
   const panel = document.getElementById('search-results');
   const clearBtn = document.getElementById('search-clear');
   const countEl = document.getElementById('search-count');
@@ -36,7 +36,7 @@
     if(err){
       lines.push(`last_error: ${err.code || '(no code)'} — ${err.user || err.message || ''}`.trim());
       if(err.code === 'model_load'){
-        lines.push('hint: cdn.jsdelivr.net may be blocked by an extension/network.');
+        lines.push('hint: a CDN may be blocked by an extension/network (jsdelivr/esm.sh/skypack).');
       } else if(err.code === 'embeddings_load'){
         lines.push('hint: embeddings.* may be missing/404 on the deployed site.');
       }
@@ -81,6 +81,20 @@
     semStatus.classList.toggle('sem-warn', kind === 'warn');
     updateSemDetails();
   };
+  const triggerSearch = () => {
+    if(!input.value || !input.value.trim()) return;
+    input.dispatchEvent(new Event('input'));
+  };
+  const waitForSem = (timeoutMs) => new Promise((resolve) => {
+    const t0 = performance.now();
+    const tick = () => {
+      const ok = window.__sem && typeof window.__sem.preload === 'function';
+      if(ok) return resolve(window.__sem);
+      if(performance.now() - t0 >= timeoutMs) return resolve(null);
+      requestAnimationFrame(tick);
+    };
+    tick();
+  });
   // If user enables Sem, begin preloading model/index to reduce "Embedding…" wait
   if(semToggle){
     semToggle.addEventListener('change', ()=>{
@@ -88,34 +102,47 @@
         // Clear any sticky semantic error when switching off
         if(semStatus && semStatus.classList.contains('sem-error')) setSemStatus('', null);
         updateSemDetails({ note: 'Sem toggled off' });
+        triggerSearch();
         return;
       }
-      // Sem is enabled, but module didn't load (common with adblock or missing asset).
-      if(!window.__sem || typeof window.__sem.preload !== 'function'){
-        setSemStatus('Sem failed to load (blocked or missing). Using keyword search.', 'error');
-        updateSemDetails({ note: 'Sem enabled but module missing' });
-        return;
-      }
-      setSemStatus('Loading model…', null);
-      window.__sem.preload().then(()=>{
-        if(semStatus && !semStatus.classList.contains('sem-error')) semStatus.hidden = true;
-        updateSemDetails({ note: 'Sem preload ok' });
-      }).catch((err)=>{
-        const msg = (err && err.message) ? err.message : String(err);
-        setSemStatus('Sem preload error: ' + msg, 'error');
-        updateSemDetails({ note: 'Sem preload failed' });
-      });
+      (async()=>{
+        setSemStatus('Loading semantic…', null);
+        const sem = await waitForSem(2000);
+        // Sem is enabled, but module didn't load (common with adblock or missing asset).
+        if(!sem){
+          setSemStatus('Sem failed to load (blocked or missing). Using keyword search.', 'error');
+          updateSemDetails({ note: 'Sem enabled but module missing (timeout)' });
+          triggerSearch();
+          return;
+        }
+        try {
+          await sem.preload();
+          if(semStatus && !semStatus.classList.contains('sem-error')) semStatus.hidden = true;
+          updateSemDetails({ note: 'Sem preload ok' });
+        } catch (err) {
+          const msg = (err && err.message) ? err.message : String(err);
+          setSemStatus('Sem preload error: ' + msg, 'error');
+          updateSemDetails({ note: 'Sem preload failed' });
+        }
+        triggerSearch();
+      })();
     });
   }
   const BASE = '{{ site.baseurl | default: "" }}';
   const fetchIdx = async () => {
     if(data) return data;
-    const r = await fetch('{{ "/assets/search-index.json" | relative_url }}');
-    data = await r.json();
-    return data;
+    if(idxPromise) return idxPromise;
+    idxPromise = (async()=>{
+      const r = await fetch('{{ "/assets/search-index.json" | relative_url }}');
+      if(!r.ok) throw new Error(`search-index.json HTTP ${r.status}`);
+      data = await r.json();
+      return data;
+    })();
+    try { return await idxPromise; }
+    catch (err) { idxPromise = null; throw err; }
   };
   let currentQuery='';
-  const esc = s=>s.replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+  const esc = s=>String(s == null ? '' : s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
   const highlight = (text, q)=>{
     let out = esc(text);
     const toks = (q||'').trim().split(/\s+/).filter(t=>t.length>1);
@@ -125,6 +152,8 @@
     }
     return out;
   };
+  // Prefetch the index as soon as the user shows intent.
+  input.addEventListener('focus', ()=>{ fetchIdx().catch(()=>{}); });
   const render = (showEmpty) => {
     if(countEl){ countEl.hidden = !current.length && !showEmpty; countEl.textContent = current.length ? `${current.length} result${current.length===1?'':'s'}` : ''; }
     if(!current.length){
@@ -148,8 +177,18 @@
     const toksAnd = qNoOwner.split(/\s+/).filter(t=>t.length>1);
     if(clearBtn) clearBtn.hidden = !qRaw;
     if(!q){ current=[]; render(); return; }
+    if(!data && panel){
+      panel.hidden = false;
+      panel.innerHTML = '<ul><li class="active"><small>Loading index…</small></li></ul>';
+    }
     timer = setTimeout(()=>{ (async()=>{
-      const idx=await fetchIdx();
+      let idx;
+      try {
+        idx=await fetchIdx();
+      } catch (err) {
+        if(panel){ panel.hidden=false; panel.innerHTML='<div class="search-empty">Failed to load search index</div>'; }
+        return;
+      }
       const sem = document.getElementById('sem-toggle');
       const semWanted = sem && sem.checked;
       const semAvailable = semWanted && window.__sem && typeof window.__sem.topK === 'function';

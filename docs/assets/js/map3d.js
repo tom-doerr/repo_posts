@@ -538,7 +538,7 @@ function setupLabelsUI() {
     </div>
     <div class="row">
       <span></span>
-      <button id="sem-fly" type="button" class="btn2">Fly</button>
+      <button id="sem-fly" type="button" class="btn2">Locate</button>
     </div>
     <div id="sem-status" class="status" role="status" aria-live="polite" hidden></div>
     <div class="sep"></div>
