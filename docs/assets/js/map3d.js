@@ -1823,6 +1823,8 @@ function positionLabels() {
     hideAllNodeThumbs();
     return;
   }
+  const showThumbs = !!(thumbsToggle && thumbsToggle.checked);
+  const thumbGapPx = 6;
 
   const cam = camera.position;
   const entries = [];
@@ -1847,8 +1849,47 @@ function positionLabels() {
     const o = i * 3;
     v3.set(posArr[o], posArr[o + 1], posArr[o + 2]).project(camera);
     if (v3.z < -1 || v3.z > 1) continue;
-    const x = (v3.x * 0.5 + 0.5) * innerWidth;
-    const y = (-v3.y * 0.5 + 0.5) * innerHeight;
+    let x = (v3.x * 0.5 + 0.5) * innerWidth;
+    let y = (-v3.y * 0.5 + 0.5) * innerHeight;
+
+    // If crops are visible, pin the label above the crop's top edge (no overlap).
+    if (showThumbs) {
+      const src = imageForIndex(i);
+      if (src) {
+        const rec = getNodeThumbRecord(src);
+        const w0 = (i === highlighted || i === selected) ? NODE_THUMB_WORLD_HI : NODE_THUMB_WORLD;
+        const wWorld = THREE.MathUtils.clamp(w0 * thumbScale, NODE_THUMB_WORLD_MIN, NODE_THUMB_WORLD_MAX);
+        const aspect = (rec && Number.isFinite(rec.aspect) && rec.aspect > 0.2) ? rec.aspect : 1.6;
+        const hWorld = wWorld / aspect;
+
+        // Mirror the sprite positioning (bottom-anchored, lifted up + toward camera).
+        let xb = posArr[o], yb = posArr[o + 1], zb = posArr[o + 2];
+        const liftUp = THREE.MathUtils.clamp(hWorld * 0.25, 0.001, 0.06);
+        const liftFwd = THREE.MathUtils.clamp(hWorld * 0.12, 0.0006, 0.03);
+        xb += camera.up.x * liftUp;
+        yb += camera.up.y * liftUp;
+        zb += camera.up.z * liftUp;
+        const dxC = camera.position.x - xb;
+        const dyC = camera.position.y - yb;
+        const dzC = camera.position.z - zb;
+        const lenC = Math.sqrt(dxC*dxC + dyC*dyC + dzC*dzC) || 1;
+        xb += (dxC / lenC) * liftFwd;
+        yb += (dyC / lenC) * liftFwd;
+        zb += (dzC / lenC) * liftFwd;
+
+        // Bottom screen coord (x,y), then top screen coord to find crop top.
+        v3.set(xb, yb, zb).project(camera);
+        if (v3.z >= -1 && v3.z <= 1) {
+          const xBottom = (v3.x * 0.5 + 0.5) * innerWidth;
+          const yBottom = (-v3.y * 0.5 + 0.5) * innerHeight;
+          v3.set(xb + camera.up.x * hWorld, yb + camera.up.y * hWorld, zb + camera.up.z * hWorld).project(camera);
+          const yTop = (-v3.y * 0.5 + 0.5) * innerHeight;
+          x = xBottom;
+          y = Math.min(yTop, yBottom) - thumbGapPx;
+        }
+      }
+    }
+
     if (x < -40 || x > innerWidth + 40 || y < -40 || y > innerHeight + 40) continue;
 
     // Cheap overlap avoidance: approximate label box size from text length.
