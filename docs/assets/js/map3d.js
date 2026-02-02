@@ -160,7 +160,7 @@ function setupScene() {
 function createPoints() {
   const geo = new THREE.BufferGeometry();
   const n = data.coords.length, pos = new Float32Array(n * 3), col = new Float32Array(n * 3);
-  data.coords.forEach((c, i) => { pos[i*3]=c[0]; pos[i*3+1]=c[1]; pos[i*3+2]=c[2]; col[i*3]=1; col[i*3+1]=0.4; col[i*3+2]=0.07; });
+  data.coords.forEach((c, i) => { pos[i*3]=c[0]; pos[i*3+1]=c[1]; pos[i*3+2]=c[2]; col[i*3]=1.0; col[i*3+1]=0.35; col[i*3+2]=0.05; });
   geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
   geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
   baseColors = col.slice();

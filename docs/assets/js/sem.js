@@ -44,7 +44,23 @@
     if (model) return model;
     setStatus('Loading model…', true);
     try {
-      const t = await import('https://cdn.jsdelivr.net/npm/@xenova/transformers@2.14.1');
+      // Try a few CDNs; adblock/corp networks often block one but not the others.
+      const importSources = [
+        'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.14.1',
+        'https://esm.sh/@xenova/transformers@2.14.1',
+        'https://cdn.skypack.dev/@xenova/transformers@2.14.1',
+      ];
+      let t = null;
+      let lastImportErr = null;
+      for (const src of importSources) {
+        try {
+          t = await import(src);
+          break;
+        } catch (err) {
+          lastImportErr = err;
+        }
+      }
+      if (!t) throw lastImportErr || new Error('Failed to import transformers');
       model = await t.pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2', {
         progress_callback: (p) => {
           if (!p) return;
