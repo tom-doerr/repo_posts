@@ -23,6 +23,9 @@ let tasteStatusEl = null;
 let labelIndices = [], labelDirty = true, lastLabelCompute = 0;
 const labelPool = [];
 const thumbPool = [];
+const nodeThumbPool = [];
+const nodeThumbCache = new Map(); // src -> { tex, aspect, loaded, failed, disposed }
+let nodeThumbLoader = null;
 const v3 = new THREE.Vector3();
 let fly = null;
 let baseColors = null;
@@ -51,6 +54,13 @@ const PICK_THRESHOLD_MAX = 0.065;
 const NODE_BASE_R = 1.0;
 const NODE_BASE_G = 0.4;
 const NODE_BASE_B = 0.0667;
+// Node thumbnail sprites (screenshot crops rendered in 3D, on the nodes).
+const NODE_THUMB_CACHE_MAX = 64;
+const NODE_THUMB_WIDTH_PX = 150;
+const NODE_THUMB_WIDTH_PX_HI = 190;
+const NODE_THUMB_WORLD_MIN = 0.06;
+const NODE_THUMB_WORLD_MAX = 0.42;
+const NODE_THUMB_OPACITY = 0.92;
 const TASTE_STORE_KEY = 'magi_taste_votes_v1';
 const TASTE_ANCHOR_KEY = 'magi_taste_anchor_v1';
 const TASTE_ENABLE_KEY = 'magi_taste_enabled_v1';
@@ -556,7 +566,7 @@ function setupLabelsUI() {
     </div>
     <div class="row">
       <span>Shots</span>
-      <label class="chk" title="Show screenshot crops for visible labels"><input id="thumbs-toggle" type="checkbox" />On</label>
+      <label class="chk" title="Show screenshot crops on nodes (for visible labels)"><input id="thumbs-toggle" type="checkbox" />On</label>
     </div>
     <div class="sep"></div>
     <b>SEARCH</b>
@@ -1134,6 +1144,66 @@ function hideAllThumbs() {
   for (const t of thumbPool) t.wrap.style.display = 'none';
 }
 
+function ensureNodeThumbPool(n) {
+  if (!scene) return;
+  if (!nodeThumbLoader) nodeThumbLoader = new THREE.TextureLoader();
+  while (nodeThumbPool.length < n) {
+    const mat = new THREE.SpriteMaterial({
+      color: 0xffffff,
+      transparent: true,
+      opacity: 0.0,
+      depthWrite: false,
+      fog: false,
+    });
+    const sprite = new THREE.Sprite(mat);
+    sprite.visible = false;
+    sprite.renderOrder = 3;
+    scene.add(sprite);
+    nodeThumbPool.push({ sprite, src: '' });
+  }
+}
+
+function hideAllNodeThumbs() {
+  for (const it of nodeThumbPool) it.sprite.visible = false;
+}
+
+function getNodeThumbRecord(src) {
+  if (!src) return null;
+  const existing = nodeThumbCache.get(src);
+  if (existing) return existing;
+  const rec = { tex: null, aspect: 1.6, loaded: false, failed: false, disposed: false };
+  nodeThumbCache.set(src, rec);
+  if (!nodeThumbLoader) nodeThumbLoader = new THREE.TextureLoader();
+  nodeThumbLoader.load(src, (tex) => {
+    if (rec.disposed) { try { tex.dispose(); } catch (e) {} return; }
+    try {
+      tex.colorSpace = THREE.SRGBColorSpace;
+      tex.minFilter = THREE.LinearFilter;
+      tex.magFilter = THREE.LinearFilter;
+      tex.generateMipmaps = false;
+    } catch (e) {}
+    rec.tex = tex;
+    rec.loaded = true;
+    try {
+      if (tex.image && tex.image.width && tex.image.height) {
+        rec.aspect = tex.image.width / tex.image.height;
+      }
+    } catch (e) {}
+  }, undefined, () => { rec.failed = true; });
+  return rec;
+}
+
+function trimNodeThumbCache(inUse) {
+  if (nodeThumbCache.size <= NODE_THUMB_CACHE_MAX) return;
+  for (const [src, rec] of nodeThumbCache) {
+    if (nodeThumbCache.size <= NODE_THUMB_CACHE_MAX) break;
+    if (inUse && inUse.has(src)) continue;
+    rec.disposed = true;
+    if (rec.tex) { try { rec.tex.dispose(); } catch (e) {} }
+    nodeThumbCache.delete(src);
+  }
+}
+
 function imageForIndex(i) {
   const url = data.urls[i];
   const meta = metaForUrl(url);
@@ -1148,29 +1218,58 @@ function positionThumbs(entries) {
   const showThumbs = !!(thumbsToggle && thumbsToggle.checked);
   if (!showThumbs || !entries || !entries.length) {
     hideAllThumbs();
+    hideAllNodeThumbs();
     return;
   }
 
-  ensureThumbPool(entries.length);
+  // Prefer 3D sprites "on the nodes". Keep the DOM thumbnails hidden to avoid duplication.
+  hideAllThumbs();
+
+  if (!camera || !posArr) { hideAllNodeThumbs(); return; }
+  ensureNodeThumbPool(entries.length);
+  const fov = THREE.MathUtils.degToRad(camera.fov || 60);
+  const inUse = new Set();
 
   let shown = 0;
   for (let n = 0; n < entries.length; n++) {
-    const { i, x, y } = entries[n];
+    const { i } = entries[n];
     const src = imageForIndex(i);
     if (!src) continue;
-    const title = titleForIndex(i) || '';
-    const item = thumbPool[shown++];
-    item.wrap.classList.toggle('highlight', i === highlighted);
-    item.wrap.style.left = `${x}px`;
-    item.wrap.style.top = `${y}px`;
-    if (item.src !== src) {
-      item.src = src;
-      item.img.src = src;
+    inUse.add(src);
+
+    const rec = getNodeThumbRecord(src);
+    const o = i * 3;
+    const xw = posArr[o], yw = posArr[o + 1], zw = posArr[o + 2];
+    if (!Number.isFinite(xw) || !Number.isFinite(yw) || !Number.isFinite(zw)) continue;
+
+    const item = nodeThumbPool[shown++];
+    const sprite = item.sprite;
+    sprite.position.set(xw, yw, zw);
+
+    const dist = Math.max(1e-3, camera.position.distanceTo(sprite.position));
+    const worldPerPx = (2 * Math.tan(fov / 2) * dist) / Math.max(1, innerHeight);
+    const px = (i === highlighted || i === selected) ? NODE_THUMB_WIDTH_PX_HI : NODE_THUMB_WIDTH_PX;
+    const w = THREE.MathUtils.clamp(worldPerPx * px, NODE_THUMB_WORLD_MIN, NODE_THUMB_WORLD_MAX);
+    const aspect = (rec && Number.isFinite(rec.aspect) && rec.aspect > 0.2) ? rec.aspect : 1.6;
+    sprite.scale.set(w, w / aspect, 1);
+
+    const mat = sprite.material;
+    if (rec && rec.loaded && rec.tex && !rec.failed) {
+      if (item.src !== src) {
+        item.src = src;
+        mat.map = rec.tex;
+        mat.needsUpdate = true;
+      }
+      mat.opacity = (i === highlighted || i === selected) ? 0.98 : NODE_THUMB_OPACITY;
+      sprite.visible = true;
+    } else {
+      // Hide until texture is ready to avoid flashing white rectangles.
+      mat.opacity = 0.0;
+      sprite.visible = false;
     }
-    item.img.alt = title ? `Screenshot: ${title}` : 'Screenshot';
-    item.wrap.style.display = 'block';
   }
-  for (let i = shown; i < thumbPool.length; i++) thumbPool[i].wrap.style.display = 'none';
+  for (let i = shown; i < nodeThumbPool.length; i++) nodeThumbPool[i].sprite.visible = false;
+  trimNodeThumbCache(inUse);
 }
 
 function positionLabels() {
@@ -1178,6 +1277,7 @@ function positionLabels() {
   if (!labelsWrap || mode === 'off' || !labelIndices.length) {
     hideAllLabels();
     hideAllThumbs();
+    hideAllNodeThumbs();
     return;
   }
 
