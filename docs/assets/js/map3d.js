@@ -76,15 +76,12 @@ const NODE_BASE_G = 0.4;
 const NODE_BASE_B = 0.0667;
 // Node thumbnail sprites (screenshot crops rendered in 3D, on the nodes).
 const NODE_THUMB_CACHE_MAX = 64;
-const NODE_THUMB_WIDTH_PX = 150;
-const NODE_THUMB_WIDTH_PX_HI = 190;
-// Make crops grow on-screen as you zoom in so you can read them.
-const NODE_THUMB_ZOOM_REF = 1.5; // camera distance where base px sizes apply
-const NODE_THUMB_ZOOM_ALPHA = 0.85; // higher => grows faster when close
-const NODE_THUMB_PX_MIN = 80;
-const NODE_THUMB_PX_MAX = 1200;
-const NODE_THUMB_WORLD_MIN = 0.06;
-const NODE_THUMB_WORLD_MAX = 0.42;
+// Crops should be small "on-node" markers (similar scale to point size), and naturally
+// get larger on-screen as you zoom closer (because they are true 3D sprites).
+const NODE_THUMB_WORLD = 0.02;
+const NODE_THUMB_WORLD_HI = 0.026;
+const NODE_THUMB_WORLD_MIN = 0.014;
+const NODE_THUMB_WORLD_MAX = 0.05;
 const NODE_THUMB_OPACITY = 0.92;
 // View tuning: near clipping plane (how close you can get before nodes/crops clip).
 const CLIP_NEAR_MIN = 0.001;
@@ -1597,7 +1594,6 @@ function positionThumbs(entries) {
 
   if (!camera || !posArr) { hideAllNodeThumbs(); return; }
   ensureNodeThumbPool(entries.length);
-  const fov = THREE.MathUtils.degToRad(camera.fov || 60);
   const inUse = new Set();
 
   let shown = 0;
@@ -1617,12 +1613,8 @@ function positionThumbs(entries) {
     sprite.position.set(xw, yw, zw);
     sprite.userData.nodeIndex = i;
 
-    const dist = Math.max(1e-3, camera.position.distanceTo(sprite.position));
-    const worldPerPx = (2 * Math.tan(fov / 2) * dist) / Math.max(1, innerHeight);
-    const basePx = (i === highlighted || i === selected) ? NODE_THUMB_WIDTH_PX_HI : NODE_THUMB_WIDTH_PX;
-    const zoomScale = Math.pow(NODE_THUMB_ZOOM_REF / dist, NODE_THUMB_ZOOM_ALPHA);
-    const px = THREE.MathUtils.clamp(basePx * zoomScale, NODE_THUMB_PX_MIN, NODE_THUMB_PX_MAX);
-    const w = THREE.MathUtils.clamp(worldPerPx * px, NODE_THUMB_WORLD_MIN, NODE_THUMB_WORLD_MAX);
+    const w0 = (i === highlighted || i === selected) ? NODE_THUMB_WORLD_HI : NODE_THUMB_WORLD;
+    const w = THREE.MathUtils.clamp(w0, NODE_THUMB_WORLD_MIN, NODE_THUMB_WORLD_MAX);
     const aspect = (rec && Number.isFinite(rec.aspect) && rec.aspect > 0.2) ? rec.aspect : 1.6;
     sprite.scale.set(w, w / aspect, 1);
 
