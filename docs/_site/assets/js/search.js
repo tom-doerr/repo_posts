@@ -1,5 +1,3 @@
----
----
 (function(){
   const input = document.getElementById('site-search');
   if(!input) return;
@@ -107,10 +105,10 @@
       });
     });
   }
-  const BASE = '{{ site.baseurl | default: "" }}';
+  const BASE = '/repo_posts';
   const fetchIdx = async () => {
     if(data) return data;
-    const r = await fetch('{{ "/assets/search-index.json" | relative_url }}');
+    const r = await fetch('/repo_posts/assets/search-index.json');
     data = await r.json();
     return data;
   };

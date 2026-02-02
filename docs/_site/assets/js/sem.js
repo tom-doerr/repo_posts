@@ -16,9 +16,10 @@
   // Ensure the base is an absolute URL; URL() cannot use a path-only base like "/repo_posts/assets/".
   const BASE = new URL((window.__SEM_ASSETS_BASE || '/assets/'), location.origin);
 
-  async function loadEmbeddings() {
+  async function loadEmbeddings(opt = {}) {
+    const silent = !!(opt && opt.silent);
     if (E && meta) return { E, meta };
-    setStatus('Loading index…', true);
+    if (!silent) setStatus('Loading index…', true);
     try {
       const [rBin, rMeta] = await Promise.all([
         fetch(new URL('embeddings.f32', BASE), { cache: 'no-store' }),
@@ -30,10 +31,11 @@
       E = new Float32Array(buf);
       meta = m;
       clearError();
+      if (!silent) setStatus('', false);
       return { E, meta };
     } catch (err) {
       setError('embeddings_load', err, 'Failed to load semantic index assets (embeddings.*).');
-      setStatus('Sem error: failed to load embeddings', true);
+      if (!silent) setStatus('Sem error: failed to load embeddings', true);
       throw err;
     }
   }
@@ -119,5 +121,5 @@
   // Optional: allow preloading to start model/index fetch when Sem is toggled on
   async function preload(){ await Promise.all([loadEmbeddings(), loadModel()]); }
 
-  window.__sem = { topK, preload, getLastError: () => lastError };
+  window.__sem = { topK, preload, embeddings: loadEmbeddings, getLastError: () => lastError };
 })();
