@@ -75,6 +75,9 @@ const TASTE_LERP = 0.012;
 // Taste anchor placement: keep the "good" attractor in front of the camera,
 // but never too close (otherwise points can clip/vanish when they get near).
 const TASTE_ANCHOR_MIN_AHEAD = 0.35;
+// Place the taste anchor part-way along the look ray (relative to the orbit target).
+// < 1 means "in front of" the target (closer to camera) so liked nodes come toward you.
+const TASTE_ANCHOR_TARGET_FRAC = 0.65;
 // "Anti-drift" force for Taste: pulls far-out nodes back toward the cloud so
 // personalization doesn't explode the layout. Force increases with distance.
 const TASTE_ELASTIC_RADIUS_Q = 0.985; // base radius quantile (robust to outliers)
@@ -266,7 +269,7 @@ function computeTasteAnchorFromView() {
   // controls.target is always "in front", but can get extremely close when zoomed in.
   const distToTarget = camera.position.distanceTo(controls.target);
   const minAhead = Math.max(TASTE_ANCHOR_MIN_AHEAD, (camera.near || 0.1) * 3.5);
-  const d = Math.max(distToTarget, minAhead);
+  const d = Math.max(distToTarget * TASTE_ANCHOR_TARGET_FRAC, minAhead);
   return camera.position.clone().add(dir.multiplyScalar(d));
 }
 
@@ -1565,6 +1568,9 @@ async function updateTasteModel(reason) {
     tasteW = w; tasteB = b;
     setTasteStatus('Scoring nodes…', 'warn');
     await computeTastePredictionsChunked(E, meta.dim);
+    // Refresh anchor at apply-time so the "good/bad" pull matches the user's current view.
+    const aNow = computeTasteAnchorFromView();
+    if (aNow) { tasteAnchor = aNow; saveTasteAnchor(); }
     if (tasteAnchor && basePos) tasteDirs = computeTasteDirs(tasteAnchor);
     setTasteStatus(`Taste updated (${tasteVotes.size} vote${tasteVotes.size === 1 ? '' : 's'})`, null);
   } catch (err) {
