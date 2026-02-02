@@ -20,6 +20,8 @@ let tasteStrengthOut = null;
 let tasteVotesOut = null;
 let tasteResetBtn = null;
 let tasteStatusEl = null;
+let clipNearRange = null;
+let clipNearOut = null;
 let labelIndices = [], labelDirty = true, lastLabelCompute = 0;
 const labelPool = [];
 const thumbPool = [];
@@ -58,9 +60,18 @@ const NODE_BASE_B = 0.0667;
 const NODE_THUMB_CACHE_MAX = 64;
 const NODE_THUMB_WIDTH_PX = 150;
 const NODE_THUMB_WIDTH_PX_HI = 190;
+// Make crops grow on-screen as you zoom in so you can read them.
+const NODE_THUMB_ZOOM_REF = 1.5; // camera distance where base px sizes apply
+const NODE_THUMB_ZOOM_ALPHA = 0.85; // higher => grows faster when close
+const NODE_THUMB_PX_MIN = 80;
+const NODE_THUMB_PX_MAX = 1200;
 const NODE_THUMB_WORLD_MIN = 0.06;
 const NODE_THUMB_WORLD_MAX = 0.42;
 const NODE_THUMB_OPACITY = 0.92;
+// View tuning: near clipping plane (how close you can get before nodes/crops clip).
+const CLIP_NEAR_MIN = 0.001;
+const CLIP_NEAR_MAX = 0.2;
+const CLIP_NEAR_KEY = 'magi_clip_near_v1';
 const TASTE_STORE_KEY = 'magi_taste_votes_v1';
 const TASTE_ANCHOR_KEY = 'magi_taste_anchor_v1';
 const TASTE_ENABLE_KEY = 'magi_taste_enabled_v1';
@@ -95,6 +106,7 @@ let tasteB = 0;
 let tastePred = null; // Float32Array (n)
 let tasteUrlToEmbIdx = null; // Map(url -> emb index)
 let tasteElasticRadius = null;
+let clipNear = 0.02;
 
 const TASTE_STRENGTH_POS_MAX = 1000;
 const TASTE_STRENGTH_VAL_MAX = 1000;
@@ -166,7 +178,8 @@ function setupScene() {
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0x000000);
   scene.fog = new THREE.FogExp2(0x000000, 0.8);
-  camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, 0.1, 100);
+  loadClipNearState();
+  camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, clipNear, 100);
   camera.position.set(0, 0, 1.5);
   renderer = new THREE.WebGLRenderer({canvas: document.getElementById('c'), antialias: true});
   renderer.setSize(innerWidth, innerHeight);
@@ -175,6 +188,8 @@ function setupScene() {
   controls.dampingFactor = 0.08;
   controls.zoomSpeed = 0.8;
   controls.panSpeed = 0.5;
+  // Don't allow zooming closer than the near clip plane; avoids "objects vanish" at extreme closeups.
+  controls.minDistance = Math.max(clipNear * 1.1, CLIP_NEAR_MIN);
   controls.autoRotate = true;
   controls.autoRotateSpeed = 0.5;
   const stopRotate = () => { controls.autoRotate = false; };
@@ -182,6 +197,36 @@ function setupScene() {
   renderer.domElement.addEventListener('wheel', stopRotate, { once: true });
   controls.addEventListener('change', () => { labelDirty = true; });
   createPoints();
+}
+
+function loadClipNearState() {
+  try {
+    const raw = localStorage.getItem(CLIP_NEAR_KEY);
+    const v = raw == null ? NaN : parseFloat(raw);
+    if (Number.isFinite(v)) clipNear = Math.max(CLIP_NEAR_MIN, Math.min(CLIP_NEAR_MAX, v));
+  } catch (e) {}
+}
+
+function fmtClipNear(v) {
+  // Keep short and readable in the tiny HUD output.
+  if (!Number.isFinite(v)) return '';
+  if (v >= 0.1) return v.toFixed(2);
+  if (v >= 0.01) return v.toFixed(3).replace(/0+$/, '').replace(/\.$/, '');
+  return v.toFixed(4).replace(/0+$/, '').replace(/\.$/, '');
+}
+
+function applyClipNear(v, persist = false) {
+  if (!camera) return;
+  const next = Math.max(CLIP_NEAR_MIN, Math.min(CLIP_NEAR_MAX, Number(v) || CLIP_NEAR_MIN));
+  clipNear = next;
+  camera.near = next;
+  camera.updateProjectionMatrix();
+  if (controls) controls.minDistance = Math.max(next * 1.1, CLIP_NEAR_MIN);
+  if (clipNearRange) clipNearRange.value = String(next);
+  if (clipNearOut) clipNearOut.textContent = fmtClipNear(next);
+  if (persist) {
+    try { localStorage.setItem(CLIP_NEAR_KEY, String(next)); } catch (e) {}
+  }
 }
 
 function createPoints() {
@@ -546,10 +591,10 @@ function setupLabelsUI() {
   hud = document.createElement('div');
   hud.id = 'hud';
   hud.innerHTML = `
-    <b>LABELS</b>
-    <div class="row">
-      <span>Mode</span>
-      <select id="label-mode" aria-label="Label mode">
+	  <b>LABELS</b>
+	    <div class="row">
+	      <span>Mode</span>
+	      <select id="label-mode" aria-label="Label mode">
         <option value="off">Off</option>
         <option value="zoom" selected>Zoom (LOD)</option>
         <option value="nearest">Nearest N</option>
@@ -567,13 +612,18 @@ function setupLabelsUI() {
       <input id="label-zoom" type="range" min="0.6" max="6" step="0.1" value="2.2" />
       <output id="label-zoom-out">2.2</output>
     </div>
-    <div class="row">
-      <span>Shots</span>
-      <label class="chk" title="Show screenshot crops on nodes (for visible labels)"><input id="thumbs-toggle" type="checkbox" />On</label>
-    </div>
-    <div class="sep"></div>
-    <b>SEARCH</b>
-    <div class="row">
+	    <div class="row">
+	      <span>Shots</span>
+	      <label class="chk" title="Show screenshot crops on nodes (for visible labels)"><input id="thumbs-toggle" type="checkbox" checked />On</label>
+	    </div>
+	    <div class="row">
+	      <span title="How close you can zoom before nodes/crops clip">Close</span>
+	      <input id="clip-near" type="range" min="0.001" max="0.2" step="0.001" value="0.02" />
+	      <output id="clip-near-out">0.02</output>
+	    </div>
+	    <div class="sep"></div>
+	    <b>SEARCH</b>
+	    <div class="row">
       <span>Query</span>
       <input id="map-search" type="text" inputmode="search" autocomplete="off" spellcheck="false" placeholder="keyword or /regex/i" />
     </div>
@@ -639,6 +689,8 @@ function setupLabelsUI() {
   labelZoom = hud.querySelector('#label-zoom');
   labelZoomOut = hud.querySelector('#label-zoom-out');
   thumbsToggle = hud.querySelector('#thumbs-toggle');
+  clipNearRange = hud.querySelector('#clip-near');
+  clipNearOut = hud.querySelector('#clip-near-out');
   searchInput = hud.querySelector('#map-search');
   searchModeSel = hud.querySelector('#search-mode');
   searchCaseCb = hud.querySelector('#search-case');
@@ -667,6 +719,11 @@ function setupLabelsUI() {
   labelNearest.addEventListener('input', sync);
   labelZoom.addEventListener('input', sync);
   if (thumbsToggle) thumbsToggle.addEventListener('change', () => { labelDirty = true; });
+  if (clipNearRange) {
+    clipNearRange.addEventListener('input', () => applyClipNear(parseFloat(clipNearRange.value), true));
+    // Apply loaded/persisted value once UI exists.
+    applyClipNear(clipNear, false);
+  }
   const searchSync = () => { scheduleSearchUpdate(); updateUrlFromSearchUI(); };
   if (searchInput) {
     searchInput.addEventListener('input', searchSync);
@@ -1251,7 +1308,9 @@ function positionThumbs(entries) {
 
     const dist = Math.max(1e-3, camera.position.distanceTo(sprite.position));
     const worldPerPx = (2 * Math.tan(fov / 2) * dist) / Math.max(1, innerHeight);
-    const px = (i === highlighted || i === selected) ? NODE_THUMB_WIDTH_PX_HI : NODE_THUMB_WIDTH_PX;
+    const basePx = (i === highlighted || i === selected) ? NODE_THUMB_WIDTH_PX_HI : NODE_THUMB_WIDTH_PX;
+    const zoomScale = Math.pow(NODE_THUMB_ZOOM_REF / dist, NODE_THUMB_ZOOM_ALPHA);
+    const px = THREE.MathUtils.clamp(basePx * zoomScale, NODE_THUMB_PX_MIN, NODE_THUMB_PX_MAX);
     const w = THREE.MathUtils.clamp(worldPerPx * px, NODE_THUMB_WORLD_MIN, NODE_THUMB_WORLD_MAX);
     const aspect = (rec && Number.isFinite(rec.aspect) && rec.aspect > 0.2) ? rec.aspect : 1.6;
     sprite.scale.set(w, w / aspect, 1);
