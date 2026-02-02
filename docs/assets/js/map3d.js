@@ -10,7 +10,13 @@ let highlightPulse = null;
 let pendingOpenIndex = -1;
 let labelsWrap, hud, labelModeSel, labelNearest, labelNearestOut, labelZoom, labelZoomOut, labelZoomRow;
 let searchInput, searchModeSel, searchCaseCb, searchCountOut, searchErrorEl, searchClearBtn;
+let dateStartInput = null;
+let dateEndInput = null;
+let dateCountOut = null;
+let dateErrorEl = null;
+let dateClearBtn = null;
 let thumbsToggle = null;
+let thumbsScaleInput = null;
 let settingsBtn = null;
 let settingsOverlay = null;
 let settingsCloseBtn = null;
@@ -52,6 +58,9 @@ let baseColors = null;
 let basePos = null;
 let posArr = null;
 let matchIndices = [];
+let dateMatchIndices = [];
+let dateMatchSet = null;
+let nodeDateInt = null;
 let searchText = null;
 let searchTextLc = null;
 let searchDebounce = 0;
@@ -80,11 +89,14 @@ const NODE_THUMB_CACHE_MAX = 64;
 // get larger on-screen as you zoom closer (because they are true 3D sprites).
 const NODE_THUMB_WORLD = 0.02;
 const NODE_THUMB_WORLD_HI = 0.026;
-const NODE_THUMB_WORLD_MIN = 0.014;
-const NODE_THUMB_WORLD_MAX = 0.05;
+const NODE_THUMB_WORLD_MIN = 0.004;
+const NODE_THUMB_WORLD_MAX = 0.25;
 const NODE_THUMB_OPACITY = 0.92;
+const THUMB_SCALE_MIN = 0.1;
+const THUMB_SCALE_MAX = 20;
+const THUMB_SCALE_KEY = 'magi_thumb_scale_v1';
 // View tuning: near clipping plane (how close you can get before nodes/crops clip).
-const CLIP_NEAR_MIN = 0.001;
+const CLIP_NEAR_MIN = 0.0001;
 const CLIP_NEAR_MAX = 0.2;
 const CLIP_NEAR_KEY = 'magi_clip_near_v1';
 const TASTE_STORE_KEY = 'magi_taste_votes_v1';
@@ -122,6 +134,7 @@ let tastePred = null; // Float32Array (n)
 let tasteUrlToEmbIdx = null; // Map(url -> emb index)
 let tasteElasticRadius = null;
 let clipNear = 0.02;
+let thumbScale = 1;
 
 const TASTE_STRENGTH_POS_MAX = 1000;
 const TASTE_STRENGTH_VAL_MAX = 1000;
@@ -175,6 +188,7 @@ async function init() {
     }
   });
   buildSearchText();
+  loadThumbScaleState();
   setupScene();
   setupInteraction();
   setupLabelsUI();
@@ -221,6 +235,24 @@ function loadClipNearState() {
     const v = raw == null ? NaN : parseFloat(raw);
     if (Number.isFinite(v)) clipNear = Math.max(CLIP_NEAR_MIN, Math.min(CLIP_NEAR_MAX, v));
   } catch (e) {}
+}
+
+function loadThumbScaleState() {
+  try {
+    const raw = localStorage.getItem(THUMB_SCALE_KEY);
+    const v = raw == null ? NaN : parseFloat(raw);
+    if (Number.isFinite(v)) thumbScale = Math.max(THUMB_SCALE_MIN, Math.min(THUMB_SCALE_MAX, v));
+  } catch (e) {}
+}
+
+function applyThumbScale(v, persist = false) {
+  const next = Math.max(THUMB_SCALE_MIN, Math.min(THUMB_SCALE_MAX, Number(v) || THUMB_SCALE_MIN));
+  thumbScale = next;
+  if (thumbsScaleInput) thumbsScaleInput.value = String(next);
+  if (persist) {
+    try { localStorage.setItem(THUMB_SCALE_KEY, String(next)); } catch (e) {}
+  }
+  labelDirty = true;
 }
 
 function fmtClipNear(v) {
@@ -375,16 +407,31 @@ function buildSearchText() {
   const n = data.urls.length;
   searchText = new Array(n);
   searchTextLc = new Array(n);
+  nodeDateInt = new Int32Array(n);
   for (let i = 0; i < n; i++) {
     const url = data.urls[i];
     const meta = metaForUrl(url);
     const title = displayTitle(meta) || '';
     const summary = (meta && meta.s) ? String(meta.s) : '';
     const raw = (meta && meta.t) ? String(meta.t) : '';
+    const d = (meta && meta.d) ? String(meta.d) : '';
+    const di = parseYYYYMMDD(d);
+    nodeDateInt[i] = di || 0;
     const combined = `${title} ${summary} ${url || ''} ${raw}`.trim();
     searchText[i] = combined;
     searchTextLc[i] = combined.toLowerCase();
   }
+}
+
+function parseYYYYMMDD(s) {
+  const m = String(s || '').trim().match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!m) return null;
+  const y = parseInt(m[1], 10);
+  const mo = parseInt(m[2], 10);
+  const d = parseInt(m[3], 10);
+  if (!Number.isFinite(y) || !Number.isFinite(mo) || !Number.isFinite(d)) return null;
+  if (mo < 1 || mo > 12 || d < 1 || d > 31) return null;
+  return y * 10000 + mo * 100 + d;
 }
 
 function normalizePath(u) {
@@ -559,10 +606,18 @@ function applyColors() {
     for (let i = 0; i < c.length; i += 3) { c[i] = NODE_BASE_R; c[i + 1] = NODE_BASE_G; c[i + 2] = NODE_BASE_B; }
   }
 
-  // Search matches (cyan)
+  // Date-range matches (cyan).
+  for (let k = 0; k < dateMatchIndices.length; k++) {
+    const i = dateMatchIndices[k];
+    c[i*3] = 0.0; c[i*3 + 1] = 0.92; c[i*3 + 2] = 1.0;
+  }
+
+  // Search matches (green). If also in date-range, use a combined highlight (yellow).
+  const dm = dateMatchSet;
   for (let k = 0; k < matchIndices.length; k++) {
     const i = matchIndices[k];
-    c[i*3] = 0.0; c[i*3 + 1] = 1.0; c[i*3 + 2] = 0.25;
+    if (dm && dm.has(i)) { c[i*3] = 1.0; c[i*3 + 1] = 1.0; c[i*3 + 2] = 0.25; }
+    else { c[i*3] = 0.0; c[i*3 + 1] = 1.0; c[i*3 + 2] = 0.25; }
   }
 
   // Selected (pinned) (warm white)
@@ -636,8 +691,12 @@ function setupLabelsUI() {
 	      <label class="chk" title="Show screenshot crops on nodes (for visible labels)"><input id="thumbs-toggle" type="checkbox" checked />On</label>
 	    </div>
 	    <div class="row">
+	      <span title="Scale screenshot crop size">Crop ×</span>
+	      <input id="thumbs-scale" type="number" min="0.1" max="20" step="0.1" value="${thumbScale}" />
+	    </div>
+	    <div class="row">
 	      <span title="How close you can zoom before nodes/crops clip">Close</span>
-	      <input id="clip-near" type="range" min="0.001" max="0.2" step="0.001" value="0.02" />
+	      <input id="clip-near" type="range" min="0.0001" max="0.2" step="0.0001" value="0.02" />
 	      <output id="clip-near-out">0.02</output>
 	    </div>
 	    <div class="sep"></div>
@@ -661,15 +720,34 @@ function setupLabelsUI() {
       <span>Matches</span>
       <output id="search-count">0</output>
     </div>
-    <div class="row">
-      <span></span>
-      <button id="search-clear" type="button" class="btn2">Clear</button>
-    </div>
-    <div id="search-error" class="status err" role="status" aria-live="polite"></div>
-    <div class="sep"></div>
-    <b>SEMANTIC</b>
-    <div class="row">
-      <span>Locate</span>
+	    <div class="row">
+	      <span></span>
+	      <button id="search-clear" type="button" class="btn2">Clear</button>
+	    </div>
+	    <div id="search-error" class="status err" role="status" aria-live="polite"></div>
+	    <div class="sep"></div>
+	    <b>DATE</b>
+	    <div class="row">
+	      <span>From</span>
+	      <input id="date-start" type="date" />
+	    </div>
+	    <div class="row">
+	      <span>To</span>
+	      <input id="date-end" type="date" />
+	    </div>
+	    <div class="row">
+	      <span>Matches</span>
+	      <output id="date-count">0</output>
+	    </div>
+	    <div class="row">
+	      <span></span>
+	      <button id="date-clear" type="button" class="btn2">Clear</button>
+	    </div>
+	    <div id="date-error" class="status err" role="status" aria-live="polite"></div>
+	    <div class="sep"></div>
+	    <b>SEMANTIC</b>
+	    <div class="row">
+	      <span>Locate</span>
       <input id="sem-locate" type="text" inputmode="search" autocomplete="off" spellcheck="false" placeholder="fly to meaning…" />
     </div>
     <div class="row">
@@ -733,6 +811,7 @@ function setupLabelsUI() {
   labelZoom = hud.querySelector('#label-zoom');
   labelZoomOut = hud.querySelector('#label-zoom-out');
   thumbsToggle = hud.querySelector('#thumbs-toggle');
+  thumbsScaleInput = hud.querySelector('#thumbs-scale');
   settingsBtn = hud.querySelector('#settings-btn');
   clipNearRange = hud.querySelector('#clip-near');
   clipNearOut = hud.querySelector('#clip-near-out');
@@ -742,6 +821,11 @@ function setupLabelsUI() {
   searchCountOut = hud.querySelector('#search-count');
   searchErrorEl = hud.querySelector('#search-error');
   searchClearBtn = hud.querySelector('#search-clear');
+  dateStartInput = hud.querySelector('#date-start');
+  dateEndInput = hud.querySelector('#date-end');
+  dateCountOut = hud.querySelector('#date-count');
+  dateErrorEl = hud.querySelector('#date-error');
+  dateClearBtn = hud.querySelector('#date-clear');
   semLocateInput = hud.querySelector('#sem-locate');
   semFlyBtn = hud.querySelector('#sem-fly');
   semStatusEl = hud.querySelector('#sem-status');
@@ -769,6 +853,9 @@ function setupLabelsUI() {
   labelNearest.addEventListener('input', sync);
   labelZoom.addEventListener('input', sync);
   if (thumbsToggle) thumbsToggle.addEventListener('change', () => { labelDirty = true; });
+  if (thumbsScaleInput) thumbsScaleInput.addEventListener('input', () => applyThumbScale(parseFloat(thumbsScaleInput.value), true));
+  // Apply loaded/persisted value once UI exists.
+  applyThumbScale(thumbScale, false);
   if (clipNearRange) {
     clipNearRange.addEventListener('input', () => applyClipNear(parseFloat(clipNearRange.value), true));
     // Apply loaded/persisted value once UI exists.
@@ -794,8 +881,18 @@ function setupLabelsUI() {
     updateUrlFromSearchUI();
     searchInput && searchInput.focus();
   });
+  const dateSync = () => { updateDateMatches(); updateUrlFromDateUI(); };
+  if (dateStartInput) dateStartInput.addEventListener('input', dateSync);
+  if (dateEndInput) dateEndInput.addEventListener('input', dateSync);
+  if (dateClearBtn) dateClearBtn.addEventListener('click', () => {
+    if (dateStartInput) dateStartInput.value = '';
+    if (dateEndInput) dateEndInput.value = '';
+    updateDateMatches();
+    updateUrlFromDateUI();
+  });
   sync();
   scheduleSearchUpdate(true);
+  updateDateMatches();
   wireSemanticLocate();
   wireTasteUI();
   wireSettingsUI();
@@ -968,6 +1065,12 @@ function scheduleSearchUpdate(immediate = false) {
 function setSearchError(msg) {
   if (searchErrorEl) searchErrorEl.textContent = msg || '';
   if (searchInput) searchInput.style.borderColor = msg ? '#ff3355' : '';
+}
+
+function setDateError(msg) {
+  if (dateErrorEl) dateErrorEl.textContent = msg || '';
+  if (dateStartInput) dateStartInput.style.borderColor = msg ? '#ff3355' : '';
+  if (dateEndInput) dateEndInput.style.borderColor = msg ? '#ff3355' : '';
 }
 
 function setSemStatus(msg, kind) {
@@ -1198,6 +1301,15 @@ function updateUrlFromSearchUI() {
   });
 }
 
+function updateUrlFromDateUI() {
+  const ds = (dateStartInput ? dateStartInput.value : '').trim();
+  const de = (dateEndInput ? dateEndInput.value : '').trim();
+  updateUrlParams((sp) => {
+    if (!ds) sp.delete('ds'); else sp.set('ds', ds);
+    if (!de) sp.delete('de'); else sp.set('de', de);
+  });
+}
+
 function updateUrlFromSemanticUI(go = false) {
   const q = (semLocateInput ? semLocateInput.value : '').trim();
   updateUrlParams((sp) => {
@@ -1221,6 +1333,11 @@ function applyQueryParamsToUI() {
 
   const sem = sp.get('sem') || '';
   if (semLocateInput && sem) semLocateInput.value = sem;
+
+  const ds = sp.get('ds') || '';
+  const de = sp.get('de') || '';
+  if (dateStartInput && ds) dateStartInput.value = ds;
+  if (dateEndInput && de) dateEndInput.value = de;
 }
 
 function maybeAutoSemanticLocate() {
@@ -1363,6 +1480,55 @@ function updateSearchMatches() {
 
   matchIndices = out;
   if (searchCountOut) searchCountOut.textContent = String(matchIndices.length);
+  applyColors();
+  labelDirty = true;
+}
+
+function updateDateMatches() {
+  const n = getNodeCount();
+  if (!n) return;
+  setDateError('');
+  const ds = (dateStartInput ? dateStartInput.value : '').trim();
+  const de = (dateEndInput ? dateEndInput.value : '').trim();
+  if (!ds && !de) {
+    dateMatchIndices = [];
+    dateMatchSet = null;
+    if (dateCountOut) dateCountOut.textContent = '0';
+    applyColors();
+    labelDirty = true;
+    return;
+  }
+  const sI = ds ? parseYYYYMMDD(ds) : null;
+  const eI = de ? parseYYYYMMDD(de) : null;
+  if ((ds && !sI) || (de && !eI)) {
+    dateMatchIndices = [];
+    dateMatchSet = null;
+    if (dateCountOut) dateCountOut.textContent = '0';
+    setDateError('Invalid date (use YYYY-MM-DD)');
+    applyColors();
+    labelDirty = true;
+    return;
+  }
+  if (sI && eI && sI > eI) {
+    dateMatchIndices = [];
+    dateMatchSet = null;
+    if (dateCountOut) dateCountOut.textContent = '0';
+    setDateError('Invalid range: From is after To');
+    applyColors();
+    labelDirty = true;
+    return;
+  }
+  const out = [];
+  for (let i = 0; i < n; i++) {
+    const di = nodeDateInt && nodeDateInt.length === n ? nodeDateInt[i] : 0;
+    if (!di) continue;
+    if (sI && di < sI) continue;
+    if (eI && di > eI) continue;
+    out.push(i);
+  }
+  dateMatchIndices = out;
+  dateMatchSet = out.length ? new Set(out) : null;
+  if (dateCountOut) dateCountOut.textContent = String(out.length);
   applyColors();
   labelDirty = true;
 }
@@ -1523,6 +1689,8 @@ function ensureNodeThumbPool(n) {
       fog: false,
     });
     const sprite = new THREE.Sprite(mat);
+    // Anchor at the bottom so the crop sits "on top" of the node rather than centered through it.
+    sprite.center.set(0.5, 0.0);
     sprite.visible = false;
     sprite.renderOrder = 3;
     scene.add(sprite);
@@ -1614,9 +1782,19 @@ function positionThumbs(entries) {
     sprite.userData.nodeIndex = i;
 
     const w0 = (i === highlighted || i === selected) ? NODE_THUMB_WORLD_HI : NODE_THUMB_WORLD;
-    const w = THREE.MathUtils.clamp(w0, NODE_THUMB_WORLD_MIN, NODE_THUMB_WORLD_MAX);
+    const w = THREE.MathUtils.clamp(w0 * thumbScale, NODE_THUMB_WORLD_MIN, NODE_THUMB_WORLD_MAX);
     const aspect = (rec && Number.isFinite(rec.aspect) && rec.aspect > 0.2) ? rec.aspect : 1.6;
     sprite.scale.set(w, w / aspect, 1);
+    // Nudge upward (screen-up) and slightly toward camera so the crop doesn't poke through the node.
+    const h = w / aspect;
+    const liftUp = THREE.MathUtils.clamp(h * 0.25, 0.001, 0.06);
+    const liftFwd = THREE.MathUtils.clamp(h * 0.12, 0.0006, 0.03);
+    sprite.position.addScaledVector(camera.up, liftUp);
+    v3.set(camera.position.x - sprite.position.x, camera.position.y - sprite.position.y, camera.position.z - sprite.position.z);
+    const len = v3.length() || 1;
+    sprite.position.x += (v3.x / len) * liftFwd;
+    sprite.position.y += (v3.y / len) * liftFwd;
+    sprite.position.z += (v3.z / len) * liftFwd;
 
     const mat = sprite.material;
     if (rec && rec.loaded && rec.tex && !rec.failed) {
