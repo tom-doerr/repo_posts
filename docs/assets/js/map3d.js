@@ -47,6 +47,10 @@ const ZOOM_ASSIST_SMOOTH = 0.25;
 const PICK_RADIUS_PX = 14;
 const PICK_THRESHOLD_MIN = 0.003;
 const PICK_THRESHOLD_MAX = 0.065;
+// Match the site's primary accent orange (#ff6611).
+const NODE_BASE_R = 1.0;
+const NODE_BASE_G = 0.4;
+const NODE_BASE_B = 0.0667;
 const TASTE_STORE_KEY = 'magi_taste_votes_v1';
 const TASTE_ANCHOR_KEY = 'magi_taste_anchor_v1';
 const TASTE_ENABLE_KEY = 'magi_taste_enabled_v1';
@@ -58,9 +62,18 @@ const TASTE_EPOCHS = 18;
 const TASTE_LR = 0.06;
 const TASTE_MAX_SHIFT = 0.6;
 const TASTE_LERP = 0.012;
+// Taste anchor placement: keep the "good" attractor in front of the camera,
+// but never too close (otherwise points can clip/vanish when they get near).
+const TASTE_ANCHOR_MIN_AHEAD = 0.35;
+// "Anti-drift" force for Taste: pulls far-out nodes back toward the cloud so
+// personalization doesn't explode the layout. Force increases with distance.
+const TASTE_ELASTIC_RADIUS_Q = 0.985; // base radius quantile (robust to outliers)
+const TASTE_ELASTIC_RADIUS_MULT = 1.15; // allow mild expansion before pulling back
+const TASTE_ELASTIC_STRENGTH = 0.8; // scaled by (shift^2)
+const TASTE_ELASTIC_MAX_FRAC = 0.03; // max fraction of displacement corrected per frame
 let tasteEnabled = true;
 // Slider position 0..1000; displayed value is logarithmic-spaced 0..1000.
-let tasteStrengthPos = 900;
+let tasteStrengthPos = 667;
 let tasteVotes = new Map(); // url -> +1/-1
 let tasteAnchor = null; // THREE.Vector3
 let tasteDirs = null; // Float32Array (n*3)
@@ -68,6 +81,7 @@ let tasteW = null; // Float32Array (dim)
 let tasteB = 0;
 let tastePred = null; // Float32Array (n)
 let tasteUrlToEmbIdx = null; // Map(url -> emb index)
+let tasteElasticRadius = null;
 
 const TASTE_STRENGTH_POS_MAX = 1000;
 const TASTE_STRENGTH_VAL_MAX = 1000;
@@ -160,12 +174,13 @@ function setupScene() {
 function createPoints() {
   const geo = new THREE.BufferGeometry();
   const n = data.coords.length, pos = new Float32Array(n * 3), col = new Float32Array(n * 3);
-  data.coords.forEach((c, i) => { pos[i*3]=c[0]; pos[i*3+1]=c[1]; pos[i*3+2]=c[2]; col[i*3]=1.0; col[i*3+1]=0.35; col[i*3+2]=0.05; });
+  data.coords.forEach((c, i) => { pos[i*3]=c[0]; pos[i*3+1]=c[1]; pos[i*3+2]=c[2]; col[i*3]=NODE_BASE_R; col[i*3+1]=NODE_BASE_G; col[i*3+2]=NODE_BASE_B; });
   geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
   geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
   baseColors = col.slice();
   basePos = pos.slice();
   posArr = geo.attributes.position.array;
+  tasteElasticRadius = computeTasteElasticRadiusFromBase();
   const sprite = makePointSprite();
   // "Shadow"/outline layer behind points to make individual nodes easier to distinguish.
   const mat = new THREE.PointsMaterial({
@@ -232,6 +247,45 @@ function checkSemanticQuery() {
 
 function getNodeCount() {
   return (data && data.urls) ? data.urls.length : 0;
+}
+
+function computeTasteAnchorFromView() {
+  if (!camera || !controls) return null;
+  const dir = new THREE.Vector3();
+  camera.getWorldDirection(dir);
+  // controls.target is always "in front", but can get extremely close when zoomed in.
+  const distToTarget = camera.position.distanceTo(controls.target);
+  const minAhead = Math.max(TASTE_ANCHOR_MIN_AHEAD, (camera.near || 0.1) * 3.5);
+  const d = Math.max(distToTarget, minAhead);
+  return camera.position.clone().add(dir.multiplyScalar(d));
+}
+
+function computeTasteElasticRadiusFromBase() {
+  if (!basePos) return null;
+  const n = Math.floor(basePos.length / 3);
+  if (n <= 0) return null;
+
+  let sx = 0, sy = 0, sz = 0;
+  for (let i = 0, o = 0; i < n; i++, o += 3) {
+    sx += basePos[o];
+    sy += basePos[o + 1];
+    sz += basePos[o + 2];
+  }
+  const cx = sx / n;
+  const cy = sy / n;
+  const cz = sz / n;
+
+  const dists = new Array(n);
+  for (let i = 0, o = 0; i < n; i++, o += 3) {
+    const dx = basePos[o] - cx;
+    const dy = basePos[o + 1] - cy;
+    const dz = basePos[o + 2] - cz;
+    dists[i] = Math.sqrt(dx*dx + dy*dy + dz*dz);
+  }
+  dists.sort((a, b) => a - b);
+  const qi = Math.max(0, Math.min(n - 1, Math.floor((n - 1) * TASTE_ELASTIC_RADIUS_Q)));
+  const r = dists[qi] || dists[n - 1];
+  return (Number.isFinite(r) && r > 0) ? r : null;
 }
 
 function getNodePos(i, out) {
@@ -428,7 +482,7 @@ function applyColors() {
   const c = points.geometry.attributes.color.array;
   if (baseColors && baseColors.length === c.length) c.set(baseColors);
   else {
-    for (let i = 0; i < c.length; i += 3) { c[i] = 1; c[i + 1] = 0.4; c[i + 2] = 0.07; }
+    for (let i = 0; i < c.length; i += 3) { c[i] = NODE_BASE_R; c[i + 1] = NODE_BASE_G; c[i + 2] = NODE_BASE_B; }
   }
 
   // Search matches (cyan)
@@ -490,11 +544,11 @@ function setupLabelsUI() {
         <option value="search">Search matches</option>
       </select>
     </div>
-    <div class="row">
-      <span>Nearest</span>
-      <input id="label-nearest" type="range" min="0" max="50" value="12" />
-      <output id="label-nearest-out">12</output>
-    </div>
+	    <div class="row">
+	      <span>Nearest</span>
+	      <input id="label-nearest" type="range" min="0" max="50" value="20" />
+	      <output id="label-nearest-out">20</output>
+	    </div>
     <div class="row" id="label-zoom-row">
       <span>Zoom</span>
       <input id="label-zoom" type="range" min="0.6" max="6" step="0.1" value="2.2" />
@@ -547,11 +601,11 @@ function setupLabelsUI() {
       <span>Enable</span>
       <label class="chk" title="Personalize positions using your votes (saved locally)"><input id="taste-enable" type="checkbox" checked />On</label>
     </div>
-    <div class="row">
-      <span>Strength</span>
-      <input id="taste-strength" type="range" min="0" max="1000" step="1" value="900" />
-      <output id="taste-strength-out">500</output>
-    </div>
+	    <div class="row">
+	      <span>Strength</span>
+	      <input id="taste-strength" type="range" min="0" max="1000" step="1" value="667" />
+	      <output id="taste-strength-out">100</output>
+	    </div>
     <div class="row">
       <span>Votes</span>
       <output id="taste-votes">0</output>
@@ -1360,8 +1414,9 @@ function applyVote(url, y) {
   else tasteVotes.set(k, y);
   saveTasteVotes();
 
-  // Anchor = center of view (where camera looks), so upvoted nodes stay visible in front.
-  tasteAnchor = controls.target.clone();
+  // Anchor = point in front of the camera, but never too close (prevents "good" nodes
+  // from flying into/through the camera when zoomed in).
+  tasteAnchor = computeTasteAnchorFromView() || controls.target.clone();
   saveTasteAnchor();
   tasteDirs = null; // recompute with new anchor
 
@@ -1490,7 +1545,7 @@ function resetPositionsToBase() {
 }
 
 function updateTastePositions() {
-  if (!tasteEnabled || !tastePred || !tasteDirs || !posArr || !basePos) return;
+  if (!tasteEnabled || !tastePred || !tasteDirs || !posArr || !basePos || !tasteAnchor) return;
   const n = getNodeCount();
   const strengthValue = tasteStrengthValueFromPos(tasteStrengthPos);
   const shift = strengthValue / 1000; // 0-1 range, slider controls directly
@@ -1499,7 +1554,16 @@ function updateTastePositions() {
   for (let i = 0; i < n; i++) {
     const o = i * 3;
     const s = tastePred[i] || 0;
-    const t = shift * s;
+    let t = shift * s;
+    // Prevent overshooting the anchor (which can push points behind the camera).
+    if (t > 0) {
+      const dxA = tasteAnchor.x - basePos[o];
+      const dyA = tasteAnchor.y - basePos[o + 1];
+      const dzA = tasteAnchor.z - basePos[o + 2];
+      const dA = Math.sqrt(dxA*dxA + dyA*dyA + dzA*dzA);
+      if (Number.isFinite(dA) && dA > 0) t = Math.min(t, dA);
+      else t = 0;
+    }
     const tx = basePos[o] + tasteDirs[o] * t;
     const ty = basePos[o + 1] + tasteDirs[o + 1] * t;
     const tz = basePos[o + 2] + tasteDirs[o + 2] * t;
@@ -1509,6 +1573,38 @@ function updateTastePositions() {
     moving = moving || (Math.abs(nx - posArr[o]) + Math.abs(ny - posArr[o + 1]) + Math.abs(nz - posArr[o + 2]) > 1e-5);
     posArr[o] = nx; posArr[o + 1] = ny; posArr[o + 2] = nz;
   }
+
+  // Elastic pullback: keep the cloud cohesive under strong personalization.
+  // Uses the current centroid (so translation is allowed) and a robust base radius.
+  if (tasteElasticRadius && shift > 0.02) {
+    let cx = 0, cy = 0, cz = 0;
+    for (let i = 0, o = 0; i < n; i++, o += 3) {
+      cx += posArr[o];
+      cy += posArr[o + 1];
+      cz += posArr[o + 2];
+    }
+    cx /= n; cy /= n; cz /= n;
+    const r0 = tasteElasticRadius * TASTE_ELASTIC_RADIUS_MULT;
+    const r02 = r0 * r0;
+    const k = TASTE_ELASTIC_STRENGTH * shift * shift;
+    for (let i = 0, o = 0; i < n; i++, o += 3) {
+      const dx = posArr[o] - cx;
+      const dy = posArr[o + 1] - cy;
+      const dz = posArr[o + 2] - cz;
+      const d2 = dx*dx + dy*dy + dz*dz;
+      if (d2 <= r02) continue;
+      const dist = Math.sqrt(d2) || 1;
+      const over = dist - r0;
+      const ratio = over / r0;
+      const g = Math.min(TASTE_ELASTIC_MAX_FRAC, k * ratio * ratio);
+      if (g <= 0) continue;
+      posArr[o] -= dx * g;
+      posArr[o + 1] -= dy * g;
+      posArr[o + 2] -= dz * g;
+      moving = true;
+    }
+  }
+
   if (moving) {
     points.geometry.attributes.position.needsUpdate = true;
     labelDirty = true;

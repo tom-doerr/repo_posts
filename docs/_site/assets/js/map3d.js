@@ -57,7 +57,7 @@ const TASTE_LAMBDA = 0.01;
 const TASTE_EPOCHS = 18;
 const TASTE_LR = 0.06;
 const TASTE_MAX_SHIFT = 0.6;
-const TASTE_LERP = 0.04;
+const TASTE_LERP = 0.012;
 let tasteEnabled = true;
 // Slider position 0..1000; displayed value is logarithmic-spaced 0..1000.
 let tasteStrengthPos = 900;
@@ -1360,8 +1360,8 @@ function applyVote(url, y) {
   else tasteVotes.set(k, y);
   saveTasteVotes();
 
-  // Anchor = user "position" at vote-time.
-  tasteAnchor = camera.position.clone();
+  // Anchor = center of view (where camera looks), so upvoted nodes stay visible in front.
+  tasteAnchor = controls.target.clone();
   saveTasteAnchor();
   tasteDirs = null; // recompute with new anchor
 
