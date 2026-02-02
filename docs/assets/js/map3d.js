@@ -46,14 +46,16 @@ const ZOOM_ASSIST_SMOOTH = 0.25;
 const TASTE_STORE_KEY = 'magi_taste_votes_v1';
 const TASTE_ANCHOR_KEY = 'magi_taste_anchor_v1';
 const TASTE_ENABLE_KEY = 'magi_taste_enabled_v1';
-const TASTE_STRENGTH_KEY = 'magi_taste_strength_v1';
-const TASTE_LAMBDA = 0.35;
+const TASTE_STRENGTH_KEY = 'magi_taste_strength_v2';
+const TASTE_STRENGTH_KEY_V1 = 'magi_taste_strength_v1';
+const TASTE_LAMBDA = 0.01;
 const TASTE_EPOCHS = 18;
 const TASTE_LR = 0.06;
 const TASTE_MAX_SHIFT = 0.22;
 const TASTE_LERP = 0.04;
 let tasteEnabled = true;
-let tasteStrength = 0.16;
+// Normalized 0..1 user control (multiplied by TASTE_MAX_SHIFT internally).
+let tasteStrength = 0.73;
 let tasteVotes = new Map(); // url -> +1/-1
 let tasteAnchor = null; // THREE.Vector3
 let tasteDirs = null; // Float32Array (n*3)
@@ -525,8 +527,8 @@ function setupLabelsUI() {
     </div>
     <div class="row">
       <span>Strength</span>
-      <input id="taste-strength" type="range" min="0" max="0.22" step="0.01" value="0.16" />
-      <output id="taste-strength-out">0.16</output>
+      <input id="taste-strength" type="range" min="0" max="1" step="0.01" value="0.73" />
+      <output id="taste-strength-out">0.73</output>
     </div>
     <div class="row">
       <span>Votes</span>
@@ -679,7 +681,7 @@ function wireTasteUI() {
   }
   const syncStrength = (persist = false) => {
     if (!tasteStrengthRange) return;
-    const v = Math.max(0, Math.min(TASTE_MAX_SHIFT, parseFloat(tasteStrengthRange.value || String(tasteStrength))));
+    const v = Math.max(0, Math.min(1, parseFloat(tasteStrengthRange.value || String(tasteStrength))));
     tasteStrength = v;
     if (tasteStrengthOut) tasteStrengthOut.textContent = v.toFixed(2);
     if (persist) {
@@ -1229,8 +1231,20 @@ function loadTasteState() {
   try {
     const en = localStorage.getItem(TASTE_ENABLE_KEY);
     if (en === '0') tasteEnabled = false;
-    const st = parseFloat(localStorage.getItem(TASTE_STRENGTH_KEY) || '');
-    if (Number.isFinite(st)) tasteStrength = Math.max(0, Math.min(TASTE_MAX_SHIFT, st));
+    const st2 = parseFloat(localStorage.getItem(TASTE_STRENGTH_KEY) || '');
+    if (Number.isFinite(st2)) {
+      tasteStrength = Math.max(0, Math.min(1, st2));
+    } else {
+      // Back-compat: v1 stored the raw max-shift (0..TASTE_MAX_SHIFT).
+      const st1 = parseFloat(localStorage.getItem(TASTE_STRENGTH_KEY_V1) || '');
+      if (Number.isFinite(st1)) {
+        tasteStrength = Math.max(0, Math.min(1, st1 / TASTE_MAX_SHIFT));
+        try {
+          localStorage.setItem(TASTE_STRENGTH_KEY, String(tasteStrength));
+          localStorage.removeItem(TASTE_STRENGTH_KEY_V1);
+        } catch (e) {}
+      }
+    }
     const anchorRaw = localStorage.getItem(TASTE_ANCHOR_KEY);
     if (anchorRaw) {
       const a = JSON.parse(anchorRaw);
@@ -1413,7 +1427,7 @@ function resetPositionsToBase() {
 function updateTastePositions() {
   if (!tasteEnabled || !tastePred || !tasteDirs || !posArr || !basePos) return;
   const n = getNodeCount();
-  const shift = Math.max(0, Math.min(TASTE_MAX_SHIFT, tasteStrength));
+  const shift = TASTE_MAX_SHIFT * Math.max(0, Math.min(1, tasteStrength));
   if (!shift) return;
   let moving = false;
   for (let i = 0; i < n; i++) {
