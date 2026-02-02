@@ -11,6 +11,24 @@ let pendingOpenIndex = -1;
 let labelsWrap, hud, labelModeSel, labelNearest, labelNearestOut, labelZoom, labelZoomOut, labelZoomRow;
 let searchInput, searchModeSel, searchCaseCb, searchCountOut, searchErrorEl, searchClearBtn;
 let thumbsToggle = null;
+let settingsBtn = null;
+let settingsOverlay = null;
+let settingsCloseBtn = null;
+let tasteExportBtn = null;
+let tasteExportCopyBtn = null;
+let tasteExportCountOut = null;
+let tasteExportText = null;
+let chatWrap = null;
+let chatToggleBtn = null;
+let chatPanel = null;
+let chatCloseBtn = null;
+let chatMessagesEl = null;
+let chatInputEl = null;
+let chatSendBtn = null;
+let chatStatusEl = null;
+let chatBusy = false;
+let chatSeq = 0;
+let chatHistory = [];
 let semLocateInput = null;
 let semFlyBtn = null;
 let semStatusEl = null;
@@ -163,6 +181,7 @@ async function init() {
   setupScene();
   setupInteraction();
   setupLabelsUI();
+  setupChatUI();
   loadTasteState();
   refreshTasteUI();
   if (selected >= 0 && infobox && infobox.style.display === 'block') {
@@ -591,7 +610,10 @@ function setupLabelsUI() {
   hud = document.createElement('div');
   hud.id = 'hud';
   hud.innerHTML = `
-	  <b>LABELS</b>
+	  <div class="hud-head">
+	    <b>LABELS</b>
+	    <button id="settings-btn" type="button" class="icon-btn" aria-label="Settings" title="Settings">⚙</button>
+	  </div>
 	    <div class="row">
 	      <span>Mode</span>
 	      <select id="label-mode" aria-label="Label mode">
@@ -682,6 +704,31 @@ function setupLabelsUI() {
   `;
   document.body.appendChild(hud);
 
+  settingsOverlay = document.createElement('div');
+  settingsOverlay.id = 'settings-overlay';
+  settingsOverlay.hidden = true;
+  settingsOverlay.innerHTML = `
+    <div id="settings-panel" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+      <div class="settings-head">
+        <h2 id="settings-title">Settings</h2>
+        <button id="settings-close" type="button" class="icon-btn" aria-label="Close settings" title="Close">×</button>
+      </div>
+      <div class="settings-body">
+        <p class="settings-note">Export your Taste votes (likes/dislikes) from this browser.</p>
+        <div class="settings-row">
+          <button id="taste-export" type="button" class="btn2">Download votes</button>
+          <button id="taste-export-copy" type="button" class="btn2">Copy</button>
+        </div>
+        <div class="settings-row meta">
+          <span>Votes</span>
+          <output id="taste-export-count">0</output>
+        </div>
+        <textarea id="taste-export-text" readonly spellcheck="false"></textarea>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(settingsOverlay);
+
   labelModeSel = hud.querySelector('#label-mode');
   labelNearest = hud.querySelector('#label-nearest');
   labelNearestOut = hud.querySelector('#label-nearest-out');
@@ -689,6 +736,7 @@ function setupLabelsUI() {
   labelZoom = hud.querySelector('#label-zoom');
   labelZoomOut = hud.querySelector('#label-zoom-out');
   thumbsToggle = hud.querySelector('#thumbs-toggle');
+  settingsBtn = hud.querySelector('#settings-btn');
   clipNearRange = hud.querySelector('#clip-near');
   clipNearOut = hud.querySelector('#clip-near-out');
   searchInput = hud.querySelector('#map-search');
@@ -706,6 +754,11 @@ function setupLabelsUI() {
   tasteVotesOut = hud.querySelector('#taste-votes');
   tasteResetBtn = hud.querySelector('#taste-reset');
   tasteStatusEl = hud.querySelector('#taste-status');
+  settingsCloseBtn = settingsOverlay.querySelector('#settings-close');
+  tasteExportBtn = settingsOverlay.querySelector('#taste-export');
+  tasteExportCopyBtn = settingsOverlay.querySelector('#taste-export-copy');
+  tasteExportCountOut = settingsOverlay.querySelector('#taste-export-count');
+  tasteExportText = settingsOverlay.querySelector('#taste-export-text');
 
   applyQueryParamsToUI();
 
@@ -748,7 +801,165 @@ function setupLabelsUI() {
   scheduleSearchUpdate(true);
   wireSemanticLocate();
   wireTasteUI();
+  wireSettingsUI();
   maybeAutoSemanticLocate();
+}
+
+function setupChatUI() {
+  chatWrap = document.createElement('div');
+  chatWrap.id = 'chat';
+  chatWrap.innerHTML = `
+    <div id="chat-panel" class="chat-panel" hidden>
+      <div class="chat-head">
+        <b>CHAT</b>
+        <button id="chat-close" type="button" class="icon-btn" aria-label="Close chat" title="Close">×</button>
+      </div>
+      <div id="chat-messages" class="chat-messages" role="log" aria-live="polite"></div>
+      <div class="chat-row">
+        <input id="chat-input" type="text" inputmode="text" autocomplete="off" spellcheck="false" placeholder="Ask (WebGPU)…" />
+        <button id="chat-send" type="button" class="btn2">Send</button>
+      </div>
+      <div id="chat-status" class="chat-status" role="status" aria-live="polite" hidden></div>
+    </div>
+    <button id="chat-toggle" type="button" class="chat-toggle" aria-label="Open chat" aria-expanded="false" title="Chat">Chat</button>
+  `;
+  document.body.appendChild(chatWrap);
+
+  chatToggleBtn = chatWrap.querySelector('#chat-toggle');
+  chatPanel = chatWrap.querySelector('#chat-panel');
+  chatCloseBtn = chatWrap.querySelector('#chat-close');
+  chatMessagesEl = chatWrap.querySelector('#chat-messages');
+  chatInputEl = chatWrap.querySelector('#chat-input');
+  chatSendBtn = chatWrap.querySelector('#chat-send');
+  chatStatusEl = chatWrap.querySelector('#chat-status');
+
+  const open = () => {
+    if (!chatPanel || !chatToggleBtn) return;
+    chatPanel.hidden = false;
+    chatToggleBtn.setAttribute('aria-expanded', 'true');
+    chatWrap.classList.add('open');
+    if (chatMessagesEl && !chatMessagesEl.childElementCount) {
+      addChatMessage('assistant', 'Send a message to load the local WebGPU chat model.');
+    }
+    try { chatInputEl && chatInputEl.focus(); } catch (e) {}
+  };
+  const close = () => {
+    if (!chatPanel || !chatToggleBtn) return;
+    chatPanel.hidden = true;
+    chatToggleBtn.setAttribute('aria-expanded', 'false');
+    chatWrap.classList.remove('open');
+  };
+
+  if (chatToggleBtn) chatToggleBtn.addEventListener('click', () => (chatPanel && chatPanel.hidden) ? open() : close());
+  if (chatCloseBtn) chatCloseBtn.addEventListener('click', close);
+
+  const send = () => {
+    if (!chatInputEl || !chatMessagesEl) return;
+    const text = (chatInputEl.value || '').trim();
+    if (!text || chatBusy) return;
+    if (chatPanel && chatPanel.hidden) open();
+    chatInputEl.value = '';
+    addChatMessage('user', text);
+    const pending = addChatMessage('assistant', '…', { pending: true });
+    chatHistory.push({ role: 'user', content: text });
+    runChatTurn(pending);
+  };
+
+  if (chatSendBtn) chatSendBtn.addEventListener('click', send);
+  if (chatInputEl) {
+    chatInputEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { e.preventDefault(); send(); }
+      if (e.key === 'Escape') { chatInputEl.value = ''; chatInputEl.blur(); }
+    });
+  }
+}
+
+function setChatStatus(msg, kind) {
+  if (!chatStatusEl) return;
+  if (!msg) {
+    chatStatusEl.hidden = true;
+    chatStatusEl.textContent = '';
+    chatStatusEl.classList.remove('warn', 'err');
+    return;
+  }
+  chatStatusEl.hidden = false;
+  chatStatusEl.textContent = msg;
+  chatStatusEl.classList.toggle('warn', kind === 'warn');
+  chatStatusEl.classList.toggle('err', kind === 'err');
+}
+
+function addChatMessage(role, text, opt = {}) {
+  if (!chatMessagesEl) return null;
+  const el = document.createElement('div');
+  el.className = 'chat-msg ' + (role === 'user' ? 'user' : 'assistant');
+  el.textContent = String(text || '');
+  if (opt && opt.pending) el.classList.add('pending');
+  chatMessagesEl.appendChild(el);
+  try { chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight; } catch (e) {}
+  return el;
+}
+
+async function ensureLlmModule() {
+  if (window.__llm && typeof window.__llm.chat === 'function') return;
+  const src = BASE + 'js/llm.js';
+  await new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = src;
+    s.async = true;
+    s.onload = () => resolve();
+    s.onerror = () => reject(new Error('Failed to load chat module'));
+    document.head.appendChild(s);
+  });
+  if (!window.__llm || typeof window.__llm.chat !== 'function') throw new Error('Chat module missing');
+}
+
+async function runChatTurn(pendingEl) {
+  const my = ++chatSeq;
+  chatBusy = true;
+  if (chatSendBtn) chatSendBtn.disabled = true;
+  if (chatInputEl) chatInputEl.disabled = true;
+
+  const finish = () => {
+    chatBusy = false;
+    if (chatSendBtn) chatSendBtn.disabled = false;
+    if (chatInputEl) chatInputEl.disabled = false;
+    try { chatMessagesEl && (chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight); } catch (e) {}
+  };
+
+  try {
+    if (!('gpu' in navigator)) {
+      throw new Error('WebGPU not available (navigator.gpu missing).');
+    }
+    setChatStatus('Loading chat model…', 'warn');
+    await ensureLlmModule();
+    if (my !== chatSeq) return;
+    const out = await window.__llm.chat(chatHistory, {
+      onStatus: (s) => { if (my === chatSeq) setChatStatus(s, s ? 'warn' : null); },
+      maxNewTokens: 160,
+    });
+    if (my !== chatSeq) return;
+    const text = (out && out.text) ? String(out.text) : '';
+    const reply = text.trim() || '(no output)';
+    if (pendingEl) {
+      pendingEl.classList.remove('pending');
+      pendingEl.textContent = reply;
+    } else {
+      addChatMessage('assistant', reply);
+    }
+    chatHistory.push({ role: 'assistant', content: reply });
+    setChatStatus('', null);
+  } catch (err) {
+    const msg = (err && err.message) ? err.message : String(err);
+    if (pendingEl) {
+      pendingEl.classList.remove('pending');
+      pendingEl.textContent = `Chat error: ${msg}`;
+    } else {
+      addChatMessage('assistant', `Chat error: ${msg}`);
+    }
+    setChatStatus('Chat error: ' + msg, 'err');
+  } finally {
+    finish();
+  }
 }
 
 function scheduleSearchUpdate(immediate = false) {
@@ -843,9 +1054,108 @@ function wireTasteUI() {
       tasteW = null; tasteB = 0; tastePred = null; tasteDirs = null;
       tasteAnchor = null;
       try { localStorage.removeItem(TASTE_STORE_KEY); localStorage.removeItem(TASTE_ANCHOR_KEY); } catch (e) {}
+      if (settingsOverlay && !settingsOverlay.hidden) refreshTasteExportUI();
       resetPositionsToBase();
       setTasteStatus('Votes cleared', 'warn');
       refreshTasteUI();
+    });
+  }
+}
+
+function tasteVotesExportJSON() {
+  const votes = {};
+  for (const [k, v] of tasteVotes.entries()) votes[k] = v;
+  const payload = {
+    format: 'magi_taste_votes',
+    version: 1,
+    created_at: new Date().toISOString(),
+    site_base: SITE_BASE || '',
+    votes,
+  };
+  return JSON.stringify(payload, null, 2);
+}
+
+function refreshTasteExportUI() {
+  if (tasteExportCountOut) tasteExportCountOut.textContent = String(tasteVotes.size || 0);
+  if (tasteExportText) tasteExportText.value = tasteVotesExportJSON();
+}
+
+function openSettings() {
+  if (!settingsOverlay) return;
+  refreshTasteExportUI();
+  settingsOverlay.hidden = false;
+  settingsOverlay.classList.add('open');
+  try { settingsCloseBtn && settingsCloseBtn.focus(); } catch (e) {}
+}
+
+function closeSettings() {
+  if (!settingsOverlay) return;
+  settingsOverlay.classList.remove('open');
+  settingsOverlay.hidden = true;
+}
+
+function downloadText(filename, text, mime = 'application/json') {
+  try {
+    const blob = new Blob([text], { type: mime });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => { try { URL.revokeObjectURL(url); } catch (e) {} }, 250);
+  } catch (e) {}
+}
+
+function wireSettingsUI() {
+  if (settingsBtn) settingsBtn.addEventListener('click', () => openSettings());
+  if (!settingsOverlay) return;
+  if (settingsCloseBtn) settingsCloseBtn.addEventListener('click', () => closeSettings());
+  settingsOverlay.addEventListener('click', (e) => {
+    const panel = e.target && e.target.closest ? e.target.closest('#settings-panel') : null;
+    if (!panel) closeSettings();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    if (settingsOverlay && !settingsOverlay.hidden) closeSettings();
+  });
+  if (tasteExportBtn) {
+    tasteExportBtn.addEventListener('click', () => {
+      const txt = tasteVotesExportJSON();
+      refreshTasteExportUI();
+      const date = new Date().toISOString().slice(0, 10);
+      downloadText(`magi-taste-votes-${date}.json`, txt);
+    });
+  }
+  if (tasteExportCopyBtn) {
+    tasteExportCopyBtn.addEventListener('click', async () => {
+      const txt = tasteVotesExportJSON();
+      refreshTasteExportUI();
+      const btn = tasteExportCopyBtn;
+      const setTmp = (label) => {
+        if (!btn) return;
+        const old = btn.textContent;
+        btn.textContent = label;
+        setTimeout(() => { btn.textContent = old; }, 1200);
+      };
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(txt);
+          setTmp('Copied');
+          return;
+        }
+      } catch (e) {}
+      try {
+        if (tasteExportText) {
+          tasteExportText.focus();
+          tasteExportText.select();
+          const ok = document.execCommand && document.execCommand('copy');
+          setTmp(ok ? 'Copied' : 'Copy failed');
+        }
+      } catch (e) {
+        setTmp('Copy failed');
+      }
     });
   }
 }
@@ -1305,6 +1615,7 @@ function positionThumbs(entries) {
     const item = nodeThumbPool[shown++];
     const sprite = item.sprite;
     sprite.position.set(xw, yw, zw);
+    sprite.userData.nodeIndex = i;
 
     const dist = Math.max(1e-3, camera.position.distanceTo(sprite.position));
     const worldPerPx = (2 * Math.tan(fov / 2) * dist) / Math.max(1, innerHeight);
@@ -1413,6 +1724,24 @@ function pickIndexAt(clientX, clientY) {
   mouse.y = -(clientY / Math.max(1, innerHeight)) * 2 + 1;
   updatePickThreshold();
   raycaster.setFromCamera(mouse, camera);
+
+  // If screenshot crops are visible, prefer picking the crop sprite itself so clicks
+  // select the correct node even when points are tightly clustered.
+  if (nodeThumbPool && nodeThumbPool.length) {
+    const sprites = [];
+    for (let i = 0; i < nodeThumbPool.length; i++) {
+      const s = nodeThumbPool[i].sprite;
+      if (s && s.visible) sprites.push(s);
+    }
+    if (sprites.length) {
+      const sh = raycaster.intersectObjects(sprites, false);
+      if (sh && sh.length) {
+        const idx = sh[0] && sh[0].object && sh[0].object.userData ? sh[0].object.userData.nodeIndex : null;
+        if (Number.isFinite(idx)) return idx;
+      }
+    }
+  }
+
   const hits = raycaster.intersectObject(points);
   if (!hits || hits.length <= 0) return -1;
 
@@ -1552,6 +1881,7 @@ function saveTasteVotes() {
     for (const [k, v] of tasteVotes.entries()) obj[k] = v;
     localStorage.setItem(TASTE_STORE_KEY, JSON.stringify(obj));
   } catch (e) {}
+  if (settingsOverlay && !settingsOverlay.hidden) refreshTasteExportUI();
 }
 
 function saveTasteAnchor() {

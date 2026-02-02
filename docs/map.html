@@ -24,6 +24,9 @@
 #infobox .vote.hidden{display:none}
 #hud{position:fixed;top:12px;right:12px;background:linear-gradient(135deg,#2d1b4e,#1a0a2e);color:#e0d4f0;border:1px solid #ff6611;border-left:3px solid #ff6611;padding:12px 14px;font:12px 'Roboto Mono',monospace;z-index:10;max-width:280px}
 #hud b{color:#ff6611;font:700 11px 'Orbitron',sans-serif;letter-spacing:.15em;text-transform:uppercase}
+#hud .hud-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+#hud .icon-btn{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:1px solid rgba(255,102,17,.75);background:rgba(26,10,46,.65);color:#ff6611;font:700 14px 'Orbitron',sans-serif;cursor:pointer;line-height:1}
+#hud .icon-btn:hover{border-color:#00ff41;color:#00ff41;box-shadow:0 0 0 1px rgba(0,255,65,.25)}
 #hud .row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px}
 #hud .row span{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:#9080a8}
 #hud select{background:#1a0a2e;color:#e0d4f0;border:1px solid #ff6611;padding:4px;font:11px 'Roboto Mono',monospace}
@@ -48,6 +51,45 @@
 .point-thumb{position:absolute;width:160px;transform:translate(-50%,-100%) translateY(-26px);padding:4px;background:rgba(26,10,46,.92);border:1px solid rgba(255,102,17,.7);box-shadow:0 10px 26px rgba(0,0,0,.45),0 0 18px rgba(255,102,17,.12);opacity:.95;backdrop-filter:blur(2px)}
 .point-thumb img{display:block;width:100%;height:auto;border:1px solid rgba(61,43,94,.7)}
 .point-thumb.highlight{border-color:#00ff41;box-shadow:0 12px 30px rgba(0,0,0,.5),0 0 22px rgba(0,255,65,.18)}
+
+/* Settings overlay (top-right) */
+#settings-overlay{position:fixed;inset:0;z-index:20;display:none;align-items:flex-start;justify-content:flex-end;padding:12px;background:rgba(0,0,0,.55);backdrop-filter:blur(2px)}
+#settings-overlay.open{display:flex}
+@keyframes settingsPop{from{opacity:0;transform:translateY(-8px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+#settings-panel{width:min(560px,calc(100vw - 24px));background:linear-gradient(135deg,#2d1b4e,#1a0a2e);color:#e0d4f0;border:1px solid #ff6611;border-left:3px solid #ff6611;padding:14px 16px;box-shadow:0 16px 44px rgba(0,0,0,.55),0 0 22px rgba(255,102,17,.12);animation:settingsPop .18s ease-out}
+#settings-panel .settings-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+#settings-panel h2{margin:0;color:#ff6611;font:700 12px 'Orbitron',sans-serif;letter-spacing:.15em;text-transform:uppercase}
+#settings-panel .icon-btn{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:1px solid rgba(255,102,17,.75);background:rgba(26,10,46,.65);color:#ff6611;font:700 14px 'Orbitron',sans-serif;cursor:pointer;line-height:1}
+#settings-panel .icon-btn:hover{border-color:#00ff41;color:#00ff41;box-shadow:0 0 0 1px rgba(0,255,65,.25)}
+#settings-panel .settings-note{margin:10px 0 0;color:#9080a8;font-size:11px;line-height:1.35}
+#settings-panel .settings-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px}
+#settings-panel .settings-row.meta span{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:#9080a8}
+#settings-panel output{color:#00ff41;min-width:3ch;text-align:right;font-family:'Orbitron',sans-serif}
+#settings-panel .btn2{background:#ff6611;color:#1a0a2e;border:0;padding:6px 10px;font:700 10px 'Orbitron',sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+#settings-panel .btn2:hover{background:#00ff41}
+#settings-panel textarea{width:100%;min-height:160px;margin-top:10px;background:#1a0a2e;color:#00ff41;border:1px solid rgba(255,102,17,.7);padding:8px;font:11px 'Roboto Mono',monospace;resize:vertical}
+#settings-panel textarea:focus{outline:none;border-color:#00ff41;box-shadow:0 0 0 1px rgba(0,255,65,.25)}
+
+/* Chat window (bottom-left, collapsed by default) */
+#chat{position:fixed;left:12px;bottom:12px;z-index:15;display:flex;flex-direction:column;align-items:flex-start;gap:8px;max-width:min(360px,calc(100vw - 24px))}
+#chat .chat-toggle{border:1px solid rgba(255,102,17,.75);background:rgba(26,10,46,.72);color:#ff6611;padding:8px 10px;font:700 10px 'Orbitron',sans-serif;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+#chat .chat-toggle:hover{border-color:#00ff41;color:#00ff41;box-shadow:0 0 0 1px rgba(0,255,65,.25)}
+#chat .chat-panel{width:min(360px,calc(100vw - 24px));background:linear-gradient(135deg,#2d1b4e,#1a0a2e);color:#e0d4f0;border:1px solid #ff6611;border-left:3px solid #ff6611;padding:12px 14px;box-shadow:0 16px 44px rgba(0,0,0,.55),0 0 22px rgba(255,102,17,.12)}
+#chat .chat-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+#chat .chat-head b{color:#ff6611;font:700 11px 'Orbitron',sans-serif;letter-spacing:.15em;text-transform:uppercase}
+#chat .icon-btn{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:1px solid rgba(255,102,17,.75);background:rgba(26,10,46,.65);color:#ff6611;font:700 14px 'Orbitron',sans-serif;cursor:pointer;line-height:1}
+#chat .icon-btn:hover{border-color:#00ff41;color:#00ff41;box-shadow:0 0 0 1px rgba(0,255,65,.25)}
+#chat .chat-messages{margin-top:10px;max-height:240px;overflow:auto;padding:8px;border:1px solid rgba(255,102,17,.35);background:rgba(26,10,46,.55);display:flex;flex-direction:column;gap:8px}
+#chat .chat-msg{padding:6px 8px;border:1px solid rgba(255,102,17,.45);background:rgba(255,102,17,.06);border-radius:8px;white-space:pre-wrap;word-break:break-word}
+#chat .chat-msg.user{align-self:flex-end;border-color:rgba(255,102,17,.75);background:rgba(255,102,17,.10)}
+#chat .chat-msg.assistant{align-self:flex-start;border-color:rgba(0,255,65,.45);background:rgba(0,255,65,.08)}
+#chat .chat-msg.pending{opacity:.85}
+#chat .chat-row{display:flex;align-items:center;gap:8px;margin-top:10px}
+#chat .chat-row input[type="text"]{flex:1;min-width:0;background:#1a0a2e;color:#e0d4f0;border:1px solid #ff6611;padding:6px 8px;font:11px 'Roboto Mono',monospace}
+#chat .chat-row input[type="text"]:focus{outline:none;border-color:#00ff41;box-shadow:0 0 0 1px rgba(0,255,65,.35)}
+#chat .chat-status{margin-top:8px;color:#00ff41;font-size:10px;line-height:1.3}
+#chat .chat-status.warn{color:#ff6611}
+#chat .chat-status.err{color:#ff3355}
   </style>
 </head>
 <body>
