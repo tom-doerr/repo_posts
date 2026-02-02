@@ -43,10 +43,15 @@ const ZOOM_ASSIST_NEAR = 0.14;
 const ZOOM_ASSIST_FAR = 0.9;
 const ZOOM_ASSIST_K = 3;
 const ZOOM_ASSIST_SMOOTH = 0.25;
+// Picking radius in screen pixels (converted to world-space threshold per pick).
+const PICK_RADIUS_PX = 14;
+const PICK_THRESHOLD_MIN = 0.003;
+const PICK_THRESHOLD_MAX = 0.065;
 const TASTE_STORE_KEY = 'magi_taste_votes_v1';
 const TASTE_ANCHOR_KEY = 'magi_taste_anchor_v1';
 const TASTE_ENABLE_KEY = 'magi_taste_enabled_v1';
-const TASTE_STRENGTH_KEY = 'magi_taste_strength_v2';
+const TASTE_STRENGTH_KEY = 'magi_taste_strength_v3';
+const TASTE_STRENGTH_KEY_V2 = 'magi_taste_strength_v2';
 const TASTE_STRENGTH_KEY_V1 = 'magi_taste_strength_v1';
 const TASTE_LAMBDA = 0.01;
 const TASTE_EPOCHS = 18;
@@ -54,8 +59,8 @@ const TASTE_LR = 0.06;
 const TASTE_MAX_SHIFT = 0.22;
 const TASTE_LERP = 0.04;
 let tasteEnabled = true;
-// Normalized 0..1 user control (multiplied by TASTE_MAX_SHIFT internally).
-let tasteStrength = 0.73;
+// Slider position 0..1000; displayed value is logarithmic-spaced 0..1000.
+let tasteStrengthPos = 900;
 let tasteVotes = new Map(); // url -> +1/-1
 let tasteAnchor = null; // THREE.Vector3
 let tasteDirs = null; // Float32Array (n*3)
@@ -63,6 +68,23 @@ let tasteW = null; // Float32Array (dim)
 let tasteB = 0;
 let tastePred = null; // Float32Array (n)
 let tasteUrlToEmbIdx = null; // Map(url -> emb index)
+
+const TASTE_STRENGTH_POS_MAX = 1000;
+const TASTE_STRENGTH_VAL_MAX = 1000;
+
+function tasteStrengthValueFromPos(pos) {
+  const p = Math.max(0, Math.min(TASTE_STRENGTH_POS_MAX, Math.round(pos)));
+  if (p <= 0) return 0;
+  const t = p / TASTE_STRENGTH_POS_MAX;
+  return Math.round(Math.exp(Math.log(TASTE_STRENGTH_VAL_MAX) * t));
+}
+
+function tasteStrengthPosFromValue(value) {
+  const v = Math.max(0, Math.min(TASTE_STRENGTH_VAL_MAX, Math.round(value)));
+  if (v <= 0) return 0;
+  const t = Math.log(v) / Math.log(TASTE_STRENGTH_VAL_MAX);
+  return Math.round(t * TASTE_STRENGTH_POS_MAX);
+}
 
 function makePointSprite() {
   const size = 64;
@@ -430,7 +452,7 @@ function applyColors() {
 
 function setupInteraction() {
   raycaster = new THREE.Raycaster();
-  raycaster.params.Points.threshold = 0.03;
+  updatePickThreshold();
   mouse = new THREE.Vector2();
   tooltip = document.createElement('div');
   tooltip.id = 'tooltip';
@@ -527,8 +549,8 @@ function setupLabelsUI() {
     </div>
     <div class="row">
       <span>Strength</span>
-      <input id="taste-strength" type="range" min="0" max="1" step="0.01" value="0.73" />
-      <output id="taste-strength-out">0.73</output>
+      <input id="taste-strength" type="range" min="0" max="1000" step="1" value="900" />
+      <output id="taste-strength-out">500</output>
     </div>
     <div class="row">
       <span>Votes</span>
@@ -681,11 +703,12 @@ function wireTasteUI() {
   }
   const syncStrength = (persist = false) => {
     if (!tasteStrengthRange) return;
-    const v = Math.max(0, Math.min(1, parseFloat(tasteStrengthRange.value || String(tasteStrength))));
-    tasteStrength = v;
-    if (tasteStrengthOut) tasteStrengthOut.textContent = v.toFixed(2);
+    const pos = Math.max(0, Math.min(TASTE_STRENGTH_POS_MAX, parseInt(tasteStrengthRange.value || String(tasteStrengthPos), 10) || 0));
+    tasteStrengthPos = pos;
+    const v = tasteStrengthValueFromPos(pos);
+    if (tasteStrengthOut) tasteStrengthOut.textContent = String(v);
     if (persist) {
-      try { localStorage.setItem(TASTE_STRENGTH_KEY, String(v)); } catch (e) {}
+      try { localStorage.setItem(TASTE_STRENGTH_KEY, String(pos)); } catch (e) {}
     }
   };
   if (tasteStrengthRange) tasteStrengthRange.addEventListener('input', () => syncStrength(true));
@@ -1159,21 +1182,55 @@ function positionLabels() {
   positionThumbs(shownEntries);
 }
 
-function onMouseMove(e) {
-  mouse.x = (e.clientX / innerWidth) * 2 - 1;
-  mouse.y = -(e.clientY / innerHeight) * 2 + 1;
+function updatePickThreshold() {
+  if (!raycaster || !camera || !controls) return;
+  const dist = Math.max(1e-3, camera.position.distanceTo(controls.target));
+  const fov = THREE.MathUtils.degToRad(camera.fov || 60);
+  const worldPerPx = (2 * Math.tan(fov / 2) * dist) / Math.max(1, innerHeight);
+  const threshold = THREE.MathUtils.clamp(worldPerPx * PICK_RADIUS_PX, PICK_THRESHOLD_MIN, PICK_THRESHOLD_MAX);
+  raycaster.params.Points.threshold = threshold;
+}
+
+function pickIndexAt(clientX, clientY) {
+  if (!raycaster || !mouse || !camera || !points) return -1;
+  mouse.x = (clientX / Math.max(1, innerWidth)) * 2 - 1;
+  mouse.y = -(clientY / Math.max(1, innerHeight)) * 2 + 1;
+  updatePickThreshold();
   raycaster.setFromCamera(mouse, camera);
   const hits = raycaster.intersectObject(points);
-  if (hits.length > 0) { const i = hits[0].index; if (i !== hovered) { hovered = i; showTooltip(i, e); } }
+  if (!hits || hits.length <= 0) return -1;
+
+  // When multiple points are inside the threshold, prefer the one closest to the ray
+  // (which best matches the cursor), then by distance along the ray.
+  let best = hits[0];
+  let bestRay = Number.isFinite(best.distanceToRay) ? best.distanceToRay : Infinity;
+  let bestDist = Number.isFinite(best.distance) ? best.distance : Infinity;
+  for (let h = 1; h < hits.length; h++) {
+    const hit = hits[h];
+    const dRay = Number.isFinite(hit.distanceToRay) ? hit.distanceToRay : Infinity;
+    const d = Number.isFinite(hit.distance) ? hit.distance : Infinity;
+    if (dRay < bestRay || (dRay === bestRay && d < bestDist)) {
+      best = hit;
+      bestRay = dRay;
+      bestDist = d;
+    }
+  }
+  return Number.isFinite(best.index) ? best.index : -1;
+}
+
+function onMouseMove(e) {
+  const i = pickIndexAt(e.clientX, e.clientY);
+  if (i >= 0) { if (i !== hovered) { hovered = i; showTooltip(i, e); } }
   else { hovered = -1; tooltip.style.display = 'none'; }
   document.body.style.cursor = hovered >= 0 ? 'pointer' : 'crosshair';
 }
 
 function onClick(e) {
   if (e.target.closest('#infobox')) return;
-  if (hovered >= 0) {
-    selected = hovered;
-    setHighlight(hovered);
+  const i = pickIndexAt(e.clientX, e.clientY);
+  if (i >= 0) {
+    selected = i;
+    setHighlight(i);
     showInfobox(selected);
   } else {
     selected = -1;
@@ -1231,16 +1288,23 @@ function loadTasteState() {
   try {
     const en = localStorage.getItem(TASTE_ENABLE_KEY);
     if (en === '0') tasteEnabled = false;
-    const st2 = parseFloat(localStorage.getItem(TASTE_STRENGTH_KEY) || '');
-    if (Number.isFinite(st2)) {
-      tasteStrength = Math.max(0, Math.min(1, st2));
+    const st3 = parseInt(localStorage.getItem(TASTE_STRENGTH_KEY) || '', 10);
+    if (Number.isFinite(st3)) {
+      tasteStrengthPos = Math.max(0, Math.min(TASTE_STRENGTH_POS_MAX, st3));
     } else {
-      // Back-compat: v1 stored the raw max-shift (0..TASTE_MAX_SHIFT).
-      const st1 = parseFloat(localStorage.getItem(TASTE_STRENGTH_KEY_V1) || '');
-      if (Number.isFinite(st1)) {
-        tasteStrength = Math.max(0, Math.min(1, st1 / TASTE_MAX_SHIFT));
+      // Back-compat:
+      // - v2 stored normalized 0..1.
+      // - v1 stored raw max-shift (0..TASTE_MAX_SHIFT).
+      let value = null;
+      const st2 = parseFloat(localStorage.getItem(TASTE_STRENGTH_KEY_V2) || '');
+      if (Number.isFinite(st2)) value = Math.max(0, Math.min(1, st2)) * TASTE_STRENGTH_VAL_MAX;
+      const st1 = (value == null) ? parseFloat(localStorage.getItem(TASTE_STRENGTH_KEY_V1) || '') : NaN;
+      if (value == null && Number.isFinite(st1)) value = Math.max(0, Math.min(1, st1 / TASTE_MAX_SHIFT)) * TASTE_STRENGTH_VAL_MAX;
+      if (value != null) {
+        tasteStrengthPos = tasteStrengthPosFromValue(value);
         try {
-          localStorage.setItem(TASTE_STRENGTH_KEY, String(tasteStrength));
+          localStorage.setItem(TASTE_STRENGTH_KEY, String(tasteStrengthPos));
+          localStorage.removeItem(TASTE_STRENGTH_KEY_V2);
           localStorage.removeItem(TASTE_STRENGTH_KEY_V1);
         } catch (e) {}
       }
@@ -1283,8 +1347,9 @@ function saveTasteAnchor() {
 
 function refreshTasteUI() {
   if (tasteEnableCb) tasteEnableCb.checked = !!tasteEnabled;
-  if (tasteStrengthRange) tasteStrengthRange.value = String(tasteStrength.toFixed(2));
-  if (tasteStrengthOut) tasteStrengthOut.textContent = tasteStrength.toFixed(2);
+  const val = tasteStrengthValueFromPos(tasteStrengthPos);
+  if (tasteStrengthRange) tasteStrengthRange.value = String(tasteStrengthPos);
+  if (tasteStrengthOut) tasteStrengthOut.textContent = String(val);
   if (tasteVotesOut) tasteVotesOut.textContent = String(tasteVotes.size);
 }
 
@@ -1427,7 +1492,8 @@ function resetPositionsToBase() {
 function updateTastePositions() {
   if (!tasteEnabled || !tastePred || !tasteDirs || !posArr || !basePos) return;
   const n = getNodeCount();
-  const shift = TASTE_MAX_SHIFT * Math.max(0, Math.min(1, tasteStrength));
+  const strengthValue = tasteStrengthValueFromPos(tasteStrengthPos);
+  const shift = TASTE_MAX_SHIFT * (strengthValue / TASTE_STRENGTH_VAL_MAX);
   if (!shift) return;
   let moving = false;
   for (let i = 0; i < n; i++) {
