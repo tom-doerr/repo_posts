@@ -56,7 +56,7 @@ const TASTE_STRENGTH_KEY_V1 = 'magi_taste_strength_v1';
 const TASTE_LAMBDA = 0.01;
 const TASTE_EPOCHS = 18;
 const TASTE_LR = 0.06;
-const TASTE_MAX_SHIFT = 0.22;
+const TASTE_MAX_SHIFT = 0.6;
 const TASTE_LERP = 0.04;
 let tasteEnabled = true;
 // Slider position 0..1000; displayed value is logarithmic-spaced 0..1000.
@@ -1493,7 +1493,7 @@ function updateTastePositions() {
   if (!tasteEnabled || !tastePred || !tasteDirs || !posArr || !basePos) return;
   const n = getNodeCount();
   const strengthValue = tasteStrengthValueFromPos(tasteStrengthPos);
-  const shift = TASTE_MAX_SHIFT * (strengthValue / TASTE_STRENGTH_VAL_MAX);
+  const shift = strengthValue / 1000; // 0-1 range, slider controls directly
   if (!shift) return;
   let moving = false;
   for (let i = 0; i < n; i++) {
