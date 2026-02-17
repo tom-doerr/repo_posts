@@ -16,6 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
     {% include head-custom.html %}
+    <link rel="dns-prefetch" href="https://scripts.simpleanalyticscdn.com">
     {% if page.url == "/" or page.url == "/index.html" %}
     <link rel="prefetch" href="{{ '/assets/search-index.json' | relative_url }}">
     {% endif %}

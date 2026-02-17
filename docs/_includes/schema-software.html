@@ -3,9 +3,13 @@
 {% assign _repo = _h | split: 'href="' %}
 {% assign _repo = _repo[1] | split: '"' | first %}
 {% if _repo contains 'github.com' %}
+{% assign _after_h1 = _h | split: '</h1>' | last %}
+{% assign _sdesc = _after_h1 | split: '</p>' | first | strip_html | strip | truncate: 200 %}
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareSourceCode",
 "name":"{{ page.slug | replace: '-', ' ' }}",
+"description":"{{ _sdesc | xml_escape }}",
+"author":{"@type":"Person","name":"{{ site.author.name }}"},
 "codeRepository":"{{ _repo }}","datePublished":"{{ page.date | date_to_xmlschema }}"}
 </script>
 {% endif %}{% endif %}

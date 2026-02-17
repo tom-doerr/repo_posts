@@ -1,5 +1,8 @@
 /* NERV Terminal Interface - Evangelion-inspired design */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Roboto+Mono:wght@300;400;500;700&display=swap');
+/* Self-hosted fonts (GDPR: no requests to Google) */
+@font-face { font-family:'Orbitron'; font-style:normal; font-weight:400 900; font-display:swap; src:url('../fonts/orbitron-latin.woff2') format('woff2'); }
+@font-face { font-family:'Roboto Mono'; font-style:normal; font-weight:300 700; font-display:swap; src:url('../fonts/roboto-mono-latin.woff2') format('woff2'); }
+@font-face { font-family:'Roboto Mono'; font-style:normal; font-weight:300 700; font-display:swap; src:url('../fonts/roboto-mono-latin-ext.woff2') format('woff2'); }
 :root { scroll-behavior: auto; color-scheme: dark; --eva-purple-deep:#000000; --eva-purple:#0a0a0a; --eva-purple-light:#1a1a1a; --eva-orange:#ff6611; --eva-orange-glow:rgba(255,102,17,0.7); --eva-cyan:#00ffff; --eva-green:#00ff41; --eva-red:#ff0040; --eva-text:#e0d4f0; --eva-text-dim:#9080a8; --accent:var(--eva-orange); --accent-2:var(--eva-green); --gap:12px; --radius:0; --text-secondary:var(--eva-text-dim); }
 body { font-family: 'Roboto Mono', monospace; line-height: 1.6; background: #000; color: var(--eva-text); position:relative; }
 /* Scan lines overlay */

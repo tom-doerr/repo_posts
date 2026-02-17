@@ -5,6 +5,9 @@ future: true
 baseurl: "/repo_posts"
 url: "https://tom-doerr.github.io"
 remote_theme: pages-themes/minimal@v0.2.0
+author:
+  name: Tom Doerr
+  url: https://github.com/tom-doerr
 plugins:
   - jekyll-remote-theme
   - jekyll-relative-links
