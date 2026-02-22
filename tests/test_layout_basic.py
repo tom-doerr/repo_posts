@@ -5,10 +5,10 @@ CSS = ROOT / 'docs' / 'assets' / 'css' / 'site.css'
 LAYOUT = ROOT / 'docs' / '_layouts' / 'default.html'
 
 
-def test_no_two_column_grid_in_custom_css():
+def test_homepage_two_column_grid():
     css = CSS.read_text(encoding='utf-8')
-    assert 'display:grid' not in css
-    assert 'grid-template-columns' not in css
+    assert '.home-page #main' in css
+    assert 'grid-template-columns' in css
 
 
 def test_no_fixed_or_absolute_position_on_content_wrappers():
