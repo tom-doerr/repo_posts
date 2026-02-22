@@ -5,10 +5,7 @@
 @font-face { font-family:'Roboto Mono'; font-style:normal; font-weight:300 700; font-display:swap; src:url('../fonts/roboto-mono-latin-ext.woff2') format('woff2'); }
 :root { scroll-behavior: auto; color-scheme: dark; --eva-purple-deep:#000000; --eva-purple:#0a0a0a; --eva-purple-light:#1a1a1a; --eva-orange:#ff6611; --eva-orange-glow:rgba(255,102,17,0.7); --eva-cyan:#00ffff; --eva-green:#00ff41; --eva-red:#ff0040; --eva-text:#e0d4f0; --eva-text-dim:#9080a8; --accent:var(--eva-orange); --accent-2:var(--eva-green); --gap:12px; --radius:0; --text-secondary:var(--eva-text-dim); }
 body { font-family: 'Roboto Mono', monospace; line-height: 1.6; background: #000; color: var(--eva-text); position:relative; }
-/* Scan lines overlay */
-body::after { content:""; position:fixed; inset:0; pointer-events:none; z-index:9999; background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.15) 2px,rgba(0,0,0,0.15) 4px); }
-@keyframes flicker { 0%,100%{opacity:1} 93%{opacity:0.9} }
-@media (prefers-reduced-motion:reduce){ body::after{display:none} }
+/* (Removed) Scan lines overlay */
 h1,h2,h3,h4,h5,h6 { font-family:'Orbitron',sans-serif; text-transform:uppercase; letter-spacing:0.1em; color:var(--eva-orange); text-shadow:0 0 10px #ff6611,0 0 20px #ff6611,0 0 40px rgba(255,102,17,0.5); }
 a { color:var(--eva-orange); text-decoration:none; border-bottom:1px solid transparent; transition:border-color .2s,color .2s; }
 a:hover { color:var(--eva-green); border-bottom-color:var(--eva-green); text-shadow:0 0 10px #00ff41,0 0 20px #00ff41,0 0 40px rgba(0,255,65,0.5); }
